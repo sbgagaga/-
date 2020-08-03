@@ -1,0 +1,586 @@
+---- E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\IIC_Demo\IIC_Soft_Master.c ----------------------------------------------------------------------
+1:                
+2:                /******************** (C) COPYRIGHT 2016 CMS LTD **************************
+3:                * 模拟IIC主控收发参考程序 write by liaol,cms
+4:                * 文 件 名：IIC_Soft_Master.c
+5:                * 日期版本：2016/6/23 @V1.0
+6:                * 官    网：www.mcu.com.cn	
+7:                * 备	注：本程序使用CMS89F526验证通过
+8:                **************************************************************************/
+9:                
+10:               #include <sc.h>
+11:               
+12:               bit B_MainLoop;
+13:               
+14:               volatile unsigned char Recebuffer[5];
+15:               volatile unsigned char Sendbuffer[5];
+16:               
+17:               #define I2C_SCL	RC0
+18:               #define I2C_SDA	RC1
+19:               #define I2C_SCL_IO	TRISC0
+20:               #define I2C_SDA_IO	TRISC1
+21:               
+22:               
+23:               unsigned char I2C_Read1Byte(unsigned char ack);
+24:               unsigned char I2C_Write1Byte(unsigned char data);
+25:               void I2C_WaitMoment();
+26:               void I2C_WriteStop();
+27:               void I2C_WriteStart();
+28:               
+29:               
+30:               void main()
+31:               {
+32:               	NOP();
+  0011    0000    NOP
+  0012    0064    CLRWDT
+33:               	CLRWDT();
+34:               	OSCCON = 0x71;
+  0013    3071    LDIA	0x71
+  0014    1683    SETB	0x3,5
+  0015    1303    CLRB	0x3,6
+  0016    008F    LD	0xF,A
+35:               	
+36:               	INTCON = 0;
+  0017    018B    CLR	0xB
+37:               	TRISB = 0;
+  0018    0186    CLR	0x6
+38:               	PORTB = 0;
+  0019    1283    CLRB	0x3,5
+  001A    1303    CLRB	0x3,6
+  001B    0186    CLR	0x6
+39:               	
+40:               	PIR1 = 0;
+  001C    018C    CLR	0xC
+41:               	PIR2 = 0;
+  001D    018D    CLR	0xD
+42:               	PIE1 = 0;
+  001E    1683    SETB	0x3,5
+  001F    1303    CLRB	0x3,6
+  0020    018C    CLR	0xC
+43:               	PIE2 = 0;
+  0021    018D    CLR	0xD
+44:               	
+45:               	/*初始化定时器2, 125us中断*/
+46:               	PR2 = 250;
+  0022    30FA    LDIA	0xFA
+  0023    0092    LD	0x12,A
+47:               	T2CON = 4;
+  0024    3004    LDIA	0x4
+  0025    1283    CLRB	0x3,5
+  0026    1303    CLRB	0x3,6
+  0027    0092    LD	0x12,A
+48:               	TMR2IE = 1;
+  0028    1683    SETB	0x3,5
+  0029    1303    CLRB	0x3,6
+  002A    148C    SETB	0xC,1
+49:               	
+50:               	INTCON = 0XC0;
+  002B    30C0    LDIA	0xC0
+  002C    008B    LD	0xB,A
+  002D    282E    JP	0x2E
+51:               	
+52:               	unsigned char time1s;
+53:               	
+54:               	while(1)
+55:               	{
+56:               		if(B_MainLoop)
+  002E    1C77    SNZB	0x77,0
+  002F    2831    JP	0x31
+  0030    2832    JP	0x32
+  0031    282E    JP	0x2E
+57:               		{
+58:               			B_MainLoop = 0;
+  0032    1077    CLRB	0x77,0
+  0033    0064    CLRWDT
+59:               			CLRWDT();
+60:               			
+61:               			if(++time1s >= 200)
+  0034    3001    LDIA	0x1
+  0035    00F6    LD	0x76,A
+  0036    0876    LD	A,0x76
+  0037    1283    CLRB	0x3,5
+  0038    1303    CLRB	0x3,6
+  0039    07AD    ADDR	0x2D
+  003A    30C8    LDIA	0xC8
+  003B    022D    SUBA	0x2D
+  003C    1C03    SNZB	0x3,0
+  003D    283F    JP	0x3F
+  003E    2840    JP	0x40
+  003F    282E    JP	0x2E
+62:               			{
+63:               				time1s = 0;
+  0040    01AD    CLR	0x2D
+64:               				Sendbuffer[0]++;
+  0041    3001    LDIA	0x1
+  0042    00F6    LD	0x76,A
+  0043    0876    LD	A,0x76
+  0044    07A5    ADDR	0x25
+65:               				
+66:               				/*写4个字节*/
+67:               				I2C_WriteStart();
+  0045    2136    CALL	0x136
+68:               				I2C_Write1Byte(0xa0);
+  0046    30A0    LDIA	0xA0
+  0047    20CD    CALL	0xCD
+69:               				I2C_Write1Byte(0x4);
+  0048    3004    LDIA	0x4
+  0049    20CD    CALL	0xCD
+70:               				I2C_Write1Byte(Sendbuffer[0]);
+  004A    1283    CLRB	0x3,5
+  004B    1303    CLRB	0x3,6
+  004C    0825    LD	A,0x25
+  004D    20CD    CALL	0xCD
+71:               				I2C_Write1Byte(~Sendbuffer[0]);
+  004E    1283    CLRB	0x3,5
+  004F    1303    CLRB	0x3,6
+  0050    0925    COMA	0x25
+  0051    20CD    CALL	0xCD
+72:               				I2C_Write1Byte(0x3);
+  0052    3003    LDIA	0x3
+  0053    20CD    CALL	0xCD
+73:               				I2C_WriteStop();
+  0054    2123    CALL	0x123
+74:               				
+75:               				/*读4个字节*/
+76:               				I2C_WriteStart();
+  0055    2136    CALL	0x136
+77:               				I2C_Write1Byte(0xa1);
+  0056    30A1    LDIA	0xA1
+  0057    20CD    CALL	0xCD
+78:               				Recebuffer[0] = I2C_Read1Byte(0);
+  0058    3000    LDIA	0x0
+  0059    207A    CALL	0x7A
+  005A    00F6    LD	0x76,A
+  005B    0876    LD	A,0x76
+  005C    1283    CLRB	0x3,5
+  005D    1303    CLRB	0x3,6
+  005E    00A0    LD	0x20,A
+79:               				Recebuffer[1] = I2C_Read1Byte(0);
+  005F    3000    LDIA	0x0
+  0060    207A    CALL	0x7A
+  0061    00F6    LD	0x76,A
+  0062    0876    LD	A,0x76
+  0063    1283    CLRB	0x3,5
+  0064    1303    CLRB	0x3,6
+  0065    00A1    LD	0x21,A
+80:               				Recebuffer[2] = I2C_Read1Byte(0);
+  0066    3000    LDIA	0x0
+  0067    207A    CALL	0x7A
+  0068    00F6    LD	0x76,A
+  0069    0876    LD	A,0x76
+  006A    1283    CLRB	0x3,5
+  006B    1303    CLRB	0x3,6
+  006C    00A2    LD	0x22,A
+81:               				Recebuffer[3] = I2C_Read1Byte(1);
+  006D    3001    LDIA	0x1
+  006E    207A    CALL	0x7A
+  006F    00F6    LD	0x76,A
+  0070    0876    LD	A,0x76
+  0071    1283    CLRB	0x3,5
+  0072    1303    CLRB	0x3,6
+  0073    00A3    LD	0x23,A
+82:               				I2C_WriteStop();
+  0074    2123    CALL	0x123
+  0075    282E    JP	0x2E
+  0076    282E    JP	0x2E
+  0077    282E    JP	0x2E
+  0078    282E    JP	0x2E
+  0079    2810    JP	0x10
+83:               			}
+84:               		}
+85:               	}
+86:               }
+87:               
+88:               //125us定时中断
+89:               void interrupt ISR()
+90:               {
+91:               	static unsigned char tcount;
+92:               	if(TMR2IF)
+  0102    1C8C    SNZB	0xC,1
+  0103    2905    JP	0x105
+  0104    2906    JP	0x106
+  0105    2915    JP	0x115
+93:               	{
+94:               		TMR2IF = 0;
+  0106    108C    CLRB	0xC,1
+95:               		
+96:               		if(++tcount >= 40)
+  0107    3001    LDIA	0x1
+  0108    00F0    LD	0x70,A
+  0109    0870    LD	A,0x70
+  010A    07F8    ADDR	0x78
+  010B    3028    LDIA	0x28
+  010C    0278    SUBA	0x78
+  010D    1C03    SNZB	0x3,0
+  010E    2910    JP	0x110
+  010F    2911    JP	0x111
+  0110    2918    JP	0x118
+97:               		{
+98:               			tcount = 0;
+  0111    01F8    CLR	0x78
+99:               			B_MainLoop = 1;
+  0112    1477    SETB	0x77,0
+  0113    2918    JP	0x118
+100:              		}
+101:              	}
+  0114    2918    JP	0x118
+102:              	else
+103:              	{
+104:              		PIR1 = 0;
+  0115    018C    CLR	0xC
+105:              		PIR2 = 0;
+  0116    018D    CLR	0xD
+  0117    2918    JP	0x118
+  0118    0874    LD	A,0x74
+  0119    00FF    LD	0x7F,A
+  011A    0873    LD	A,0x73
+  011B    008A    LD	0xA,A
+  011C    0872    LD	A,0x72
+  011D    0084    LD	0x4,A
+  011E    0E71    SWAPA	0x71
+  011F    0083    LD	0x3,A
+  0120    0EFE    SWAPR	0x7E
+  0121    0E7E    SWAPA	0x7E
+  0122    0009    RETI
+106:              	}
+107:              }
+108:              
+109:              /***********************************************************
+110:              函数功能：产生IIC启动信号
+111:              入口参数：no
+112:              函数返回：no
+113:              备    注：在SCL为高电平时，SDA线上发生从高到低的电平变化
+114:              ***********************************************************/
+115:              void I2C_WriteStart()
+116:              {
+117:              	I2C_SDA_IO = 0;
+  0136    1683    SETB	0x3,5
+  0137    1303    CLRB	0x3,6
+  0138    1087    CLRB	0x7,1
+118:              	I2C_SCL_IO = 0;
+  0139    1007    CLRB	0x7,0
+119:              	I2C_WaitMoment();
+  013A    2157    CALL	0x157
+120:              	
+121:              	I2C_SDA = 1;			//先将SDA=1，以准备在SCL=1时，将SDA=0
+  013B    1283    CLRB	0x3,5
+  013C    1303    CLRB	0x3,6
+  013D    1487    SETB	0x7,1
+122:              	I2C_SCL = 1;			//时钟总线拉高
+  013E    1407    SETB	0x7,0
+123:              	I2C_WaitMoment();
+  013F    2157    CALL	0x157
+124:              	I2C_SDA = 0;			//SCL=1时，将SDA拉低即产生启动信号
+  0140    1283    CLRB	0x3,5
+  0141    1303    CLRB	0x3,6
+  0142    1087    CLRB	0x7,1
+125:              	
+126:              	I2C_WaitMoment();
+  0143    2157    CALL	0x157
+127:              	I2C_SCL = 0;			//将SCL=0，完成启动信号操作
+  0144    1283    CLRB	0x3,5
+  0145    1303    CLRB	0x3,6
+  0146    1007    CLRB	0x7,0
+128:              	I2C_WaitMoment();
+  0147    2157    CALL	0x157
+  0148    0008    RET
+129:              }
+130:              
+131:              /***********************************************************
+132:              函数功能：产生IIC结束信号
+133:              入口参数：no
+134:              函数返回：no
+135:              备    注：在SCL为高电平时，SDA线上发生从低到高的电平变化
+136:              ***********************************************************/
+137:              void I2C_WriteStop()
+138:              {
+139:              	I2C_SDA_IO = 0;
+  0123    1683    SETB	0x3,5
+  0124    1303    CLRB	0x3,6
+  0125    1087    CLRB	0x7,1
+140:              	I2C_SCL_IO = 0;
+  0126    1007    CLRB	0x7,0
+141:              	I2C_WaitMoment();
+  0127    2157    CALL	0x157
+142:              	
+143:              	I2C_SDA = 0;			//先将SDA=0，以准备在SCL=1时，将SDA=1
+  0128    1283    CLRB	0x3,5
+  0129    1303    CLRB	0x3,6
+  012A    1087    CLRB	0x7,1
+144:              	I2C_SCL = 1;			//时钟总线拉高
+  012B    1407    SETB	0x7,0
+145:              	I2C_WaitMoment();
+  012C    2157    CALL	0x157
+146:              	I2C_SDA = 1;			//SCL=1时，将SDA拉高即产生停止信号
+  012D    1283    CLRB	0x3,5
+  012E    1303    CLRB	0x3,6
+  012F    1487    SETB	0x7,1
+147:              	
+148:              	I2C_WaitMoment();
+  0130    2157    CALL	0x157
+149:              	I2C_SCL = 0;			//将SCL=0，完成启动信号操作
+  0131    1283    CLRB	0x3,5
+  0132    1303    CLRB	0x3,6
+  0133    1007    CLRB	0x7,0
+150:              	I2C_WaitMoment();
+  0134    2157    CALL	0x157
+  0135    0008    RET
+151:              }
+152:              
+153:              /***********************************************************
+154:              函数功能：模拟IIC主机发送8位数据
+155:              入口参数：data-待发送数据
+156:              函数返回：返回ack应答信号
+157:              备    注：IIC协议ack应答信号为低有效
+158:              ***********************************************************/
+159:              unsigned char I2C_Write1Byte(unsigned char data)
+160:              {
+  00CD    1283    CLRB	0x3,5
+  00CE    1303    CLRB	0x3,6
+  00CF    00AA    LD	0x2A,A
+161:              	unsigned char i = 8;
+  00D0    3008    LDIA	0x8
+  00D1    00F5    LD	0x75,A
+  00D2    0875    LD	A,0x75
+  00D3    00AB    LD	0x2B,A
+162:              	I2C_SDA_IO = 0;
+  00D4    1683    SETB	0x3,5
+  00D5    1303    CLRB	0x3,6
+  00D6    1087    CLRB	0x7,1
+163:              	I2C_SCL_IO = 0;
+  00D7    1007    CLRB	0x7,0
+  00D8    28D9    JP	0xD9
+164:              	do
+165:              	{
+166:              		I2C_SCL = 0;
+  00D9    1283    CLRB	0x3,5
+  00DA    1007    CLRB	0x7,0
+167:              		if(data&0x80)
+  00DB    1FAA    SNZB	0x2A,7
+  00DC    28DE    JP	0xDE
+  00DD    28DF    JP	0xDF
+  00DE    28E1    JP	0xE1
+168:              			I2C_SDA = 1;
+  00DF    1487    SETB	0x7,1
+  00E0    28E2    JP	0xE2
+169:              		else
+170:              			I2C_SDA = 0;
+  00E1    1087    CLRB	0x7,1
+171:              		
+172:              		I2C_SCL = 1;		//时钟线做一个上升沿，将一位数据写入
+  00E2    1407    SETB	0x7,0
+173:              		data <<= 1;
+  00E3    1003    CLRB	0x3,0
+  00E4    0DAA    RLCR	0x2A
+174:              	}
+175:              	while(--i);
+  00E5    3001    LDIA	0x1
+  00E6    02AB    SUBR	0x2B
+  00E7    1D03    SNZB	0x3,2
+  00E8    28EA    JP	0xEA
+  00E9    28EB    JP	0xEB
+  00EA    28D9    JP	0xD9
+176:              	I2C_SCL = 0;
+  00EB    1007    CLRB	0x7,0
+177:              	
+178:              	I2C_SDA_IO = 1;			//置为输入口接收应答信号
+  00EC    1683    SETB	0x3,5
+  00ED    1303    CLRB	0x3,6
+  00EE    1487    SETB	0x7,1
+179:              
+180:              	I2C_WaitMoment();
+  00EF    2157    CALL	0x157
+181:              	I2C_SCL = 1;			//做个上升沿准备读应答信号
+  00F0    1283    CLRB	0x3,5
+  00F1    1303    CLRB	0x3,6
+  00F2    1407    SETB	0x7,0
+182:              	I2C_WaitMoment();
+  00F3    2157    CALL	0x157
+183:              	
+184:              	i = I2C_SDA;
+  00F4    3000    LDIA	0x0
+  00F5    1283    CLRB	0x3,5
+  00F6    1303    CLRB	0x3,6
+  00F7    1887    SZB	0x7,1
+  00F8    3001    LDIA	0x1
+  00F9    00F5    LD	0x75,A
+  00FA    0875    LD	A,0x75
+  00FB    00AB    LD	0x2B,A
+185:              	I2C_SCL = 0;
+  00FC    1007    CLRB	0x7,0
+186:              	I2C_SDA_IO = 0;
+  00FD    1683    SETB	0x3,5
+  00FE    1303    CLRB	0x3,6
+  00FF    1087    CLRB	0x7,1
+  0100    2901    JP	0x101
+187:              	return i;
+  0101    0008    RET
+188:              }
+189:              
+190:              /***********************************************************
+191:              函数功能：模拟IIC主机接收8位数据
+192:              入口参数：ack-应答信号
+193:              函数返回：接收到的数据
+194:              备    注：IIC协议ack应答信号为低有效
+195:              ***********************************************************/
+196:              unsigned char I2C_Read1Byte(unsigned char ack)
+197:              {
+  007A    1283    CLRB	0x3,5
+  007B    1303    CLRB	0x3,6
+  007C    00AA    LD	0x2A,A
+198:              	unsigned char i,data;
+199:              	I2C_SDA_IO = 1;
+  007D    1683    SETB	0x3,5
+  007E    1303    CLRB	0x3,6
+  007F    1487    SETB	0x7,1
+200:              	I2C_SCL_IO = 1;
+  0080    1407    SETB	0x7,0
+201:              	I2C_WaitMoment();
+  0081    2157    CALL	0x157
+202:              	
+203:              	while(!I2C_SCL);				//等待从机准备好数据释放时钟
+  0082    2883    JP	0x83
+  0083    1283    CLRB	0x3,5
+  0084    1303    CLRB	0x3,6
+  0085    1C07    SNZB	0x7,0
+  0086    2888    JP	0x88
+  0087    2889    JP	0x89
+  0088    2883    JP	0x83
+204:              	I2C_SCL_IO = 0;
+  0089    1683    SETB	0x3,5
+  008A    1303    CLRB	0x3,6
+  008B    1007    CLRB	0x7,0
+205:              	I2C_SCL = 0;
+  008C    1283    CLRB	0x3,5
+  008D    1303    CLRB	0x3,6
+  008E    1007    CLRB	0x7,0
+206:              	I2C_WaitMoment();
+  008F    2157    CALL	0x157
+207:              	
+208:              	data <<= 1;
+  0090    1003    CLRB	0x3,0
+  0091    1283    CLRB	0x3,5
+  0092    1303    CLRB	0x3,6
+  0093    0DAB    RLCR	0x2B
+209:              	if(I2C_SDA) data |= 0x1;
+  0094    1C87    SNZB	0x7,1
+  0095    2897    JP	0x97
+  0096    2898    JP	0x98
+  0097    2899    JP	0x99
+  0098    142B    SETB	0x2B,0
+210:              	
+211:              	
+212:              	for(i = 0; i < 7; i++)
+  0099    01AC    CLR	0x2C
+  009A    3007    LDIA	0x7
+  009B    022C    SUBA	0x2C
+  009C    1C03    SNZB	0x3,0
+  009D    289F    JP	0x9F
+  009E    28A0    JP	0xA0
+  009F    28A2    JP	0xA2
+  00A0    28B5    JP	0xB5
+  00A1    28B5    JP	0xB5
+213:              	{
+214:              		I2C_SCL = 1;
+  00A2    1407    SETB	0x7,0
+215:              		data <<= 1;
+  00A3    1003    CLRB	0x3,0
+  00A4    0DAB    RLCR	0x2B
+216:              		if(I2C_SDA) data |= 0x1;
+  00A5    1C87    SNZB	0x7,1
+  00A6    28A8    JP	0xA8
+  00A7    28A9    JP	0xA9
+  00A8    28AA    JP	0xAA
+  00A9    142B    SETB	0x2B,0
+217:              		I2C_SCL = 0;
+  00AA    1007    CLRB	0x7,0
+  00AB    3001    LDIA	0x1
+  00AC    00F5    LD	0x75,A
+  00AD    0875    LD	A,0x75
+  00AE    07AC    ADDR	0x2C
+  00AF    3007    LDIA	0x7
+  00B0    022C    SUBA	0x2C
+  00B1    1C03    SNZB	0x3,0
+  00B2    28B4    JP	0xB4
+  00B3    28B5    JP	0xB5
+  00B4    28A2    JP	0xA2
+218:              	}
+219:              	
+220:              	I2C_SDA_IO = 0;
+  00B5    1683    SETB	0x3,5
+  00B6    1303    CLRB	0x3,6
+  00B7    1087    CLRB	0x7,1
+221:              	
+222:              	if(ack)I2C_SDA = 1;			//是否需要更多的数据
+  00B8    1283    CLRB	0x3,5
+  00B9    1303    CLRB	0x3,6
+  00BA    082A    LD	A,0x2A
+  00BB    1D03    SNZB	0x3,2
+  00BC    28BE    JP	0xBE
+  00BD    28C0    JP	0xC0
+  00BE    1487    SETB	0x7,1
+  00BF    28C2    JP	0xC2
+223:              	else I2C_SDA = 0;
+  00C0    1087    CLRB	0x7,1
+  00C1    28C2    JP	0xC2
+224:              	
+225:              	I2C_WaitMoment();
+  00C2    2157    CALL	0x157
+226:              	I2C_SCL = 1;
+  00C3    1283    CLRB	0x3,5
+  00C4    1303    CLRB	0x3,6
+  00C5    1407    SETB	0x7,0
+227:              	I2C_WaitMoment();
+  00C6    2157    CALL	0x157
+228:              	I2C_SCL = 0;
+  00C7    1283    CLRB	0x3,5
+  00C8    1303    CLRB	0x3,6
+  00C9    1007    CLRB	0x7,0
+229:              	return data;
+  00CA    082B    LD	A,0x2B
+  00CB    28CC    JP	0xCC
+  00CC    0008    RET
+230:              }
+231:              
+232:              //短暂延时
+233:              void I2C_WaitMoment()
+234:              {
+  0157    0000    NOP
+  0158    0000    NOP
+  0159    0008    RET
+235:              	asm("nop");
+236:              	asm("nop");
+237:              }
+---- stringtab ------------------------------------------------------------------
+---- reset_enter ------------------------------------------------------------------
+  0000    2810    JP	0x10
+  0010    2949    JP	0x149
+---- start_initialization ------------------------------------------------------------------
+  0149    01F7    CLR	0x77
+  014A    01F8    CLR	0x78
+  014B    01A0    CLR	0x20
+  014C    01A1    CLR	0x21
+  014D    01A2    CLR	0x22
+  014E    01A3    CLR	0x23
+  014F    01A4    CLR	0x24
+  0150    01A5    CLR	0x25
+  0151    01A6    CLR	0x26
+  0152    01A7    CLR	0x27
+  0153    01A8    CLR	0x28
+  0154    01A9    CLR	0x29
+  0155    0183    CLR	0x3
+  0156    2811    JP	0x11
+---- interrupt_function_enter ----------------------------------------------------------
+  0004    00FE    LD	0x7E,A
+  0005    0E03    SWAPA	0x3
+  0006    00F1    LD	0x71,A
+  0007    0804    LD	A,0x4
+  0008    00F2    LD	0x72,A
+  0009    080A    LD	A,0xA
+  000A    00F3    LD	0x73,A
+  000B    1283    CLRB	0x3,5
+  000C    1303    CLRB	0x3,6
+  000D    087F    LD	A,0x7F
+  000E    00F4    LD	0x74,A
+  000F    2902    JP	0x102
+---- common_function ------------------------------------------------------------------

@@ -1,0 +1,13 @@
+[PROJECT]
+Version=1.18
+Compile=1
+Device=SC8P1711C
+config=37FF,FFEF,FFFF,FFFF,FFFF,2915,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,
+[FILE]
+SourceFile=main.c
+SourceFile=adc.c
+SourceFile=display.c
+HeadFile=adc.h
+HeadFile=display.h
+HeadFile=main.h
+HeadFile=mytype.h

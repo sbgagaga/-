@@ -1,0 +1,98 @@
+---- E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\CCP_Demo\CCP1_PWM.c ----------------------------------------------------------------------
+1:                
+2:                //CCP1 PWM模式参考程序
+3:                #include <SC.h>           		//调用单片机的头文件
+4:                
+5:                void main(void)            		//主函数,单片机开机后就是从这个函数开始运行
+6:                {
+7:                	unsigned int delaycnt = 0;
+  05CA    01F1    CLR	0x71
+  05CB    01F2    CLR	0x72
+8:                	unsigned char pwmbuf = 0;
+  05CC    01F3    CLR	0x73
+  05CD    0000    NOP
+  05CE    0064    CLRWDT
+9:                
+10:               	asm("nop");
+11:               	asm("clrwdt");
+12:               	OSCCON = 0X71;				//8M
+  05CF    3071    LDIA	0x71
+  05D0    1683    SETB	0x3,5
+  05D1    1303    CLRB	0x3,6
+  05D2    008F    LD	0xF,A
+13:               	
+14:               								//以下是对CCP1的PWM功能初始化
+15:                   PR2 = 0xFF;              	//装载PR2寄存器设置PWM周期，频率为7812Hz
+  05D3    30FF    LDIA	0xFF
+  05D4    0092    LD	0x12,A
+16:                   CCP1CON = 0x0C;          	//CCP1模块工作在PWM模式
+  05D5    300C    LDIA	0xC
+  05D6    1283    CLRB	0x3,5
+  05D7    1303    CLRB	0x3,6
+  05D8    0097    LD	0x17,A
+17:                   CCPR1L = 0xCD;           	//装载CCPR1L寄存器设置PWM占空比，为80%
+  05D9    30CD    LDIA	0xCD
+  05DA    0095    LD	0x15,A
+18:                   
+19:               	TMR2IF = 0;              	//清零PIR1寄存器中的TMR2IF中断标志位
+  05DB    108C    CLRB	0xC,1
+20:                   T2CKPS0 = 0;             	//定时器TMR2设置1:1预分频比，T2CKPS0=0
+  05DC    1012    CLRB	0x12,0
+21:                   T2CKPS1 = 0;             	//定时器TMR2设置1:1预分频比，T2CKPS1=0
+  05DD    1092    CLRB	0x12,1
+22:                   TMR2ON = 1;              	//T2CON寄存器中的TMR2ON位置1使能Timer2
+  05DE    1512    SETB	0x12,2
+23:                   TRISC2 = 0;					//清零TRISC2位，使能CCP1引脚输出驱动器
+  05DF    1683    SETB	0x3,5
+  05E0    1303    CLRB	0x3,6
+  05E1    1107    CLRB	0x7,2
+  05E2    2DE3    JP	0x5E3
+24:               
+25:                   while(1)					//死循环,单片机初始化后,将一直运行这个死循环
+26:                   {
+27:               		if(++delaycnt > 1000)	//延时1000个软件周期，非精确定时
+  05E3    3001    LDIA	0x1
+  05E4    07F1    ADDR	0x71
+  05E5    1803    SZB	0x3,0
+  05E6    0AF2    INCR	0x72
+  05E7    3000    LDIA	0x0
+  05E8    07F2    ADDR	0x72
+  05E9    3003    LDIA	0x3
+  05EA    0272    SUBA	0x72
+  05EB    30E9    LDIA	0xE9
+  05EC    1903    SZB	0x3,2
+  05ED    0271    SUBA	0x71
+  05EE    1C03    SNZB	0x3,0
+  05EF    2DF1    JP	0x5F1
+  05F0    2DF2    JP	0x5F2
+  05F1    2DE3    JP	0x5E3
+28:                  		{
+29:                  			delaycnt = 0;        //清零以备下次重新计数
+  05F2    01F1    CLR	0x71
+  05F3    01F2    CLR	0x72
+30:                  			pwmbuf++;			//占空比加一
+  05F4    3001    LDIA	0x1
+  05F5    00F0    LD	0x70,A
+  05F6    0870    LD	A,0x70
+  05F7    07F3    ADDR	0x73
+31:               			CCPR1L = pwmbuf;	//写入占空比
+  05F8    0873    LD	A,0x73
+  05F9    1283    CLRB	0x3,5
+  05FA    1303    CLRB	0x3,6
+  05FB    0095    LD	0x15,A
+  05FC    2DE3    JP	0x5E3
+  05FD    2DE3    JP	0x5E3
+  05FE    2DE3    JP	0x5E3
+32:                  		}
+33:                   }
+34:               }
+35:               
+36:               
+---- stringtab ------------------------------------------------------------------
+---- reset_enter ------------------------------------------------------------------
+  0000    2DC8    JP	0x5C8
+---- start_initialization ------------------------------------------------------------------
+  05C8    0183    CLR	0x3
+  05C9    2DCA    JP	0x5CA
+---- interrupt_function_enter ----------------------------------------------------------
+---- common_function ------------------------------------------------------------------

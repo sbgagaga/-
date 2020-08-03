@@ -1,0 +1,2769 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"18 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _INDF `Vuc  1 e@0 ]
+"19 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TMR0 `Vuc  1 e@1 ]
+"20 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _PCL `Vuc  1 e@2 ]
+"21 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _STATUS `Vuc  1 e@3 ]
+"22 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _FLAGS `Vuc  1 e@3 ]
+"23 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _FSR `Vuc  1 e@4 ]
+"24 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _PORTA `Vuc  1 e@5 ]
+"25 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _PORTB `Vuc  1 e@6 ]
+"26 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _PORTC `Vuc  1 e@7 ]
+"29 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _PORTE `Vuc  1 e@9 ]
+"30 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _PCLATH `Vuc  1 e@10 ]
+"31 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _INTCON `Vuc  1 e@11 ]
+"32 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _PIR1 `Vuc  1 e@12 ]
+"33 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _PIR2 `Vuc  1 e@13 ]
+"34 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TMR1L `Vuc  1 e@14 ]
+"35 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TMR1H `Vuc  1 e@15 ]
+"36 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _T1CON `Vuc  1 e@16 ]
+"37 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TMR2 `Vuc  1 e@17 ]
+"38 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _T2CON `Vuc  1 e@18 ]
+"41 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCPR1L `Vuc  1 e@21 ]
+"42 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCPR1H `Vuc  1 e@22 ]
+"43 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCP1CON `Vuc  1 e@23 ]
+"45 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _COMPCON `Vuc  1 e@24 ]
+"46 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _COMPCON1 `Vuc  1 e@25 ]
+"49 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCPR2L `Vuc  1 e@27 ]
+"50 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCPR2H `Vuc  1 e@28 ]
+"51 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCP2CON `Vuc  1 e@29 ]
+"52 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ADRESH `Vuc  1 e@30 ]
+"53 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ADCON0 `Vuc  1 e@31 ]
+"56 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _OPTION_REG `Vuc  1 e@129 ]
+"57 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISA `Vuc  1 e@133 ]
+"58 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISB `Vuc  1 e@134 ]
+"59 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISC `Vuc  1 e@135 ]
+"60 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISE `Vuc  1 e@137 ]
+"61 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _PIE1 `Vuc  1 e@140 ]
+"62 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _PIE2 `Vuc  1 e@141 ]
+"64 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _OSCCON `Vuc  1 e@143 ]
+"65 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _OSCTUNE `Vuc  1 e@144 ]
+"67 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _PR2 `Vuc  1 e@146 ]
+"70 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUB `Vuc  1 e@149 ]
+"71 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _IOCB `Vuc  1 e@150 ]
+"78 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ADRESL `Vuc  1 e@158 ]
+"79 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ADCON1 `Vuc  1 e@159 ]
+"83 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WDTCON `Vuc  1 e@261 ]
+"95 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TABLE_SPH `Vuc  1 e@272 ]
+"96 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TABLE_SPL `Vuc  1 e@273 ]
+"97 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TABLE_DATAH `Vuc  1 e@274 ]
+"98 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _KEYCON0 `Vuc  1 e@275 ]
+"99 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _KEYCON1 `Vuc  1 e@276 ]
+"100 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _KEYDATAL `Vuc  1 e@277 ]
+"101 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _KEYDATAH `Vuc  1 e@278 ]
+"106 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUE `Vuc  1 e@282 ]
+"107 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _OPA0CON `Vuc  1 e@284 ]
+"108 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _OPA0ADJ `Vuc  1 e@285 ]
+"112 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ANSEL `Vuc  1 e@392 ]
+"113 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ANSELH `Vuc  1 e@393 ]
+"117 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUA `Vuc  1 e@398 ]
+"118 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUC `Vuc  1 e@399 ]
+"124 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _LCDCON0 `Vuc  1 e@400 ]
+"125 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _LCDCON1 `Vuc  1 e@401 ]
+"131 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _COMEN `Vuc  1 e@407 ]
+"135 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CARRY `Vb  1 e@24 ]
+"136 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _DC `Vb  1 e@25 ]
+"137 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ZERO `Vb  1 e@26 ]
+"138 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _PD `Vb  1 e@27 ]
+"139 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TO `Vb  1 e@28 ]
+"140 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _IRP `Vb  1 e@31 ]
+"143 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RA0 `Vb  1 e@40 ]
+"144 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RA1 `Vb  1 e@41 ]
+"145 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RA2 `Vb  1 e@42 ]
+"146 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RA3 `Vb  1 e@43 ]
+"147 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RA4 `Vb  1 e@44 ]
+"148 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RA5 `Vb  1 e@45 ]
+"149 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RA6 `Vb  1 e@46 ]
+"150 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RA7 `Vb  1 e@47 ]
+"153 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RB0 `Vb  1 e@48 ]
+"154 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RB1 `Vb  1 e@49 ]
+"155 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RB2 `Vb  1 e@50 ]
+"156 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RB3 `Vb  1 e@51 ]
+"157 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RB4 `Vb  1 e@52 ]
+"158 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RB5 `Vb  1 e@53 ]
+"159 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RB6 `Vb  1 e@54 ]
+"160 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RB7 `Vb  1 e@55 ]
+"163 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RC0 `Vb  1 e@56 ]
+"164 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RC1 `Vb  1 e@57 ]
+"165 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RC2 `Vb  1 e@58 ]
+"166 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RC3 `Vb  1 e@59 ]
+"167 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RC4 `Vb  1 e@60 ]
+"168 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RC5 `Vb  1 e@61 ]
+"169 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RC6 `Vb  1 e@62 ]
+"170 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RC7 `Vb  1 e@63 ]
+"173 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RE0 `Vb  1 e@72 ]
+"174 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RE1 `Vb  1 e@73 ]
+"175 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RE2 `Vb  1 e@74 ]
+"176 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RE3 `Vb  1 e@75 ]
+"179 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RBIF `Vb  1 e@88 ]
+"181 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RABIF `Vb  1 e@88 ]
+"182 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _INTF `Vb  1 e@89 ]
+"183 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _T0IF `Vb  1 e@90 ]
+"184 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RBIE `Vb  1 e@91 ]
+"186 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RABIE `Vb  1 e@91 ]
+"187 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _INTE `Vb  1 e@92 ]
+"188 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _T0IE `Vb  1 e@93 ]
+"189 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _PEIE `Vb  1 e@94 ]
+"190 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _GIE `Vb  1 e@95 ]
+"193 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TMR1IF `Vb  1 e@96 ]
+"194 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TMR2IF `Vb  1 e@97 ]
+"195 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCP1IF `Vb  1 e@98 ]
+"196 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _SSPIF `Vb  1 e@99 ]
+"197 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TXIF `Vb  1 e@100 ]
+"198 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RCIF `Vb  1 e@101 ]
+"199 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ADIF `Vb  1 e@102 ]
+"202 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCP2IF `Vb  1 e@104 ]
+"203 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _BCLIF `Vb  1 e@107 ]
+"204 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _EEIF `Vb  1 e@108 ]
+"205 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _C1IF `Vb  1 e@109 ]
+"206 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _C2IF `Vb  1 e@110 ]
+"209 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TMR1ON `Vb  1 e@128 ]
+"210 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TMR1CS `Vb  1 e@129 ]
+"211 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _T1SYNC `Vb  1 e@130 ]
+"212 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _T1OSCEN `Vb  1 e@131 ]
+"213 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _T1CKPS0 `Vb  1 e@132 ]
+"214 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _T1CKPS1 `Vb  1 e@133 ]
+"215 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TMR1GE `Vb  1 e@134 ]
+"216 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _T1GINV `Vb  1 e@135 ]
+"219 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _T2CKPS0 `Vb  1 e@144 ]
+"220 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _T2CKPS1 `Vb  1 e@145 ]
+"221 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TMR2ON `Vb  1 e@146 ]
+"222 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TOUTPS0 `Vb  1 e@147 ]
+"223 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TOUTPS1 `Vb  1 e@148 ]
+"224 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TOUTPS2 `Vb  1 e@149 ]
+"225 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TOUTPS3 `Vb  1 e@150 ]
+"229 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCP1M0 `Vb  1 e@184 ]
+"230 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCP1M1 `Vb  1 e@185 ]
+"231 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCP1M2 `Vb  1 e@186 ]
+"232 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCP1M3 `Vb  1 e@187 ]
+"233 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _DC1B0 `Vb  1 e@188 ]
+"234 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _DC1B1 `Vb  1 e@189 ]
+"235 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _P1M0 `Vb  1 e@190 ]
+"236 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _P1M1 `Vb  1 e@191 ]
+"239 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCP2M0 `Vb  1 e@232 ]
+"240 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCP2M1 `Vb  1 e@233 ]
+"241 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCP2M2 `Vb  1 e@234 ]
+"242 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCP2M3 `Vb  1 e@235 ]
+"243 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _DC2B0 `Vb  1 e@236 ]
+"244 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _DC2B1 `Vb  1 e@237 ]
+"245 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCP2IN0 `Vb  1 e@238 ]
+"246 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCP2IN1 `Vb  1 e@239 ]
+"249 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ADON `Vb  1 e@248 ]
+"250 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _GODONE `Vb  1 e@249 ]
+"251 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CHS0 `Vb  1 e@250 ]
+"252 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CHS1 `Vb  1 e@251 ]
+"253 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CHS2 `Vb  1 e@252 ]
+"254 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CHS3 `Vb  1 e@253 ]
+"255 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ADCS0 `Vb  1 e@254 ]
+"256 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ADCS1 `Vb  1 e@255 ]
+"259 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _PS0 `Vb  1 e@1032 ]
+"260 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _PS1 `Vb  1 e@1033 ]
+"261 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _PS2 `Vb  1 e@1034 ]
+"262 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _PSA `Vb  1 e@1035 ]
+"263 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _T0SE `Vb  1 e@1036 ]
+"264 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _T0CS `Vb  1 e@1037 ]
+"265 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _INTEDG `Vb  1 e@1038 ]
+"266 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RBPU `Vb  1 e@1039 ]
+"268 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RABPU `Vb  1 e@1039 ]
+"271 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISA0 `Vb  1 e@1064 ]
+"272 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISA1 `Vb  1 e@1065 ]
+"273 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISA2 `Vb  1 e@1066 ]
+"274 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISA3 `Vb  1 e@1067 ]
+"275 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISA4 `Vb  1 e@1068 ]
+"276 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISA5 `Vb  1 e@1069 ]
+"277 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISA6 `Vb  1 e@1070 ]
+"278 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISA7 `Vb  1 e@1071 ]
+"281 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISB0 `Vb  1 e@1072 ]
+"282 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISB1 `Vb  1 e@1073 ]
+"283 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISB2 `Vb  1 e@1074 ]
+"284 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISB3 `Vb  1 e@1075 ]
+"285 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISB4 `Vb  1 e@1076 ]
+"286 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISB5 `Vb  1 e@1077 ]
+"287 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISB6 `Vb  1 e@1078 ]
+"288 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISB7 `Vb  1 e@1079 ]
+"291 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISC0 `Vb  1 e@1080 ]
+"292 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISC1 `Vb  1 e@1081 ]
+"293 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISC2 `Vb  1 e@1082 ]
+"294 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISC3 `Vb  1 e@1083 ]
+"295 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISC4 `Vb  1 e@1084 ]
+"296 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISC5 `Vb  1 e@1085 ]
+"297 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISC6 `Vb  1 e@1086 ]
+"298 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISC7 `Vb  1 e@1087 ]
+"302 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISE0 `Vb  1 e@1096 ]
+"303 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISE1 `Vb  1 e@1097 ]
+"304 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISE2 `Vb  1 e@1098 ]
+"305 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TRISE3 `Vb  1 e@1099 ]
+"308 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TMR1IE `Vb  1 e@1120 ]
+"309 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TMR2IE `Vb  1 e@1121 ]
+"310 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCP1IE `Vb  1 e@1122 ]
+"311 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _SSPIE `Vb  1 e@1123 ]
+"312 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TXIE `Vb  1 e@1124 ]
+"313 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _RCIE `Vb  1 e@1125 ]
+"314 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ADIE `Vb  1 e@1126 ]
+"317 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _CCP2IE `Vb  1 e@1128 ]
+"318 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _BCLIE `Vb  1 e@1131 ]
+"319 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _EEIE `Vb  1 e@1132 ]
+"320 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _C1IE `Vb  1 e@1133 ]
+"321 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _C2IE `Vb  1 e@1134 ]
+"325 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _SCS `Vb  1 e@1144 ]
+"326 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _IRCF0 `Vb  1 e@1148 ]
+"327 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _IRCF1 `Vb  1 e@1149 ]
+"328 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _IRCF2 `Vb  1 e@1150 ]
+"331 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TUN0 `Vb  1 e@1152 ]
+"332 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TUN1 `Vb  1 e@1153 ]
+"333 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TUN2 `Vb  1 e@1154 ]
+"334 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TUN3 `Vb  1 e@1155 ]
+"335 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _TUN4 `Vb  1 e@1156 ]
+"338 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUA0 `Vb  1 e@3184 ]
+"339 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUA1 `Vb  1 e@3185 ]
+"340 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUA2 `Vb  1 e@3186 ]
+"341 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUA3 `Vb  1 e@3187 ]
+"342 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUA4 `Vb  1 e@3188 ]
+"343 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUA5 `Vb  1 e@3189 ]
+"344 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUA6 `Vb  1 e@3190 ]
+"345 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUA7 `Vb  1 e@3191 ]
+"348 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUB0 `Vb  1 e@1192 ]
+"349 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUB1 `Vb  1 e@1193 ]
+"350 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUB2 `Vb  1 e@1194 ]
+"351 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUB3 `Vb  1 e@1195 ]
+"352 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUB4 `Vb  1 e@1196 ]
+"353 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUB5 `Vb  1 e@1197 ]
+"354 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUB6 `Vb  1 e@1198 ]
+"355 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUB7 `Vb  1 e@1199 ]
+"358 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUC0 `Vb  1 e@3192 ]
+"359 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUC1 `Vb  1 e@3193 ]
+"360 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUC2 `Vb  1 e@3194 ]
+"361 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUC3 `Vb  1 e@3195 ]
+"362 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUC4 `Vb  1 e@3196 ]
+"363 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUC5 `Vb  1 e@3197 ]
+"364 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUC6 `Vb  1 e@3198 ]
+"367 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUE0 `Vb  1 e@2256 ]
+"368 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUE1 `Vb  1 e@2257 ]
+"369 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUE2 `Vb  1 e@2258 ]
+"370 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WPUE3 `Vb  1 e@2259 ]
+"373 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _IOCB0 `Vb  1 e@1200 ]
+"374 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _IOCB1 `Vb  1 e@1201 ]
+"375 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _IOCB2 `Vb  1 e@1202 ]
+"376 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _IOCB3 `Vb  1 e@1203 ]
+"377 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _IOCB4 `Vb  1 e@1204 ]
+"378 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _IOCB5 `Vb  1 e@1205 ]
+"379 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _IOCB6 `Vb  1 e@1206 ]
+"380 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _IOCB7 `Vb  1 e@1207 ]
+"396 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ADFM `Vb  1 e@1279 ]
+"399 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WDTPS0 `Vb  1 e@2089 ]
+"400 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WDTPS1 `Vb  1 e@2090 ]
+"401 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WDTPS2 `Vb  1 e@2091 ]
+"402 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _WDTPS3 `Vb  1 e@2092 ]
+"407 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ANS0 `Vb  1 e@3136 ]
+"408 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ANS1 `Vb  1 e@3137 ]
+"409 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ANS2 `Vb  1 e@3138 ]
+"410 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ANS3 `Vb  1 e@3139 ]
+"411 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ANS4 `Vb  1 e@3140 ]
+"412 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ANS5 `Vb  1 e@3141 ]
+"413 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ANS6 `Vb  1 e@3142 ]
+"414 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ANS7 `Vb  1 e@3143 ]
+"417 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ANS8 `Vb  1 e@3144 ]
+"418 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ANS9 `Vb  1 e@3145 ]
+"419 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ANS10 `Vb  1 e@3146 ]
+"420 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ANS11 `Vb  1 e@3147 ]
+"421 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ANS12 `Vb  1 e@3148 ]
+"422 D:\SCMCU_IDE_V1.11.01_20180525\data\include\SC8P1713C.h
+[v _ANS13 `Vb  1 e@3149 ]
+"30 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Display `uc  -> 4 `i e ]
+"33 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Flag_onoff `b  1 e ]
+"34 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Flag_temprok `b  1 e ]
+"35 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Flag_first `b  1 e ]
+"36 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Flag_hot `b  1 e ]
+"37 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Flag_keyf `b  1 e ]
+"38 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Flag_en `b  1 e ]
+"39 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Flag_mainloop `b  1 e ]
+"40 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Flag_step `b  1 e ]
+"41 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Flag_err `b  1 e ]
+"42 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Flag_bit `b  1 e ]
+"43 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Flag_ntc_onead `b  1 e ]
+"44 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Flag_rt_open `b  1 e ]
+"45 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Flag_rt_short `b  1 e ]
+"46 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Flag_ach `b  1 e ]
+"47 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Flag_zero `b  1 e ]
+"48 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Flag_HV `b  1 e ]
+"49 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Flag_vtemp `b  1 e ]
+"50 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Flag_temprdir `b  1 e ]
+"57 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Keyflash `uc  1 e ]
+"58 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Keyc `uc  1 e ]
+"59 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Keyold `uc  1 e ]
+"60 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Dcount `uc  1 e ]
+"61 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Adtimes `uc  1 e ]
+"62 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Ntcnormaldely `uc  1 e ]
+"63 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Ntcshortdely `uc  1 e ]
+"64 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Ntcopendely `uc  1 e ]
+"65 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Kkg_dly `uc  1 e ]
+"66 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Maintime `uc  1 e ]
+"69 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Tempr_setdata `ui  1 e ]
+"70 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Keyc1 `ui  1 e ]
+"71 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _count1 `ui  1 e ]
+"72 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Admax `ui  1 e ]
+"73 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Admin `ui  1 e ]
+"74 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Adsum `ui  1 e ]
+"75 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Adresult `ui  1 e ]
+"76 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Pid_count `ui  1 e ]
+"77 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Tempr_tdata `ui  1 e ]
+"78 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Tempr_rank `ui  1 e ]
+"79 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Tmper_temp `ui  1 e ]
+[s S5 `ui -> 3 `i `uc -> 3 `i `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `ui 1 ]
+[n S5 PID_Value liEkVal uEkFlag uKP_Coe uKI_Coe uKD_Coe iPriVal iSetVal iCurVal ]
+"98 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _PID `S5  1 e ]
+"105 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _LCDCode `Cuc  -> 0 `x e ]
+"129 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[v _Temptab `Cui  -> 0 `x e ]
+"15 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\main.h
+[v _Tmper_pro `(v  0 ef ]
+[p mainexit ]
+"10 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\AD.h
+[v _source_v `(v  0 ef1`uc ]
+"8 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\AD.h
+[v _Ad_testing `(v  0 ef1`uc ]
+"14 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\main.h
+[v _PID_control `(v  0 ef ]
+"16 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\main.h
+[v _Temp_setdeal `(v  0 ef ]
+"50 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\Display_lcd.h
+[v _Set_disp `(v  0 ef ]
+"11 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\Kscan.h
+[v _Kscan `(v  0 ef ]
+"12 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\Kscan.h
+[v _Kdeal `(v  0 ef ]
+"51 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\Display_lcd.h
+[v _Disp_Lcd `(v  0 ef ]
+"13 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\main.h
+[v _PID_operation `(v  0 ef ]
+[; ;TypeDef.h: 24: typedef struct
+[; ;TypeDef.h: 25: {
+[; ;TypeDef.h: 26: unsigned char Radix;
+[; ;TypeDef.h: 27: unsigned char Integer;
+[; ;TypeDef.h: 28: }VolFloat;
+[; ;TypeDef.h: 30: typedef union
+[; ;TypeDef.h: 31: {
+[; ;TypeDef.h: 32: unsigned int Vol;
+[; ;TypeDef.h: 33: VolFloat Volf;
+[; ;TypeDef.h: 34: }VolType;
+[; ;TypeDef.h: 36: typedef union
+[; ;TypeDef.h: 37: {
+[; ;TypeDef.h: 38: unsigned int bytes;
+[; ;TypeDef.h: 39: struct
+[; ;TypeDef.h: 40: {
+[; ;TypeDef.h: 41: unsigned char bytel;
+[; ;TypeDef.h: 42: unsigned char byteh;
+[; ;TypeDef.h: 43: }byte;
+[; ;TypeDef.h: 44: }twobyte;
+[; ;SC8P1713C.h: 18: volatile unsigned char INDF @ 0x000;
+[; ;SC8P1713C.h: 19: volatile unsigned char TMR0 @ 0x001;
+[; ;SC8P1713C.h: 20: volatile unsigned char PCL @ 0x002;
+[; ;SC8P1713C.h: 21: volatile unsigned char STATUS @ 0x003;
+[; ;SC8P1713C.h: 22: volatile unsigned char FLAGS @ 0x003;
+[; ;SC8P1713C.h: 23: volatile unsigned char FSR @ 0x004;
+[; ;SC8P1713C.h: 24: volatile unsigned char PORTA @ 0x005;
+[; ;SC8P1713C.h: 25: volatile unsigned char PORTB @ 0x006;
+[; ;SC8P1713C.h: 26: volatile unsigned char PORTC @ 0x007;
+[; ;SC8P1713C.h: 29: volatile unsigned char PORTE @ 0x009;
+[; ;SC8P1713C.h: 30: volatile unsigned char PCLATH @ 0x00A;
+[; ;SC8P1713C.h: 31: volatile unsigned char INTCON @ 0x00B;
+[; ;SC8P1713C.h: 32: volatile unsigned char PIR1 @ 0x00C;
+[; ;SC8P1713C.h: 33: volatile unsigned char PIR2 @ 0x00D;
+[; ;SC8P1713C.h: 34: volatile unsigned char TMR1L @ 0x00E;
+[; ;SC8P1713C.h: 35: volatile unsigned char TMR1H @ 0x00F;
+[; ;SC8P1713C.h: 36: volatile unsigned char T1CON @ 0x010;
+[; ;SC8P1713C.h: 37: volatile unsigned char TMR2 @ 0x011;
+[; ;SC8P1713C.h: 38: volatile unsigned char T2CON @ 0x012;
+[; ;SC8P1713C.h: 41: volatile unsigned char CCPR1L @ 0x015;
+[; ;SC8P1713C.h: 42: volatile unsigned char CCPR1H @ 0x016;
+[; ;SC8P1713C.h: 43: volatile unsigned char CCP1CON @ 0x017;
+[; ;SC8P1713C.h: 45: volatile unsigned char COMPCON @ 0x018;
+[; ;SC8P1713C.h: 46: volatile unsigned char COMPCON1 @ 0x019;
+[; ;SC8P1713C.h: 49: volatile unsigned char CCPR2L @ 0x01B;
+[; ;SC8P1713C.h: 50: volatile unsigned char CCPR2H @ 0x01C;
+[; ;SC8P1713C.h: 51: volatile unsigned char CCP2CON @ 0x01D;
+[; ;SC8P1713C.h: 52: volatile unsigned char ADRESH @ 0x01E;
+[; ;SC8P1713C.h: 53: volatile unsigned char ADCON0 @ 0x01F;
+[; ;SC8P1713C.h: 56: volatile unsigned char OPTION_REG @ 0x081;
+[; ;SC8P1713C.h: 57: volatile unsigned char TRISA @ 0x085;
+[; ;SC8P1713C.h: 58: volatile unsigned char TRISB @ 0x086;
+[; ;SC8P1713C.h: 59: volatile unsigned char TRISC @ 0x087;
+[; ;SC8P1713C.h: 60: volatile unsigned char TRISE @ 0x089;
+[; ;SC8P1713C.h: 61: volatile unsigned char PIE1 @ 0x08C;
+[; ;SC8P1713C.h: 62: volatile unsigned char PIE2 @ 0x08D;
+[; ;SC8P1713C.h: 64: volatile unsigned char OSCCON @ 0x08F;
+[; ;SC8P1713C.h: 65: volatile unsigned char OSCTUNE @ 0x090;
+[; ;SC8P1713C.h: 67: volatile unsigned char PR2 @ 0x092;
+[; ;SC8P1713C.h: 70: volatile unsigned char WPUB @ 0x095;
+[; ;SC8P1713C.h: 71: volatile unsigned char IOCB @ 0x096;
+[; ;SC8P1713C.h: 78: volatile unsigned char ADRESL @ 0x09E;
+[; ;SC8P1713C.h: 79: volatile unsigned char ADCON1 @ 0x09F;
+[; ;SC8P1713C.h: 83: volatile unsigned char WDTCON @ 0x105;
+[; ;SC8P1713C.h: 95: volatile unsigned char TABLE_SPH @ 0x110;
+[; ;SC8P1713C.h: 96: volatile unsigned char TABLE_SPL @ 0x111;
+[; ;SC8P1713C.h: 97: volatile unsigned char TABLE_DATAH @ 0x112;
+[; ;SC8P1713C.h: 98: volatile unsigned char KEYCON0 @ 0x113;
+[; ;SC8P1713C.h: 99: volatile unsigned char KEYCON1 @ 0x114;
+[; ;SC8P1713C.h: 100: volatile unsigned char KEYDATAL @ 0x115;
+[; ;SC8P1713C.h: 101: volatile unsigned char KEYDATAH @ 0x116;
+[; ;SC8P1713C.h: 106: volatile unsigned char WPUE @ 0x11A;
+[; ;SC8P1713C.h: 107: volatile unsigned char OPA0CON @ 0x11C;
+[; ;SC8P1713C.h: 108: volatile unsigned char OPA0ADJ @ 0x11D;
+[; ;SC8P1713C.h: 112: volatile unsigned char ANSEL @ 0x188;
+[; ;SC8P1713C.h: 113: volatile unsigned char ANSELH @ 0x189;
+[; ;SC8P1713C.h: 117: volatile unsigned char WPUA @ 0x18E;
+[; ;SC8P1713C.h: 118: volatile unsigned char WPUC @ 0x18F;
+[; ;SC8P1713C.h: 124: volatile unsigned char LCDCON0 @ 0x190;
+[; ;SC8P1713C.h: 125: volatile unsigned char LCDCON1 @ 0x191;
+[; ;SC8P1713C.h: 131: volatile unsigned char COMEN @ 0x197;
+[; ;SC8P1713C.h: 135: volatile bit CARRY @ ((unsigned)&STATUS*8)+0;
+[; ;SC8P1713C.h: 136: volatile bit DC @ ((unsigned)&STATUS*8)+1;
+[; ;SC8P1713C.h: 137: volatile bit ZERO @ ((unsigned)&STATUS*8)+2;
+[; ;SC8P1713C.h: 138: volatile bit PD @ ((unsigned)&STATUS*8)+3;
+[; ;SC8P1713C.h: 139: volatile bit TO @ ((unsigned)&STATUS*8)+4;
+[; ;SC8P1713C.h: 140: volatile bit IRP @ ((unsigned)&STATUS*8)+7;
+[; ;SC8P1713C.h: 143: volatile bit RA0 @ ((unsigned)&PORTA*8)+0;
+[; ;SC8P1713C.h: 144: volatile bit RA1 @ ((unsigned)&PORTA*8)+1;
+[; ;SC8P1713C.h: 145: volatile bit RA2 @ ((unsigned)&PORTA*8)+2;
+[; ;SC8P1713C.h: 146: volatile bit RA3 @ ((unsigned)&PORTA*8)+3;
+[; ;SC8P1713C.h: 147: volatile bit RA4 @ ((unsigned)&PORTA*8)+4;
+[; ;SC8P1713C.h: 148: volatile bit RA5 @ ((unsigned)&PORTA*8)+5;
+[; ;SC8P1713C.h: 149: volatile bit RA6 @ ((unsigned)&PORTA*8)+6;
+[; ;SC8P1713C.h: 150: volatile bit RA7 @ ((unsigned)&PORTA*8)+7;
+[; ;SC8P1713C.h: 153: volatile bit RB0 @ ((unsigned)&PORTB*8)+0;
+[; ;SC8P1713C.h: 154: volatile bit RB1 @ ((unsigned)&PORTB*8)+1;
+[; ;SC8P1713C.h: 155: volatile bit RB2 @ ((unsigned)&PORTB*8)+2;
+[; ;SC8P1713C.h: 156: volatile bit RB3 @ ((unsigned)&PORTB*8)+3;
+[; ;SC8P1713C.h: 157: volatile bit RB4 @ ((unsigned)&PORTB*8)+4;
+[; ;SC8P1713C.h: 158: volatile bit RB5 @ ((unsigned)&PORTB*8)+5;
+[; ;SC8P1713C.h: 159: volatile bit RB6 @ ((unsigned)&PORTB*8)+6;
+[; ;SC8P1713C.h: 160: volatile bit RB7 @ ((unsigned)&PORTB*8)+7;
+[; ;SC8P1713C.h: 163: volatile bit RC0 @ ((unsigned)&PORTC*8)+0;
+[; ;SC8P1713C.h: 164: volatile bit RC1 @ ((unsigned)&PORTC*8)+1;
+[; ;SC8P1713C.h: 165: volatile bit RC2 @ ((unsigned)&PORTC*8)+2;
+[; ;SC8P1713C.h: 166: volatile bit RC3 @ ((unsigned)&PORTC*8)+3;
+[; ;SC8P1713C.h: 167: volatile bit RC4 @ ((unsigned)&PORTC*8)+4;
+[; ;SC8P1713C.h: 168: volatile bit RC5 @ ((unsigned)&PORTC*8)+5;
+[; ;SC8P1713C.h: 169: volatile bit RC6 @ ((unsigned)&PORTC*8)+6;
+[; ;SC8P1713C.h: 170: volatile bit RC7 @ ((unsigned)&PORTC*8)+7;
+[; ;SC8P1713C.h: 173: volatile bit RE0 @ ((unsigned)&PORTE*8)+0;
+[; ;SC8P1713C.h: 174: volatile bit RE1 @ ((unsigned)&PORTE*8)+1;
+[; ;SC8P1713C.h: 175: volatile bit RE2 @ ((unsigned)&PORTE*8)+2;
+[; ;SC8P1713C.h: 176: volatile bit RE3 @ ((unsigned)&PORTE*8)+3;
+[; ;SC8P1713C.h: 179: volatile bit RBIF @ ((unsigned)&INTCON*8)+0;
+[; ;SC8P1713C.h: 181: volatile bit RABIF @ ((unsigned)&INTCON*8)+0;
+[; ;SC8P1713C.h: 182: volatile bit INTF @ ((unsigned)&INTCON*8)+1;
+[; ;SC8P1713C.h: 183: volatile bit T0IF @ ((unsigned)&INTCON*8)+2;
+[; ;SC8P1713C.h: 184: volatile bit RBIE @ ((unsigned)&INTCON*8)+3;
+[; ;SC8P1713C.h: 186: volatile bit RABIE @ ((unsigned)&INTCON*8)+3;
+[; ;SC8P1713C.h: 187: volatile bit INTE @ ((unsigned)&INTCON*8)+4;
+[; ;SC8P1713C.h: 188: volatile bit T0IE @ ((unsigned)&INTCON*8)+5;
+[; ;SC8P1713C.h: 189: volatile bit PEIE @ ((unsigned)&INTCON*8)+6;
+[; ;SC8P1713C.h: 190: volatile bit GIE @ ((unsigned)&INTCON*8)+7;
+[; ;SC8P1713C.h: 193: volatile bit TMR1IF @ ((unsigned)&PIR1*8)+0;
+[; ;SC8P1713C.h: 194: volatile bit TMR2IF @ ((unsigned)&PIR1*8)+1;
+[; ;SC8P1713C.h: 195: volatile bit CCP1IF @ ((unsigned)&PIR1*8)+2;
+[; ;SC8P1713C.h: 196: volatile bit SSPIF @ ((unsigned)&PIR1*8)+3;
+[; ;SC8P1713C.h: 197: volatile bit TXIF @ ((unsigned)&PIR1*8)+4;
+[; ;SC8P1713C.h: 198: volatile bit RCIF @ ((unsigned)&PIR1*8)+5;
+[; ;SC8P1713C.h: 199: volatile bit ADIF @ ((unsigned)&PIR1*8)+6;
+[; ;SC8P1713C.h: 202: volatile bit CCP2IF @ ((unsigned)&PIR2*8)+0;
+[; ;SC8P1713C.h: 203: volatile bit BCLIF @ ((unsigned)&PIR2*8)+3;
+[; ;SC8P1713C.h: 204: volatile bit EEIF @ ((unsigned)&PIR2*8)+4;
+[; ;SC8P1713C.h: 205: volatile bit C1IF @ ((unsigned)&PIR2*8)+5;
+[; ;SC8P1713C.h: 206: volatile bit C2IF @ ((unsigned)&PIR2*8)+6;
+[; ;SC8P1713C.h: 209: volatile bit TMR1ON @ ((unsigned)&T1CON*8)+0;
+[; ;SC8P1713C.h: 210: volatile bit TMR1CS @ ((unsigned)&T1CON*8)+1;
+[; ;SC8P1713C.h: 211: volatile bit T1SYNC @ ((unsigned)&T1CON*8)+2;
+[; ;SC8P1713C.h: 212: volatile bit T1OSCEN @ ((unsigned)&T1CON*8)+3;
+[; ;SC8P1713C.h: 213: volatile bit T1CKPS0 @ ((unsigned)&T1CON*8)+4;
+[; ;SC8P1713C.h: 214: volatile bit T1CKPS1 @ ((unsigned)&T1CON*8)+5;
+[; ;SC8P1713C.h: 215: volatile bit TMR1GE @ ((unsigned)&T1CON*8)+6;
+[; ;SC8P1713C.h: 216: volatile bit T1GINV @ ((unsigned)&T1CON*8)+7;
+[; ;SC8P1713C.h: 219: volatile bit T2CKPS0 @ ((unsigned)&T2CON*8)+0;
+[; ;SC8P1713C.h: 220: volatile bit T2CKPS1 @ ((unsigned)&T2CON*8)+1;
+[; ;SC8P1713C.h: 221: volatile bit TMR2ON @ ((unsigned)&T2CON*8)+2;
+[; ;SC8P1713C.h: 222: volatile bit TOUTPS0 @ ((unsigned)&T2CON*8)+3;
+[; ;SC8P1713C.h: 223: volatile bit TOUTPS1 @ ((unsigned)&T2CON*8)+4;
+[; ;SC8P1713C.h: 224: volatile bit TOUTPS2 @ ((unsigned)&T2CON*8)+5;
+[; ;SC8P1713C.h: 225: volatile bit TOUTPS3 @ ((unsigned)&T2CON*8)+6;
+[; ;SC8P1713C.h: 229: volatile bit CCP1M0 @ ((unsigned)&CCP1CON*8)+0;
+[; ;SC8P1713C.h: 230: volatile bit CCP1M1 @ ((unsigned)&CCP1CON*8)+1;
+[; ;SC8P1713C.h: 231: volatile bit CCP1M2 @ ((unsigned)&CCP1CON*8)+2;
+[; ;SC8P1713C.h: 232: volatile bit CCP1M3 @ ((unsigned)&CCP1CON*8)+3;
+[; ;SC8P1713C.h: 233: volatile bit DC1B0 @ ((unsigned)&CCP1CON*8)+4;
+[; ;SC8P1713C.h: 234: volatile bit DC1B1 @ ((unsigned)&CCP1CON*8)+5;
+[; ;SC8P1713C.h: 235: volatile bit P1M0 @ ((unsigned)&CCP1CON*8)+6;
+[; ;SC8P1713C.h: 236: volatile bit P1M1 @ ((unsigned)&CCP1CON*8)+7;
+[; ;SC8P1713C.h: 239: volatile bit CCP2M0 @ ((unsigned)&CCP2CON*8)+0;
+[; ;SC8P1713C.h: 240: volatile bit CCP2M1 @ ((unsigned)&CCP2CON*8)+1;
+[; ;SC8P1713C.h: 241: volatile bit CCP2M2 @ ((unsigned)&CCP2CON*8)+2;
+[; ;SC8P1713C.h: 242: volatile bit CCP2M3 @ ((unsigned)&CCP2CON*8)+3;
+[; ;SC8P1713C.h: 243: volatile bit DC2B0 @ ((unsigned)&CCP2CON*8)+4;
+[; ;SC8P1713C.h: 244: volatile bit DC2B1 @ ((unsigned)&CCP2CON*8)+5;
+[; ;SC8P1713C.h: 245: volatile bit CCP2IN0 @ ((unsigned)&CCP2CON*8)+6;
+[; ;SC8P1713C.h: 246: volatile bit CCP2IN1 @ ((unsigned)&CCP2CON*8)+7;
+[; ;SC8P1713C.h: 249: volatile bit ADON @ ((unsigned)&ADCON0*8)+0;
+[; ;SC8P1713C.h: 250: volatile bit GODONE @ ((unsigned)&ADCON0*8)+1;
+[; ;SC8P1713C.h: 251: volatile bit CHS0 @ ((unsigned)&ADCON0*8)+2;
+[; ;SC8P1713C.h: 252: volatile bit CHS1 @ ((unsigned)&ADCON0*8)+3;
+[; ;SC8P1713C.h: 253: volatile bit CHS2 @ ((unsigned)&ADCON0*8)+4;
+[; ;SC8P1713C.h: 254: volatile bit CHS3 @ ((unsigned)&ADCON0*8)+5;
+[; ;SC8P1713C.h: 255: volatile bit ADCS0 @ ((unsigned)&ADCON0*8)+6;
+[; ;SC8P1713C.h: 256: volatile bit ADCS1 @ ((unsigned)&ADCON0*8)+7;
+[; ;SC8P1713C.h: 259: volatile bit PS0 @ ((unsigned)&OPTION_REG*8)+0;
+[; ;SC8P1713C.h: 260: volatile bit PS1 @ ((unsigned)&OPTION_REG*8)+1;
+[; ;SC8P1713C.h: 261: volatile bit PS2 @ ((unsigned)&OPTION_REG*8)+2;
+[; ;SC8P1713C.h: 262: volatile bit PSA @ ((unsigned)&OPTION_REG*8)+3;
+[; ;SC8P1713C.h: 263: volatile bit T0SE @ ((unsigned)&OPTION_REG*8)+4;
+[; ;SC8P1713C.h: 264: volatile bit T0CS @ ((unsigned)&OPTION_REG*8)+5;
+[; ;SC8P1713C.h: 265: volatile bit INTEDG @ ((unsigned)&OPTION_REG*8)+6;
+[; ;SC8P1713C.h: 266: volatile bit RBPU @ ((unsigned)&OPTION_REG*8)+7;
+[; ;SC8P1713C.h: 268: volatile bit RABPU @ ((unsigned)&OPTION_REG*8)+7;
+[; ;SC8P1713C.h: 271: volatile bit TRISA0 @ ((unsigned)&TRISA*8)+0;
+[; ;SC8P1713C.h: 272: volatile bit TRISA1 @ ((unsigned)&TRISA*8)+1;
+[; ;SC8P1713C.h: 273: volatile bit TRISA2 @ ((unsigned)&TRISA*8)+2;
+[; ;SC8P1713C.h: 274: volatile bit TRISA3 @ ((unsigned)&TRISA*8)+3;
+[; ;SC8P1713C.h: 275: volatile bit TRISA4 @ ((unsigned)&TRISA*8)+4;
+[; ;SC8P1713C.h: 276: volatile bit TRISA5 @ ((unsigned)&TRISA*8)+5;
+[; ;SC8P1713C.h: 277: volatile bit TRISA6 @ ((unsigned)&TRISA*8)+6;
+[; ;SC8P1713C.h: 278: volatile bit TRISA7 @ ((unsigned)&TRISA*8)+7;
+[; ;SC8P1713C.h: 281: volatile bit TRISB0 @ ((unsigned)&TRISB*8)+0;
+[; ;SC8P1713C.h: 282: volatile bit TRISB1 @ ((unsigned)&TRISB*8)+1;
+[; ;SC8P1713C.h: 283: volatile bit TRISB2 @ ((unsigned)&TRISB*8)+2;
+[; ;SC8P1713C.h: 284: volatile bit TRISB3 @ ((unsigned)&TRISB*8)+3;
+[; ;SC8P1713C.h: 285: volatile bit TRISB4 @ ((unsigned)&TRISB*8)+4;
+[; ;SC8P1713C.h: 286: volatile bit TRISB5 @ ((unsigned)&TRISB*8)+5;
+[; ;SC8P1713C.h: 287: volatile bit TRISB6 @ ((unsigned)&TRISB*8)+6;
+[; ;SC8P1713C.h: 288: volatile bit TRISB7 @ ((unsigned)&TRISB*8)+7;
+[; ;SC8P1713C.h: 291: volatile bit TRISC0 @ ((unsigned)&TRISC*8)+0;
+[; ;SC8P1713C.h: 292: volatile bit TRISC1 @ ((unsigned)&TRISC*8)+1;
+[; ;SC8P1713C.h: 293: volatile bit TRISC2 @ ((unsigned)&TRISC*8)+2;
+[; ;SC8P1713C.h: 294: volatile bit TRISC3 @ ((unsigned)&TRISC*8)+3;
+[; ;SC8P1713C.h: 295: volatile bit TRISC4 @ ((unsigned)&TRISC*8)+4;
+[; ;SC8P1713C.h: 296: volatile bit TRISC5 @ ((unsigned)&TRISC*8)+5;
+[; ;SC8P1713C.h: 297: volatile bit TRISC6 @ ((unsigned)&TRISC*8)+6;
+[; ;SC8P1713C.h: 298: volatile bit TRISC7 @ ((unsigned)&TRISC*8)+7;
+[; ;SC8P1713C.h: 302: volatile bit TRISE0 @ ((unsigned)&TRISE*8)+0;
+[; ;SC8P1713C.h: 303: volatile bit TRISE1 @ ((unsigned)&TRISE*8)+1;
+[; ;SC8P1713C.h: 304: volatile bit TRISE2 @ ((unsigned)&TRISE*8)+2;
+[; ;SC8P1713C.h: 305: volatile bit TRISE3 @ ((unsigned)&TRISE*8)+3;
+[; ;SC8P1713C.h: 308: volatile bit TMR1IE @ ((unsigned)&PIE1*8)+0;
+[; ;SC8P1713C.h: 309: volatile bit TMR2IE @ ((unsigned)&PIE1*8)+1;
+[; ;SC8P1713C.h: 310: volatile bit CCP1IE @ ((unsigned)&PIE1*8)+2;
+[; ;SC8P1713C.h: 311: volatile bit SSPIE @ ((unsigned)&PIE1*8)+3;
+[; ;SC8P1713C.h: 312: volatile bit TXIE @ ((unsigned)&PIE1*8)+4;
+[; ;SC8P1713C.h: 313: volatile bit RCIE @ ((unsigned)&PIE1*8)+5;
+[; ;SC8P1713C.h: 314: volatile bit ADIE @ ((unsigned)&PIE1*8)+6;
+[; ;SC8P1713C.h: 317: volatile bit CCP2IE @ ((unsigned)&PIE2*8)+0;
+[; ;SC8P1713C.h: 318: volatile bit BCLIE @ ((unsigned)&PIE2*8)+3;
+[; ;SC8P1713C.h: 319: volatile bit EEIE @ ((unsigned)&PIE2*8)+4;
+[; ;SC8P1713C.h: 320: volatile bit C1IE @ ((unsigned)&PIE2*8)+5;
+[; ;SC8P1713C.h: 321: volatile bit C2IE @ ((unsigned)&PIE2*8)+6;
+[; ;SC8P1713C.h: 325: volatile bit SCS @ ((unsigned)&OSCCON*8)+0;
+[; ;SC8P1713C.h: 326: volatile bit IRCF0 @ ((unsigned)&OSCCON*8)+4;
+[; ;SC8P1713C.h: 327: volatile bit IRCF1 @ ((unsigned)&OSCCON*8)+5;
+[; ;SC8P1713C.h: 328: volatile bit IRCF2 @ ((unsigned)&OSCCON*8)+6;
+[; ;SC8P1713C.h: 331: volatile bit TUN0 @ ((unsigned)&OSCTUNE*8)+0;
+[; ;SC8P1713C.h: 332: volatile bit TUN1 @ ((unsigned)&OSCTUNE*8)+1;
+[; ;SC8P1713C.h: 333: volatile bit TUN2 @ ((unsigned)&OSCTUNE*8)+2;
+[; ;SC8P1713C.h: 334: volatile bit TUN3 @ ((unsigned)&OSCTUNE*8)+3;
+[; ;SC8P1713C.h: 335: volatile bit TUN4 @ ((unsigned)&OSCTUNE*8)+4;
+[; ;SC8P1713C.h: 338: volatile bit WPUA0 @ ((unsigned)&WPUA*8)+0;
+[; ;SC8P1713C.h: 339: volatile bit WPUA1 @ ((unsigned)&WPUA*8)+1;
+[; ;SC8P1713C.h: 340: volatile bit WPUA2 @ ((unsigned)&WPUA*8)+2;
+[; ;SC8P1713C.h: 341: volatile bit WPUA3 @ ((unsigned)&WPUA*8)+3;
+[; ;SC8P1713C.h: 342: volatile bit WPUA4 @ ((unsigned)&WPUA*8)+4;
+[; ;SC8P1713C.h: 343: volatile bit WPUA5 @ ((unsigned)&WPUA*8)+5;
+[; ;SC8P1713C.h: 344: volatile bit WPUA6 @ ((unsigned)&WPUA*8)+6;
+[; ;SC8P1713C.h: 345: volatile bit WPUA7 @ ((unsigned)&WPUA*8)+7;
+[; ;SC8P1713C.h: 348: volatile bit WPUB0 @ ((unsigned)&WPUB*8)+0;
+[; ;SC8P1713C.h: 349: volatile bit WPUB1 @ ((unsigned)&WPUB*8)+1;
+[; ;SC8P1713C.h: 350: volatile bit WPUB2 @ ((unsigned)&WPUB*8)+2;
+[; ;SC8P1713C.h: 351: volatile bit WPUB3 @ ((unsigned)&WPUB*8)+3;
+[; ;SC8P1713C.h: 352: volatile bit WPUB4 @ ((unsigned)&WPUB*8)+4;
+[; ;SC8P1713C.h: 353: volatile bit WPUB5 @ ((unsigned)&WPUB*8)+5;
+[; ;SC8P1713C.h: 354: volatile bit WPUB6 @ ((unsigned)&WPUB*8)+6;
+[; ;SC8P1713C.h: 355: volatile bit WPUB7 @ ((unsigned)&WPUB*8)+7;
+[; ;SC8P1713C.h: 358: volatile bit WPUC0 @ ((unsigned)&WPUC*8)+0;
+[; ;SC8P1713C.h: 359: volatile bit WPUC1 @ ((unsigned)&WPUC*8)+1;
+[; ;SC8P1713C.h: 360: volatile bit WPUC2 @ ((unsigned)&WPUC*8)+2;
+[; ;SC8P1713C.h: 361: volatile bit WPUC3 @ ((unsigned)&WPUC*8)+3;
+[; ;SC8P1713C.h: 362: volatile bit WPUC4 @ ((unsigned)&WPUC*8)+4;
+[; ;SC8P1713C.h: 363: volatile bit WPUC5 @ ((unsigned)&WPUC*8)+5;
+[; ;SC8P1713C.h: 364: volatile bit WPUC6 @ ((unsigned)&WPUC*8)+6;
+[; ;SC8P1713C.h: 367: volatile bit WPUE0 @ ((unsigned)&WPUE*8)+0;
+[; ;SC8P1713C.h: 368: volatile bit WPUE1 @ ((unsigned)&WPUE*8)+1;
+[; ;SC8P1713C.h: 369: volatile bit WPUE2 @ ((unsigned)&WPUE*8)+2;
+[; ;SC8P1713C.h: 370: volatile bit WPUE3 @ ((unsigned)&WPUE*8)+3;
+[; ;SC8P1713C.h: 373: volatile bit IOCB0 @ ((unsigned)&IOCB*8)+0;
+[; ;SC8P1713C.h: 374: volatile bit IOCB1 @ ((unsigned)&IOCB*8)+1;
+[; ;SC8P1713C.h: 375: volatile bit IOCB2 @ ((unsigned)&IOCB*8)+2;
+[; ;SC8P1713C.h: 376: volatile bit IOCB3 @ ((unsigned)&IOCB*8)+3;
+[; ;SC8P1713C.h: 377: volatile bit IOCB4 @ ((unsigned)&IOCB*8)+4;
+[; ;SC8P1713C.h: 378: volatile bit IOCB5 @ ((unsigned)&IOCB*8)+5;
+[; ;SC8P1713C.h: 379: volatile bit IOCB6 @ ((unsigned)&IOCB*8)+6;
+[; ;SC8P1713C.h: 380: volatile bit IOCB7 @ ((unsigned)&IOCB*8)+7;
+[; ;SC8P1713C.h: 396: volatile bit ADFM @ ((unsigned)&ADCON1*8)+7;
+[; ;SC8P1713C.h: 399: volatile bit WDTPS0 @ ((unsigned)&WDTCON*8)+1;
+[; ;SC8P1713C.h: 400: volatile bit WDTPS1 @ ((unsigned)&WDTCON*8)+2;
+[; ;SC8P1713C.h: 401: volatile bit WDTPS2 @ ((unsigned)&WDTCON*8)+3;
+[; ;SC8P1713C.h: 402: volatile bit WDTPS3 @ ((unsigned)&WDTCON*8)+4;
+[; ;SC8P1713C.h: 407: volatile bit ANS0 @ ((unsigned)&ANSEL*8)+0;
+[; ;SC8P1713C.h: 408: volatile bit ANS1 @ ((unsigned)&ANSEL*8)+1;
+[; ;SC8P1713C.h: 409: volatile bit ANS2 @ ((unsigned)&ANSEL*8)+2;
+[; ;SC8P1713C.h: 410: volatile bit ANS3 @ ((unsigned)&ANSEL*8)+3;
+[; ;SC8P1713C.h: 411: volatile bit ANS4 @ ((unsigned)&ANSEL*8)+4;
+[; ;SC8P1713C.h: 412: volatile bit ANS5 @ ((unsigned)&ANSEL*8)+5;
+[; ;SC8P1713C.h: 413: volatile bit ANS6 @ ((unsigned)&ANSEL*8)+6;
+[; ;SC8P1713C.h: 414: volatile bit ANS7 @ ((unsigned)&ANSEL*8)+7;
+[; ;SC8P1713C.h: 417: volatile bit ANS8 @ ((unsigned)&ANSELH*8)+0;
+[; ;SC8P1713C.h: 418: volatile bit ANS9 @ ((unsigned)&ANSELH*8)+1;
+[; ;SC8P1713C.h: 419: volatile bit ANS10 @ ((unsigned)&ANSELH*8)+2;
+[; ;SC8P1713C.h: 420: volatile bit ANS11 @ ((unsigned)&ANSELH*8)+3;
+[; ;SC8P1713C.h: 421: volatile bit ANS12 @ ((unsigned)&ANSELH*8)+4;
+[; ;SC8P1713C.h: 422: volatile bit ANS13 @ ((unsigned)&ANSELH*8)+5;
+[; ;sc.h: 29: extern void _nop(void);
+[; ;sc.h: 55: extern unsigned int flash_read(unsigned short addr);
+[; ;sc.h: 129: extern void _delay(unsigned long);
+[; ;global_variable.h: 30: unsigned char Display[4];
+[; ;global_variable.h: 33: bit Flag_onoff,
+[; ;global_variable.h: 34: Flag_temprok,
+[; ;global_variable.h: 35: Flag_first,
+[; ;global_variable.h: 36: Flag_hot,
+[; ;global_variable.h: 37: Flag_keyf,
+[; ;global_variable.h: 38: Flag_en,
+[; ;global_variable.h: 39: Flag_mainloop,
+[; ;global_variable.h: 40: Flag_step,
+[; ;global_variable.h: 41: Flag_err,
+[; ;global_variable.h: 42: Flag_bit,
+[; ;global_variable.h: 43: Flag_ntc_onead,
+[; ;global_variable.h: 44: Flag_rt_open,
+[; ;global_variable.h: 45: Flag_rt_short,
+[; ;global_variable.h: 46: Flag_ach,
+[; ;global_variable.h: 47: Flag_zero,
+[; ;global_variable.h: 48: Flag_HV,
+[; ;global_variable.h: 49: Flag_vtemp,
+[; ;global_variable.h: 50: Flag_temprdir;
+[; ;global_variable.h: 54: unsigned char
+[; ;global_variable.h: 57: Keyflash,
+[; ;global_variable.h: 58: Keyc,
+[; ;global_variable.h: 59: Keyold,
+[; ;global_variable.h: 60: Dcount,
+[; ;global_variable.h: 61: Adtimes,
+[; ;global_variable.h: 62: Ntcnormaldely,
+[; ;global_variable.h: 63: Ntcshortdely,
+[; ;global_variable.h: 64: Ntcopendely,
+[; ;global_variable.h: 65: Kkg_dly,
+[; ;global_variable.h: 66: Maintime;
+[; ;global_variable.h: 69: unsigned int Tempr_setdata,
+[; ;global_variable.h: 70: Keyc1,
+[; ;global_variable.h: 71: count1,
+[; ;global_variable.h: 72: Admax,
+[; ;global_variable.h: 73: Admin,
+[; ;global_variable.h: 74: Adsum,
+[; ;global_variable.h: 75: Adresult,
+[; ;global_variable.h: 76: Pid_count,
+[; ;global_variable.h: 77: Tempr_tdata,
+[; ;global_variable.h: 78: Tempr_rank,
+[; ;global_variable.h: 79: Tmper_temp;
+[; ;global_variable.h: 85: typedef struct PID_Value
+[; ;global_variable.h: 86: {
+[; ;global_variable.h: 87: unsigned int liEkVal[3];
+[; ;global_variable.h: 88: unsigned char uEkFlag[3];
+[; ;global_variable.h: 89: unsigned char uKP_Coe;
+[; ;global_variable.h: 90: unsigned char uKI_Coe;
+[; ;global_variable.h: 91: unsigned char uKD_Coe;
+[; ;global_variable.h: 92: unsigned int iPriVal;
+[; ;global_variable.h: 93: unsigned int iSetVal;
+[; ;global_variable.h: 94: unsigned int iCurVal;
+[; ;global_variable.h: 95: }PID_ValueStr;
+[; ;global_variable.h: 98: PID_ValueStr PID;
+"105 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\global_variable.h
+[i _LCDCode
+:U ..
+"107
+-> -> 63 `i `uc
+"108
+-> -> 6 `i `uc
+"109
+-> -> 91 `i `uc
+"110
+-> -> 79 `i `uc
+"111
+-> -> 102 `i `uc
+"112
+-> -> 109 `i `uc
+"113
+-> -> 125 `i `uc
+"114
+-> -> 7 `i `uc
+"115
+-> -> 127 `i `uc
+"116
+-> -> 111 `i `uc
+"117
+-> -> 119 `i `uc
+"118
+-> -> 124 `i `uc
+"119
+-> -> 57 `i `uc
+"120
+-> -> 94 `i `uc
+"121
+-> -> 121 `i `uc
+"123
+-> -> 113 `i `uc
+..
+]
+[; ;global_variable.h: 105: const unsigned char LCDCode[]=
+[; ;global_variable.h: 106: {
+[; ;global_variable.h: 107: 0x3F,
+[; ;global_variable.h: 108: 0x06,
+[; ;global_variable.h: 109: 0x5B,
+[; ;global_variable.h: 110: 0x4F,
+[; ;global_variable.h: 111: 0x66,
+[; ;global_variable.h: 112: 0x6D,
+[; ;global_variable.h: 113: 0x7D,
+[; ;global_variable.h: 114: 0x07,
+[; ;global_variable.h: 115: 0x7F,
+[; ;global_variable.h: 116: 0x6F,
+[; ;global_variable.h: 117: 0x77,
+[; ;global_variable.h: 118: 0x7C,
+[; ;global_variable.h: 119: 0x39,
+[; ;global_variable.h: 120: 0x5E,
+[; ;global_variable.h: 121: 0x79,
+[; ;global_variable.h: 122: 0x71
+[; ;global_variable.h: 123: };
+"129
+[i _Temptab
+:U ..
+"130
+-> -> 29 `i `ui
+"131
+-> -> 30 `i `ui
+"132
+-> -> 32 `i `ui
+"133
+-> -> 34 `i `ui
+"134
+-> -> 35 `i `ui
+"135
+-> -> 37 `i `ui
+"136
+-> -> 39 `i `ui
+"137
+-> -> 41 `i `ui
+"138
+-> -> 43 `i `ui
+"139
+-> -> 45 `i `ui
+"140
+-> -> 47 `i `ui
+"141
+-> -> 49 `i `ui
+"142
+-> -> 52 `i `ui
+"143
+-> -> 54 `i `ui
+"144
+-> -> 57 `i `ui
+"145
+-> -> 59 `i `ui
+"146
+-> -> 62 `i `ui
+"147
+-> -> 65 `i `ui
+"148
+-> -> 68 `i `ui
+"149
+-> -> 71 `i `ui
+"150
+-> -> 74 `i `ui
+"151
+-> -> 77 `i `ui
+"152
+-> -> 81 `i `ui
+"153
+-> -> 84 `i `ui
+"154
+-> -> 88 `i `ui
+"155
+-> -> 91 `i `ui
+"156
+-> -> 95 `i `ui
+"157
+-> -> 99 `i `ui
+"158
+-> -> 103 `i `ui
+"159
+-> -> 107 `i `ui
+"160
+-> -> 111 `i `ui
+"161
+-> -> 115 `i `ui
+"162
+-> -> 120 `i `ui
+"163
+-> -> 124 `i `ui
+"164
+-> -> 129 `i `ui
+"165
+-> -> 133 `i `ui
+"166
+-> -> 138 `i `ui
+"167
+-> -> 143 `i `ui
+"168
+-> -> 148 `i `ui
+"169
+-> -> 154 `i `ui
+"170
+-> -> 159 `i `ui
+"171
+-> -> 164 `i `ui
+"172
+-> -> 170 `i `ui
+"173
+-> -> 176 `i `ui
+"174
+-> -> 181 `i `ui
+"175
+-> -> 187 `i `ui
+"176
+-> -> 193 `i `ui
+"177
+-> -> 200 `i `ui
+"178
+-> -> 206 `i `ui
+"179
+-> -> 212 `i `ui
+"180
+-> -> 219 `i `ui
+"181
+-> -> 225 `i `ui
+"182
+-> -> 232 `i `ui
+"183
+-> -> 239 `i `ui
+"184
+-> -> 246 `i `ui
+"185
+-> -> 253 `i `ui
+"186
+-> -> 260 `i `ui
+"187
+-> -> 267 `i `ui
+"188
+-> -> 274 `i `ui
+"189
+-> -> 282 `i `ui
+"190
+-> -> 289 `i `ui
+"191
+-> -> 296 `i `ui
+"192
+-> -> 304 `i `ui
+"193
+-> -> 312 `i `ui
+"194
+-> -> 319 `i `ui
+"195
+-> -> 327 `i `ui
+"196
+-> -> 335 `i `ui
+"197
+-> -> 343 `i `ui
+"198
+-> -> 351 `i `ui
+"199
+-> -> 359 `i `ui
+"200
+-> -> 367 `i `ui
+"201
+-> -> 375 `i `ui
+"202
+-> -> 383 `i `ui
+"203
+-> -> 391 `i `ui
+"204
+-> -> 399 `i `ui
+"205
+-> -> 408 `i `ui
+"206
+-> -> 416 `i `ui
+"207
+-> -> 424 `i `ui
+"208
+-> -> 432 `i `ui
+"209
+-> -> 440 `i `ui
+"210
+-> -> 449 `i `ui
+"211
+-> -> 457 `i `ui
+"212
+-> -> 465 `i `ui
+"213
+-> -> 473 `i `ui
+"214
+-> -> 481 `i `ui
+"215
+-> -> 490 `i `ui
+"216
+-> -> 498 `i `ui
+"217
+-> -> 506 `i `ui
+"218
+-> -> 514 `i `ui
+"219
+-> -> 522 `i `ui
+"220
+-> -> 530 `i `ui
+"221
+-> -> 538 `i `ui
+"222
+-> -> 546 `i `ui
+"223
+-> -> 553 `i `ui
+"224
+-> -> 561 `i `ui
+"225
+-> -> 569 `i `ui
+"226
+-> -> 576 `i `ui
+"227
+-> -> 584 `i `ui
+"228
+-> -> 592 `i `ui
+"229
+-> -> 599 `i `ui
+"230
+-> -> 606 `i `ui
+"231
+-> -> 614 `i `ui
+"232
+-> -> 621 `i `ui
+"233
+-> -> 628 `i `ui
+"234
+-> -> 635 `i `ui
+"235
+-> -> 642 `i `ui
+"236
+-> -> 649 `i `ui
+"237
+-> -> 656 `i `ui
+"238
+-> -> 662 `i `ui
+"239
+-> -> 669 `i `ui
+"240
+-> -> 676 `i `ui
+"241
+-> -> 682 `i `ui
+"242
+-> -> 688 `i `ui
+"243
+-> -> 695 `i `ui
+"244
+-> -> 701 `i `ui
+"245
+-> -> 707 `i `ui
+"246
+-> -> 713 `i `ui
+"247
+-> -> 719 `i `ui
+"248
+-> -> 725 `i `ui
+"249
+-> -> 731 `i `ui
+"250
+-> -> 736 `i `ui
+"251
+-> -> 742 `i `ui
+"252
+-> -> 747 `i `ui
+"253
+-> -> 753 `i `ui
+"254
+-> -> 758 `i `ui
+"255
+-> -> 763 `i `ui
+"256
+-> -> 768 `i `ui
+"257
+-> -> 773 `i `ui
+"258
+-> -> 778 `i `ui
+"259
+-> -> 783 `i `ui
+"260
+-> -> 788 `i `ui
+"261
+-> -> 792 `i `ui
+"262
+-> -> 797 `i `ui
+"263
+-> -> 802 `i `ui
+"264
+-> -> 806 `i `ui
+"265
+-> -> 810 `i `ui
+"266
+-> -> 815 `i `ui
+"267
+-> -> 819 `i `ui
+"268
+-> -> 823 `i `ui
+"269
+-> -> 827 `i `ui
+"270
+-> -> 831 `i `ui
+"271
+-> -> 835 `i `ui
+"272
+-> -> 838 `i `ui
+"273
+-> -> 842 `i `ui
+"274
+-> -> 846 `i `ui
+"275
+-> -> 849 `i `ui
+"276
+-> -> 853 `i `ui
+"277
+-> -> 856 `i `ui
+"278
+-> -> 860 `i `ui
+"279
+-> -> 863 `i `ui
+"280
+-> -> 866 `i `ui
+"281
+-> -> 869 `i `ui
+"282
+-> -> 872 `i `ui
+"283
+-> -> 875 `i `ui
+"284
+-> -> 878 `i `ui
+"285
+-> -> 881 `i `ui
+"286
+-> -> 884 `i `ui
+"287
+-> -> 887 `i `ui
+"288
+-> -> 889 `i `ui
+"289
+-> -> 892 `i `ui
+"290
+-> -> 895 `i `ui
+"291
+-> -> 897 `i `ui
+"292
+-> -> 900 `i `ui
+"293
+-> -> 902 `i `ui
+"294
+-> -> 905 `i `ui
+"295
+-> -> 907 `i `ui
+"296
+-> -> 909 `i `ui
+"297
+-> -> 912 `i `ui
+"298
+-> -> 914 `i `ui
+"299
+-> -> 916 `i `ui
+"300
+-> -> 918 `i `ui
+"301
+-> -> 920 `i `ui
+"302
+-> -> 922 `i `ui
+"303
+-> -> 924 `i `ui
+"304
+-> -> 926 `i `ui
+"305
+-> -> 928 `i `ui
+"306
+-> -> 930 `i `ui
+"307
+-> -> 932 `i `ui
+"308
+-> -> 933 `i `ui
+"309
+-> -> 935 `i `ui
+"310
+-> -> 937 `i `ui
+"311
+-> -> 938 `i `ui
+"312
+-> -> 940 `i `ui
+"313
+-> -> 942 `i `ui
+"314
+-> -> 943 `i `ui
+"315
+-> -> 945 `i `ui
+"316
+-> -> 946 `i `ui
+"317
+-> -> 948 `i `ui
+"318
+-> -> 949 `i `ui
+"319
+-> -> 950 `i `ui
+"320
+-> -> 952 `i `ui
+"321
+-> -> 953 `i `ui
+"322
+-> -> 955 `i `ui
+"323
+-> -> 956 `i `ui
+"324
+-> -> 957 `i `ui
+"325
+-> -> 958 `i `ui
+"326
+-> -> 960 `i `ui
+"327
+-> -> 961 `i `ui
+"328
+-> -> 962 `i `ui
+"329
+-> -> 963 `i `ui
+"330
+-> -> 964 `i `ui
+"331
+-> -> 965 `i `ui
+"332
+-> -> 966 `i `ui
+"333
+-> -> 967 `i `ui
+"334
+-> -> 968 `i `ui
+"335
+-> -> 969 `i `ui
+"336
+-> -> 970 `i `ui
+"337
+-> -> 971 `i `ui
+"338
+-> -> 972 `i `ui
+"339
+-> -> 973 `i `ui
+"340
+-> -> 974 `i `ui
+"341
+-> -> 975 `i `ui
+"342
+-> -> 976 `i `ui
+"343
+-> -> 977 `i `ui
+"344
+-> -> 977 `i `ui
+"345
+-> -> 978 `i `ui
+"346
+-> -> 979 `i `ui
+"347
+-> -> 980 `i `ui
+"348
+-> -> 981 `i `ui
+"349
+-> -> 981 `i `ui
+"350
+-> -> 982 `i `ui
+"351
+-> -> 983 `i `ui
+"352
+-> -> 983 `i `ui
+"353
+-> -> 984 `i `ui
+"354
+-> -> 985 `i `ui
+"355
+-> -> 985 `i `ui
+"356
+-> -> 986 `i `ui
+"357
+-> -> 987 `i `ui
+"358
+-> -> 987 `i `ui
+"359
+-> -> 988 `i `ui
+"360
+-> -> 989 `i `ui
+"361
+-> -> 989 `i `ui
+"362
+-> -> 990 `i `ui
+"363
+-> -> 990 `i `ui
+"364
+-> -> 991 `i `ui
+"365
+-> -> 991 `i `ui
+"369
+-> -> 992 `i `ui
+..
+]
+[; ;global_variable.h: 129: const unsigned int Temptab[]={
+[; ;global_variable.h: 130: 29 ,
+[; ;global_variable.h: 131: 30 ,
+[; ;global_variable.h: 132: 32 ,
+[; ;global_variable.h: 133: 34 ,
+[; ;global_variable.h: 134: 35 ,
+[; ;global_variable.h: 135: 37 ,
+[; ;global_variable.h: 136: 39 ,
+[; ;global_variable.h: 137: 41 ,
+[; ;global_variable.h: 138: 43 ,
+[; ;global_variable.h: 139: 45 ,
+[; ;global_variable.h: 140: 47 ,
+[; ;global_variable.h: 141: 49 ,
+[; ;global_variable.h: 142: 52 ,
+[; ;global_variable.h: 143: 54 ,
+[; ;global_variable.h: 144: 57 ,
+[; ;global_variable.h: 145: 59 ,
+[; ;global_variable.h: 146: 62 ,
+[; ;global_variable.h: 147: 65 ,
+[; ;global_variable.h: 148: 68 ,
+[; ;global_variable.h: 149: 71 ,
+[; ;global_variable.h: 150: 74 ,
+[; ;global_variable.h: 151: 77 ,
+[; ;global_variable.h: 152: 81 ,
+[; ;global_variable.h: 153: 84 ,
+[; ;global_variable.h: 154: 88 ,
+[; ;global_variable.h: 155: 91 ,
+[; ;global_variable.h: 156: 95 ,
+[; ;global_variable.h: 157: 99 ,
+[; ;global_variable.h: 158: 103 ,
+[; ;global_variable.h: 159: 107 ,
+[; ;global_variable.h: 160: 111 ,
+[; ;global_variable.h: 161: 115 ,
+[; ;global_variable.h: 162: 120 ,
+[; ;global_variable.h: 163: 124 ,
+[; ;global_variable.h: 164: 129 ,
+[; ;global_variable.h: 165: 133 ,
+[; ;global_variable.h: 166: 138 ,
+[; ;global_variable.h: 167: 143 ,
+[; ;global_variable.h: 168: 148 ,
+[; ;global_variable.h: 169: 154 ,
+[; ;global_variable.h: 170: 159 ,
+[; ;global_variable.h: 171: 164 ,
+[; ;global_variable.h: 172: 170 ,
+[; ;global_variable.h: 173: 176 ,
+[; ;global_variable.h: 174: 181 ,
+[; ;global_variable.h: 175: 187 ,
+[; ;global_variable.h: 176: 193 ,
+[; ;global_variable.h: 177: 200 ,
+[; ;global_variable.h: 178: 206 ,
+[; ;global_variable.h: 179: 212 ,
+[; ;global_variable.h: 180: 219 ,
+[; ;global_variable.h: 181: 225 ,
+[; ;global_variable.h: 182: 232 ,
+[; ;global_variable.h: 183: 239 ,
+[; ;global_variable.h: 184: 246 ,
+[; ;global_variable.h: 185: 253 ,
+[; ;global_variable.h: 186: 260 ,
+[; ;global_variable.h: 187: 267 ,
+[; ;global_variable.h: 188: 274 ,
+[; ;global_variable.h: 189: 282 ,
+[; ;global_variable.h: 190: 289 ,
+[; ;global_variable.h: 191: 296 ,
+[; ;global_variable.h: 192: 304 ,
+[; ;global_variable.h: 193: 312 ,
+[; ;global_variable.h: 194: 319 ,
+[; ;global_variable.h: 195: 327 ,
+[; ;global_variable.h: 196: 335 ,
+[; ;global_variable.h: 197: 343 ,
+[; ;global_variable.h: 198: 351 ,
+[; ;global_variable.h: 199: 359 ,
+[; ;global_variable.h: 200: 367 ,
+[; ;global_variable.h: 201: 375 ,
+[; ;global_variable.h: 202: 383 ,
+[; ;global_variable.h: 203: 391 ,
+[; ;global_variable.h: 204: 399 ,
+[; ;global_variable.h: 205: 408 ,
+[; ;global_variable.h: 206: 416 ,
+[; ;global_variable.h: 207: 424 ,
+[; ;global_variable.h: 208: 432 ,
+[; ;global_variable.h: 209: 440 ,
+[; ;global_variable.h: 210: 449 ,
+[; ;global_variable.h: 211: 457 ,
+[; ;global_variable.h: 212: 465 ,
+[; ;global_variable.h: 213: 473 ,
+[; ;global_variable.h: 214: 481 ,
+[; ;global_variable.h: 215: 490 ,
+[; ;global_variable.h: 216: 498 ,
+[; ;global_variable.h: 217: 506 ,
+[; ;global_variable.h: 218: 514 ,
+[; ;global_variable.h: 219: 522 ,
+[; ;global_variable.h: 220: 530 ,
+[; ;global_variable.h: 221: 538 ,
+[; ;global_variable.h: 222: 546 ,
+[; ;global_variable.h: 223: 553 ,
+[; ;global_variable.h: 224: 561 ,
+[; ;global_variable.h: 225: 569 ,
+[; ;global_variable.h: 226: 576 ,
+[; ;global_variable.h: 227: 584 ,
+[; ;global_variable.h: 228: 592 ,
+[; ;global_variable.h: 229: 599 ,
+[; ;global_variable.h: 230: 606 ,
+[; ;global_variable.h: 231: 614 ,
+[; ;global_variable.h: 232: 621 ,
+[; ;global_variable.h: 233: 628 ,
+[; ;global_variable.h: 234: 635 ,
+[; ;global_variable.h: 235: 642 ,
+[; ;global_variable.h: 236: 649 ,
+[; ;global_variable.h: 237: 656 ,
+[; ;global_variable.h: 238: 662 ,
+[; ;global_variable.h: 239: 669 ,
+[; ;global_variable.h: 240: 676 ,
+[; ;global_variable.h: 241: 682 ,
+[; ;global_variable.h: 242: 688 ,
+[; ;global_variable.h: 243: 695 ,
+[; ;global_variable.h: 244: 701 ,
+[; ;global_variable.h: 245: 707 ,
+[; ;global_variable.h: 246: 713 ,
+[; ;global_variable.h: 247: 719 ,
+[; ;global_variable.h: 248: 725 ,
+[; ;global_variable.h: 249: 731 ,
+[; ;global_variable.h: 250: 736 ,
+[; ;global_variable.h: 251: 742 ,
+[; ;global_variable.h: 252: 747 ,
+[; ;global_variable.h: 253: 753 ,
+[; ;global_variable.h: 254: 758 ,
+[; ;global_variable.h: 255: 763 ,
+[; ;global_variable.h: 256: 768 ,
+[; ;global_variable.h: 257: 773 ,
+[; ;global_variable.h: 258: 778 ,
+[; ;global_variable.h: 259: 783 ,
+[; ;global_variable.h: 260: 788 ,
+[; ;global_variable.h: 261: 792 ,
+[; ;global_variable.h: 262: 797 ,
+[; ;global_variable.h: 263: 802 ,
+[; ;global_variable.h: 264: 806 ,
+[; ;global_variable.h: 265: 810 ,
+[; ;global_variable.h: 266: 815 ,
+[; ;global_variable.h: 267: 819 ,
+[; ;global_variable.h: 268: 823 ,
+[; ;global_variable.h: 269: 827 ,
+[; ;global_variable.h: 270: 831 ,
+[; ;global_variable.h: 271: 835 ,
+[; ;global_variable.h: 272: 838 ,
+[; ;global_variable.h: 273: 842 ,
+[; ;global_variable.h: 274: 846 ,
+[; ;global_variable.h: 275: 849 ,
+[; ;global_variable.h: 276: 853 ,
+[; ;global_variable.h: 277: 856 ,
+[; ;global_variable.h: 278: 860 ,
+[; ;global_variable.h: 279: 863 ,
+[; ;global_variable.h: 280: 866 ,
+[; ;global_variable.h: 281: 869 ,
+[; ;global_variable.h: 282: 872 ,
+[; ;global_variable.h: 283: 875 ,
+[; ;global_variable.h: 284: 878 ,
+[; ;global_variable.h: 285: 881 ,
+[; ;global_variable.h: 286: 884 ,
+[; ;global_variable.h: 287: 887 ,
+[; ;global_variable.h: 288: 889 ,
+[; ;global_variable.h: 289: 892 ,
+[; ;global_variable.h: 290: 895 ,
+[; ;global_variable.h: 291: 897 ,
+[; ;global_variable.h: 292: 900 ,
+[; ;global_variable.h: 293: 902 ,
+[; ;global_variable.h: 294: 905 ,
+[; ;global_variable.h: 295: 907 ,
+[; ;global_variable.h: 296: 909 ,
+[; ;global_variable.h: 297: 912 ,
+[; ;global_variable.h: 298: 914 ,
+[; ;global_variable.h: 299: 916 ,
+[; ;global_variable.h: 300: 918 ,
+[; ;global_variable.h: 301: 920 ,
+[; ;global_variable.h: 302: 922 ,
+[; ;global_variable.h: 303: 924 ,
+[; ;global_variable.h: 304: 926 ,
+[; ;global_variable.h: 305: 928 ,
+[; ;global_variable.h: 306: 930 ,
+[; ;global_variable.h: 307: 932 ,
+[; ;global_variable.h: 308: 933 ,
+[; ;global_variable.h: 309: 935 ,
+[; ;global_variable.h: 310: 937 ,
+[; ;global_variable.h: 311: 938 ,
+[; ;global_variable.h: 312: 940 ,
+[; ;global_variable.h: 313: 942 ,
+[; ;global_variable.h: 314: 943 ,
+[; ;global_variable.h: 315: 945 ,
+[; ;global_variable.h: 316: 946 ,
+[; ;global_variable.h: 317: 948 ,
+[; ;global_variable.h: 318: 949 ,
+[; ;global_variable.h: 319: 950 ,
+[; ;global_variable.h: 320: 952 ,
+[; ;global_variable.h: 321: 953 ,
+[; ;global_variable.h: 322: 955 ,
+[; ;global_variable.h: 323: 956 ,
+[; ;global_variable.h: 324: 957 ,
+[; ;global_variable.h: 325: 958 ,
+[; ;global_variable.h: 326: 960 ,
+[; ;global_variable.h: 327: 961 ,
+[; ;global_variable.h: 328: 962 ,
+[; ;global_variable.h: 329: 963 ,
+[; ;global_variable.h: 330: 964 ,
+[; ;global_variable.h: 331: 965 ,
+[; ;global_variable.h: 332: 966 ,
+[; ;global_variable.h: 333: 967 ,
+[; ;global_variable.h: 334: 968 ,
+[; ;global_variable.h: 335: 969 ,
+[; ;global_variable.h: 336: 970 ,
+[; ;global_variable.h: 337: 971 ,
+[; ;global_variable.h: 338: 972 ,
+[; ;global_variable.h: 339: 973 ,
+[; ;global_variable.h: 340: 974 ,
+[; ;global_variable.h: 341: 975 ,
+[; ;global_variable.h: 342: 976 ,
+[; ;global_variable.h: 343: 977 ,
+[; ;global_variable.h: 344: 977 ,
+[; ;global_variable.h: 345: 978 ,
+[; ;global_variable.h: 346: 979 ,
+[; ;global_variable.h: 347: 980 ,
+[; ;global_variable.h: 348: 981 ,
+[; ;global_variable.h: 349: 981 ,
+[; ;global_variable.h: 350: 982 ,
+[; ;global_variable.h: 351: 983 ,
+[; ;global_variable.h: 352: 983 ,
+[; ;global_variable.h: 353: 984 ,
+[; ;global_variable.h: 354: 985 ,
+[; ;global_variable.h: 355: 985 ,
+[; ;global_variable.h: 356: 986 ,
+[; ;global_variable.h: 357: 987 ,
+[; ;global_variable.h: 358: 987 ,
+[; ;global_variable.h: 359: 988 ,
+[; ;global_variable.h: 360: 989 ,
+[; ;global_variable.h: 361: 989 ,
+[; ;global_variable.h: 362: 990 ,
+[; ;global_variable.h: 363: 990 ,
+[; ;global_variable.h: 364: 991 ,
+[; ;global_variable.h: 365: 991 ,
+[; ;global_variable.h: 366: 992
+[; ;global_variable.h: 369: };
+[; ;AD.h: 7: unsigned char Ad_sample(unsigned char adch);
+[; ;AD.h: 8: void Ad_testing(unsigned char i);
+[; ;AD.h: 9: void Check_Ntc();
+[; ;AD.h: 10: void source_v(unsigned char i);
+[; ;Display_lcd.h: 50: void Set_disp();
+[; ;Display_lcd.h: 51: void Disp_Lcd();
+[; ;Display_lcd.h: 52: void disf(unsigned char a);
+[; ;Kscan.h: 11: void Kscan();
+[; ;Kscan.h: 12: void Kdeal();
+[; ;Kscan.h: 13: void Delay(unsigned char k);
+[; ;main.h: 13: void PID_operation(void);
+[; ;main.h: 14: void PID_control(void);
+[; ;main.h: 15: void Tmper_pro();
+[; ;main.h: 16: void Temp_setdeal();
+"5 E:\Elec DataSheet\单片机\中微单片机\SC8P171X_开发工具软件及Demo 程序 -- 电压表\ZFQ-Demo-Code -20180105_V1.0-1713s\XLD-DLZFQ-20180105_V1.0源程序\XLD-DLZFQ-20180105_V1.0.C
+[v _Init_System `(v  1 ef ]
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 4: void Init_System()
+[; ;XLD-DLZFQ-20180105_V1.0.C: 5: {
+[e :U _Init_System ]
+[f ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 6: asm("nop");
+"6
+[; nop ;#
+[; ;XLD-DLZFQ-20180105_V1.0.C: 7: asm("clrwdt");
+"7
+[; clrwdt ;#
+[; ;XLD-DLZFQ-20180105_V1.0.C: 9: PORTA = 0;
+"9
+[e = _PORTA -> -> 0 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 10: PORTB = 0;
+"10
+[e = _PORTB -> -> 0 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 11: PORTC = 0;
+"11
+[e = _PORTC -> -> 0 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 13: TRISC =0XFF;
+"13
+[e = _TRISC -> -> 255 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 14: TRISB =0X3B;
+"14
+[e = _TRISB -> -> 59 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 15: TRISA =0X00;
+"15
+[e = _TRISA -> -> 0 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 16: TRISE=0X00;
+"16
+[e = _TRISE -> -> 0 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 18: PORTA = 0;
+"18
+[e = _PORTA -> -> 0 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 19: PORTB = 0;
+"19
+[e = _PORTB -> -> 0 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 20: PORTC = 0;
+"20
+[e = _PORTC -> -> 0 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 21: LCDCON0 = 0;
+"21
+[e = _LCDCON0 -> -> 0 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 23: INTCON=0;
+"23
+[e = _INTCON -> -> 0 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 24: OSCCON=0X71;
+"24
+[e = _OSCCON -> -> 113 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 28: }
+"28
+[e :UE 6 ]
+}
+"39
+[v _AcTestZero `(v  1 ef ]
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 38: void AcTestZero()
+[; ;XLD-DLZFQ-20180105_V1.0.C: 39: {
+[e :U _AcTestZero ]
+[f ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 40: if(Flag_ach)
+"40
+[e $ ! _Flag_ach 8  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 41: {
+"41
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 42: if ((!RB5)&&(!RB5)&&(!RB5))
+"42
+[e $ ! && && ! _RB5 ! _RB5 ! _RB5 9  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 43: {
+"43
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 44: Flag_ach=0;
+"44
+[e = _Flag_ach -> -> 0 `i `b ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 45: Flag_zero=1;
+"45
+[e = _Flag_zero -> -> 1 `i `b ]
+"46
+}
+[e :U 9 ]
+"47
+}
+[; ;XLD-DLZFQ-20180105_V1.0.C: 46: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 47: }
+[e $U 10  ]
+"48
+[e :U 8 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 48: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 49: {
+"49
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 50: if (RB5&&RB5&&RB5)
+"50
+[e $ ! && && _RB5 _RB5 _RB5 11  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 51: {
+"51
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 52: Flag_ach=1;
+"52
+[e = _Flag_ach -> -> 1 `i `b ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 53: Flag_zero=1;
+"53
+[e = _Flag_zero -> -> 1 `i `b ]
+"55
+}
+[e :U 11 ]
+"56
+}
+[e :U 10 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 55: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 56: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 57: }
+"57
+[e :UE 7 ]
+}
+"71
+[v _ScrControl `(v  1 ef ]
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 70: void ScrControl()
+[; ;XLD-DLZFQ-20180105_V1.0.C: 71: {
+[e :U _ScrControl ]
+[f ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 73: if(Flag_hot&&Flag_zero)
+"73
+[e $ ! && _Flag_hot _Flag_zero 13  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 74: {
+"74
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 75: if(Flag_HV)
+"75
+[e $ ! _Flag_HV 14  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 76: {
+"76
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 77: if(Flag_vtemp)
+"77
+[e $ ! _Flag_vtemp 15  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 78: RB2=0;
+"78
+[e = _RB2 -> -> 0 `i `b ]
+[e :U 15 ]
+"79
+}
+[; ;XLD-DLZFQ-20180105_V1.0.C: 79: }
+[e $U 16  ]
+"80
+[e :U 14 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 80: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 81: RB2=0;
+"81
+[e = _RB2 -> -> 0 `i `b ]
+[e :U 16 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 83: Kkg_dly++;
+"83
+[e ++ _Kkg_dly -> -> 1 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 84: if(Kkg_dly>=5)
+"84
+[e $ ! >= -> _Kkg_dly `i -> 5 `i 17  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 85: {
+"85
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 86: Flag_vtemp=~Flag_vtemp;
+"86
+[e = _Flag_vtemp ! _Flag_vtemp ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 87: Flag_zero=0;
+"87
+[e = _Flag_zero -> -> 0 `i `b ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 88: Kkg_dly=0;
+"88
+[e = _Kkg_dly -> -> 0 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 89: RB2=1;
+"89
+[e = _RB2 -> -> 1 `i `b ]
+"90
+}
+[e :U 17 ]
+"91
+}
+[; ;XLD-DLZFQ-20180105_V1.0.C: 90: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 91: }
+[e $U 18  ]
+"92
+[e :U 13 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 92: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 93: {
+"93
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 94: RB2=1;
+"94
+[e = _RB2 -> -> 1 `i `b ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 95: Flag_zero=0;
+"95
+[e = _Flag_zero -> -> 0 `i `b ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 96: Kkg_dly=0;
+"96
+[e = _Kkg_dly -> -> 0 `i `uc ]
+"97
+}
+[e :U 18 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 97: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 98: }
+"98
+[e :UE 12 ]
+}
+"109
+[v F575 `(v  1 tf ]
+[v _Isr_Timer `IF575  1 e ]
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 108: void interrupt Isr_Timer()
+[; ;XLD-DLZFQ-20180105_V1.0.C: 109: {
+[e :U _Isr_Timer ]
+[f ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 110: if(TMR2IF&&TMR2ON)
+"110
+[e $ ! && _TMR2IF _TMR2ON 20  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 111: {
+"111
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 112: TMR2IF = 0;
+"112
+[e = _TMR2IF -> -> 0 `i `b ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 113: Maintime++;
+"113
+[e ++ _Maintime -> -> 1 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 114: if(Maintime >= 20)
+"114
+[e $ ! >= -> _Maintime `i -> 20 `i 21  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 115: {
+"115
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 116: Maintime = 0;
+"116
+[e = _Maintime -> -> 0 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 117: Flag_mainloop = 1;
+"117
+[e = _Flag_mainloop -> -> 1 `i `b ]
+"118
+}
+[e :U 21 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 118: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 119: AcTestZero();
+"119
+[e ( _AcTestZero ..  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 120: ScrControl();
+"120
+[e ( _ScrControl ..  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 122: Tmper_pro();
+"122
+[e ( _Tmper_pro ..  ]
+"123
+}
+[e :U 20 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 123: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 124: }
+"124
+[e :UE 19 ]
+}
+"130
+[v _main `(v  1 ef ]
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 129: void main()
+[; ;XLD-DLZFQ-20180105_V1.0.C: 130: {
+[e :U _main ]
+[f ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 131: Init_System();
+"131
+[e ( _Init_System ..  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 133: source_v(9);
+"133
+[e ( _source_v (1 -> -> 9 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 135: PIE1=2;
+"135
+[e = _PIE1 -> -> 2 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 136: PR2=250;
+"136
+[e = _PR2 -> -> 250 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 137: T2CON=4;
+"137
+[e = _T2CON -> -> 4 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 138: INTCON=0XC0;
+"138
+[e = _INTCON -> -> 192 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 140: PID.uKP_Coe=1;
+"140
+[e = . _PID 2 -> -> 1 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 141: PID.uKI_Coe=1;
+"141
+[e = . _PID 3 -> -> 1 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 142: PID.uKD_Coe=20;
+"142
+[e = . _PID 4 -> -> 20 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 144: PID.iPriVal=0;
+"144
+[e = . _PID 5 -> -> 0 `i `ui ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 145: Tempr_setdata=180;
+"145
+[e = _Tempr_setdata -> -> 180 `i `ui ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 147: while(1)
+"147
+[e :U 24 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 148: {
+"148
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 149: if(Flag_mainloop)
+"149
+[e $ ! _Flag_mainloop 26  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 150: {
+"150
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 151: Flag_mainloop = 0;
+"151
+[e = _Flag_mainloop -> -> 0 `i `b ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 152: asm("clrwdt");
+"152
+[; clrwdt ;#
+[; ;XLD-DLZFQ-20180105_V1.0.C: 153: Ad_testing(11);
+"153
+[e ( _Ad_testing (1 -> -> 11 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 156: PID_control();
+"156
+[e ( _PID_control ..  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 157: Temp_setdeal();
+"157
+[e ( _Temp_setdeal ..  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 158: Set_disp();
+"158
+[e ( _Set_disp ..  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 159: Kscan();
+"159
+[e ( _Kscan ..  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 160: Kdeal();
+"160
+[e ( _Kdeal ..  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 161: Disp_Lcd();
+"161
+[e ( _Disp_Lcd ..  ]
+"162
+}
+[e :U 26 ]
+"163
+}
+[e :U 23 ]
+"147
+[e $U 24  ]
+[e :U 25 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 162: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 163: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 164: }
+"164
+[e :UE 22 ]
+}
+"170
+[v _PID_control `(v  1 ef ]
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 169: void PID_control()
+[; ;XLD-DLZFQ-20180105_V1.0.C: 170: {
+[e :U _PID_control ]
+[f ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 171: if(Flag_onoff)
+"171
+[e $ ! _Flag_onoff 28  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 172: {
+"172
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 173: Pid_count++;
+"173
+[e ++ _Pid_count -> -> 1 `i `ui ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 174: if(Pid_count>=400)
+"174
+[e $ ! >= _Pid_count -> -> 400 `i `ui 29  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 175: {
+"175
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 176: Pid_count=0;
+"176
+[e = _Pid_count -> -> 0 `i `ui ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 177: PID_operation();
+"177
+[e ( _PID_operation ..  ]
+"178
+}
+[e :U 29 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 178: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 179: if(Flag_err==0)
+"179
+[e $ ! == -> _Flag_err `i -> 0 `i 30  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 180: {
+"180
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 181: if(PID.iPriVal==0)
+"181
+[e $ ! == . _PID 5 -> -> 0 `i `ui 31  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 182: {
+"182
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 183: Flag_hot=0;
+"183
+[e = _Flag_hot -> -> 0 `i `b ]
+"184
+}
+[; ;XLD-DLZFQ-20180105_V1.0.C: 184: }
+[e $U 32  ]
+"185
+[e :U 31 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 185: else if((Pid_count>>3)<(PID.iPriVal/10))
+[e $ ! < >> _Pid_count -> 3 `i / . _PID 5 -> -> 10 `i `ui 33  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 186: {
+"186
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 187: Flag_hot=1;
+"187
+[e = _Flag_hot -> -> 1 `i `b ]
+"188
+}
+[; ;XLD-DLZFQ-20180105_V1.0.C: 188: }
+[e $U 34  ]
+"189
+[e :U 33 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 189: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 190: {
+"190
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 191: Flag_hot=0;
+"191
+[e = _Flag_hot -> -> 0 `i `b ]
+"192
+}
+[e :U 34 ]
+[e :U 32 ]
+"193
+}
+[; ;XLD-DLZFQ-20180105_V1.0.C: 192: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 193: }
+[e $U 35  ]
+"194
+[e :U 30 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 194: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 195: {
+"195
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 196: Flag_hot=0;
+"196
+[e = _Flag_hot -> -> 0 `i `b ]
+"197
+}
+[e :U 35 ]
+"198
+}
+[; ;XLD-DLZFQ-20180105_V1.0.C: 197: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 198: }
+[e $U 36  ]
+"199
+[e :U 28 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 199: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 200: {
+"200
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 201: Pid_count=0;
+"201
+[e = _Pid_count -> -> 0 `i `ui ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 202: PID.iPriVal=0;
+"202
+[e = . _PID 5 -> -> 0 `i `ui ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 203: Flag_hot=0;
+"203
+[e = _Flag_hot -> -> 0 `i `b ]
+"205
+}
+[e :U 36 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 205: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 206: }
+"206
+[e :UE 27 ]
+}
+"211
+[v _PID_operation `(v  1 ef ]
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 210: void PID_operation(void)
+[; ;XLD-DLZFQ-20180105_V1.0.C: 211: {
+[e :U _PID_operation ]
+[f ]
+"212
+[v F579 `ui  -> 3 `i s ]
+[i F579
+:U ..
+-> -> 0 `i `ui
+..
+]
+[v _Temp `ui  -> 3 `i a ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 212: unsigned int Temp[3] = {0};
+[e = _Temp F579 ]
+"213
+[v _PostSum `ui  1 a ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 213: unsigned int PostSum = 0;
+[e = _PostSum -> -> 0 `i `ui ]
+"214
+[v _NegSum `ui  1 a ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 214: unsigned int NegSum = 0;
+[e = _NegSum -> -> 0 `i `ui ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 215: if(PID.iSetVal > PID.iCurVal)
+"215
+[e $ ! > . _PID 6 . _PID 7 38  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 216: {
+"216
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 217: if(PID.iSetVal - PID.iCurVal > 100)
+"217
+[e $ ! > - . _PID 6 . _PID 7 -> -> 100 `i `ui 39  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 218: PID.iPriVal = 500;
+"218
+[e = . _PID 5 -> -> 500 `i `ui ]
+[e $U 40  ]
+"219
+[e :U 39 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 219: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 220: {
+"220
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 221: Temp[0] = PID.iSetVal - PID.iCurVal;
+"221
+[e = *U + &U _Temp * -> -> -> 0 `i `ui `ux -> -> # *U &U _Temp `ui `ux - . _PID 6 . _PID 7 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 222: PID.uEkFlag[1] = 0;
+"222
+[e = *U + &U . _PID 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _PID 1 `ui `ux -> -> 0 `i `uc ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 224: PID.liEkVal[2] = PID.liEkVal[1];
+"224
+[e = *U + &U . _PID 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _PID 0 `ui `ux *U + &U . _PID 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _PID 0 `ui `ux ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 225: PID.liEkVal[1] = PID.liEkVal[0];
+"225
+[e = *U + &U . _PID 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _PID 0 `ui `ux *U + &U . _PID 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _PID 0 `ui `ux ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 226: PID.liEkVal[0] = Temp[0];
+"226
+[e = *U + &U . _PID 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _PID 0 `ui `ux *U + &U _Temp * -> -> -> 0 `i `ui `ux -> -> # *U &U _Temp `ui `ux ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 228: if(PID.liEkVal[0] > PID.liEkVal[1])
+"228
+[e $ ! > *U + &U . _PID 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _PID 0 `ui `ux *U + &U . _PID 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _PID 0 `ui `ux 41  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 229: {
+"229
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 230: Temp[0] = PID.liEkVal[0] - PID.liEkVal[1];
+"230
+[e = *U + &U _Temp * -> -> -> 0 `i `ui `ux -> -> # *U &U _Temp `ui `ux - *U + &U . _PID 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _PID 0 `ui `ux *U + &U . _PID 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _PID 0 `ui `ux ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 231: PID.uEkFlag[0] = 0;
+"231
+[e = *U + &U . _PID 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _PID 1 `ui `ux -> -> 0 `i `uc ]
+"232
+}
+[; ;XLD-DLZFQ-20180105_V1.0.C: 232: }
+[e $U 42  ]
+"233
+[e :U 41 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 233: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 234: {
+"234
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 235: Temp[0] = PID.liEkVal[1] - PID.liEkVal[0];
+"235
+[e = *U + &U _Temp * -> -> -> 0 `i `ui `ux -> -> # *U &U _Temp `ui `ux - *U + &U . _PID 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _PID 0 `ui `ux *U + &U . _PID 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _PID 0 `ui `ux ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 236: PID.uEkFlag[0] = 1;
+"236
+[e = *U + &U . _PID 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _PID 1 `ui `ux -> -> 1 `i `uc ]
+"237
+}
+[e :U 42 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 237: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 239: Temp[2] = PID.liEkVal[1] << 1;
+"239
+[e = *U + &U _Temp * -> -> -> 2 `i `ui `ux -> -> # *U &U _Temp `ui `ux << *U + &U . _PID 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _PID 0 `ui `ux -> 1 `i ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 240: if((PID.liEkVal[0] + PID.liEkVal[2]) > Temp[2])
+"240
+[e $ ! > + *U + &U . _PID 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _PID 0 `ui `ux *U + &U . _PID 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _PID 0 `ui `ux *U + &U _Temp * -> -> -> 2 `i `ui `ux -> -> # *U &U _Temp `ui `ux 43  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 241: {
+"241
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 242: Temp[2] = (PID.liEkVal[0] + PID.liEkVal[2]) - Temp[2];
+"242
+[e = *U + &U _Temp * -> -> -> 2 `i `ui `ux -> -> # *U &U _Temp `ui `ux - + *U + &U . _PID 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _PID 0 `ui `ux *U + &U . _PID 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _PID 0 `ui `ux *U + &U _Temp * -> -> -> 2 `i `ui `ux -> -> # *U &U _Temp `ui `ux ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 243: PID.uEkFlag[2]=0;
+"243
+[e = *U + &U . _PID 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _PID 1 `ui `ux -> -> 0 `i `uc ]
+"244
+}
+[; ;XLD-DLZFQ-20180105_V1.0.C: 244: }
+[e $U 44  ]
+"245
+[e :U 43 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 245: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 246: {
+"246
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 247: Temp[2] = Temp[2] - (PID.liEkVal[0] + PID.liEkVal[2]);
+"247
+[e = *U + &U _Temp * -> -> -> 2 `i `ui `ux -> -> # *U &U _Temp `ui `ux - *U + &U _Temp * -> -> -> 2 `i `ui `ux -> -> # *U &U _Temp `ui `ux + *U + &U . _PID 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _PID 0 `ui `ux *U + &U . _PID 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _PID 0 `ui `ux ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 248: PID.uEkFlag[2] = 1;
+"248
+[e = *U + &U . _PID 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _PID 1 `ui `ux -> -> 1 `i `uc ]
+"249
+}
+[e :U 44 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 249: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 251: Temp[0] = PID.uKP_Coe * Temp[0];
+"251
+[e = *U + &U _Temp * -> -> -> 0 `i `ui `ux -> -> # *U &U _Temp `ui `ux * -> . _PID 2 `ui *U + &U _Temp * -> -> -> 0 `i `ui `ux -> -> # *U &U _Temp `ui `ux ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 252: Temp[1] = PID.uKI_Coe * PID.liEkVal[0];
+"252
+[e = *U + &U _Temp * -> -> -> 1 `i `ui `ux -> -> # *U &U _Temp `ui `ux * -> . _PID 3 `ui *U + &U . _PID 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _PID 0 `ui `ux ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 253: Temp[2] = PID.uKD_Coe * Temp[2];
+"253
+[e = *U + &U _Temp * -> -> -> 2 `i `ui `ux -> -> # *U &U _Temp `ui `ux * -> . _PID 4 `ui *U + &U _Temp * -> -> -> 2 `i `ui `ux -> -> # *U &U _Temp `ui `ux ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 255: if(PID.uEkFlag[0] == 0)
+"255
+[e $ ! == -> *U + &U . _PID 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _PID 1 `ui `ux `i -> 0 `i 45  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 256: PostSum += Temp[0];
+"256
+[e =+ _PostSum *U + &U _Temp * -> -> -> 0 `i `ui `ux -> -> # *U &U _Temp `ui `ux ]
+[e $U 46  ]
+"257
+[e :U 45 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 257: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 258: NegSum += Temp[0];
+"258
+[e =+ _NegSum *U + &U _Temp * -> -> -> 0 `i `ui `ux -> -> # *U &U _Temp `ui `ux ]
+[e :U 46 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 260: if(PID.uEkFlag[1] == 0)
+"260
+[e $ ! == -> *U + &U . _PID 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _PID 1 `ui `ux `i -> 0 `i 47  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 261: PostSum += Temp[1];
+"261
+[e =+ _PostSum *U + &U _Temp * -> -> -> 1 `i `ui `ux -> -> # *U &U _Temp `ui `ux ]
+[e $U 48  ]
+"262
+[e :U 47 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 262: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 264: if(PID.uEkFlag[2]==0)
+"264
+[e $ ! == -> *U + &U . _PID 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _PID 1 `ui `ux `i -> 0 `i 49  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 265: PostSum += Temp[2];
+"265
+[e =+ _PostSum *U + &U _Temp * -> -> -> 2 `i `ui `ux -> -> # *U &U _Temp `ui `ux ]
+[e $U 50  ]
+"266
+[e :U 49 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 266: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 267: NegSum += Temp[2];
+"267
+[e =+ _NegSum *U + &U _Temp * -> -> -> 2 `i `ui `ux -> -> # *U &U _Temp `ui `ux ]
+[e :U 50 ]
+[e :U 48 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 269: PostSum += PID.iPriVal;
+"269
+[e =+ _PostSum . _PID 5 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 270: if(PostSum > NegSum)
+"270
+[e $ ! > _PostSum _NegSum 51  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 271: {
+"271
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 272: Temp[0] = PostSum - NegSum;
+"272
+[e = *U + &U _Temp * -> -> -> 0 `i `ui `ux -> -> # *U &U _Temp `ui `ux - _PostSum _NegSum ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 273: if(Temp[0] < 500 )
+"273
+[e $ ! < *U + &U _Temp * -> -> -> 0 `i `ui `ux -> -> # *U &U _Temp `ui `ux -> -> 500 `i `ui 52  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 274: PID.iPriVal = Temp[0];
+"274
+[e = . _PID 5 *U + &U _Temp * -> -> -> 0 `i `ui `ux -> -> # *U &U _Temp `ui `ux ]
+[e $U 53  ]
+"275
+[e :U 52 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 275: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 276: PID.iPriVal = 500;
+"276
+[e = . _PID 5 -> -> 500 `i `ui ]
+[e :U 53 ]
+"277
+}
+[; ;XLD-DLZFQ-20180105_V1.0.C: 277: }
+[e $U 54  ]
+"278
+[e :U 51 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 278: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 279: PID.iPriVal = 0;
+"279
+[e = . _PID 5 -> -> 0 `i `ui ]
+[e :U 54 ]
+"280
+}
+[e :U 40 ]
+"281
+}
+[; ;XLD-DLZFQ-20180105_V1.0.C: 280: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 281: }
+[e $U 55  ]
+"282
+[e :U 38 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 282: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 283: PID.iPriVal = 0;
+"283
+[e = . _PID 5 -> -> 0 `i `ui ]
+[e :U 55 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 284: }
+"284
+[e :UE 37 ]
+}
+"288
+[v _Temp_setdeal `(v  1 ef ]
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 287: void Temp_setdeal()
+[; ;XLD-DLZFQ-20180105_V1.0.C: 288: {
+[e :U _Temp_setdeal ]
+[f ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 289: if(Flag_onoff)
+"289
+[e $ ! _Flag_onoff 57  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 290: {
+"290
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 292: if(!Flag_first)
+"292
+[e $ ! ! _Flag_first 58  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 293: {
+"293
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 294: Tempr_rank=Tempr_setdata;
+"294
+[e = _Tempr_rank _Tempr_setdata ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 295: if(Tempr_tdata>=Tempr_setdata)
+"295
+[e $ ! >= _Tempr_tdata _Tempr_setdata 59  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 296: {
+"296
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 297: Flag_temprdir=0;
+"297
+[e = _Flag_temprdir -> -> 0 `i `b ]
+"298
+}
+[; ;XLD-DLZFQ-20180105_V1.0.C: 298: }
+[e $U 60  ]
+"299
+[e :U 59 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 299: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 300: {
+"300
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 301: Flag_temprdir=1;
+"301
+[e = _Flag_temprdir -> -> 1 `i `b ]
+"302
+}
+[e :U 60 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 302: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 304: count1=0;
+"304
+[e = _count1 -> -> 0 `i `ui ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 305: Flag_first=1;
+"305
+[e = _Flag_first -> -> 1 `i `b ]
+"306
+}
+[; ;XLD-DLZFQ-20180105_V1.0.C: 306: }
+[e $U 61  ]
+"307
+[e :U 58 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 307: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 308: {
+"308
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 310: count1++;
+"310
+[e ++ _count1 -> -> 1 `i `ui ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 311: if(count1>=400)
+"311
+[e $ ! >= _count1 -> -> 400 `i `ui 62  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 312: {
+"312
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 313: count1=0;
+"313
+[e = _count1 -> -> 0 `i `ui ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 314: if(!Flag_temprok)
+"314
+[e $ ! ! _Flag_temprok 63  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 315: {
+"315
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 316: Tempr_rank=Tempr_tdata;
+"316
+[e = _Tempr_rank _Tempr_tdata ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 318: if(Flag_temprdir==0)
+"318
+[e $ ! == -> _Flag_temprdir `i -> 0 `i 64  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 319: {
+"319
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 320: if(Tempr_tdata<=Tempr_setdata)
+"320
+[e $ ! <= _Tempr_tdata _Tempr_setdata 65  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 321: {
+"321
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 322: Flag_temprok=1;
+"322
+[e = _Flag_temprok -> -> 1 `i `b ]
+"323
+}
+[e :U 65 ]
+"324
+}
+[; ;XLD-DLZFQ-20180105_V1.0.C: 323: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 324: }
+[e $U 66  ]
+"325
+[e :U 64 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 325: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 326: {
+"326
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 327: if(Tempr_tdata>=Tempr_setdata)
+"327
+[e $ ! >= _Tempr_tdata _Tempr_setdata 67  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 328: {
+"328
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 329: Flag_temprok=1;
+"329
+[e = _Flag_temprok -> -> 1 `i `b ]
+"330
+}
+[e :U 67 ]
+"331
+}
+[e :U 66 ]
+"332
+}
+[; ;XLD-DLZFQ-20180105_V1.0.C: 330: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 331: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 332: }
+[e $U 68  ]
+"333
+[e :U 63 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 333: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 334: {
+"334
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 335: Tempr_rank=Tempr_setdata;
+"335
+[e = _Tempr_rank _Tempr_setdata ]
+"337
+}
+[e :U 68 ]
+"338
+}
+[e :U 62 ]
+"340
+}
+[e :U 61 ]
+"342
+}
+[; ;XLD-DLZFQ-20180105_V1.0.C: 337: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 338: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 340: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 342: }
+[e $U 69  ]
+"343
+[e :U 57 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 343: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 344: {
+"344
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 345: count1=0;
+"345
+[e = _count1 -> -> 0 `i `ui ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 346: Flag_first=0;
+"346
+[e = _Flag_first -> -> 0 `i `b ]
+"347
+}
+[e :U 69 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 347: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 349: }
+"349
+[e :UE 56 ]
+}
+"355
+[v _Tmper_pro `(v  1 ef ]
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 354: void Tmper_pro()
+[; ;XLD-DLZFQ-20180105_V1.0.C: 355: {
+[e :U _Tmper_pro ]
+[f ]
+"356
+[v F582 `ui  1 s n ]
+[i F582
+-> -> 0 `i `ui
+]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 356: static unsigned int n=0;
+[; ;XLD-DLZFQ-20180105_V1.0.C: 357: if(Flag_ntc_onead)
+"357
+[e $ ! _Flag_ntc_onead 71  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 358: {
+"358
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 359: if(!Flag_step)
+"359
+[e $ ! ! _Flag_step 72  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 360: {
+"360
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 361: Tmper_temp=PID.iCurVal;
+"361
+[e = _Tmper_temp . _PID 7 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 362: Flag_step=1;
+"362
+[e = _Flag_step -> -> 1 `i `b ]
+"363
+}
+[; ;XLD-DLZFQ-20180105_V1.0.C: 363: }
+[e $U 73  ]
+"364
+[e :U 72 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 364: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 365: {
+"365
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 367: if(Tmper_temp>Temptab[n])
+"367
+[e $ ! > _Tmper_temp *U + &U _Temptab * -> F582 `ux -> -> # *U &U _Temptab `ui `ux 74  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 368: {
+"368
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 369: n++;
+"369
+[e ++ F582 -> -> 1 `i `ui ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 370: if(n>=236)
+"370
+[e $ ! >= F582 -> -> 236 `i `ui 75  ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 371: {
+"371
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 372: n=236;
+"372
+[e = F582 -> -> 236 `i `ui ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 373: Tempr_tdata=236;
+"373
+[e = _Tempr_tdata -> -> 236 `i `ui ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 374: Flag_step=0;
+"374
+[e = _Flag_step -> -> 0 `i `b ]
+"375
+}
+[e :U 75 ]
+"376
+}
+[; ;XLD-DLZFQ-20180105_V1.0.C: 375: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 376: }
+[e $U 76  ]
+"377
+[e :U 74 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 377: else
+[; ;XLD-DLZFQ-20180105_V1.0.C: 378: {
+"378
+{
+[; ;XLD-DLZFQ-20180105_V1.0.C: 379: Tempr_tdata=n;
+"379
+[e = _Tempr_tdata F582 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 380: n=0;
+"380
+[e = F582 -> -> 0 `i `ui ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 381: Flag_step=0;
+"381
+[e = _Flag_step -> -> 0 `i `b ]
+"382
+}
+[e :U 76 ]
+"383
+}
+[e :U 73 ]
+"384
+}
+[e :U 71 ]
+[; ;XLD-DLZFQ-20180105_V1.0.C: 382: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 383: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 384: }
+[; ;XLD-DLZFQ-20180105_V1.0.C: 386: }
+"386
+[e :UE 70 ]
+}

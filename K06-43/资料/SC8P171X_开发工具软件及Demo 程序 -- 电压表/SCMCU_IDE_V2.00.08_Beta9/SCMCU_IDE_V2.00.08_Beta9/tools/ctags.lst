@@ -1,0 +1,15 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+MainTime	C:\LK WorkSpace\test\main.c	/^volatile unsigned char MainTime;$/;"	v
+B_MainLoop	C:\LK WorkSpace\test\main.c	/^volatile bit	B_MainLoop,B_OnOff;$/;"	v
+B_OnOff	C:\LK WorkSpace\test\main.c	/^volatile bit	B_MainLoop,B_OnOff;$/;"	v
+Init_System	C:\LK WorkSpace\test\main.c	/^void Init_System()$/;"	f
+Refurbish_Sfr	C:\LK WorkSpace\test\main.c	/^void Refurbish_Sfr()$/;"	f
+KeyServer	C:\LK WorkSpace\test\main.c	/^void KeyServer()$/;"	f
+Isr_Timer	C:\LK WorkSpace\test\main.c	/^void interrupt Isr_Timer()$/;"	f
+WorkSleep	C:\LK WorkSpace\test\main.c	/^void WorkSleep()$/;"	f
+main	C:\LK WorkSpace\test\main.c	/^void main()$/;"	f

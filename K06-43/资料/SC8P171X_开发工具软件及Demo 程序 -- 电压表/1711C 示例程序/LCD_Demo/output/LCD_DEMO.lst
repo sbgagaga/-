@@ -1,0 +1,2282 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.83 build 10920 
+                                                                                               Tue Oct 17 17:32:40 2017
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 10920
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 10920"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	SC8P1713
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           	FNCALL	_main,_LCD_DISP
+    43                           	FNCALL	_LCD_DISP,_SET_DISP
+    44                           	FNROOT	_main
+    45                           	FNCALL	intlevel1,_isr
+    46                           	global	intlevel1
+    47                           	FNROOT	intlevel1
+    48                           	global	LCD_DISP@dcount
+    49                           	global	_tcount
+    50                           	global	_INTCON
+    51                           psect	text120,local,class=CODE,delta=2
+    52                           global __ptext120
+    53  0000                     __ptext120:
+    54  000B                     _INTCON	set	11
+    55                           	global	_PORTA
+    56  0005                     _PORTA	set	5
+    57                           	global	_PORTC
+    58  0007                     _PORTC	set	7
+    59                           	global	_PORTE
+    60  0009                     _PORTE	set	9
+    61                           	global	_T2CON
+    62  0012                     _T2CON	set	18
+    63                           	global	_TMR2
+    64  0011                     _TMR2	set	17
+    65                           	global	_GIE
+    66  005F                     _GIE	set	95
+    67                           	global	_PEIE
+    68  005E                     _PEIE	set	94
+    69                           	global	_RA1
+    70  0029                     _RA1	set	41
+    71                           	global	_RA2
+    72  002A                     _RA2	set	42
+    73                           	global	_RA3
+    74  002B                     _RA3	set	43
+    75                           	global	_RA4
+    76  002C                     _RA4	set	44
+    77                           	global	_RA5
+    78  002D                     _RA5	set	45
+    79                           	global	_RB1
+    80  0031                     _RB1	set	49
+    81                           	global	_RB2
+    82  0032                     _RB2	set	50
+    83                           	global	_RB3
+    84  0033                     _RB3	set	51
+    85                           	global	_RC0
+    86  0038                     _RC0	set	56
+    87                           	global	_RC1
+    88  0039                     _RC1	set	57
+    89                           	global	_RC2
+    90  003A                     _RC2	set	58
+    91                           	global	_RC3
+    92  003B                     _RC3	set	59
+    93                           	global	_TMR2IF
+    94  0061                     _TMR2IF	set	97
+    95                           	global	_OPTION_REG
+    96  0081                     _OPTION_REG	set	129
+    97                           	global	_OSCCON
+    98  008F                     _OSCCON	set	143
+    99                           	global	_TRISA
+   100  0085                     _TRISA	set	133
+   101                           	global	_TRISC
+   102  0087                     _TRISC	set	135
+   103                           	global	_TRISE
+   104  0089                     _TRISE	set	137
+   105                           	global	_TMR2IE
+   106  0461                     _TMR2IE	set	1121
+   107                           	global	_TRISC0
+   108  0438                     _TRISC0	set	1080
+   109                           	global	_TRISC1
+   110  0439                     _TRISC1	set	1081
+   111                           	global	_TRISC2
+   112  043A                     _TRISC2	set	1082
+   113                           	global	_TRISC3
+   114  043B                     _TRISC3	set	1083
+   115                           	global	_COMEN
+   116  0197                     _COMEN	set	407
+   117                           	global	_LCDCON0
+   118  0190                     _LCDCON0	set	400
+   119                           	file	"LCD_DEMO.as"
+   120                           	line	#
+   121                           psect cinit,class=CODE,delta=2
+   122                           global start_initialization
+   123  02C5                     start_initialization:
+   124                           
+   125                           psect	bssBANK0,class=BANK0,space=1
+   126                           global __pbssBANK0
+   127  0024                     __pbssBANK0:
+   128  0024                     LCD_DISP@dcount:
+   129  0024                            ds      1
+   130                           
+   131  0025                     _tcount:
+   132  0025                            ds      1
+   133                           
+   134                           ; Clear objects allocated to BANK0
+   135                           psect cinit,class=CODE,delta=2
+   136  02C5  01A4               	clrf	((__pbssBANK0)+0)&07Fh
+   137  02C6  01A5               	clrf	((__pbssBANK0)+1)&07Fh
+   138                           psect cinit,class=CODE,delta=2
+   139                           global end_of_initialization
+   140                           
+   141                           ;End of C runtime variable initialization code
+   142                           
+   143  02C7                     end_of_initialization:
+   144  02C7  0183               clrf status
+   145  02C8  2A56               ljmp _main	;jump to C main() function
+   146                           psect	cstackCOMMON,class=COMMON,space=1
+   147                           global __pcstackCOMMON
+   148  0070                     __pcstackCOMMON:
+   149                           	global	?_LCD_DISP
+   150  0070                     ?_LCD_DISP:	; 0 bytes @ 0x0
+   151                           	global	?_main
+   152  0070                     ?_main:	; 0 bytes @ 0x0
+   153                           	global	?_isr
+   154  0070                     ?_isr:	; 0 bytes @ 0x0
+   155                           	global	??_isr
+   156  0070                     ??_isr:	; 0 bytes @ 0x0
+   157                           	global	?_SET_DISP
+   158  0070                     ?_SET_DISP:	; 0 bytes @ 0x0
+   159  0070                     	ds	5
+   160                           	global	??_SET_DISP
+   161  0075                     ??_SET_DISP:	; 0 bytes @ 0x5
+   162  0075                     	ds	1
+   163                           	global	SET_DISP@RDATA
+   164  0076                     SET_DISP@RDATA:	; 1 bytes @ 0x6
+   165  0076                     	ds	1
+   166                           	global	??_LCD_DISP
+   167  0077                     ??_LCD_DISP:	; 0 bytes @ 0x7
+   168  0077                     	ds	2
+   169                           	global	??_main
+   170  0079                     ??_main:	; 0 bytes @ 0x9
+   171                           psect	cstackBANK0,class=BANK0,space=1
+   172                           global __pcstackBANK0
+   173  0020                     __pcstackBANK0:
+   174                           	global	LCD_DISP@display
+   175  0020                     LCD_DISP@display:	; 4 bytes @ 0x0
+   176  0020                     	ds	4
+   177 ;;Data sizes: Strings 0, constant 0, data 0, bss 2, persistent 0 stack 0
+   178 ;;Auto spaces:   Size  Autos    Used
+   179 ;; COMMON          14      9       9
+   180 ;; BANK0           80      4       6
+   181 ;; BANK1           80      0       0
+   182                           
+   183 ;;
+   184 ;; Pointer list with targets:
+   185                           
+   186 ;; SET_DISP@RDATA	PTR unsigned char  size(1) Largest target is 4
+   187 ;;		 -> LCD_DISP@display(BANK0[4]), 
+   188 ;;
+   189                           
+   190                           
+   191 ;;
+   192 ;; Critical Paths under _main in COMMON
+   193 ;;
+   194 ;;   _main->_LCD_DISP
+   195 ;;   _LCD_DISP->_SET_DISP
+   196 ;;
+   197 ;; Critical Paths under _isr in COMMON
+   198 ;;
+   199 ;;   None.
+   200 ;;
+   201 ;; Critical Paths under _main in BANK0
+   202 ;;
+   203 ;;   _main->_LCD_DISP
+   204 ;;
+   205 ;; Critical Paths under _isr in BANK0
+   206 ;;
+   207 ;;   None.
+   208 ;;
+   209 ;; Critical Paths under _main in BANK1
+   210 ;;
+   211 ;;   None.
+   212 ;;
+   213 ;; Critical Paths under _isr in BANK1
+   214 ;;
+   215 ;;   None.
+   216                           
+   217 ;;
+   218 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   219 ;;
+   220                           
+   221 ;;
+   222 ;;Call Graph Tables:
+   223 ;;
+   224 ;; ---------------------------------------------------------------------------------
+   225 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   226 ;; ---------------------------------------------------------------------------------
+   227 ;; (0) _main                                                 0     0      0    1574
+   228 ;;                           _LCD_DISP
+   229 ;; ---------------------------------------------------------------------------------
+   230 ;; (1) _LCD_DISP                                             6     6      0    1574
+   231 ;;                                              7 COMMON     2     2      0
+   232 ;;                                              0 BANK0      4     4      0
+   233 ;;                           _SET_DISP
+   234 ;; ---------------------------------------------------------------------------------
+   235 ;; (2) _SET_DISP                                             2     2      0      88
+   236 ;;                                              5 COMMON     2     2      0
+   237 ;; ---------------------------------------------------------------------------------
+   238 ;; Estimated maximum stack depth 2
+   239 ;; ---------------------------------------------------------------------------------
+   240 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   241 ;; ---------------------------------------------------------------------------------
+   242 ;; (3) _isr                                                  5     5      0       0
+   243 ;;                                              0 COMMON     5     5      0
+   244 ;; ---------------------------------------------------------------------------------
+   245 ;; Estimated maximum stack depth 3
+   246 ;; ---------------------------------------------------------------------------------
+   247                           
+   248 ;; Call Graph Graphs:
+   249                           
+   250 ;; _main (ROOT)
+   251 ;;   _LCD_DISP
+   252 ;;     _SET_DISP
+   253 ;;
+   254 ;; _isr (ROOT)
+   255 ;;
+   256                           
+   257 ;; Address spaces:
+   258                           
+   259 ;;Name               Size   Autos  Total    Cost      Usage
+   260 ;;BITCOMMON            E      0       0       0        0.0%
+   261 ;;NULL                 0      0       0       0        0.0%
+   262 ;;CODE                 0      0       0       0        0.0%
+   263 ;;COMMON               E      9       9       1       64.3%
+   264 ;;BITSFR0              0      0       0       1        0.0%
+   265 ;;SFR0                 0      0       0       1        0.0%
+   266 ;;BITSFR1              0      0       0       2        0.0%
+   267 ;;SFR1                 0      0       0       2        0.0%
+   268 ;;STACK                0      0       2       2        0.0%
+   269 ;;ABS                  0      0       F       3        0.0%
+   270 ;;BITBANK0            50      0       0       4        0.0%
+   271 ;;BITSFR3              0      0       0       4        0.0%
+   272 ;;SFR3                 0      0       0       4        0.0%
+   273 ;;BANK0               50      4       6       5        7.5%
+   274 ;;BITSFR2              0      0       0       5        0.0%
+   275 ;;SFR2                 0      0       0       5        0.0%
+   276 ;;BITBANK1            50      0       0       6        0.0%
+   277 ;;BANK1               50      0       0       7        0.0%
+   278 ;;DATA                 0      0      11       8        0.0%
+   279                           
+   280                           	global	_main
+   281                           psect	maintext,global,class=CODE,delta=2
+   282                           global __pmaintext
+   283  0256                     __pmaintext:
+   284                           
+   285 ;; *************** function _main *****************
+   286 ;; Defined at:
+   287 ;;		line 17 in file "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\LCD_Demo\LCD.c"
+   288 ;; Parameters:    Size  Location     Type
+   289 ;;		None
+   290 ;; Auto vars:     Size  Location     Type
+   291 ;;		None
+   292 ;; Return value:  Size  Location     Type
+   293 ;;		None               void
+   294 ;; Registers used:
+   295 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   296 ;; Tracked objects:
+   297 ;;		On entry : 17F/0
+   298 ;;		On exit  : 0/0
+   299 ;;		Unchanged: 0/0
+   300 ;; Data sizes:     COMMON   BANK0   BANK1
+   301 ;;      Params:         0       0       0
+   302 ;;      Locals:         0       0       0
+   303 ;;      Temps:          0       0       0
+   304 ;;      Totals:         0       0       0
+   305 ;;Total ram usage:        0 bytes
+   306 ;; Hardware stack levels required when called:    3
+   307 ;; This function calls:
+   308 ;;		_LCD_DISP
+   309 ;; This function is called by:
+   310 ;;		Startup code after reset
+   311 ;; This function uses a non-reentrant model
+   312 ;;
+   313                           psect	maintext
+   314                           	file	"E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\LCD_Demo\LCD.c"
+   315                           	line	17
+   316                           	global	__size_of_main
+   317  0035                     	__size_of_main	equ	__end_of_main-_main
+   318                           	
+   319  0256                     _main:	
+   320                           	opt	stack 5
+   321                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   322                           	line	18
+   323                           	
+   324  0256                     l2290:	
+   325                           # 18 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\LCD_Demo\LCD.c"
+   326  0256  0064               clrwdt ;#
+   327                           psect	maintext
+   328                           	line	19
+   329                           	
+   330  0257                     l2292:	
+   331                           ;LCD.c: 19: OSCCON = 0x71;
+   332  0257  3071               	movlw	(071h)
+   333  0258  1683               	bsf	status, 5	;RP0=1, select bank1
+   334  0259  1303               	bcf	status, 6	;RP1=0, select bank1
+   335  025A  008F               	movwf	(143)^080h	;volatile
+   336                           	line	20
+   337                           	
+   338  025B                     l2294:	
+   339                           ;LCD.c: 20: PORTA = 0;
+   340  025B  1283               	bcf	status, 5	;RP0=0, select bank0
+   341  025C  1303               	bcf	status, 6	;RP1=0, select bank0
+   342  025D  0185               	clrf	(5)	;volatile
+   343                           	line	21
+   344                           	
+   345  025E                     l2296:	
+   346                           ;LCD.c: 21: TRISA = 0;
+   347  025E  1683               	bsf	status, 5	;RP0=1, select bank1
+   348  025F  1303               	bcf	status, 6	;RP1=0, select bank1
+   349  0260  0185               	clrf	(133)^080h	;volatile
+   350                           	line	22
+   351                           	
+   352  0261                     l2298:	
+   353                           ;LCD.c: 22: PORTC = 0;
+   354  0261  1283               	bcf	status, 5	;RP0=0, select bank0
+   355  0262  1303               	bcf	status, 6	;RP1=0, select bank0
+   356  0263  0187               	clrf	(7)	;volatile
+   357                           	line	23
+   358                           	
+   359  0264                     l2300:	
+   360                           ;LCD.c: 23: TRISC = 0XF;
+   361  0264  300F               	movlw	(0Fh)
+   362  0265  1683               	bsf	status, 5	;RP0=1, select bank1
+   363  0266  1303               	bcf	status, 6	;RP1=0, select bank1
+   364  0267  0087               	movwf	(135)^080h	;volatile
+   365                           	line	24
+   366                           ;LCD.c: 24: PORTE = 0;
+   367  0268  1283               	bcf	status, 5	;RP0=0, select bank0
+   368  0269  1303               	bcf	status, 6	;RP1=0, select bank0
+   369  026A  0189               	clrf	(9)	;volatile
+   370                           	line	25
+   371                           ;LCD.c: 25: TRISE = 0;
+   372  026B  1683               	bsf	status, 5	;RP0=1, select bank1
+   373  026C  1303               	bcf	status, 6	;RP1=0, select bank1
+   374  026D  0189               	clrf	(137)^080h	;volatile
+   375                           	line	26
+   376                           ;LCD.c: 26: OPTION_REG = 0;
+   377  026E  0181               	clrf	(129)^080h	;volatile
+   378                           	line	27
+   379                           ;LCD.c: 27: INTCON = 0;
+   380  026F  018B               	clrf	(11)	;volatile
+   381                           	line	28
+   382                           	
+   383  0270                     l2302:	
+   384                           ;LCD.c: 28: TMR2 = 124;
+   385  0270  307C               	movlw	(07Ch)
+   386  0271  1283               	bcf	status, 5	;RP0=0, select bank0
+   387  0272  1303               	bcf	status, 6	;RP1=0, select bank0
+   388  0273  0091               	movwf	(17)	;volatile
+   389                           	line	29
+   390                           	
+   391  0274                     l2304:	
+   392                           ;LCD.c: 29: T2CON = 4;
+   393  0274  3004               	movlw	(04h)
+   394  0275  0092               	movwf	(18)	;volatile
+   395                           	line	30
+   396                           	
+   397  0276                     l2306:	
+   398                           ;LCD.c: 30: TMR2IE = 1;
+   399  0276  1683               	bsf	status, 5	;RP0=1, select bank1
+   400  0277  1303               	bcf	status, 6	;RP1=0, select bank1
+   401  0278  148C               	bsf	(1121/8)^080h,(1121)&7
+   402                           	line	31
+   403                           	
+   404  0279                     l2308:	
+   405                           ;LCD.c: 31: PEIE = 1;
+   406  0279  170B               	bsf	(94/8),(94)&7
+   407                           	line	32
+   408                           	
+   409  027A                     l2310:	
+   410                           ;LCD.c: 32: GIE = 1;
+   411  027A  178B               	bsf	(95/8),(95)&7
+   412  027B  2A7C               	goto	l2312
+   413                           	line	33
+   414                           ;LCD.c: 33: while (1)
+   415                           	
+   416  027C                     l543:	
+   417                           	line	35
+   418                           	
+   419  027C                     l2312:	
+   420                           # 35 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\LCD_Demo\LCD.c"
+   421  027C  0064               clrwdt ;#
+   422                           psect	maintext
+   423                           	line	36
+   424                           	
+   425  027D                     l2314:	
+   426                           ;LCD.c: 36: if(tcount>15)
+   427  027D  3010               	movlw	(010h)
+   428  027E  1283               	bcf	status, 5	;RP0=0, select bank0
+   429  027F  1303               	bcf	status, 6	;RP1=0, select bank0
+   430  0280  0225               	subwf	(_tcount),w
+   431  0281  1C03               	skipc
+   432  0282  2A84               	goto	u3451
+   433  0283  2A85               	goto	u3450
+   434  0284                     u3451:
+   435  0284  2A7C               	goto	l2312
+   436  0285                     u3450:
+   437                           	line	38
+   438                           	
+   439  0285                     l2316:	
+   440                           ;LCD.c: 37: {
+   441                           ;LCD.c: 38: tcount=0;
+   442  0285  01A5               	clrf	(_tcount)
+   443                           	line	39
+   444                           	
+   445  0286                     l2318:	
+   446                           ;LCD.c: 39: LCD_DISP();
+   447  0286  2011               	fcall	_LCD_DISP
+   448  0287  2A7C               	goto	l2312
+   449                           	line	40
+   450                           	
+   451  0288                     l544:	
+   452  0288  2A7C               	goto	l2312
+   453                           	line	41
+   454                           	
+   455  0289                     l545:	
+   456                           	line	33
+   457  0289  2A7C               	goto	l2312
+   458                           	
+   459  028A                     l546:	
+   460                           	line	42
+   461                           	
+   462  028A                     l547:	
+   463                           	global	start
+   464  028A  2810               	ljmp	start
+   465                           	opt stack 0
+   466                           GLOBAL	__end_of_main
+   467  028B                     	__end_of_main:
+   468 ;; =============== function _main ends ============
+   469                           
+   470                           	signat	_main,88
+   471                           	global	_LCD_DISP
+   472                           psect	text121,local,class=CODE,delta=2
+   473                           global __ptext121
+   474  0011                     __ptext121:
+   475                           
+   476 ;; *************** function _LCD_DISP *****************
+   477 ;; Defined at:
+   478 ;;		line 71 in file "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\LCD_Demo\LCD.c"
+   479 ;; Parameters:    Size  Location     Type
+   480 ;;		None
+   481 ;; Auto vars:     Size  Location     Type
+   482 ;;  display         4    0[BANK0 ] unsigned char [4]
+   483 ;; Return value:  Size  Location     Type
+   484 ;;		None               void
+   485 ;; Registers used:
+   486 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   487 ;; Tracked objects:
+   488 ;;		On entry : 0/0
+   489 ;;		On exit  : 0/0
+   490 ;;		Unchanged: 0/0
+   491 ;; Data sizes:     COMMON   BANK0   BANK1
+   492 ;;      Params:         0       0       0
+   493 ;;      Locals:         0       4       0
+   494 ;;      Temps:          2       0       0
+   495 ;;      Totals:         2       4       0
+   496 ;;Total ram usage:        6 bytes
+   497 ;; Hardware stack levels used:    1
+   498 ;; Hardware stack levels required when called:    2
+   499 ;; This function calls:
+   500 ;;		_SET_DISP
+   501 ;; This function is called by:
+   502 ;;		_main
+   503 ;; This function uses a non-reentrant model
+   504 ;;
+   505                           psect	text121
+   506                           	file	"E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\LCD_Demo\LCD.c"
+   507                           	line	71
+   508                           	global	__size_of_LCD_DISP
+   509  0245                     	__size_of_LCD_DISP	equ	__end_of_LCD_DISP-_LCD_DISP
+   510                           	
+   511  0011                     _LCD_DISP:	
+   512                           	opt	stack 5
+   513                           ; Regs used in _LCD_DISP: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   514                           	line	74
+   515                           	
+   516  0011                     l2124:	
+   517                           ;LCD.c: 72: static unsigned char dcount;
+   518                           ;LCD.c: 73: unsigned char display[4];
+   519                           ;LCD.c: 74: SET_DISP(display);
+   520  0011  3020               	movlw	(LCD_DISP@display)&0ffh
+   521  0012  228B               	fcall	_SET_DISP
+   522                           	line	76
+   523                           	
+   524  0013                     l2126:	
+   525                           ;LCD.c: 76: LCDCON0 = 0B10000000;
+   526  0013  3080               	movlw	(080h)
+   527  0014  1683               	bsf	status, 5	;RP0=1, select bank3
+   528  0015  1703               	bsf	status, 6	;RP1=1, select bank3
+   529  0016  0090               	movwf	(400)^0180h	;volatile
+   530                           	line	77
+   531                           	
+   532  0017                     l2128:	
+   533                           ;LCD.c: 77: TRISC = 0B00001111;
+   534  0017  300F               	movlw	(0Fh)
+   535  0018  1683               	bsf	status, 5	;RP0=1, select bank1
+   536  0019  1303               	bcf	status, 6	;RP1=0, select bank1
+   537  001A  0087               	movwf	(135)^080h	;volatile
+   538                           	line	78
+   539                           	
+   540  001B                     l2130:	
+   541                           ;LCD.c: 78: COMEN = 0B00001111;
+   542  001B  300F               	movlw	(0Fh)
+   543  001C  1683               	bsf	status, 5	;RP0=1, select bank3
+   544  001D  1703               	bsf	status, 6	;RP1=1, select bank3
+   545  001E  0097               	movwf	(407)^0180h	;volatile
+   546                           	line	79
+   547                           	
+   548  001F                     l2132:	
+   549                           ;LCD.c: 79: dcount++;
+   550  001F  3001               	movlw	(01h)
+   551  0020  00F7               	movwf	(??_LCD_DISP+0)+0
+   552  0021  0877               	movf	(??_LCD_DISP+0)+0,w
+   553  0022  1283               	bcf	status, 5	;RP0=0, select bank0
+   554  0023  1303               	bcf	status, 6	;RP1=0, select bank0
+   555  0024  07A4               	addwf	(LCD_DISP@dcount),f
+   556                           	line	81
+   557                           ;LCD.c: 81: switch(dcount&7)
+   558  0025  2A3F               	goto	l2280
+   559                           	line	83
+   560                           ;LCD.c: 82: {
+   561                           ;LCD.c: 83: case 0:
+   562                           	
+   563  0026                     l560:	
+   564                           	line	84
+   565                           ;LCD.c: 84: if(display[0] & 0x01) {RA1 = 1;} else {RA1 = 0;}
+   566  0026  1C20               	btfss	(LCD_DISP@display),(0)&7
+   567  0027  2829               	goto	u2811
+   568  0028  282A               	goto	u2810
+   569  0029                     u2811:
+   570  0029  282C               	goto	l561
+   571  002A                     u2810:
+   572                           	
+   573  002A                     l2134:	
+   574  002A  1485               	bsf	(41/8),(41)&7
+   575  002B  282D               	goto	l562
+   576                           	
+   577  002C                     l561:	
+   578  002C  1085               	bcf	(41/8),(41)&7
+   579                           	
+   580  002D                     l562:	
+   581                           	line	85
+   582                           ;LCD.c: 85: if(display[0] & 0x02) {RA2 = 1;} else {RA2 = 0;}
+   583  002D  1CA0               	btfss	(LCD_DISP@display),(1)&7
+   584  002E  2830               	goto	u2821
+   585  002F  2831               	goto	u2820
+   586  0030                     u2821:
+   587  0030  2833               	goto	l563
+   588  0031                     u2820:
+   589                           	
+   590  0031                     l2136:	
+   591  0031  1505               	bsf	(42/8),(42)&7
+   592  0032  2834               	goto	l564
+   593                           	
+   594  0033                     l563:	
+   595  0033  1105               	bcf	(42/8),(42)&7
+   596                           	
+   597  0034                     l564:	
+   598                           	line	86
+   599                           ;LCD.c: 86: if(display[0] & 0x04) {RA3 = 1;} else {RA3 = 0;}
+   600  0034  1D20               	btfss	(LCD_DISP@display),(2)&7
+   601  0035  2837               	goto	u2831
+   602  0036  2838               	goto	u2830
+   603  0037                     u2831:
+   604  0037  283A               	goto	l565
+   605  0038                     u2830:
+   606                           	
+   607  0038                     l2138:	
+   608  0038  1585               	bsf	(43/8),(43)&7
+   609  0039  283B               	goto	l566
+   610                           	
+   611  003A                     l565:	
+   612  003A  1185               	bcf	(43/8),(43)&7
+   613                           	
+   614  003B                     l566:	
+   615                           	line	87
+   616                           ;LCD.c: 87: if(display[0] & 0x08) {RA4 = 1;} else {RA4 = 0;}
+   617  003B  1DA0               	btfss	(LCD_DISP@display),(3)&7
+   618  003C  283E               	goto	u2841
+   619  003D  283F               	goto	u2840
+   620  003E                     u2841:
+   621  003E  2841               	goto	l567
+   622  003F                     u2840:
+   623                           	
+   624  003F                     l2140:	
+   625  003F  1605               	bsf	(44/8),(44)&7
+   626  0040  2842               	goto	l568
+   627                           	
+   628  0041                     l567:	
+   629  0041  1205               	bcf	(44/8),(44)&7
+   630                           	
+   631  0042                     l568:	
+   632                           	line	88
+   633                           ;LCD.c: 88: if(display[0] & 0x10) {RA5 = 1;} else {RA5 = 0;}
+   634  0042  1E20               	btfss	(LCD_DISP@display),(4)&7
+   635  0043  2845               	goto	u2851
+   636  0044  2846               	goto	u2850
+   637  0045                     u2851:
+   638  0045  2848               	goto	l569
+   639  0046                     u2850:
+   640                           	
+   641  0046                     l2142:	
+   642  0046  1685               	bsf	(45/8),(45)&7
+   643  0047  2849               	goto	l570
+   644                           	
+   645  0048                     l569:	
+   646  0048  1285               	bcf	(45/8),(45)&7
+   647                           	
+   648  0049                     l570:	
+   649                           	line	89
+   650                           ;LCD.c: 89: if(display[0] & 0x20) {RB1 = 1;} else {RB1 = 0;}
+   651  0049  1EA0               	btfss	(LCD_DISP@display),(5)&7
+   652  004A  284C               	goto	u2861
+   653  004B  284D               	goto	u2860
+   654  004C                     u2861:
+   655  004C  284F               	goto	l571
+   656  004D                     u2860:
+   657                           	
+   658  004D                     l2144:	
+   659  004D  1486               	bsf	(49/8),(49)&7
+   660  004E  2850               	goto	l572
+   661                           	
+   662  004F                     l571:	
+   663  004F  1086               	bcf	(49/8),(49)&7
+   664                           	
+   665  0050                     l572:	
+   666                           	line	90
+   667                           ;LCD.c: 90: if(display[0] & 0x40) {RB2 = 1;} else {RB2 = 0;}
+   668  0050  1F20               	btfss	(LCD_DISP@display),(6)&7
+   669  0051  2853               	goto	u2871
+   670  0052  2854               	goto	u2870
+   671  0053                     u2871:
+   672  0053  2856               	goto	l573
+   673  0054                     u2870:
+   674                           	
+   675  0054                     l2146:	
+   676  0054  1506               	bsf	(50/8),(50)&7
+   677  0055  2857               	goto	l574
+   678                           	
+   679  0056                     l573:	
+   680  0056  1106               	bcf	(50/8),(50)&7
+   681                           	
+   682  0057                     l574:	
+   683                           	line	91
+   684                           ;LCD.c: 91: if(display[0] & 0x80) {RB3 = 1;} else {RB3 = 0;}
+   685  0057  1FA0               	btfss	(LCD_DISP@display),(7)&7
+   686  0058  285A               	goto	u2881
+   687  0059  285B               	goto	u2880
+   688  005A                     u2881:
+   689  005A  285D               	goto	l575
+   690  005B                     u2880:
+   691                           	
+   692  005B                     l2148:	
+   693  005B  1586               	bsf	(51/8),(51)&7
+   694  005C  285E               	goto	l576
+   695                           	
+   696  005D                     l575:	
+   697  005D  1186               	bcf	(51/8),(51)&7
+   698                           	
+   699  005E                     l576:	
+   700                           	line	93
+   701                           ;LCD.c: 93: RC0=0;
+   702  005E  1007               	bcf	(56/8),(56)&7
+   703                           	line	94
+   704                           ;LCD.c: 94: TRISC0=0;
+   705  005F  1683               	bsf	status, 5	;RP0=1, select bank1
+   706  0060  1303               	bcf	status, 6	;RP1=0, select bank1
+   707  0061  1007               	bcf	(1080/8)^080h,(1080)&7
+   708                           	line	95
+   709                           	
+   710  0062                     l2150:	
+   711                           ;LCD.c: 95: COMEN&=~(1<<0);
+   712  0062  30FE               	movlw	(0FEh)
+   713  0063  00F7               	movwf	(??_LCD_DISP+0)+0
+   714  0064  0877               	movf	(??_LCD_DISP+0)+0,w
+   715  0065  1683               	bsf	status, 5	;RP0=1, select bank3
+   716  0066  1703               	bsf	status, 6	;RP1=1, select bank3
+   717  0067  0597               	andwf	(407)^0180h,f	;volatile
+   718                           	line	96
+   719                           ;LCD.c: 96: break;
+   720  0068  2A55               	goto	l697
+   721                           	line	97
+   722                           ;LCD.c: 97: case 1:
+   723                           	
+   724  0069                     l578:	
+   725                           	line	98
+   726                           ;LCD.c: 98: if(display[1] & 0x01) {RA1 = 1;} else {RA1 = 0;}
+   727  0069  1C21               	btfss	0+(LCD_DISP@display)+01h,(0)&7
+   728  006A  286C               	goto	u2891
+   729  006B  286D               	goto	u2890
+   730  006C                     u2891:
+   731  006C  286F               	goto	l579
+   732  006D                     u2890:
+   733                           	
+   734  006D                     l2152:	
+   735  006D  1485               	bsf	(41/8),(41)&7
+   736  006E  2870               	goto	l580
+   737                           	
+   738  006F                     l579:	
+   739  006F  1085               	bcf	(41/8),(41)&7
+   740                           	
+   741  0070                     l580:	
+   742                           	line	99
+   743                           ;LCD.c: 99: if(display[1] & 0x02) {RA2 = 1;} else {RA2 = 0;}
+   744  0070  1CA1               	btfss	0+(LCD_DISP@display)+01h,(1)&7
+   745  0071  2873               	goto	u2901
+   746  0072  2874               	goto	u2900
+   747  0073                     u2901:
+   748  0073  2876               	goto	l581
+   749  0074                     u2900:
+   750                           	
+   751  0074                     l2154:	
+   752  0074  1505               	bsf	(42/8),(42)&7
+   753  0075  2877               	goto	l582
+   754                           	
+   755  0076                     l581:	
+   756  0076  1105               	bcf	(42/8),(42)&7
+   757                           	
+   758  0077                     l582:	
+   759                           	line	100
+   760                           ;LCD.c: 100: if(display[1] & 0x04) {RA3 = 1;} else {RA3 = 0;}
+   761  0077  1D21               	btfss	0+(LCD_DISP@display)+01h,(2)&7
+   762  0078  287A               	goto	u2911
+   763  0079  287B               	goto	u2910
+   764  007A                     u2911:
+   765  007A  287D               	goto	l583
+   766  007B                     u2910:
+   767                           	
+   768  007B                     l2156:	
+   769  007B  1585               	bsf	(43/8),(43)&7
+   770  007C  287E               	goto	l584
+   771                           	
+   772  007D                     l583:	
+   773  007D  1185               	bcf	(43/8),(43)&7
+   774                           	
+   775  007E                     l584:	
+   776                           	line	101
+   777                           ;LCD.c: 101: if(display[1] & 0x08) {RA4 = 1;} else {RA4 = 0;}
+   778  007E  1DA1               	btfss	0+(LCD_DISP@display)+01h,(3)&7
+   779  007F  2881               	goto	u2921
+   780  0080  2882               	goto	u2920
+   781  0081                     u2921:
+   782  0081  2884               	goto	l585
+   783  0082                     u2920:
+   784                           	
+   785  0082                     l2158:	
+   786  0082  1605               	bsf	(44/8),(44)&7
+   787  0083  2885               	goto	l586
+   788                           	
+   789  0084                     l585:	
+   790  0084  1205               	bcf	(44/8),(44)&7
+   791                           	
+   792  0085                     l586:	
+   793                           	line	102
+   794                           ;LCD.c: 102: if(display[1] & 0x10) {RA5 = 1;} else {RA5 = 0;}
+   795  0085  1E21               	btfss	0+(LCD_DISP@display)+01h,(4)&7
+   796  0086  2888               	goto	u2931
+   797  0087  2889               	goto	u2930
+   798  0088                     u2931:
+   799  0088  288B               	goto	l587
+   800  0089                     u2930:
+   801                           	
+   802  0089                     l2160:	
+   803  0089  1685               	bsf	(45/8),(45)&7
+   804  008A  288C               	goto	l588
+   805                           	
+   806  008B                     l587:	
+   807  008B  1285               	bcf	(45/8),(45)&7
+   808                           	
+   809  008C                     l588:	
+   810                           	line	103
+   811                           ;LCD.c: 103: if(display[1] & 0x20) {RB1 = 1;} else {RB1 = 0;}
+   812  008C  1EA1               	btfss	0+(LCD_DISP@display)+01h,(5)&7
+   813  008D  288F               	goto	u2941
+   814  008E  2890               	goto	u2940
+   815  008F                     u2941:
+   816  008F  2892               	goto	l589
+   817  0090                     u2940:
+   818                           	
+   819  0090                     l2162:	
+   820  0090  1486               	bsf	(49/8),(49)&7
+   821  0091  2893               	goto	l590
+   822                           	
+   823  0092                     l589:	
+   824  0092  1086               	bcf	(49/8),(49)&7
+   825                           	
+   826  0093                     l590:	
+   827                           	line	104
+   828                           ;LCD.c: 104: if(display[1] & 0x40) {RB2 = 1;} else {RB2 = 0;}
+   829  0093  1F21               	btfss	0+(LCD_DISP@display)+01h,(6)&7
+   830  0094  2896               	goto	u2951
+   831  0095  2897               	goto	u2950
+   832  0096                     u2951:
+   833  0096  2899               	goto	l591
+   834  0097                     u2950:
+   835                           	
+   836  0097                     l2164:	
+   837  0097  1506               	bsf	(50/8),(50)&7
+   838  0098  289A               	goto	l592
+   839                           	
+   840  0099                     l591:	
+   841  0099  1106               	bcf	(50/8),(50)&7
+   842                           	
+   843  009A                     l592:	
+   844                           	line	105
+   845                           ;LCD.c: 105: if(display[1] & 0x80) {RB3 = 1;} else {RB3 = 0;}
+   846  009A  1FA1               	btfss	0+(LCD_DISP@display)+01h,(7)&7
+   847  009B  289D               	goto	u2961
+   848  009C  289E               	goto	u2960
+   849  009D                     u2961:
+   850  009D  28A0               	goto	l593
+   851  009E                     u2960:
+   852                           	
+   853  009E                     l2166:	
+   854  009E  1586               	bsf	(51/8),(51)&7
+   855  009F  28A1               	goto	l594
+   856                           	
+   857  00A0                     l593:	
+   858  00A0  1186               	bcf	(51/8),(51)&7
+   859                           	
+   860  00A1                     l594:	
+   861                           	line	107
+   862                           ;LCD.c: 107: RC1=0;
+   863  00A1  1087               	bcf	(57/8),(57)&7
+   864                           	line	108
+   865                           ;LCD.c: 108: TRISC1=0;
+   866  00A2  1683               	bsf	status, 5	;RP0=1, select bank1
+   867  00A3  1303               	bcf	status, 6	;RP1=0, select bank1
+   868  00A4  1087               	bcf	(1081/8)^080h,(1081)&7
+   869                           	line	109
+   870                           	
+   871  00A5                     l2168:	
+   872                           ;LCD.c: 109: COMEN&=~(1<<1);
+   873  00A5  30FD               	movlw	(0FDh)
+   874  00A6  00F7               	movwf	(??_LCD_DISP+0)+0
+   875  00A7  0877               	movf	(??_LCD_DISP+0)+0,w
+   876  00A8  1683               	bsf	status, 5	;RP0=1, select bank3
+   877  00A9  1703               	bsf	status, 6	;RP1=1, select bank3
+   878  00AA  0597               	andwf	(407)^0180h,f	;volatile
+   879                           	line	110
+   880                           ;LCD.c: 110: break;
+   881  00AB  2A55               	goto	l697
+   882                           	line	111
+   883                           ;LCD.c: 111: case 2:
+   884                           	
+   885  00AC                     l595:	
+   886                           	line	112
+   887                           ;LCD.c: 112: if(display[2] & 0x01) {RA1 = 1;} else {RA1 = 0;}
+   888  00AC  1C22               	btfss	0+(LCD_DISP@display)+02h,(0)&7
+   889  00AD  28AF               	goto	u2971
+   890  00AE  28B0               	goto	u2970
+   891  00AF                     u2971:
+   892  00AF  28B2               	goto	l596
+   893  00B0                     u2970:
+   894                           	
+   895  00B0                     l2170:	
+   896  00B0  1485               	bsf	(41/8),(41)&7
+   897  00B1  28B3               	goto	l597
+   898                           	
+   899  00B2                     l596:	
+   900  00B2  1085               	bcf	(41/8),(41)&7
+   901                           	
+   902  00B3                     l597:	
+   903                           	line	113
+   904                           ;LCD.c: 113: if(display[2] & 0x02) {RA2 = 1;} else {RA2 = 0;}
+   905  00B3  1CA2               	btfss	0+(LCD_DISP@display)+02h,(1)&7
+   906  00B4  28B6               	goto	u2981
+   907  00B5  28B7               	goto	u2980
+   908  00B6                     u2981:
+   909  00B6  28B9               	goto	l598
+   910  00B7                     u2980:
+   911                           	
+   912  00B7                     l2172:	
+   913  00B7  1505               	bsf	(42/8),(42)&7
+   914  00B8  28BA               	goto	l599
+   915                           	
+   916  00B9                     l598:	
+   917  00B9  1105               	bcf	(42/8),(42)&7
+   918                           	
+   919  00BA                     l599:	
+   920                           	line	114
+   921                           ;LCD.c: 114: if(display[2] & 0x04) {RA3 = 1;} else {RA3 = 0;}
+   922  00BA  1D22               	btfss	0+(LCD_DISP@display)+02h,(2)&7
+   923  00BB  28BD               	goto	u2991
+   924  00BC  28BE               	goto	u2990
+   925  00BD                     u2991:
+   926  00BD  28C0               	goto	l600
+   927  00BE                     u2990:
+   928                           	
+   929  00BE                     l2174:	
+   930  00BE  1585               	bsf	(43/8),(43)&7
+   931  00BF  28C1               	goto	l601
+   932                           	
+   933  00C0                     l600:	
+   934  00C0  1185               	bcf	(43/8),(43)&7
+   935                           	
+   936  00C1                     l601:	
+   937                           	line	115
+   938                           ;LCD.c: 115: if(display[2] & 0x08) {RA4 = 1;} else {RA4 = 0;}
+   939  00C1  1DA2               	btfss	0+(LCD_DISP@display)+02h,(3)&7
+   940  00C2  28C4               	goto	u3001
+   941  00C3  28C5               	goto	u3000
+   942  00C4                     u3001:
+   943  00C4  28C7               	goto	l602
+   944  00C5                     u3000:
+   945                           	
+   946  00C5                     l2176:	
+   947  00C5  1605               	bsf	(44/8),(44)&7
+   948  00C6  28C8               	goto	l603
+   949                           	
+   950  00C7                     l602:	
+   951  00C7  1205               	bcf	(44/8),(44)&7
+   952                           	
+   953  00C8                     l603:	
+   954                           	line	116
+   955                           ;LCD.c: 116: if(display[2] & 0x10) {RA5 = 1;} else {RA5 = 0;}
+   956  00C8  1E22               	btfss	0+(LCD_DISP@display)+02h,(4)&7
+   957  00C9  28CB               	goto	u3011
+   958  00CA  28CC               	goto	u3010
+   959  00CB                     u3011:
+   960  00CB  28CE               	goto	l604
+   961  00CC                     u3010:
+   962                           	
+   963  00CC                     l2178:	
+   964  00CC  1685               	bsf	(45/8),(45)&7
+   965  00CD  28CF               	goto	l605
+   966                           	
+   967  00CE                     l604:	
+   968  00CE  1285               	bcf	(45/8),(45)&7
+   969                           	
+   970  00CF                     l605:	
+   971                           	line	117
+   972                           ;LCD.c: 117: if(display[2] & 0x20) {RB1 = 1;} else {RB1 = 0;}
+   973  00CF  1EA2               	btfss	0+(LCD_DISP@display)+02h,(5)&7
+   974  00D0  28D2               	goto	u3021
+   975  00D1  28D3               	goto	u3020
+   976  00D2                     u3021:
+   977  00D2  28D5               	goto	l606
+   978  00D3                     u3020:
+   979                           	
+   980  00D3                     l2180:	
+   981  00D3  1486               	bsf	(49/8),(49)&7
+   982  00D4  28D6               	goto	l607
+   983                           	
+   984  00D5                     l606:	
+   985  00D5  1086               	bcf	(49/8),(49)&7
+   986                           	
+   987  00D6                     l607:	
+   988                           	line	118
+   989                           ;LCD.c: 118: if(display[2] & 0x40) {RB2 = 1;} else {RB2 = 0;}
+   990  00D6  1F22               	btfss	0+(LCD_DISP@display)+02h,(6)&7
+   991  00D7  28D9               	goto	u3031
+   992  00D8  28DA               	goto	u3030
+   993  00D9                     u3031:
+   994  00D9  28DC               	goto	l608
+   995  00DA                     u3030:
+   996                           	
+   997  00DA                     l2182:	
+   998  00DA  1506               	bsf	(50/8),(50)&7
+   999  00DB  28DD               	goto	l609
+  1000                           	
+  1001  00DC                     l608:	
+  1002  00DC  1106               	bcf	(50/8),(50)&7
+  1003                           	
+  1004  00DD                     l609:	
+  1005                           	line	119
+  1006                           ;LCD.c: 119: if(display[2] & 0x80) {RB3 = 1;} else {RB3 = 0;}
+  1007  00DD  1FA2               	btfss	0+(LCD_DISP@display)+02h,(7)&7
+  1008  00DE  28E0               	goto	u3041
+  1009  00DF  28E1               	goto	u3040
+  1010  00E0                     u3041:
+  1011  00E0  28E3               	goto	l610
+  1012  00E1                     u3040:
+  1013                           	
+  1014  00E1                     l2184:	
+  1015  00E1  1586               	bsf	(51/8),(51)&7
+  1016  00E2  28E4               	goto	l611
+  1017                           	
+  1018  00E3                     l610:	
+  1019  00E3  1186               	bcf	(51/8),(51)&7
+  1020                           	
+  1021  00E4                     l611:	
+  1022                           	line	121
+  1023                           ;LCD.c: 121: RC2=0;
+  1024  00E4  1107               	bcf	(58/8),(58)&7
+  1025                           	line	122
+  1026                           ;LCD.c: 122: TRISC2=0;
+  1027  00E5  1683               	bsf	status, 5	;RP0=1, select bank1
+  1028  00E6  1303               	bcf	status, 6	;RP1=0, select bank1
+  1029  00E7  1107               	bcf	(1082/8)^080h,(1082)&7
+  1030                           	line	123
+  1031                           	
+  1032  00E8                     l2186:	
+  1033                           ;LCD.c: 123: COMEN&=~(1<<2);
+  1034  00E8  30FB               	movlw	(0FBh)
+  1035  00E9  00F7               	movwf	(??_LCD_DISP+0)+0
+  1036  00EA  0877               	movf	(??_LCD_DISP+0)+0,w
+  1037  00EB  1683               	bsf	status, 5	;RP0=1, select bank3
+  1038  00EC  1703               	bsf	status, 6	;RP1=1, select bank3
+  1039  00ED  0597               	andwf	(407)^0180h,f	;volatile
+  1040                           	line	124
+  1041                           ;LCD.c: 124: break;
+  1042  00EE  2A55               	goto	l697
+  1043                           	line	125
+  1044                           ;LCD.c: 125: case 3:
+  1045                           	
+  1046  00EF                     l612:	
+  1047                           	line	126
+  1048                           ;LCD.c: 126: if(display[3] & 0x01) {RA1 = 1;} else {RA1 = 0;}
+  1049  00EF  1C23               	btfss	0+(LCD_DISP@display)+03h,(0)&7
+  1050  00F0  28F2               	goto	u3051
+  1051  00F1  28F3               	goto	u3050
+  1052  00F2                     u3051:
+  1053  00F2  28F5               	goto	l613
+  1054  00F3                     u3050:
+  1055                           	
+  1056  00F3                     l2188:	
+  1057  00F3  1485               	bsf	(41/8),(41)&7
+  1058  00F4  28F6               	goto	l614
+  1059                           	
+  1060  00F5                     l613:	
+  1061  00F5  1085               	bcf	(41/8),(41)&7
+  1062                           	
+  1063  00F6                     l614:	
+  1064                           	line	127
+  1065                           ;LCD.c: 127: if(display[3] & 0x02) {RA2 = 1;} else {RA2 = 0;}
+  1066  00F6  1CA3               	btfss	0+(LCD_DISP@display)+03h,(1)&7
+  1067  00F7  28F9               	goto	u3061
+  1068  00F8  28FA               	goto	u3060
+  1069  00F9                     u3061:
+  1070  00F9  28FC               	goto	l615
+  1071  00FA                     u3060:
+  1072                           	
+  1073  00FA                     l2190:	
+  1074  00FA  1505               	bsf	(42/8),(42)&7
+  1075  00FB  28FD               	goto	l616
+  1076                           	
+  1077  00FC                     l615:	
+  1078  00FC  1105               	bcf	(42/8),(42)&7
+  1079                           	
+  1080  00FD                     l616:	
+  1081                           	line	128
+  1082                           ;LCD.c: 128: if(display[3] & 0x04) {RA3 = 1;} else {RA3 = 0;}
+  1083  00FD  1D23               	btfss	0+(LCD_DISP@display)+03h,(2)&7
+  1084  00FE  2900               	goto	u3071
+  1085  00FF  2901               	goto	u3070
+  1086  0100                     u3071:
+  1087  0100  2903               	goto	l617
+  1088  0101                     u3070:
+  1089                           	
+  1090  0101                     l2192:	
+  1091  0101  1585               	bsf	(43/8),(43)&7
+  1092  0102  2904               	goto	l618
+  1093                           	
+  1094  0103                     l617:	
+  1095  0103  1185               	bcf	(43/8),(43)&7
+  1096                           	
+  1097  0104                     l618:	
+  1098                           	line	129
+  1099                           ;LCD.c: 129: if(display[3] & 0x08) {RA4 = 1;} else {RA4 = 0;}
+  1100  0104  1DA3               	btfss	0+(LCD_DISP@display)+03h,(3)&7
+  1101  0105  2907               	goto	u3081
+  1102  0106  2908               	goto	u3080
+  1103  0107                     u3081:
+  1104  0107  290A               	goto	l619
+  1105  0108                     u3080:
+  1106                           	
+  1107  0108                     l2194:	
+  1108  0108  1605               	bsf	(44/8),(44)&7
+  1109  0109  290B               	goto	l620
+  1110                           	
+  1111  010A                     l619:	
+  1112  010A  1205               	bcf	(44/8),(44)&7
+  1113                           	
+  1114  010B                     l620:	
+  1115                           	line	130
+  1116                           ;LCD.c: 130: if(display[3] & 0x10) {RA5 = 1;} else {RA5 = 0;}
+  1117  010B  1E23               	btfss	0+(LCD_DISP@display)+03h,(4)&7
+  1118  010C  290E               	goto	u3091
+  1119  010D  290F               	goto	u3090
+  1120  010E                     u3091:
+  1121  010E  2911               	goto	l621
+  1122  010F                     u3090:
+  1123                           	
+  1124  010F                     l2196:	
+  1125  010F  1685               	bsf	(45/8),(45)&7
+  1126  0110  2912               	goto	l622
+  1127                           	
+  1128  0111                     l621:	
+  1129  0111  1285               	bcf	(45/8),(45)&7
+  1130                           	
+  1131  0112                     l622:	
+  1132                           	line	131
+  1133                           ;LCD.c: 131: if(display[3] & 0x20) {RB1 = 1;} else {RB1 = 0;}
+  1134  0112  1EA3               	btfss	0+(LCD_DISP@display)+03h,(5)&7
+  1135  0113  2915               	goto	u3101
+  1136  0114  2916               	goto	u3100
+  1137  0115                     u3101:
+  1138  0115  2918               	goto	l623
+  1139  0116                     u3100:
+  1140                           	
+  1141  0116                     l2198:	
+  1142  0116  1486               	bsf	(49/8),(49)&7
+  1143  0117  2919               	goto	l624
+  1144                           	
+  1145  0118                     l623:	
+  1146  0118  1086               	bcf	(49/8),(49)&7
+  1147                           	
+  1148  0119                     l624:	
+  1149                           	line	132
+  1150                           ;LCD.c: 132: if(display[3] & 0x40) {RB2 = 1;} else {RB2 = 0;}
+  1151  0119  1F23               	btfss	0+(LCD_DISP@display)+03h,(6)&7
+  1152  011A  291C               	goto	u3111
+  1153  011B  291D               	goto	u3110
+  1154  011C                     u3111:
+  1155  011C  291F               	goto	l625
+  1156  011D                     u3110:
+  1157                           	
+  1158  011D                     l2200:	
+  1159  011D  1506               	bsf	(50/8),(50)&7
+  1160  011E  2920               	goto	l626
+  1161                           	
+  1162  011F                     l625:	
+  1163  011F  1106               	bcf	(50/8),(50)&7
+  1164                           	
+  1165  0120                     l626:	
+  1166                           	line	133
+  1167                           ;LCD.c: 133: if(display[3] & 0x80) {RB3 = 1;} else {RB3 = 0;}
+  1168  0120  1FA3               	btfss	0+(LCD_DISP@display)+03h,(7)&7
+  1169  0121  2923               	goto	u3121
+  1170  0122  2924               	goto	u3120
+  1171  0123                     u3121:
+  1172  0123  2926               	goto	l627
+  1173  0124                     u3120:
+  1174                           	
+  1175  0124                     l2202:	
+  1176  0124  1586               	bsf	(51/8),(51)&7
+  1177  0125  2927               	goto	l628
+  1178                           	
+  1179  0126                     l627:	
+  1180  0126  1186               	bcf	(51/8),(51)&7
+  1181                           	
+  1182  0127                     l628:	
+  1183                           	line	135
+  1184                           ;LCD.c: 135: RC3=0;
+  1185  0127  1187               	bcf	(59/8),(59)&7
+  1186                           	line	136
+  1187                           ;LCD.c: 136: TRISC3=0;
+  1188  0128  1683               	bsf	status, 5	;RP0=1, select bank1
+  1189  0129  1303               	bcf	status, 6	;RP1=0, select bank1
+  1190  012A  1187               	bcf	(1083/8)^080h,(1083)&7
+  1191                           	line	137
+  1192                           	
+  1193  012B                     l2204:	
+  1194                           ;LCD.c: 137: COMEN&=~(1<<3);
+  1195  012B  30F7               	movlw	(0F7h)
+  1196  012C  00F7               	movwf	(??_LCD_DISP+0)+0
+  1197  012D  0877               	movf	(??_LCD_DISP+0)+0,w
+  1198  012E  1683               	bsf	status, 5	;RP0=1, select bank3
+  1199  012F  1703               	bsf	status, 6	;RP1=1, select bank3
+  1200  0130  0597               	andwf	(407)^0180h,f	;volatile
+  1201                           	line	138
+  1202                           ;LCD.c: 138: break;
+  1203  0131  2A55               	goto	l697
+  1204                           	line	139
+  1205                           ;LCD.c: 139: case 4:
+  1206                           	
+  1207  0132                     l629:	
+  1208                           	line	140
+  1209                           ;LCD.c: 140: if(display[0] & 0x01) {RA1 = 0;} else {RA1 = 1;}
+  1210  0132  1C20               	btfss	(LCD_DISP@display),(0)&7
+  1211  0133  2935               	goto	u3131
+  1212  0134  2936               	goto	u3130
+  1213  0135                     u3131:
+  1214  0135  2938               	goto	l630
+  1215  0136                     u3130:
+  1216                           	
+  1217  0136                     l2206:	
+  1218  0136  1085               	bcf	(41/8),(41)&7
+  1219  0137  2939               	goto	l631
+  1220                           	
+  1221  0138                     l630:	
+  1222  0138  1485               	bsf	(41/8),(41)&7
+  1223                           	
+  1224  0139                     l631:	
+  1225                           	line	141
+  1226                           ;LCD.c: 141: if(display[0] & 0x02) {RA2 = 0;} else {RA2 = 1;}
+  1227  0139  1CA0               	btfss	(LCD_DISP@display),(1)&7
+  1228  013A  293C               	goto	u3141
+  1229  013B  293D               	goto	u3140
+  1230  013C                     u3141:
+  1231  013C  293F               	goto	l632
+  1232  013D                     u3140:
+  1233                           	
+  1234  013D                     l2208:	
+  1235  013D  1105               	bcf	(42/8),(42)&7
+  1236  013E  2940               	goto	l633
+  1237                           	
+  1238  013F                     l632:	
+  1239  013F  1505               	bsf	(42/8),(42)&7
+  1240                           	
+  1241  0140                     l633:	
+  1242                           	line	142
+  1243                           ;LCD.c: 142: if(display[0] & 0x04) {RA3 = 0;} else {RA3 = 1;}
+  1244  0140  1D20               	btfss	(LCD_DISP@display),(2)&7
+  1245  0141  2943               	goto	u3151
+  1246  0142  2944               	goto	u3150
+  1247  0143                     u3151:
+  1248  0143  2946               	goto	l634
+  1249  0144                     u3150:
+  1250                           	
+  1251  0144                     l2210:	
+  1252  0144  1185               	bcf	(43/8),(43)&7
+  1253  0145  2947               	goto	l635
+  1254                           	
+  1255  0146                     l634:	
+  1256  0146  1585               	bsf	(43/8),(43)&7
+  1257                           	
+  1258  0147                     l635:	
+  1259                           	line	143
+  1260                           ;LCD.c: 143: if(display[0] & 0x08) {RA4 = 0;} else {RA4 = 1;}
+  1261  0147  1DA0               	btfss	(LCD_DISP@display),(3)&7
+  1262  0148  294A               	goto	u3161
+  1263  0149  294B               	goto	u3160
+  1264  014A                     u3161:
+  1265  014A  294D               	goto	l636
+  1266  014B                     u3160:
+  1267                           	
+  1268  014B                     l2212:	
+  1269  014B  1205               	bcf	(44/8),(44)&7
+  1270  014C  294E               	goto	l637
+  1271                           	
+  1272  014D                     l636:	
+  1273  014D  1605               	bsf	(44/8),(44)&7
+  1274                           	
+  1275  014E                     l637:	
+  1276                           	line	144
+  1277                           ;LCD.c: 144: if(display[0] & 0x10) {RA5 = 0;} else {RA5 = 1;}
+  1278  014E  1E20               	btfss	(LCD_DISP@display),(4)&7
+  1279  014F  2951               	goto	u3171
+  1280  0150  2952               	goto	u3170
+  1281  0151                     u3171:
+  1282  0151  2954               	goto	l638
+  1283  0152                     u3170:
+  1284                           	
+  1285  0152                     l2214:	
+  1286  0152  1285               	bcf	(45/8),(45)&7
+  1287  0153  2955               	goto	l639
+  1288                           	
+  1289  0154                     l638:	
+  1290  0154  1685               	bsf	(45/8),(45)&7
+  1291                           	
+  1292  0155                     l639:	
+  1293                           	line	145
+  1294                           ;LCD.c: 145: if(display[0] & 0x20) {RB1 = 0;} else {RB1 = 1;}
+  1295  0155  1EA0               	btfss	(LCD_DISP@display),(5)&7
+  1296  0156  2958               	goto	u3181
+  1297  0157  2959               	goto	u3180
+  1298  0158                     u3181:
+  1299  0158  295B               	goto	l640
+  1300  0159                     u3180:
+  1301                           	
+  1302  0159                     l2216:	
+  1303  0159  1086               	bcf	(49/8),(49)&7
+  1304  015A  295C               	goto	l641
+  1305                           	
+  1306  015B                     l640:	
+  1307  015B  1486               	bsf	(49/8),(49)&7
+  1308                           	
+  1309  015C                     l641:	
+  1310                           	line	146
+  1311                           ;LCD.c: 146: if(display[0] & 0x40) {RB2 = 0;} else {RB2 = 1;}
+  1312  015C  1F20               	btfss	(LCD_DISP@display),(6)&7
+  1313  015D  295F               	goto	u3191
+  1314  015E  2960               	goto	u3190
+  1315  015F                     u3191:
+  1316  015F  2962               	goto	l642
+  1317  0160                     u3190:
+  1318                           	
+  1319  0160                     l2218:	
+  1320  0160  1106               	bcf	(50/8),(50)&7
+  1321  0161  2963               	goto	l643
+  1322                           	
+  1323  0162                     l642:	
+  1324  0162  1506               	bsf	(50/8),(50)&7
+  1325                           	
+  1326  0163                     l643:	
+  1327                           	line	147
+  1328                           ;LCD.c: 147: if(display[0] & 0x80) {RB3 = 0;} else {RB3 = 1;}
+  1329  0163  1FA0               	btfss	(LCD_DISP@display),(7)&7
+  1330  0164  2966               	goto	u3201
+  1331  0165  2967               	goto	u3200
+  1332  0166                     u3201:
+  1333  0166  2969               	goto	l644
+  1334  0167                     u3200:
+  1335                           	
+  1336  0167                     l2220:	
+  1337  0167  1186               	bcf	(51/8),(51)&7
+  1338  0168  296A               	goto	l645
+  1339                           	
+  1340  0169                     l644:	
+  1341  0169  1586               	bsf	(51/8),(51)&7
+  1342                           	
+  1343  016A                     l645:	
+  1344                           	line	149
+  1345                           ;LCD.c: 149: RC0=1;
+  1346  016A  1407               	bsf	(56/8),(56)&7
+  1347                           	line	150
+  1348                           ;LCD.c: 150: TRISC0=0;
+  1349  016B  1683               	bsf	status, 5	;RP0=1, select bank1
+  1350  016C  1303               	bcf	status, 6	;RP1=0, select bank1
+  1351  016D  1007               	bcf	(1080/8)^080h,(1080)&7
+  1352                           	line	151
+  1353                           	
+  1354  016E                     l2222:	
+  1355                           ;LCD.c: 151: COMEN&=~(1<<0);
+  1356  016E  30FE               	movlw	(0FEh)
+  1357  016F  00F7               	movwf	(??_LCD_DISP+0)+0
+  1358  0170  0877               	movf	(??_LCD_DISP+0)+0,w
+  1359  0171  1683               	bsf	status, 5	;RP0=1, select bank3
+  1360  0172  1703               	bsf	status, 6	;RP1=1, select bank3
+  1361  0173  0597               	andwf	(407)^0180h,f	;volatile
+  1362                           	line	152
+  1363                           ;LCD.c: 152: break;
+  1364  0174  2A55               	goto	l697
+  1365                           	line	153
+  1366                           ;LCD.c: 153: case 5:
+  1367                           	
+  1368  0175                     l646:	
+  1369                           	line	154
+  1370                           ;LCD.c: 154: if(display[1] & 0x01) {RA1 = 0;} else {RA1 = 1;}
+  1371  0175  1C21               	btfss	0+(LCD_DISP@display)+01h,(0)&7
+  1372  0176  2978               	goto	u3211
+  1373  0177  2979               	goto	u3210
+  1374  0178                     u3211:
+  1375  0178  297B               	goto	l647
+  1376  0179                     u3210:
+  1377                           	
+  1378  0179                     l2224:	
+  1379  0179  1085               	bcf	(41/8),(41)&7
+  1380  017A  297C               	goto	l648
+  1381                           	
+  1382  017B                     l647:	
+  1383  017B  1485               	bsf	(41/8),(41)&7
+  1384                           	
+  1385  017C                     l648:	
+  1386                           	line	155
+  1387                           ;LCD.c: 155: if(display[1] & 0x02) {RA2 = 0;} else {RA2 = 1;}
+  1388  017C  1CA1               	btfss	0+(LCD_DISP@display)+01h,(1)&7
+  1389  017D  297F               	goto	u3221
+  1390  017E  2980               	goto	u3220
+  1391  017F                     u3221:
+  1392  017F  2982               	goto	l649
+  1393  0180                     u3220:
+  1394                           	
+  1395  0180                     l2226:	
+  1396  0180  1105               	bcf	(42/8),(42)&7
+  1397  0181  2983               	goto	l650
+  1398                           	
+  1399  0182                     l649:	
+  1400  0182  1505               	bsf	(42/8),(42)&7
+  1401                           	
+  1402  0183                     l650:	
+  1403                           	line	156
+  1404                           ;LCD.c: 156: if(display[1] & 0x04) {RA3 = 0;} else {RA3 = 1;}
+  1405  0183  1D21               	btfss	0+(LCD_DISP@display)+01h,(2)&7
+  1406  0184  2986               	goto	u3231
+  1407  0185  2987               	goto	u3230
+  1408  0186                     u3231:
+  1409  0186  2989               	goto	l651
+  1410  0187                     u3230:
+  1411                           	
+  1412  0187                     l2228:	
+  1413  0187  1185               	bcf	(43/8),(43)&7
+  1414  0188  298A               	goto	l652
+  1415                           	
+  1416  0189                     l651:	
+  1417  0189  1585               	bsf	(43/8),(43)&7
+  1418                           	
+  1419  018A                     l652:	
+  1420                           	line	157
+  1421                           ;LCD.c: 157: if(display[1] & 0x08) {RA4 = 0;} else {RA4 = 1;}
+  1422  018A  1DA1               	btfss	0+(LCD_DISP@display)+01h,(3)&7
+  1423  018B  298D               	goto	u3241
+  1424  018C  298E               	goto	u3240
+  1425  018D                     u3241:
+  1426  018D  2990               	goto	l653
+  1427  018E                     u3240:
+  1428                           	
+  1429  018E                     l2230:	
+  1430  018E  1205               	bcf	(44/8),(44)&7
+  1431  018F  2991               	goto	l654
+  1432                           	
+  1433  0190                     l653:	
+  1434  0190  1605               	bsf	(44/8),(44)&7
+  1435                           	
+  1436  0191                     l654:	
+  1437                           	line	158
+  1438                           ;LCD.c: 158: if(display[1] & 0x10) {RA5 = 0;} else {RA5 = 1;}
+  1439  0191  1E21               	btfss	0+(LCD_DISP@display)+01h,(4)&7
+  1440  0192  2994               	goto	u3251
+  1441  0193  2995               	goto	u3250
+  1442  0194                     u3251:
+  1443  0194  2997               	goto	l655
+  1444  0195                     u3250:
+  1445                           	
+  1446  0195                     l2232:	
+  1447  0195  1285               	bcf	(45/8),(45)&7
+  1448  0196  2998               	goto	l656
+  1449                           	
+  1450  0197                     l655:	
+  1451  0197  1685               	bsf	(45/8),(45)&7
+  1452                           	
+  1453  0198                     l656:	
+  1454                           	line	159
+  1455                           ;LCD.c: 159: if(display[1] & 0x20) {RB1 = 0;} else {RB1 = 1;}
+  1456  0198  1EA1               	btfss	0+(LCD_DISP@display)+01h,(5)&7
+  1457  0199  299B               	goto	u3261
+  1458  019A  299C               	goto	u3260
+  1459  019B                     u3261:
+  1460  019B  299E               	goto	l657
+  1461  019C                     u3260:
+  1462                           	
+  1463  019C                     l2234:	
+  1464  019C  1086               	bcf	(49/8),(49)&7
+  1465  019D  299F               	goto	l658
+  1466                           	
+  1467  019E                     l657:	
+  1468  019E  1486               	bsf	(49/8),(49)&7
+  1469                           	
+  1470  019F                     l658:	
+  1471                           	line	160
+  1472                           ;LCD.c: 160: if(display[1] & 0x40) {RB2 = 0;} else {RB2 = 1;}
+  1473  019F  1F21               	btfss	0+(LCD_DISP@display)+01h,(6)&7
+  1474  01A0  29A2               	goto	u3271
+  1475  01A1  29A3               	goto	u3270
+  1476  01A2                     u3271:
+  1477  01A2  29A5               	goto	l659
+  1478  01A3                     u3270:
+  1479                           	
+  1480  01A3                     l2236:	
+  1481  01A3  1106               	bcf	(50/8),(50)&7
+  1482  01A4  29A6               	goto	l660
+  1483                           	
+  1484  01A5                     l659:	
+  1485  01A5  1506               	bsf	(50/8),(50)&7
+  1486                           	
+  1487  01A6                     l660:	
+  1488                           	line	161
+  1489                           ;LCD.c: 161: if(display[1] & 0x80) {RB3 = 0;} else {RB3 = 1;}
+  1490  01A6  1FA1               	btfss	0+(LCD_DISP@display)+01h,(7)&7
+  1491  01A7  29A9               	goto	u3281
+  1492  01A8  29AA               	goto	u3280
+  1493  01A9                     u3281:
+  1494  01A9  29AC               	goto	l661
+  1495  01AA                     u3280:
+  1496                           	
+  1497  01AA                     l2238:	
+  1498  01AA  1186               	bcf	(51/8),(51)&7
+  1499  01AB  29AD               	goto	l662
+  1500                           	
+  1501  01AC                     l661:	
+  1502  01AC  1586               	bsf	(51/8),(51)&7
+  1503                           	
+  1504  01AD                     l662:	
+  1505                           	line	163
+  1506                           ;LCD.c: 163: RC1=1;
+  1507  01AD  1487               	bsf	(57/8),(57)&7
+  1508                           	line	164
+  1509                           ;LCD.c: 164: TRISC1=0;
+  1510  01AE  1683               	bsf	status, 5	;RP0=1, select bank1
+  1511  01AF  1303               	bcf	status, 6	;RP1=0, select bank1
+  1512  01B0  1087               	bcf	(1081/8)^080h,(1081)&7
+  1513                           	line	165
+  1514                           	
+  1515  01B1                     l2240:	
+  1516                           ;LCD.c: 165: COMEN&=~(1<<1);
+  1517  01B1  30FD               	movlw	(0FDh)
+  1518  01B2  00F7               	movwf	(??_LCD_DISP+0)+0
+  1519  01B3  0877               	movf	(??_LCD_DISP+0)+0,w
+  1520  01B4  1683               	bsf	status, 5	;RP0=1, select bank3
+  1521  01B5  1703               	bsf	status, 6	;RP1=1, select bank3
+  1522  01B6  0597               	andwf	(407)^0180h,f	;volatile
+  1523                           	line	166
+  1524                           ;LCD.c: 166: break;
+  1525  01B7  2A55               	goto	l697
+  1526                           	line	167
+  1527                           ;LCD.c: 167: case 6:
+  1528                           	
+  1529  01B8                     l663:	
+  1530                           	line	168
+  1531                           ;LCD.c: 168: if(display[2] & 0x01) {RA1 = 0;} else {RA1 = 1;}
+  1532  01B8  1C22               	btfss	0+(LCD_DISP@display)+02h,(0)&7
+  1533  01B9  29BB               	goto	u3291
+  1534  01BA  29BC               	goto	u3290
+  1535  01BB                     u3291:
+  1536  01BB  29BE               	goto	l664
+  1537  01BC                     u3290:
+  1538                           	
+  1539  01BC                     l2242:	
+  1540  01BC  1085               	bcf	(41/8),(41)&7
+  1541  01BD  29BF               	goto	l665
+  1542                           	
+  1543  01BE                     l664:	
+  1544  01BE  1485               	bsf	(41/8),(41)&7
+  1545                           	
+  1546  01BF                     l665:	
+  1547                           	line	169
+  1548                           ;LCD.c: 169: if(display[2] & 0x02) {RA2 = 0;} else {RA2 = 1;}
+  1549  01BF  1CA2               	btfss	0+(LCD_DISP@display)+02h,(1)&7
+  1550  01C0  29C2               	goto	u3301
+  1551  01C1  29C3               	goto	u3300
+  1552  01C2                     u3301:
+  1553  01C2  29C5               	goto	l666
+  1554  01C3                     u3300:
+  1555                           	
+  1556  01C3                     l2244:	
+  1557  01C3  1105               	bcf	(42/8),(42)&7
+  1558  01C4  29C6               	goto	l667
+  1559                           	
+  1560  01C5                     l666:	
+  1561  01C5  1505               	bsf	(42/8),(42)&7
+  1562                           	
+  1563  01C6                     l667:	
+  1564                           	line	170
+  1565                           ;LCD.c: 170: if(display[2] & 0x04) {RA3 = 0;} else {RA3 = 1;}
+  1566  01C6  1D22               	btfss	0+(LCD_DISP@display)+02h,(2)&7
+  1567  01C7  29C9               	goto	u3311
+  1568  01C8  29CA               	goto	u3310
+  1569  01C9                     u3311:
+  1570  01C9  29CC               	goto	l668
+  1571  01CA                     u3310:
+  1572                           	
+  1573  01CA                     l2246:	
+  1574  01CA  1185               	bcf	(43/8),(43)&7
+  1575  01CB  29CD               	goto	l669
+  1576                           	
+  1577  01CC                     l668:	
+  1578  01CC  1585               	bsf	(43/8),(43)&7
+  1579                           	
+  1580  01CD                     l669:	
+  1581                           	line	171
+  1582                           ;LCD.c: 171: if(display[2] & 0x08) {RA4 = 0;} else {RA4 = 1;}
+  1583  01CD  1DA2               	btfss	0+(LCD_DISP@display)+02h,(3)&7
+  1584  01CE  29D0               	goto	u3321
+  1585  01CF  29D1               	goto	u3320
+  1586  01D0                     u3321:
+  1587  01D0  29D3               	goto	l670
+  1588  01D1                     u3320:
+  1589                           	
+  1590  01D1                     l2248:	
+  1591  01D1  1205               	bcf	(44/8),(44)&7
+  1592  01D2  29D4               	goto	l671
+  1593                           	
+  1594  01D3                     l670:	
+  1595  01D3  1605               	bsf	(44/8),(44)&7
+  1596                           	
+  1597  01D4                     l671:	
+  1598                           	line	172
+  1599                           ;LCD.c: 172: if(display[2] & 0x10) {RA5 = 0;} else {RA5 = 1;}
+  1600  01D4  1E22               	btfss	0+(LCD_DISP@display)+02h,(4)&7
+  1601  01D5  29D7               	goto	u3331
+  1602  01D6  29D8               	goto	u3330
+  1603  01D7                     u3331:
+  1604  01D7  29DA               	goto	l672
+  1605  01D8                     u3330:
+  1606                           	
+  1607  01D8                     l2250:	
+  1608  01D8  1285               	bcf	(45/8),(45)&7
+  1609  01D9  29DB               	goto	l673
+  1610                           	
+  1611  01DA                     l672:	
+  1612  01DA  1685               	bsf	(45/8),(45)&7
+  1613                           	
+  1614  01DB                     l673:	
+  1615                           	line	173
+  1616                           ;LCD.c: 173: if(display[2] & 0x20) {RB1 = 0;} else {RB1 = 1;}
+  1617  01DB  1EA2               	btfss	0+(LCD_DISP@display)+02h,(5)&7
+  1618  01DC  29DE               	goto	u3341
+  1619  01DD  29DF               	goto	u3340
+  1620  01DE                     u3341:
+  1621  01DE  29E1               	goto	l674
+  1622  01DF                     u3340:
+  1623                           	
+  1624  01DF                     l2252:	
+  1625  01DF  1086               	bcf	(49/8),(49)&7
+  1626  01E0  29E2               	goto	l675
+  1627                           	
+  1628  01E1                     l674:	
+  1629  01E1  1486               	bsf	(49/8),(49)&7
+  1630                           	
+  1631  01E2                     l675:	
+  1632                           	line	174
+  1633                           ;LCD.c: 174: if(display[2] & 0x40) {RB2 = 0;} else {RB2 = 1;}
+  1634  01E2  1F22               	btfss	0+(LCD_DISP@display)+02h,(6)&7
+  1635  01E3  29E5               	goto	u3351
+  1636  01E4  29E6               	goto	u3350
+  1637  01E5                     u3351:
+  1638  01E5  29E8               	goto	l676
+  1639  01E6                     u3350:
+  1640                           	
+  1641  01E6                     l2254:	
+  1642  01E6  1106               	bcf	(50/8),(50)&7
+  1643  01E7  29E9               	goto	l677
+  1644                           	
+  1645  01E8                     l676:	
+  1646  01E8  1506               	bsf	(50/8),(50)&7
+  1647                           	
+  1648  01E9                     l677:	
+  1649                           	line	175
+  1650                           ;LCD.c: 175: if(display[2] & 0x80) {RB3 = 0;} else {RB3 = 1;}
+  1651  01E9  1FA2               	btfss	0+(LCD_DISP@display)+02h,(7)&7
+  1652  01EA  29EC               	goto	u3361
+  1653  01EB  29ED               	goto	u3360
+  1654  01EC                     u3361:
+  1655  01EC  29EF               	goto	l678
+  1656  01ED                     u3360:
+  1657                           	
+  1658  01ED                     l2256:	
+  1659  01ED  1186               	bcf	(51/8),(51)&7
+  1660  01EE  29F0               	goto	l679
+  1661                           	
+  1662  01EF                     l678:	
+  1663  01EF  1586               	bsf	(51/8),(51)&7
+  1664                           	
+  1665  01F0                     l679:	
+  1666                           	line	177
+  1667                           ;LCD.c: 177: RC2=1;
+  1668  01F0  1507               	bsf	(58/8),(58)&7
+  1669                           	line	178
+  1670                           ;LCD.c: 178: TRISC2=0;
+  1671  01F1  1683               	bsf	status, 5	;RP0=1, select bank1
+  1672  01F2  1303               	bcf	status, 6	;RP1=0, select bank1
+  1673  01F3  1107               	bcf	(1082/8)^080h,(1082)&7
+  1674                           	line	179
+  1675                           	
+  1676  01F4                     l2258:	
+  1677                           ;LCD.c: 179: COMEN&=~(1<<2);
+  1678  01F4  30FB               	movlw	(0FBh)
+  1679  01F5  00F7               	movwf	(??_LCD_DISP+0)+0
+  1680  01F6  0877               	movf	(??_LCD_DISP+0)+0,w
+  1681  01F7  1683               	bsf	status, 5	;RP0=1, select bank3
+  1682  01F8  1703               	bsf	status, 6	;RP1=1, select bank3
+  1683  01F9  0597               	andwf	(407)^0180h,f	;volatile
+  1684                           	line	180
+  1685                           ;LCD.c: 180: break;
+  1686  01FA  2A55               	goto	l697
+  1687                           	line	181
+  1688                           ;LCD.c: 181: case 7:
+  1689                           	
+  1690  01FB                     l680:	
+  1691                           	line	182
+  1692                           ;LCD.c: 182: if(display[3] & 0x01) {RA1 = 0;} else {RA1 = 1;}
+  1693  01FB  1C23               	btfss	0+(LCD_DISP@display)+03h,(0)&7
+  1694  01FC  29FE               	goto	u3371
+  1695  01FD  29FF               	goto	u3370
+  1696  01FE                     u3371:
+  1697  01FE  2A01               	goto	l681
+  1698  01FF                     u3370:
+  1699                           	
+  1700  01FF                     l2260:	
+  1701  01FF  1085               	bcf	(41/8),(41)&7
+  1702  0200  2A02               	goto	l682
+  1703                           	
+  1704  0201                     l681:	
+  1705  0201  1485               	bsf	(41/8),(41)&7
+  1706                           	
+  1707  0202                     l682:	
+  1708                           	line	183
+  1709                           ;LCD.c: 183: if(display[3] & 0x02) {RA2 = 0;} else {RA2 = 1;}
+  1710  0202  1CA3               	btfss	0+(LCD_DISP@display)+03h,(1)&7
+  1711  0203  2A05               	goto	u3381
+  1712  0204  2A06               	goto	u3380
+  1713  0205                     u3381:
+  1714  0205  2A08               	goto	l683
+  1715  0206                     u3380:
+  1716                           	
+  1717  0206                     l2262:	
+  1718  0206  1105               	bcf	(42/8),(42)&7
+  1719  0207  2A09               	goto	l684
+  1720                           	
+  1721  0208                     l683:	
+  1722  0208  1505               	bsf	(42/8),(42)&7
+  1723                           	
+  1724  0209                     l684:	
+  1725                           	line	184
+  1726                           ;LCD.c: 184: if(display[3] & 0x04) {RA3 = 0;} else {RA3 = 1;}
+  1727  0209  1D23               	btfss	0+(LCD_DISP@display)+03h,(2)&7
+  1728  020A  2A0C               	goto	u3391
+  1729  020B  2A0D               	goto	u3390
+  1730  020C                     u3391:
+  1731  020C  2A0F               	goto	l685
+  1732  020D                     u3390:
+  1733                           	
+  1734  020D                     l2264:	
+  1735  020D  1185               	bcf	(43/8),(43)&7
+  1736  020E  2A10               	goto	l686
+  1737                           	
+  1738  020F                     l685:	
+  1739  020F  1585               	bsf	(43/8),(43)&7
+  1740                           	
+  1741  0210                     l686:	
+  1742                           	line	185
+  1743                           ;LCD.c: 185: if(display[3] & 0x08) {RA4 = 0;} else {RA4 = 1;}
+  1744  0210  1DA3               	btfss	0+(LCD_DISP@display)+03h,(3)&7
+  1745  0211  2A13               	goto	u3401
+  1746  0212  2A14               	goto	u3400
+  1747  0213                     u3401:
+  1748  0213  2A16               	goto	l687
+  1749  0214                     u3400:
+  1750                           	
+  1751  0214                     l2266:	
+  1752  0214  1205               	bcf	(44/8),(44)&7
+  1753  0215  2A17               	goto	l688
+  1754                           	
+  1755  0216                     l687:	
+  1756  0216  1605               	bsf	(44/8),(44)&7
+  1757                           	
+  1758  0217                     l688:	
+  1759                           	line	186
+  1760                           ;LCD.c: 186: if(display[3] & 0x10) {RA5 = 0;} else {RA5 = 1;}
+  1761  0217  1E23               	btfss	0+(LCD_DISP@display)+03h,(4)&7
+  1762  0218  2A1A               	goto	u3411
+  1763  0219  2A1B               	goto	u3410
+  1764  021A                     u3411:
+  1765  021A  2A1D               	goto	l689
+  1766  021B                     u3410:
+  1767                           	
+  1768  021B                     l2268:	
+  1769  021B  1285               	bcf	(45/8),(45)&7
+  1770  021C  2A1E               	goto	l690
+  1771                           	
+  1772  021D                     l689:	
+  1773  021D  1685               	bsf	(45/8),(45)&7
+  1774                           	
+  1775  021E                     l690:	
+  1776                           	line	187
+  1777                           ;LCD.c: 187: if(display[3] & 0x20) {RB1 = 0;} else {RB1 = 1;}
+  1778  021E  1EA3               	btfss	0+(LCD_DISP@display)+03h,(5)&7
+  1779  021F  2A21               	goto	u3421
+  1780  0220  2A22               	goto	u3420
+  1781  0221                     u3421:
+  1782  0221  2A24               	goto	l691
+  1783  0222                     u3420:
+  1784                           	
+  1785  0222                     l2270:	
+  1786  0222  1086               	bcf	(49/8),(49)&7
+  1787  0223  2A25               	goto	l692
+  1788                           	
+  1789  0224                     l691:	
+  1790  0224  1486               	bsf	(49/8),(49)&7
+  1791                           	
+  1792  0225                     l692:	
+  1793                           	line	188
+  1794                           ;LCD.c: 188: if(display[3] & 0x40) {RB2 = 0;} else {RB2 = 1;}
+  1795  0225  1F23               	btfss	0+(LCD_DISP@display)+03h,(6)&7
+  1796  0226  2A28               	goto	u3431
+  1797  0227  2A29               	goto	u3430
+  1798  0228                     u3431:
+  1799  0228  2A2B               	goto	l693
+  1800  0229                     u3430:
+  1801                           	
+  1802  0229                     l2272:	
+  1803  0229  1106               	bcf	(50/8),(50)&7
+  1804  022A  2A2C               	goto	l694
+  1805                           	
+  1806  022B                     l693:	
+  1807  022B  1506               	bsf	(50/8),(50)&7
+  1808                           	
+  1809  022C                     l694:	
+  1810                           	line	189
+  1811                           ;LCD.c: 189: if(display[3] & 0x80) {RB3 = 0;} else {RB3 = 1;}
+  1812  022C  1FA3               	btfss	0+(LCD_DISP@display)+03h,(7)&7
+  1813  022D  2A2F               	goto	u3441
+  1814  022E  2A30               	goto	u3440
+  1815  022F                     u3441:
+  1816  022F  2A32               	goto	l695
+  1817  0230                     u3440:
+  1818                           	
+  1819  0230                     l2274:	
+  1820  0230  1186               	bcf	(51/8),(51)&7
+  1821  0231  2A33               	goto	l696
+  1822                           	
+  1823  0232                     l695:	
+  1824  0232  1586               	bsf	(51/8),(51)&7
+  1825                           	
+  1826  0233                     l696:	
+  1827                           	line	191
+  1828                           ;LCD.c: 191: RC3=1;
+  1829  0233  1587               	bsf	(59/8),(59)&7
+  1830                           	line	192
+  1831                           ;LCD.c: 192: TRISC3=0;
+  1832  0234  1683               	bsf	status, 5	;RP0=1, select bank1
+  1833  0235  1303               	bcf	status, 6	;RP1=0, select bank1
+  1834  0236  1187               	bcf	(1083/8)^080h,(1083)&7
+  1835                           	line	193
+  1836                           	
+  1837  0237                     l2276:	
+  1838                           ;LCD.c: 193: COMEN&=~(1<<3);
+  1839  0237  30F7               	movlw	(0F7h)
+  1840  0238  00F7               	movwf	(??_LCD_DISP+0)+0
+  1841  0239  0877               	movf	(??_LCD_DISP+0)+0,w
+  1842  023A  1683               	bsf	status, 5	;RP0=1, select bank3
+  1843  023B  1703               	bsf	status, 6	;RP1=1, select bank3
+  1844  023C  0597               	andwf	(407)^0180h,f	;volatile
+  1845                           	line	194
+  1846                           ;LCD.c: 194: break;
+  1847  023D  2A55               	goto	l697
+  1848                           	line	195
+  1849                           	
+  1850  023E                     l2278:	
+  1851                           ;LCD.c: 195: }
+  1852  023E  2A55               	goto	l697
+  1853                           	line	81
+  1854                           	
+  1855  023F                     l559:	
+  1856                           	
+  1857  023F                     l2280:	
+  1858  023F  1283               	bcf	status, 5	;RP0=0, select bank0
+  1859  0240  1303               	bcf	status, 6	;RP1=0, select bank0
+  1860  0241  0824               	movf	(LCD_DISP@dcount),w
+  1861  0242  3907               	andlw	07h
+  1862  0243  00F7               	movwf	(??_LCD_DISP+0)+0
+  1863  0244  01F8               	clrf	(??_LCD_DISP+0)+0+1
+  1864                           	; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-s
+                                 witches
+  1865                           ; Switch size 1, requested type "space"
+  1866                           ; Number of cases is 1, Range of values is 0 to 0
+  1867                           ; switch strategies available:
+  1868                           ; Name         Instructions Cycles
+  1869                           ; simple_byte            4     3 (average)
+  1870                           ; direct_byte            7     6 (fixed)
+  1871                           ; jumptable            260     6 (fixed)
+  1872                           ; rangetable             5     6 (fixed)
+  1873                           ; spacedrange            8     9 (fixed)
+  1874                           ; locatedrange           1     3 (fixed)
+  1875                           ;	Chosen strategy is simple_byte
+  1876                           
+  1877  0245  0878               	movf 1+(??_LCD_DISP+0)+0,w
+  1878                           	opt asmopt_off
+  1879  0246  3A00               	xorlw	0^0	; case 0
+  1880  0247  1903               	skipnz
+  1881  0248  2A4A               	goto	l2360
+  1882  0249  2A55               	goto	l697
+  1883                           	opt asmopt_on
+  1884                           	
+  1885  024A                     l2360:	
+  1886                           ; Switch size 1, requested type "space"
+  1887                           ; Number of cases is 8, Range of values is 0 to 7
+  1888                           ; switch strategies available:
+  1889                           ; Name         Instructions Cycles
+  1890                           ; direct_byte           14     6 (fixed)
+  1891                           ; simple_byte           25    13 (average)
+  1892                           ; jumptable            260     6 (fixed)
+  1893                           ; rangetable            12     6 (fixed)
+  1894                           ; spacedrange           22     9 (fixed)
+  1895                           ; locatedrange           8     3 (fixed)
+  1896                           ;	Chosen strategy is direct_byte
+  1897                           
+  1898  024A  0877               	movf 0+(??_LCD_DISP+0)+0,w
+  1899  024B  0084               	movwf fsr
+  1900  024C  3008               	movlw	8
+  1901  024D  0204               	subwf	fsr,w
+  1902  024E  1803               skipnc
+  1903  024F  2A55               goto l697
+  1904  0250  3002               movlw high(S2362)
+  1905  0251  008A               movwf pclath
+  1906  0252  30BD               	movlw low(S2362)
+  1907  0253  0704               	addwf fsr,w
+  1908  0254  0082               	movwf pc
+  1909                           psect	swtext1,local,class=CONST,delta=2
+  1910                           global __pswtext1
+  1911  02BD                     __pswtext1:
+  1912  02BD                     S2362:
+  1913  02BD  2826               	ljmp	l560
+  1914  02BE  2869               	ljmp	l578
+  1915  02BF  28AC               	ljmp	l595
+  1916  02C0  28EF               	ljmp	l612
+  1917  02C1  2932               	ljmp	l629
+  1918  02C2  2975               	ljmp	l646
+  1919  02C3  29B8               	ljmp	l663
+  1920  02C4  29FB               	ljmp	l680
+  1921                           psect	text121
+  1922                           
+  1923                           	line	195
+  1924                           	
+  1925  0255                     l577:	
+  1926                           	line	196
+  1927                           	
+  1928  0255                     l697:	
+  1929  0255  0008               	return
+  1930                           	opt stack 0
+  1931                           GLOBAL	__end_of_LCD_DISP
+  1932  0256                     	__end_of_LCD_DISP:
+  1933 ;; =============== function _LCD_DISP ends ============
+  1934                           
+  1935                           	signat	_LCD_DISP,88
+  1936                           	global	_SET_DISP
+  1937                           psect	text122,local,class=CODE,delta=2
+  1938                           global __ptext122
+  1939  028B                     __ptext122:
+  1940                           
+  1941 ;; *************** function _SET_DISP *****************
+  1942 ;; Defined at:
+  1943 ;;		line 61 in file "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\LCD_Demo\LCD.c"
+  1944 ;; Parameters:    Size  Location     Type
+  1945 ;;  RDATA           1    wreg     PTR unsigned char 
+  1946 ;;		 -> LCD_DISP@display(4), 
+  1947 ;; Auto vars:     Size  Location     Type
+  1948 ;;  RDATA           1    6[COMMON] PTR unsigned char 
+  1949 ;;		 -> LCD_DISP@display(4), 
+  1950 ;; Return value:  Size  Location     Type
+  1951 ;;		None               void
+  1952 ;; Registers used:
+  1953 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+  1954 ;; Tracked objects:
+  1955 ;;		On entry : 0/0
+  1956 ;;		On exit  : 0/0
+  1957 ;;		Unchanged: 0/0
+  1958 ;; Data sizes:     COMMON   BANK0   BANK1
+  1959 ;;      Params:         0       0       0
+  1960 ;;      Locals:         1       0       0
+  1961 ;;      Temps:          1       0       0
+  1962 ;;      Totals:         2       0       0
+  1963 ;;Total ram usage:        2 bytes
+  1964 ;; Hardware stack levels used:    1
+  1965 ;; Hardware stack levels required when called:    1
+  1966 ;; This function calls:
+  1967 ;;		Nothing
+  1968 ;; This function is called by:
+  1969 ;;		_LCD_DISP
+  1970 ;; This function uses a non-reentrant model
+  1971 ;;
+  1972                           psect	text122
+  1973                           	file	"E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\LCD_Demo\LCD.c"
+  1974                           	line	61
+  1975                           	global	__size_of_SET_DISP
+  1976  001D                     	__size_of_SET_DISP	equ	__end_of_SET_DISP-_SET_DISP
+  1977                           	
+  1978  028B                     _SET_DISP:	
+  1979                           	opt	stack 5
+  1980                           ; Regs used in _SET_DISP: [wreg-fsr0h+status,2+status,0]
+  1981                           ;SET_DISP@RDATA stored from wreg
+  1982  028B  00F6               	movwf	(SET_DISP@RDATA)
+  1983                           	line	62
+  1984                           	
+  1985  028C                     l2116:	
+  1986                           ;LCD.c: 62: *RDATA=0x1;
+  1987  028C  0876               	movf	(SET_DISP@RDATA),w
+  1988  028D  0084               	movwf	fsr0
+  1989  028E  1383               	bcf	status, 7	;select IRP bank0
+  1990  028F  0180               	clrf	indf
+  1991  0290  1403               	bsf	status,0
+  1992  0291  0D80               	rlf	indf,f
+  1993                           	line	63
+  1994                           	
+  1995  0292                     l2118:	
+  1996                           ;LCD.c: 63: *(RDATA+1)=0x2;
+  1997  0292  3002               	movlw	(02h)
+  1998  0293  00F5               	movwf	(??_SET_DISP+0)+0
+  1999  0294  0876               	movf	(SET_DISP@RDATA),w
+  2000  0295  3E01               	addlw	01h
+  2001  0296  0084               	movwf	fsr0
+  2002  0297  0875               	movf	(??_SET_DISP+0)+0,w
+  2003  0298  0080               	movwf	indf
+  2004                           	line	64
+  2005                           	
+  2006  0299                     l2120:	
+  2007                           ;LCD.c: 64: *(RDATA+2)=0x4;
+  2008  0299  3004               	movlw	(04h)
+  2009  029A  00F5               	movwf	(??_SET_DISP+0)+0
+  2010  029B  0876               	movf	(SET_DISP@RDATA),w
+  2011  029C  3E02               	addlw	02h
+  2012  029D  0084               	movwf	fsr0
+  2013  029E  0875               	movf	(??_SET_DISP+0)+0,w
+  2014  029F  0080               	movwf	indf
+  2015                           	line	65
+  2016                           	
+  2017  02A0                     l2122:	
+  2018                           ;LCD.c: 65: *(RDATA+3)=0x8;
+  2019  02A0  3008               	movlw	(08h)
+  2020  02A1  00F5               	movwf	(??_SET_DISP+0)+0
+  2021  02A2  0876               	movf	(SET_DISP@RDATA),w
+  2022  02A3  3E03               	addlw	03h
+  2023  02A4  0084               	movwf	fsr0
+  2024  02A5  0875               	movf	(??_SET_DISP+0)+0,w
+  2025  02A6  0080               	movwf	indf
+  2026                           	line	66
+  2027                           	
+  2028  02A7                     l554:	
+  2029  02A7  0008               	return
+  2030                           	opt stack 0
+  2031                           GLOBAL	__end_of_SET_DISP
+  2032  02A8                     	__end_of_SET_DISP:
+  2033 ;; =============== function _SET_DISP ends ============
+  2034                           
+  2035                           	signat	_SET_DISP,4216
+  2036                           	global	_isr
+  2037                           psect	text123,local,class=CODE,delta=2
+  2038                           global __ptext123
+  2039  02A8                     __ptext123:
+  2040                           
+  2041 ;; *************** function _isr *****************
+  2042 ;; Defined at:
+  2043 ;;		line 48 in file "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\LCD_Demo\LCD.c"
+  2044 ;; Parameters:    Size  Location     Type
+  2045 ;;		None
+  2046 ;; Auto vars:     Size  Location     Type
+  2047 ;;		None
+  2048 ;; Return value:  Size  Location     Type
+  2049 ;;		None               void
+  2050 ;; Registers used:
+  2051 ;;		wreg, status,2, status,0
+  2052 ;; Tracked objects:
+  2053 ;;		On entry : 0/0
+  2054 ;;		On exit  : 0/0
+  2055 ;;		Unchanged: 0/0
+  2056 ;; Data sizes:     COMMON   BANK0   BANK1
+  2057 ;;      Params:         0       0       0
+  2058 ;;      Locals:         0       0       0
+  2059 ;;      Temps:          5       0       0
+  2060 ;;      Totals:         5       0       0
+  2061 ;;Total ram usage:        5 bytes
+  2062 ;; Hardware stack levels used:    1
+  2063 ;; This function calls:
+  2064 ;;		Nothing
+  2065 ;; This function is called by:
+  2066 ;;		Interrupt level 1
+  2067 ;; This function uses a non-reentrant model
+  2068 ;;
+  2069                           psect	text123
+  2070                           	file	"E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\LCD_Demo\LCD.c"
+  2071                           	line	48
+  2072                           	global	__size_of_isr
+  2073  0015                     	__size_of_isr	equ	__end_of_isr-_isr
+  2074                           	
+  2075  02A8                     _isr:	
+  2076                           	opt	stack 5
+  2077                           ; Regs used in _isr: [wreg+status,2+status,0]
+  2078                           psect	intentry,class=CODE,delta=2
+  2079                           global __pintentry
+  2080  0004                     __pintentry:
+  2081                           global interrupt_function
+  2082  0004                     interrupt_function:
+  2083                           	global saved_w
+  2084  007E                     	saved_w	set	btemp+0
+  2085  0004  00FE               	movwf	saved_w
+  2086  0005  0E03               	swapf	status,w
+  2087  0006  00F1               	movwf	(??_isr+1)
+  2088  0007  0804               	movf	fsr0,w
+  2089  0008  00F2               	movwf	(??_isr+2)
+  2090  0009  080A               	movf	pclath,w
+  2091  000A  00F3               	movwf	(??_isr+3)
+  2092  000B  1283               	bcf	status, 5	;RP0=0, select bank0
+  2093  000C  1303               	bcf	status, 6	;RP1=0, select bank0
+  2094  000D  087F               	movf	btemp+1,w
+  2095  000E  00F4               	movwf	(??_isr+4)
+  2096  000F  2AA8               	ljmp	_isr
+  2097                           psect	text123
+  2098                           	line	49
+  2099                           	
+  2100  02A8                     i1l2110:	
+  2101                           ;LCD.c: 49: if(TMR2IF)
+  2102  02A8  1C8C               	btfss	(97/8),(97)&7
+  2103  02A9  2AAB               	goto	u280_21
+  2104  02AA  2AAC               	goto	u280_20
+  2105  02AB                     u280_21:
+  2106  02AB  2AB2               	goto	i1l551
+  2107  02AC                     u280_20:
+  2108                           	line	51
+  2109                           	
+  2110  02AC                     i1l2112:	
+  2111                           ;LCD.c: 50: {
+  2112                           ;LCD.c: 51: TMR2IF = 0;
+  2113  02AC  108C               	bcf	(97/8),(97)&7
+  2114                           	line	52
+  2115                           	
+  2116  02AD                     i1l2114:	
+  2117                           ;LCD.c: 52: tcount++;
+  2118  02AD  3001               	movlw	(01h)
+  2119  02AE  00F0               	movwf	(??_isr+0)+0
+  2120  02AF  0870               	movf	(??_isr+0)+0,w
+  2121  02B0  07A5               	addwf	(_tcount),f
+  2122  02B1  2AB2               	goto	i1l551
+  2123                           	line	53
+  2124                           	
+  2125  02B2                     i1l550:	
+  2126                           	line	54
+  2127                           	
+  2128  02B2                     i1l551:	
+  2129  02B2  0874               	movf	(??_isr+4),w
+  2130  02B3  00FF               	movwf	btemp+1
+  2131  02B4  0873               	movf	(??_isr+3),w
+  2132  02B5  008A               	movwf	pclath
+  2133  02B6  0872               	movf	(??_isr+2),w
+  2134  02B7  0084               	movwf	fsr0
+  2135  02B8  0E71               	swapf	(??_isr+1)^0FFFFFF80h,w
+  2136  02B9  0083               	movwf	status
+  2137  02BA  0EFE               	swapf	saved_w,f
+  2138  02BB  0E7E               	swapf	saved_w,w
+  2139  02BC  0009               	retfie
+  2140                           	opt stack 0
+  2141                           GLOBAL	__end_of_isr
+  2142  02BD                     	__end_of_isr:
+  2143 ;; =============== function _isr ends ============
+  2144                           
+  2145                           	signat	_isr,88
+  2146                           psect	text124,local,class=CODE,delta=2
+  2147                           global __ptext124
+  2148  0000                     __ptext124:
+  2149                           	global	btemp
+  2150  007E                     	btemp set 07Eh
+  2151                           
+  2152                           	DABS	1,126,2	;btemp
+  2153                           	global	wtemp0
+  2154  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.83 build 10920 
+Symbol Table                                                                                   Tue Oct 17 17:32:40 2017
+
+                   pc 0002                    fsr 0004                   l600 00C0                   l601 00C1  
+                 l610 00E3                   l602 00C7                   l611 00E4                   l603 00C8  
+                 l620 010B                   l612 00EF                   l604 00CE                   l621 0111  
+                 l613 00F5                   l605 00CF                   l630 0138                   l622 0112  
+                 l614 00F6                   l606 00D5                   l631 0139                   l623 0118  
+                 l615 00FC                   l607 00D6                   l543 027C                   l640 015B  
+                 l632 013F                   l624 0119                   l616 00FD                   l608 00DC  
+                 l560 0026                   l544 0288                   l641 015C                   l633 0140  
+                 l625 011F                   l617 0103                   l609 00DD                   l561 002C  
+                 l545 0289                   l554 02A7                   l650 0183                   l642 0162  
+                 l634 0146                   l626 0120                   l618 0104                   l570 0049  
+                 l562 002D                   l546 028A                   l651 0189                   l643 0163  
+                 l635 0147                   l627 0126                   l619 010A                   l571 004F  
+                 l563 0033                   l547 028A                   l660 01A6                   l652 018A  
+                 l644 0169                   l636 014D                   l628 0127                   l580 0070  
+                 l572 0050                   l564 0034                   l661 01AC                   l653 0190  
+                 l645 016A                   l637 014E                   l629 0132                   l581 0076  
+                 l573 0056                   l565 003A                   l670 01D3                   l662 01AD  
+                 l654 0191                   l646 0175                   l638 0154                   l590 0093  
+                 l582 0077                   l574 0057                   l566 003B                   l559 023F  
+                 l671 01D4                   l663 01B8                   l655 0197                   l647 017B  
+                 l639 0155                   l591 0099                   l583 007D                   l575 005D  
+                 l567 0041                   l680 01FB                   l672 01DA                   l664 01BE  
+                 l656 0198                   l648 017C                   l592 009A                   l584 007E  
+                 l576 005E                   l568 0042                   l577 0255                   l681 0201  
+                 l673 01DB                   l665 01BF                   l657 019E                   l649 0182  
+                 l593 00A0                   l585 0084                   l569 0048                   l690 021E  
+                 l682 0202                   l674 01E1                   l666 01C5                   l658 019F  
+                 l594 00A1                   l586 0085                   l578 0069                   l691 0224  
+                 l683 0208                   l675 01E2                   l667 01C6                   l659 01A5  
+                 l595 00AC                   l587 008B                   l579 006F                   l692 0225  
+                 l684 0209                   l676 01E8                   l668 01CC                   l596 00B2  
+                 l588 008C                   l693 022B                   l685 020F                   l677 01E9  
+                 l669 01CD                   l597 00B3                   l589 0092                   l694 022C  
+                 l686 0210                   l678 01EF                   l598 00B9                   l695 0232  
+                 l687 0216                   l679 01F0                   l599 00BA                   l696 0233  
+                 l688 0217                   l689 021D                   l697 0255                   _GIE 005F  
+                 _RA1 0029                   _RA2 002A                   _RB1 0031                   _RA3 002B  
+                 _RC0 0038                   _RB2 0032                   _RA4 002C                   _RC1 0039  
+                 _RB3 0033                   _RA5 002D                   _RC2 003A                   _RC3 003B  
+                 _isr 02A8                   fsr0 0004                   indf 0000                  S2362 02BD  
+                l2120 0299                  l2200 011D                  l2122 02A0                  l2210 0144  
+                l2202 0124                  l2130 001B                  l2116 028C                  l2220 0167  
+                l2212 014B                  l2204 012B                  l2140 003F                  l2132 001F  
+                l2124 0011                  l2300 0264                  l2118 0292                  l2230 018E  
+                l2222 016E                  l2214 0152                  l2206 0136                  l2150 0062  
+                l2142 0046                  l2134 002A                  l2126 0013                  l2310 027A  
+                l2302 0270                  l2240 01B1                  l2232 0195                  l2224 0179  
+                l2216 0159                  l2208 013D                  l2160 0089                  l2152 006D  
+                l2144 004D                  l2136 0031                  l2128 0017                  l2312 027C  
+                l2304 0274                  l2250 01D8                  l2242 01BC                  l2234 019C  
+                l2226 0180                  l2218 0160                  l2170 00B0                  l2162 0090  
+                l2154 0074                  l2146 0054                  l2138 0038                  l2314 027D  
+                l2306 0276                  l2260 01FF                  l2252 01DF                  l2244 01C3  
+                l2236 01A3                  l2228 0187                  l2180 00D3                  l2172 00B7  
+                l2164 0097                  l2156 007B                  l2148 005B                  l2316 0285  
+                l2308 0279                  l2270 0222                  l2262 0206                  l2254 01E6  
+                l2246 01CA                  l2238 01AA                  l2190 00FA                  l2182 00DA  
+                l2174 00BE                  l2166 009E                  l2158 0082                  l2318 0286  
+                l2360 024A                  l2272 0229                  l2264 020D                  l2256 01ED  
+                l2248 01D1                  l2192 0101                  l2184 00E1                  l2176 00C5  
+                l2168 00A5                  l2280 023F                  l2274 0230                  l2266 0214  
+                l2258 01F4                  l2194 0108                  l2186 00E8                  l2178 00CC  
+                l2290 0256                  l2276 0237                  l2268 021B                  l2196 010F  
+                l2188 00F3                  l2292 0257                  l2278 023E                  l2198 0116  
+                l2294 025B                  l2296 025E                  l2298 0261                  ?_isr 0070  
+                u3000 00C5                  u3001 00C4                  u3010 00CC                  u3011 00CB  
+                u3100 0116                  u3020 00D3                  u3101 0115                  u3021 00D2  
+                u3110 011D                  u3030 00DA                  u3111 011C                  u3031 00D9  
+                u3200 0167                  u3120 0124                  u3040 00E1                  u3201 0166  
+                u3121 0123                  u3041 00E0                  u3210 0179                  u3130 0136  
+                u3050 00F3                  u3211 0178                  u3131 0135                  u3051 00F2  
+                u3300 01C3                  u3220 0180                  u3140 013D                  u3060 00FA  
+                u3301 01C2                  u3221 017F                  u3141 013C                  u3061 00F9  
+                u3310 01CA                  u3230 0187                  u3150 0144                  u3070 0101  
+                u3311 01C9                  u3231 0186                  u3151 0143                  u3071 0100  
+                u3400 0214                  u3320 01D1                  u3240 018E                  u3160 014B  
+                u3080 0108                  u3401 0213                  u3321 01D0                  u3241 018D  
+                u3161 014A                  u3081 0107                  u3410 021B                  u3330 01D8  
+                u3250 0195                  u3170 0152                  u3090 010F                  u3411 021A  
+                u3331 01D7                  u3251 0194                  u3171 0151                  u3091 010E  
+                u3420 0222                  u3340 01DF                  u3260 019C                  u3180 0159  
+                u3421 0221                  u3341 01DE                  u3261 019B                  u3181 0158  
+                u3430 0229                  u3350 01E6                  u3270 01A3                  u3190 0160  
+                u3431 0228                  u3351 01E5                  u3271 01A2                  u3191 015F  
+                u3440 0230                  u3360 01ED                  u3280 01AA                  u3441 022F  
+                u3361 01EC                  u3281 01A9                  u3370 01FF                  u3290 01BC  
+                u2810 002A                  u3450 0285                  u3371 01FE                  u3291 01BB  
+                u2811 0029                  u3451 0284                  u3380 0206                  u2900 0074  
+                u2820 0031                  u3381 0205                  u2901 0073                  u2821 0030  
+                u3390 020D                  u2910 007B                  u2830 0038                  u3391 020C  
+                u2911 007A                  u2831 0037                  u2920 0082                  u2840 003F  
+                u2921 0081                  u2841 003E                  u2930 0089                  u2850 0046  
+                u2931 0088                  u2851 0045                  _PEIE 005E                  u2940 0090  
+                u2860 004D                  u2941 008F                  u2861 004C                  u2950 0097  
+                u2870 0054                  u2951 0096                  u2871 0053                  u2960 009E  
+                u2880 005B                  u2961 009D                  u2881 005A                  u2970 00B0  
+                u2890 006D                  u2971 00AF                  u2891 006C                  u2980 00B7  
+                u2981 00B6                  u2990 00BE                  u2991 00BD                  _TMR2 0011  
+                _main 0256                  btemp 007E                  start 0010      __end_of_LCD_DISP 0256  
+               ??_isr 0070                 ?_main 0070                 _COMEN 0197                 _T2CON 0012  
+               i1l550 02B2                 i1l551 02B2                 _PORTA 0005                 _PORTC 0007  
+               _PORTE 0009                 _TRISA 0085                 _TRISC 0087                 _TRISE 0089  
+    __end_of_SET_DISP 02A8                 pclath 000A                 status 0003                 wtemp0 007E  
+        __end_of_main 028B                ??_main 0079                i1l2110 02A8                i1l2112 02AC  
+              i1l2114 02AD                _INTCON 000B                u280_20 02AC                u280_21 02AB  
+              _OSCCON 008F                _TMR2IE 0461                _TMR2IF 0061                _TRISC0 0438  
+              _TRISC1 0439                _TRISC2 043A                _TRISC3 043B                _tcount 0025  
+              saved_w 007E             ?_LCD_DISP 0070        __pcstackCOMMON 0070             ?_SET_DISP 0070  
+          __pbssBANK0 0024            ??_LCD_DISP 0077            __pmaintext 0256            ??_SET_DISP 0075  
+          __pintentry 0004               _LCDCON0 0190          __size_of_isr 0015  end_of_initialization 02C7  
+   __size_of_LCD_DISP 0245     __size_of_SET_DISP 001D   start_initialization 02C5           __end_of_isr 02BD  
+       SET_DISP@RDATA 0076         __pcstackBANK0 0020             __ptext120 0000             __ptext121 0011  
+           __ptext122 028B             __ptext123 02A8             __ptext124 0000             __pswtext1 02BD  
+            _LCD_DISP 0011     interrupt_function 0004              _SET_DISP 028B         __size_of_main 0035  
+     LCD_DISP@display 0020              intlevel1 0000        LCD_DISP@dcount 0024            _OPTION_REG 0081  

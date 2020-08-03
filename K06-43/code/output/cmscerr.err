@@ -1,0 +1,35 @@
+Warning[373]:	C:\Users\Administrator\Desktop\project\K06-43\code\ADC.c	第118行	implicit signed to unsigned conversion
+Warning[520]:	C:\Users\Administrator\Desktop\project\K06-43\code\LED.c	第68行	function "_DisplayIcon" is never called
+Warning[520]:	C:\Users\Administrator\Desktop\project\K06-43\code\LED.c	第87行	function "_DisplayPro" is never called
+Warning[520]:	C:\Users\Administrator\Desktop\project\K06-43\code\Motor.c	第3行	function "_Motor" is never called
+Warning[1090]:	C:\Users\Administrator\Desktop\project\K06-43\code\LED.h	第59行	variable "_LEDNubArr" is not used
+Warning[1090]:	C:\Users\Administrator\Desktop\project\K06-43\code\LED.c	第5行	variable "_SwitchCnt" is not used
+Warning[1090]:	C:\Users\Administrator\Desktop\project\K06-43\code\K06-43.c	第6行	variable "_BatPercent" is not used
+Warning[1090]:	C:\Users\Administrator\Desktop\project\K06-43\code\LED.c	第3行	variable "_LedSwitchFlag" is not used
+Warning[1090]:	C:\Users\Administrator\Desktop\project\K06-43\code\Key.c	第5行	variable "_KeyLongFlag" is not used
+Warning[1090]:	C:\Users\Administrator\Desktop\project\K06-43\code\K06-43.c	第15行	variable "_USBValErrFlag" is not used
+Warning[1090]:	C:\Users\Administrator\Desktop\project\K06-43\code\K06-43.c	第12行	variable "_LockFlag" is not used
+Warning[1090]:	C:\Users\Administrator\Desktop\project\K06-43\code\K06-43.c	第11行	variable "_LowBatFlag" is not used
+Warning[1090]:	C:\Users\Administrator\Desktop\project\K06-43\code\K06-43.c	第10行	variable "_IovFlag" is not used
+Warning[1090]:	C:\Users\Administrator\Desktop\project\K06-43\code\K06-43.c	第9行	variable "_WorkFlag" is not used
+Warning[752]:	C:\Users\Administrator\Desktop\project\K06-43\code\even.c	第10行	conversion to shorter data type
+Warning[752]:	C:\Users\Administrator\Desktop\project\K06-43\code\ADC.c	第38行	conversion to shorter data type
+Warning[759]:	C:\Users\Administrator\Desktop\project\K06-43\code\ADC.c	第30行	expression generates no code
+Warning[759]:	C:\Users\Administrator\Desktop\project\K06-43\code\ADC.c	第34行	expression generates no code
+Warning[759]:	C:\Users\Administrator\Desktop\project\K06-43\code\ADC.c	第38行	expression generates no code
+Warning[759]:	C:\Users\Administrator\Desktop\project\K06-43\code\ADC.c	第42行	expression generates no code
+Warning[759]:	C:\Users\Administrator\Desktop\project\K06-43\code\ADC.c	第46行	expression generates no code
+Warning[752]:	C:\Users\Administrator\Desktop\project\K06-43\code\ADC.c	第118行	conversion to shorter data type
+Warning[759]:	C:\Users\Administrator\Desktop\project\K06-43\code\Key.c	第52行	expression generates no code
+Warning[759]:	C:\Users\Administrator\Desktop\project\K06-43\code\Key.c	第59行	expression generates no code
+Warning[759]:	C:\Users\Administrator\Desktop\project\K06-43\code\Key.c	第63行	expression generates no code
+Warning[752]:	C:\Users\Administrator\Desktop\project\K06-43\code\Beep.c	第22行	conversion to shorter data type
+
+Memory Summary:
+    Program space        used   402h (  1026) of   800h words   ( 50.1%)
+    Data space           used    52h (    82) of    A0h bytes   ( 51.2%)
+    EEPROM space         None available
+    Data stack space     used     0h (     0) of    50h bytes   (  0.0%)
+    Configuration bits   used     0h (     0) of     2h words   (  0.0%)
+    ID Location space    used     0h (     0) of     4h bytes   (  0.0%)
+

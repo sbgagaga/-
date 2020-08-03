@@ -1,0 +1,14 @@
+(1273) Omniscient Code Generation not available in Lite mode (warning)
+
+Memory Summary:
+    Program space        used    3Eh (    62) of   600h words   (  4.0%)
+    Data space           used     6h (     6) of    B0h bytes   (  3.4%)
+    EEPROM space         None available
+    Configuration bits   used     0h (     0) of     2h words   (  0.0%)
+    ID Location space    used     0h (     0) of     4h bytes   (  0.0%)
+
+
+Running this compiler in PRO mode, with Omniscient Code Generation enabled,
+produces code which is typically 40% smaller than in Lite mode.
+See http://microchip.htsoft.com/portal/pic_pro for more information.
+

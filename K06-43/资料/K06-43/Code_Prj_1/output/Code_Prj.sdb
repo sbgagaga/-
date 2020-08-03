@@ -1,0 +1,583 @@
+[p PRO_MODE GLOBOPT AUTOSTATIC PIC14 PICREGULAR PICMID SPACEOPT ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip SC8P1713S ]
+[d frameptr 6 ]
+"18 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\AppProc.C
+[v _AppMotor AppMotor `(v  1 e 1 0 ]
+"107
+[v _AppChr AppChr `(v  1 e 1 0 ]
+"164
+[v _LockSet LockSet `(v  1 e 1 0 ]
+"215
+[v _BeepProc BeepProc `(v  1 e 1 0 ]
+"240
+[v _TimeAddDec TimeAddDec `(v  1 e 1 0 ]
+"10 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\display.c
+[v _LedIndex LedIndex `(v  1 e 1 0 ]
+"78
+[v _LedScan LedScan `(v  1 e 1 0 ]
+"98
+[v _DisPlayNum DisPlayNum `(v  1 e 1 0 ]
+"120
+[v _DisPlayIcon DisPlayIcon `(v  1 e 1 0 ]
+"139
+[v _LedRamUpdate LedRamUpdate `(v  1 e 1 0 ]
+"7 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\Kscan.C
+[v _Btn_Init Btn_Init `(v  1 e 1 0 ]
+"16
+[v _BtnScan BtnScan `(v  1 e 1 0 ]
+"3 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\main.C
+[v _Init_System Init_System `(v  1 e 1 0 ]
+"29
+[v _Isr_Timer Isr_Timer `II(v  1 e 1 0 ]
+"64
+[v _main main `(v  1 e 1 0 ]
+"10 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\sc8p1711c.c
+[v _GPIO_Init GPIO_Init `(v  1 e 1 0 ]
+"44
+[v _ADSample ADSample `(uc  1 e 1 0 ]
+"67
+[v _AdRead AdRead `(v  1 e 1 0 ]
+"105
+[v _AdProc AdProc `(v  1 e 1 0 ]
+"169
+[v _SysSleep SysSleep `(v  1 e 1 0 ]
+"209
+[v _SysSleepSet SysSleepSet `(v  1 e 1 0 ]
+"62 C:\Users\Administrator\Desktop\project\K06-43\资料\SC8P171X_开发工具软件及Demo 程序 -- 电压表\SCMCU_IDE_V2.00.08_Beta9\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Users\Administrator\Desktop\project\K06-43\资料\SC8P171X_开发工具软件及Demo 程序 -- 电压表\SCMCU_IDE_V2.00.08_Beta9\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"4 C:\Users\Administrator\Desktop\project\K06-43\资料\SC8P171X_开发工具软件及Demo 程序 -- 电压表\SCMCU_IDE_V2.00.08_Beta9\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lbdiv.c
+[v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
+"4 C:\Users\Administrator\Desktop\project\K06-43\资料\SC8P171X_开发工具软件及Demo 程序 -- 电压表\SCMCU_IDE_V2.00.08_Beta9\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lbmod.c
+[v ___lbmod __lbmod `(uc  1 e 1 0 ]
+"6 C:\Users\Administrator\Desktop\project\K06-43\资料\SC8P171X_开发工具软件及Demo 程序 -- 电压表\SCMCU_IDE_V2.00.08_Beta9\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"6 C:\Users\Administrator\Desktop\project\K06-43\资料\SC8P171X_开发工具软件及Demo 程序 -- 电压表\SCMCU_IDE_V2.00.08_Beta9\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"15 C:\Users\Administrator\Desktop\project\K06-43\资料\SC8P171X_开发工具软件及Demo 程序 -- 电压表\SCMCU_IDE_V2.00.08_Beta9\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"4 C:\Users\Administrator\Desktop\project\K06-43\资料\SC8P171X_开发工具软件及Demo 程序 -- 电压表\SCMCU_IDE_V2.00.08_Beta9\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+"10 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\AppProc.C
+[v _sta_m sta_m `uc  1 e 1 0 ]
+"11
+[v _timer_motor timer_motor `uc  1 e 1 0 ]
+"12
+[v _debance_low_cnt debance_low_cnt `uc  1 e 1 0 ]
+"13
+[v _debance_hiov_cnt debance_hiov_cnt `uc  1 e 1 0 ]
+"14
+[v _debance_iov_cnt debance_iov_cnt `uc  1 e 1 0 ]
+"15
+[v _debance_scp_cnt debance_scp_cnt `uc  1 e 1 0 ]
+"16
+[v _time_motor_cnt time_motor_cnt `ui  1 e 2 0 ]
+"17
+[v _ad_scp ad_scp `ui  1 e 2 0 ]
+"103
+[v _sta_chr sta_chr `uc  1 e 1 0 ]
+"104
+[v _timer_chr timer_chr `uc  1 e 1 0 ]
+"105
+[v _debance_usb_cnt debance_usb_cnt `uc  1 e 1 0 ]
+"106
+[v _time_chr_cnt time_chr_cnt `ui  1 e 2 0 ]
+"161
+[v _sta_lock sta_lock `uc  1 e 1 0 ]
+"162
+[v _lock_count_down lock_count_down `uc  1 e 1 0 ]
+"163
+[v _timer_lock timer_lock `uc  1 e 1 0 ]
+"214
+[v _timer_beep timer_beep `uc  1 e 1 0 ]
+"94 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\display.c
+[v _LED_RAM_R LED_RAM_R `[4]uc  1 e 4 0 ]
+"95
+[v _Flag_dig1 Flag_dig1 `b  1 e 0 0 ]
+"96
+[v _Flag_dig2 Flag_dig2 `b  1 e 0 0 ]
+"137
+[v _Flag_scan_dir Flag_scan_dir `b  1 e 0 0 ]
+"138
+[v _Flag_ledcp_dir Flag_ledcp_dir `b  1 e 0 0 ]
+"103 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\sc8p1711c.c
+[v _sta_ad sta_ad `uc  1 e 1 0 ]
+"104
+[v _ad_current ad_current `ui  1 e 2 0 ]
+"168
+[v _RSleepCnt RSleepCnt `uc  1 e 1 0 ]
+"38 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\source_h\display.h
+[v _LED_RAM LED_RAM `[4]uc  1 e 4 0 ]
+"39
+[v _LEDCode LEDCode `DC[17]uc  1 e 17 0 ]
+"58 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\source_h\global_var.h
+[v _Flag_boot Flag_boot `b  1 e 0 0 ]
+"59
+[v _Flag_on Flag_on `b  1 e 0 0 ]
+"60
+[v _Flag_off Flag_off `b  1 e 0 0 ]
+"61
+[v _Flag_on_boot Flag_on_boot `b  1 e 0 0 ]
+"62
+[v _Flag_lk Flag_lk `b  1 e 0 0 ]
+"63
+[v _Flag_lk_set Flag_lk_set `b  1 e 0 0 ]
+"64
+[v _Flag_lk_alarm Flag_lk_alarm `b  1 e 0 0 ]
+"65
+[v _Flag_iov Flag_iov `b  1 e 0 0 ]
+"67
+[v _Flag_xi Flag_xi `b  1 e 0 0 ]
+"68
+[v _Flag_xi_alarm Flag_xi_alarm `b  1 e 0 0 ]
+"69
+[v _Flag_low Flag_low `b  1 e 0 0 ]
+"70
+[v _Flag_low_alarm Flag_low_alarm `b  1 e 0 0 ]
+"71
+[v _Flag_stop Flag_stop `b  1 e 0 0 ]
+"72
+[v _Flag_beep Flag_beep `b  1 e 0 0 ]
+"73
+[v _Flag_beep_boot Flag_beep_boot `b  1 e 0 0 ]
+"74
+[v _Flag_chr Flag_chr `b  1 e 0 0 ]
+"75
+[v _Flag_chr_boot Flag_chr_boot `b  1 e 0 0 ]
+"76
+[v _Flag_usb Flag_usb `b  1 e 0 0 ]
+"79
+[v _actual_percent actual_percent `uc  1 e 1 0 ]
+"80
+[v _bat_percent bat_percent `uc  1 e 1 0 ]
+"81
+[v _alarm_beep_cnt alarm_beep_cnt `uc  1 e 1 0 ]
+"82
+[v _speed_beep speed_beep `uc  1 e 1 0 ]
+"83
+[v _time_chr_add time_chr_add `uc  1 e 1 0 ]
+"84
+[v _time_dec_cnt time_dec_cnt `uc  1 e 1 0 ]
+"85
+[v _time_second time_second `uc  1 e 1 0 ]
+"86
+[v _time_minute time_minute `uc  1 e 1 0 ]
+"87
+[v _timer_1s timer_1s `uc  1 e 1 0 ]
+"88
+[v _timer_boot_cnt timer_boot_cnt `uc  1 e 1 0 ]
+"7 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\source_h\kscan.h
+[v _Flag_Btn_Release Flag_Btn_Release `b  1 e 0 0 ]
+"8
+[v _Flag_key_long Flag_key_long `b  1 e 0 0 ]
+"9
+[v _Flag_key_usb Flag_key_usb `b  1 e 0 0 ]
+"10
+[v _Flag_key_set Flag_key_set `b  1 e 0 0 ]
+"14
+[v _ReadKey ReadKey `uc  1 e 1 0 ]
+"16
+[v _ReadKeyTmp ReadKeyTmp `uc  1 e 1 0 ]
+"17
+[v _ReadKeyOld ReadKeyOld `uc  1 e 1 0 ]
+"49 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\source_h\sc8p1711c.h
+[v _Flag_mainloop Flag_mainloop `b  1 e 0 0 ]
+"50
+[v _Flag_RtSleep Flag_RtSleep `b  1 e 0 0 ]
+"53
+[v _Rt2ms_cnt Rt2ms_cnt `uc  1 e 1 0 ]
+"54
+[v _Rt10ms_cnt Rt10ms_cnt `uc  1 e 1 0 ]
+"57
+[v _Flag_ad_done Flag_ad_done `b  1 e 0 0 ]
+"61
+[v _admax admax `ui  1 e 2 0 ]
+"62
+[v _admin admin `ui  1 e 2 0 ]
+"63
+[v _adsum adsum `ui  1 e 2 0 ]
+"64
+[v _ad_bg ad_bg `ui  1 e 2 0 ]
+"65
+[v _ad_val ad_val `ui  1 e 2 0 ]
+"66
+[v _current_val current_val `ui  1 e 2 0 ]
+"67
+[v _current_scp current_scp `ui  1 e 2 0 ]
+"68
+[v _bat_val bat_val `ui  1 e 2 0 ]
+"17 C:\Users\Administrator\Desktop\project\K06-43\资料\SC8P171X_开发工具软件及Demo 程序 -- 电压表\SCMCU_IDE_V2.00.08_Beta9\SCMCU_IDE_V2.00.08_Beta9\data\include\SC8P1713C.h
+[v _PORTA PORTA `VEuc  1 e 1 @5 ]
+"18
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"19
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+"22
+[v _PORTE PORTE `VEuc  1 e 1 @9 ]
+"24
+[v _INTCON INTCON `VEuc  1 e 1 @11 ]
+"25
+[v _PIR1 PIR1 `VEuc  1 e 1 @12 ]
+"31
+[v _T2CON T2CON `VEuc  1 e 1 @18 ]
+"36
+[v _CCP1CON CCP1CON `VEuc  1 e 1 @23 ]
+"44
+[v _CCP2CON CCP2CON `VEuc  1 e 1 @29 ]
+"45
+[v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
+"46
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @31 ]
+"50
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+"51
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"52
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"53
+[v _TRISE TRISE `VEuc  1 e 1 @137 ]
+"54
+[v _PIE1 PIE1 `VEuc  1 e 1 @140 ]
+"55
+[v _PIE2 PIE2 `VEuc  1 e 1 @141 ]
+"57
+[v _OSCCON OSCCON `VEuc  1 e 1 @143 ]
+"60
+[v _PR2 PR2 `VEuc  1 e 1 @146 ]
+"63
+[v _WPUB WPUB `VEuc  1 e 1 @149 ]
+"64
+[v _IOCB IOCB `VEuc  1 e 1 @150 ]
+"71
+[v _ADRESL ADRESL `VEuc  1 e 1 @158 ]
+"72
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @159 ]
+"76
+[v _WDTCON WDTCON `VEuc  1 e 1 @261 ]
+"91
+[v _KEYCON0 KEYCON0 `VEuc  1 e 1 @275 ]
+"99
+[v _WPUE WPUE `VEuc  1 e 1 @282 ]
+"110
+[v _WPUA WPUA `VEuc  1 e 1 @398 ]
+"111
+[v _WPUC WPUC `VEuc  1 e 1 @399 ]
+"136
+[v _RA0 RA0 `VEb  1 e 0 @40 ]
+"137
+[v _RA1 RA1 `VEb  1 e 0 @41 ]
+"138
+[v _RA2 RA2 `VEb  1 e 0 @42 ]
+"139
+[v _RA3 RA3 `VEb  1 e 0 @43 ]
+"140
+[v _RA4 RA4 `VEb  1 e 0 @44 ]
+"141
+[v _RA5 RA5 `VEb  1 e 0 @45 ]
+"147
+[v _RB1 RB1 `VEb  1 e 0 @49 ]
+"148
+[v _RB2 RB2 `VEb  1 e 0 @50 ]
+"149
+[v _RB3 RB3 `VEb  1 e 0 @51 ]
+"150
+[v _RB4 RB4 `VEb  1 e 0 @52 ]
+"151
+[v _RB5 RB5 `VEb  1 e 0 @53 ]
+"152
+[v _RB6 RB6 `VEb  1 e 0 @54 ]
+"153
+[v _RB7 RB7 `VEb  1 e 0 @55 ]
+"156
+[v _RC0 RC0 `VEb  1 e 0 @56 ]
+"157
+[v _RC1 RC1 `VEb  1 e 0 @57 ]
+"158
+[v _RC2 RC2 `VEb  1 e 0 @58 ]
+"159
+[v _RC3 RC3 `VEb  1 e 0 @59 ]
+"166
+[v _RE0 RE0 `VEb  1 e 0 @72 ]
+"172
+[v _RBIF RBIF `VEb  1 e 0 @88 ]
+"177
+[v _RBIE RBIE `VEb  1 e 0 @91 ]
+"183
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"187
+[v _TMR2IF TMR2IF `VEb  1 e 0 @97 ]
+"214
+[v _TMR2ON TMR2ON `VEb  1 e 0 @146 ]
+"243
+[v _GODONE GODONE `VEb  1 e 0 @249 ]
+"259
+[v _RBPU RBPU `VEb  1 e 0 @1039 ]
+"265
+[v _TRISA1 TRISA1 `VEb  1 e 0 @1065 ]
+"266
+[v _TRISA2 TRISA2 `VEb  1 e 0 @1066 ]
+"278
+[v _TRISB4 TRISB4 `VEb  1 e 0 @1076 ]
+"279
+[v _TRISB5 TRISB5 `VEb  1 e 0 @1077 ]
+"332
+[v _WPUA1 WPUA1 `VEb  1 e 0 @3185 ]
+"333
+[v _WPUA2 WPUA2 `VEb  1 e 0 @3186 ]
+"345
+[v _WPUB4 WPUB4 `VEb  1 e 0 @1196 ]
+"346
+[v _WPUB5 WPUB5 `VEb  1 e 0 @1197 ]
+"401
+[v _ANS1 ANS1 `VEb  1 e 0 @3137 ]
+"402
+[v _ANS2 ANS2 `VEb  1 e 0 @3138 ]
+"64 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\main.C
+[v _main main `(v  1 e 1 0 ]
+{
+"107
+} 0
+"240 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\AppProc.C
+[v _TimeAddDec TimeAddDec `(v  1 e 1 0 ]
+{
+"243
+[v TimeAddDec@tmp_percent tmp_percent `ui  1 a 2 12 ]
+"242
+[v TimeAddDec@percent_err percent_err `uc  1 a 1 11 ]
+"240
+[v TimeAddDec@bat_value bat_value `ui  1 p 2 7 ]
+"298
+} 0
+"6 C:\Users\Administrator\Desktop\project\K06-43\资料\SC8P171X_开发工具软件及Demo 程序 -- 电压表\SCMCU_IDE_V2.00.08_Beta9\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwdiv@quotient quotient `ui  1 a 2 5 ]
+"12
+[v ___lwdiv@counter counter `uc  1 a 1 4 ]
+"6
+[v ___lwdiv@divisor divisor `ui  1 p 2 0 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
+"31
+} 0
+"4 C:\Users\Administrator\Desktop\project\K06-43\资料\SC8P171X_开发工具软件及Demo 程序 -- 电压表\SCMCU_IDE_V2.00.08_Beta9\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+{
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v ___bmul@product product `uc  1 a 1 0 ]
+"4
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 4 ]
+"6
+[v ___bmul@multiplier multiplier `uc  1 a 1 1 ]
+"51
+} 0
+"169 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\sc8p1711c.c
+[v _SysSleep SysSleep `(v  1 e 1 0 ]
+{
+"201
+} 0
+"209
+[v _SysSleepSet SysSleepSet `(v  1 e 1 0 ]
+{
+"235
+} 0
+"3 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\main.C
+[v _Init_System Init_System `(v  1 e 1 0 ]
+{
+"19
+} 0
+"10 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\sc8p1711c.c
+[v _GPIO_Init GPIO_Init `(v  1 e 1 0 ]
+{
+"35
+} 0
+"7 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\Kscan.C
+[v _Btn_Init Btn_Init `(v  1 e 1 0 ]
+{
+"10
+} 0
+"164 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\AppProc.C
+[v _LockSet LockSet `(v  1 e 1 0 ]
+{
+"206
+} 0
+"139 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\display.c
+[v _LedRamUpdate LedRamUpdate `(v  1 e 1 0 ]
+{
+"141
+[v LedRamUpdate@led_cp_cnt led_cp_cnt `uc  1 s 1 led_cp_cnt ]
+"142
+[v LedRamUpdate@led_cp led_cp `uc  1 s 1 led_cp ]
+"143
+[v LedRamUpdate@led_boot_cnt led_boot_cnt `uc  1 s 1 led_boot_cnt ]
+"144
+[v LedRamUpdate@alarm_lk_cnt alarm_lk_cnt `uc  1 s 1 alarm_lk_cnt ]
+"145
+[v LedRamUpdate@alarm_xi_cnt alarm_xi_cnt `uc  1 s 1 alarm_xi_cnt ]
+"146
+[v LedRamUpdate@alarm_low_cnt alarm_low_cnt `uc  1 s 1 alarm_low_cnt ]
+"147
+[v LedRamUpdate@timer_chr_boot timer_chr_boot `uc  1 s 1 timer_chr_boot ]
+"148
+[v LedRamUpdate@chr_boot_cnt chr_boot_cnt `uc  1 s 1 chr_boot_cnt ]
+"149
+[v LedRamUpdate@timer_off timer_off `uc  1 s 1 timer_off ]
+"150
+[v LedRamUpdate@timer_add timer_add `uc  1 s 1 timer_add ]
+"152
+[v LedRamUpdate@timer_lk timer_lk `uc  1 s 1 timer_lk ]
+"153
+[v LedRamUpdate@timer_xi timer_xi `uc  1 s 1 timer_xi ]
+"291
+} 0
+"98
+[v _DisPlayNum DisPlayNum `(v  1 e 1 0 ]
+{
+[v DisPlayNum@dis_num dis_num `uc  1 a 1 wreg ]
+[v DisPlayNum@dis_num dis_num `uc  1 a 1 wreg ]
+[v DisPlayNum@dig_sel dig_sel `uc  1 p 1 3 ]
+"101
+[v DisPlayNum@dis_num dis_num `uc  1 a 1 4 ]
+"111
+} 0
+"4 C:\Users\Administrator\Desktop\project\K06-43\资料\SC8P171X_开发工具软件及Demo 程序 -- 电压表\SCMCU_IDE_V2.00.08_Beta9\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lbmod.c
+[v ___lbmod __lbmod `(uc  1 e 1 0 ]
+{
+[v ___lbmod@dividend dividend `uc  1 a 1 wreg ]
+"6
+[v ___lbmod@rem rem `uc  1 a 1 2 ]
+"7
+[v ___lbmod@counter counter `uc  1 a 1 1 ]
+"4
+[v ___lbmod@dividend dividend `uc  1 a 1 wreg ]
+[v ___lbmod@divisor divisor `uc  1 p 1 4 ]
+"9
+[v ___lbmod@dividend dividend `uc  1 a 1 0 ]
+"18
+} 0
+"4 C:\Users\Administrator\Desktop\project\K06-43\资料\SC8P171X_开发工具软件及Demo 程序 -- 电压表\SCMCU_IDE_V2.00.08_Beta9\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lbdiv.c
+[v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
+{
+[v ___lbdiv@dividend dividend `uc  1 a 1 wreg ]
+"6
+[v ___lbdiv@quotient quotient `uc  1 a 1 2 ]
+"7
+[v ___lbdiv@counter counter `uc  1 a 1 1 ]
+"4
+[v ___lbdiv@dividend dividend `uc  1 a 1 wreg ]
+[v ___lbdiv@divisor divisor `uc  1 p 1 4 ]
+"9
+[v ___lbdiv@dividend dividend `uc  1 a 1 0 ]
+"26
+} 0
+"120 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\display.c
+[v _DisPlayIcon DisPlayIcon `(v  1 e 1 0 ]
+{
+[v DisPlayIcon@icon_seg icon_seg `uc  1 a 1 wreg ]
+[v DisPlayIcon@icon_seg icon_seg `uc  1 a 1 wreg ]
+[v DisPlayIcon@icon_sel icon_sel `uc  1 p 1 4 ]
+[v DisPlayIcon@icon_sta icon_sta `uc  1 p 1 5 ]
+[v DisPlayIcon@icon_seg icon_seg `uc  1 a 1 0 ]
+"129
+} 0
+"16 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\Kscan.C
+[v _BtnScan BtnScan `(v  1 e 1 0 ]
+{
+"31
+} 0
+"215 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\AppProc.C
+[v _BeepProc BeepProc `(v  1 e 1 0 ]
+{
+"232
+} 0
+"18
+[v _AppMotor AppMotor `(v  1 e 1 0 ]
+{
+"95
+} 0
+"107
+[v _AppChr AppChr `(v  1 e 1 0 ]
+{
+"153
+} 0
+"105 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\sc8p1711c.c
+[v _AdProc AdProc `(v  1 e 1 0 ]
+{
+"107
+[v AdProc@dat_tmp dat_tmp `ul  1 a 4 0 ]
+"142
+} 0
+"15 C:\Users\Administrator\Desktop\project\K06-43\资料\SC8P171X_开发工具软件及Demo 程序 -- 电压表\SCMCU_IDE_V2.00.08_Beta9\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+{
+"17
+[v ___lmul@product product `ul  1 a 4 8 ]
+"15
+[v ___lmul@multiplier multiplier `ul  1 p 4 0 ]
+[v ___lmul@multiplicand multiplicand `ul  1 p 4 4 ]
+"129
+} 0
+"6 C:\Users\Administrator\Desktop\project\K06-43\资料\SC8P171X_开发工具软件及Demo 程序 -- 电压表\SCMCU_IDE_V2.00.08_Beta9\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"11
+[v ___lldiv@quotient quotient `ul  1 a 4 20 ]
+"12
+[v ___lldiv@counter counter `uc  1 a 1 24 ]
+"6
+[v ___lldiv@divisor divisor `ul  1 p 4 12 ]
+[v ___lldiv@dividend dividend `ul  1 p 4 16 ]
+"31
+} 0
+"67 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\sc8p1711c.c
+[v _AdRead AdRead `(v  1 e 1 0 ]
+{
+[v AdRead@ad_ch ad_ch `uc  1 a 1 wreg ]
+"70
+[v AdRead@ad_temp ad_temp `ui  1 a 2 5 ]
+"67
+[v AdRead@ad_ch ad_ch `uc  1 a 1 wreg ]
+"69
+[v AdRead@adtimes adtimes `uc  1 s 1 adtimes ]
+"72
+[v AdRead@ad_ch ad_ch `uc  1 a 1 4 ]
+"95
+} 0
+"44
+[v _ADSample ADSample `(uc  1 e 1 0 ]
+{
+[v ADSample@adch adch `uc  1 a 1 wreg ]
+"51
+[v ADSample@i i `VEuc  1 a 1 1 ]
+"44
+[v ADSample@adch adch `uc  1 a 1 wreg ]
+"46
+[v ADSample@adch adch `uc  1 a 1 0 ]
+"58
+} 0
+"29 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\main.C
+[v _Isr_Timer Isr_Timer `II(v  1 e 1 0 ]
+{
+"54
+} 0
+"78 C:\Users\Administrator\Desktop\project\K06-43\资料\K06-43\Code_Prj_1\source\display.c
+[v _LedScan LedScan `(v  1 e 1 0 ]
+{
+"80
+[v LedScan@led_scan_index led_scan_index `uc  1 s 1 led_scan_index ]
+"86
+} 0
+"10
+[v _LedIndex LedIndex `(v  1 e 1 0 ]
+{
+[v LedIndex@led_index led_index `uc  1 a 1 wreg ]
+[v LedIndex@led_index led_index `uc  1 a 1 wreg ]
+"12
+[v LedIndex@led_index led_index `uc  1 a 1 0 ]
+"70
+} 0

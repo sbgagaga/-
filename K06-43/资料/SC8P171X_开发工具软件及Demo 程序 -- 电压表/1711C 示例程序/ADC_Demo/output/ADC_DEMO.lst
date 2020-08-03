@@ -1,0 +1,1223 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.83 build 10920 
+                                                                                               Sat Oct 14 10:46:49 2017
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 10920
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 10920"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	SC8P1713
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           	FNCALL	_main,_DelayXms
+    43                           	FNCALL	_main,_ADC_Sample
+    44                           	FNCALL	_main,_ADC_Result
+    45                           	FNROOT	_main
+    46                           	global	ADC_Sample@adsum
+    47                           	global	ADC_Sample@admin
+    48                           	global	_adresult
+    49                           	global	ADC_Sample@admax
+    50                           	global	ADC_Sample@adtimes
+    51                           	global	_ADCON0
+    52                           psect	text140,local,class=CODE,delta=2
+    53                           global __ptext140
+    54  0000                     __ptext140:
+    55  001F                     _ADCON0	set	31
+    56                           	global	_ADRESH
+    57  001E                     _ADRESH	set	30
+    58                           	global	_INTCON
+    59  000B                     _INTCON	set	11
+    60                           	global	_GODONE
+    61  00F9                     _GODONE	set	249
+    62                           	global	_ADCON1
+    63  009F                     _ADCON1	set	159
+    64                           	global	_ADRESL
+    65  009E                     _ADRESL	set	158
+    66                           	global	_OSCCON
+    67  008F                     _OSCCON	set	143
+    68                           	global	_TRISB5
+    69  0435                     _TRISB5	set	1077
+    70                           	global	_ANSELH
+    71  0189                     _ANSELH	set	393
+    72                           	file	"ADC_DEMO.as"
+    73                           	line	#
+    74                           psect cinit,class=CODE,delta=2
+    75                           global start_initialization
+    76  0489                     start_initialization:
+    77                           
+    78                           psect	bssCOMMON,class=COMMON,space=1
+    79                           global __pbssCOMMON
+    80  007A                     __pbssCOMMON:
+    81  007A                     ADC_Sample@admax:
+    82  007A                            ds      2
+    83                           
+    84  007C                     ADC_Sample@adtimes:
+    85  007C                            ds      1
+    86                           
+    87                           psect	bssBANK0,class=BANK0,space=1
+    88                           global __pbssBANK0
+    89  0020                     __pbssBANK0:
+    90  0020                     ADC_Sample@adsum:
+    91  0020                            ds      4
+    92                           
+    93  0024                     ADC_Sample@admin:
+    94  0024                            ds      2
+    95                           
+    96  0026                     _adresult:
+    97  0026                            ds      2
+    98                           
+    99                           ; Clear objects allocated to COMMON
+   100                           psect cinit,class=CODE,delta=2
+   101  0489  01FA               	clrf	((__pbssCOMMON)+0)&07Fh
+   102  048A  01FB               	clrf	((__pbssCOMMON)+1)&07Fh
+   103  048B  01FC               	clrf	((__pbssCOMMON)+2)&07Fh
+   104                           ; Clear objects allocated to BANK0
+   105                           psect cinit,class=CODE,delta=2
+   106  048C  01A0               	clrf	((__pbssBANK0)+0)&07Fh
+   107  048D  01A1               	clrf	((__pbssBANK0)+1)&07Fh
+   108  048E  01A2               	clrf	((__pbssBANK0)+2)&07Fh
+   109  048F  01A3               	clrf	((__pbssBANK0)+3)&07Fh
+   110  0490  01A4               	clrf	((__pbssBANK0)+4)&07Fh
+   111  0491  01A5               	clrf	((__pbssBANK0)+5)&07Fh
+   112  0492  01A6               	clrf	((__pbssBANK0)+6)&07Fh
+   113  0493  01A7               	clrf	((__pbssBANK0)+7)&07Fh
+   114                           psect cinit,class=CODE,delta=2
+   115                           global end_of_initialization
+   116                           
+   117                           ;End of C runtime variable initialization code
+   118                           
+   119  0494                     end_of_initialization:
+   120  0494  0183               clrf status
+   121  0495  2C96               ljmp _main	;jump to C main() function
+   122                           psect	cstackCOMMON,class=COMMON,space=1
+   123                           global __pcstackCOMMON
+   124  0070                     __pcstackCOMMON:
+   125                           	global	?_ADC_Sample
+   126  0070                     ?_ADC_Sample:	; 0 bytes @ 0x0
+   127                           	global	??_ADC_Sample
+   128  0070                     ??_ADC_Sample:	; 0 bytes @ 0x0
+   129                           	global	??_ADC_Result
+   130  0070                     ??_ADC_Result:	; 0 bytes @ 0x0
+   131                           	global	?_DelayXms
+   132  0070                     ?_DelayXms:	; 0 bytes @ 0x0
+   133                           	global	??_DelayXms
+   134  0070                     ??_DelayXms:	; 0 bytes @ 0x0
+   135                           	global	?_main
+   136  0070                     ?_main:	; 0 bytes @ 0x0
+   137                           	global	?_ADC_Result
+   138  0070                     ?_ADC_Result:	; 1 bytes @ 0x0
+   139  0070                     	ds	1
+   140                           	global	ADC_Result@adch
+   141  0071                     ADC_Result@adch:	; 1 bytes @ 0x1
+   142                           	global	DelayXms@x
+   143  0071                     DelayXms@x:	; 1 bytes @ 0x1
+   144  0071                     	ds	1
+   145                           	global	ADC_Result@i
+   146  0072                     ADC_Result@i:	; 1 bytes @ 0x2
+   147                           	global	DelayXms@i
+   148  0072                     DelayXms@i:	; 1 bytes @ 0x2
+   149  0072                     	ds	1
+   150                           	global	DelayXms@j
+   151  0073                     DelayXms@j:	; 1 bytes @ 0x3
+   152  0073                     	ds	1
+   153                           	global	ADC_Sample@adch
+   154  0074                     ADC_Sample@adch:	; 1 bytes @ 0x4
+   155  0074                     	ds	1
+   156                           	global	ADC_Sample@i
+   157  0075                     ADC_Sample@i:	; 1 bytes @ 0x5
+   158  0075                     	ds	1
+   159                           	global	ADC_Sample@ad_temp
+   160  0076                     ADC_Sample@ad_temp:	; 2 bytes @ 0x6
+   161  0076                     	ds	2
+   162                           	global	??_main
+   163  0078                     ??_main:	; 0 bytes @ 0x8
+   164  0078                     	ds	1
+   165                           	global	main@result
+   166  0079                     main@result:	; 1 bytes @ 0x9
+   167  0079                     	ds	1
+   168 ;;Data sizes: Strings 0, constant 0, data 0, bss 11, persistent 0 stack 0
+   169 ;;Auto spaces:   Size  Autos    Used
+   170 ;; COMMON          14     10      13
+   171 ;; BANK0           80      0       8
+   172 ;; BANK1           80      0       0
+   173                           
+   174 ;;
+   175 ;; Pointer list with targets:
+   176                           
+   177                           
+   178                           
+   179 ;;
+   180 ;; Critical Paths under _main in COMMON
+   181 ;;
+   182 ;;   _main->_ADC_Sample
+   183 ;;
+   184 ;; Critical Paths under _main in BANK0
+   185 ;;
+   186 ;;   None.
+   187 ;;
+   188 ;; Critical Paths under _main in BANK1
+   189 ;;
+   190 ;;   None.
+   191                           
+   192 ;;
+   193 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   194 ;;
+   195                           
+   196 ;;
+   197 ;;Call Graph Tables:
+   198 ;;
+   199 ;; ---------------------------------------------------------------------------------
+   200 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   201 ;; ---------------------------------------------------------------------------------
+   202 ;; (0) _main                                                 2     2      0     306
+   203 ;;                                              8 COMMON     2     2      0
+   204 ;;                           _DelayXms
+   205 ;;                         _ADC_Sample
+   206 ;;                         _ADC_Result
+   207 ;; ---------------------------------------------------------------------------------
+   208 ;; (1) _DelayXms                                             4     4      0      75
+   209 ;;                                              0 COMMON     4     4      0
+   210 ;; ---------------------------------------------------------------------------------
+   211 ;; (1) _ADC_Result                                           3     3      0      30
+   212 ;;                                              0 COMMON     3     3      0
+   213 ;; ---------------------------------------------------------------------------------
+   214 ;; (1) _ADC_Sample                                           8     8      0     200
+   215 ;;                                              0 COMMON     8     8      0
+   216 ;; ---------------------------------------------------------------------------------
+   217 ;; Estimated maximum stack depth 1
+   218 ;; ---------------------------------------------------------------------------------
+   219                           
+   220 ;; Call Graph Graphs:
+   221                           
+   222 ;; _main (ROOT)
+   223 ;;   _DelayXms
+   224 ;;   _ADC_Sample
+   225 ;;   _ADC_Result
+   226 ;;
+   227                           
+   228 ;; Address spaces:
+   229                           
+   230 ;;Name               Size   Autos  Total    Cost      Usage
+   231 ;;BITCOMMON            E      0       0       0        0.0%
+   232 ;;NULL                 0      0       0       0        0.0%
+   233 ;;CODE                 0      0       0       0        0.0%
+   234 ;;COMMON               E      A       D       1       92.9%
+   235 ;;BITSFR0              0      0       0       1        0.0%
+   236 ;;SFR0                 0      0       0       1        0.0%
+   237 ;;BITSFR1              0      0       0       2        0.0%
+   238 ;;SFR1                 0      0       0       2        0.0%
+   239 ;;STACK                0      0       1       2        0.0%
+   240 ;;ABS                  0      0      15       3        0.0%
+   241 ;;BITBANK0            50      0       0       4        0.0%
+   242 ;;BITSFR3              0      0       0       4        0.0%
+   243 ;;SFR3                 0      0       0       4        0.0%
+   244 ;;BANK0               50      0       8       5       10.0%
+   245 ;;BITSFR2              0      0       0       5        0.0%
+   246 ;;SFR2                 0      0       0       5        0.0%
+   247 ;;BITBANK1            50      0       0       6        0.0%
+   248 ;;BANK1               50      0       0       7        0.0%
+   249 ;;DATA                 0      0      16       8        0.0%
+   250                           
+   251                           	global	_main
+   252                           psect	maintext,global,class=CODE,delta=2
+   253                           global __pmaintext
+   254  0496                     __pmaintext:
+   255                           
+   256 ;; *************** function _main *****************
+   257 ;; Defined at:
+   258 ;;		line 106 in file "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\ADC_Demo\ADC.c"
+   259 ;; Parameters:    Size  Location     Type
+   260 ;;		None
+   261 ;; Auto vars:     Size  Location     Type
+   262 ;;  result          1    9[COMMON] unsigned char 
+   263 ;; Return value:  Size  Location     Type
+   264 ;;		None               void
+   265 ;; Registers used:
+   266 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+   267 ;; Tracked objects:
+   268 ;;		On entry : 17F/0
+   269 ;;		On exit  : 0/0
+   270 ;;		Unchanged: 0/0
+   271 ;; Data sizes:     COMMON   BANK0   BANK1
+   272 ;;      Params:         0       0       0
+   273 ;;      Locals:         1       0       0
+   274 ;;      Temps:          1       0       0
+   275 ;;      Totals:         2       0       0
+   276 ;;Total ram usage:        2 bytes
+   277 ;; Hardware stack levels required when called:    1
+   278 ;; This function calls:
+   279 ;;		_DelayXms
+   280 ;;		_ADC_Sample
+   281 ;;		_ADC_Result
+   282 ;; This function is called by:
+   283 ;;		Startup code after reset
+   284 ;; This function uses a non-reentrant model
+   285 ;;
+   286                           psect	maintext
+   287                           	file	"E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\ADC_Demo\ADC.c"
+   288                           	line	106
+   289                           	global	__size_of_main
+   290  001C                     	__size_of_main	equ	__end_of_main-_main
+   291                           	
+   292  0496                     _main:	
+   293                           	opt	stack 7
+   294                           ; Regs used in _main: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+   295                           	line	107
+   296                           	
+   297  0496                     l1870:	
+   298                           # 107 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\ADC_Demo\ADC.c"
+   299  0496  0000               nop ;#
+   300                           	line	108
+   301                           # 108 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\ADC_Demo\ADC.c"
+   302  0497  0064               clrwdt ;#
+   303                           psect	maintext
+   304                           	line	109
+   305                           	
+   306  0498                     l1872:	
+   307                           ;ADC.c: 109: INTCON = 0;
+   308  0498  018B               	clrf	(11)	;volatile
+   309                           	line	110
+   310                           	
+   311  0499                     l1874:	
+   312                           ;ADC.c: 110: OSCCON = 0X71;
+   313  0499  3071               	movlw	(071h)
+   314  049A  1683               	bsf	status, 5	;RP0=1, select bank1
+   315  049B  1303               	bcf	status, 6	;RP1=0, select bank1
+   316  049C  008F               	movwf	(143)^080h	;volatile
+   317  049D  2C9E               	goto	l1876
+   318                           	line	112
+   319                           ;ADC.c: 112: while(1)
+   320                           	
+   321  049E                     l576:	
+   322                           	line	114
+   323                           	
+   324  049E                     l1876:	
+   325                           # 114 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\ADC_Demo\ADC.c"
+   326  049E  0064               clrwdt ;#
+   327                           psect	maintext
+   328                           	line	115
+   329                           	
+   330  049F                     l1878:	
+   331                           ;ADC.c: 115: DelayXms(1);
+   332  049F  3001               	movlw	(01h)
+   333  04A0  24B2               	fcall	_DelayXms
+   334                           	line	118
+   335                           	
+   336  04A1                     l1880:	
+   337                           ;ADC.c: 118: ANSELH = 0X20;
+   338  04A1  3020               	movlw	(020h)
+   339  04A2  1683               	bsf	status, 5	;RP0=1, select bank3
+   340  04A3  1703               	bsf	status, 6	;RP1=1, select bank3
+   341  04A4  0089               	movwf	(393)^0180h	;volatile
+   342                           	line	119
+   343                           	
+   344  04A5                     l1882:	
+   345                           ;ADC.c: 119: TRISB5 = 1;
+   346  04A5  1683               	bsf	status, 5	;RP0=1, select bank1
+   347  04A6  1303               	bcf	status, 6	;RP1=0, select bank1
+   348  04A7  1686               	bsf	(1077/8)^080h,(1077)&7
+   349                           	line	120
+   350                           	
+   351  04A8                     l1884:	
+   352                           ;ADC.c: 120: ADC_Sample(13);
+   353  04A8  300D               	movlw	(0Dh)
+   354  04A9  2504               	fcall	_ADC_Sample
+   355                           	line	124
+   356                           	
+   357  04AA                     l1886:	
+   358                           ;ADC.c: 122: unsigned char result;
+   359                           ;ADC.c: 124: result = ADC_Result(13);
+   360  04AA  300D               	movlw	(0Dh)
+   361  04AB  24DA               	fcall	_ADC_Result
+   362  04AC  00F8               	movwf	(??_main+0)+0
+   363  04AD  0878               	movf	(??_main+0)+0,w
+   364  04AE  00F9               	movwf	(main@result)
+   365  04AF  2C9E               	goto	l1876
+   366                           	line	126
+   367                           	
+   368  04B0                     l577:	
+   369                           	line	112
+   370  04B0  2C9E               	goto	l1876
+   371                           	
+   372  04B1                     l578:	
+   373                           	line	127
+   374                           	
+   375  04B1                     l579:	
+   376                           	global	start
+   377  04B1  2800               	ljmp	start
+   378                           	opt stack 0
+   379                           GLOBAL	__end_of_main
+   380  04B2                     	__end_of_main:
+   381 ;; =============== function _main ends ============
+   382                           
+   383                           	signat	_main,88
+   384                           	global	_DelayXms
+   385                           psect	text141,local,class=CODE,delta=2
+   386                           global __ptext141
+   387  04B2                     __ptext141:
+   388                           
+   389 ;; *************** function _DelayXms *****************
+   390 ;; Defined at:
+   391 ;;		line 96 in file "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\ADC_Demo\ADC.c"
+   392 ;; Parameters:    Size  Location     Type
+   393 ;;  x               1    wreg     unsigned char 
+   394 ;; Auto vars:     Size  Location     Type
+   395 ;;  x               1    1[COMMON] unsigned char 
+   396 ;;  j               1    3[COMMON] unsigned char 
+   397 ;;  i               1    2[COMMON] unsigned char 
+   398 ;; Return value:  Size  Location     Type
+   399 ;;		None               void
+   400 ;; Registers used:
+   401 ;;		wreg, status,2, status,0
+   402 ;; Tracked objects:
+   403 ;;		On entry : 0/0
+   404 ;;		On exit  : 0/0
+   405 ;;		Unchanged: 0/0
+   406 ;; Data sizes:     COMMON   BANK0   BANK1
+   407 ;;      Params:         0       0       0
+   408 ;;      Locals:         3       0       0
+   409 ;;      Temps:          1       0       0
+   410 ;;      Totals:         4       0       0
+   411 ;;Total ram usage:        4 bytes
+   412 ;; Hardware stack levels used:    1
+   413 ;; This function calls:
+   414 ;;		Nothing
+   415 ;; This function is called by:
+   416 ;;		_main
+   417 ;; This function uses a non-reentrant model
+   418 ;;
+   419                           psect	text141
+   420                           	file	"E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\ADC_Demo\ADC.c"
+   421                           	line	96
+   422                           	global	__size_of_DelayXms
+   423  0028                     	__size_of_DelayXms	equ	__end_of_DelayXms-_DelayXms
+   424                           	
+   425  04B2                     _DelayXms:	
+   426                           	opt	stack 7
+   427                           ; Regs used in _DelayXms: [wreg+status,2+status,0]
+   428                           ;DelayXms@x stored from wreg
+   429                           	line	98
+   430  04B2  00F1               	movwf	(DelayXms@x)
+   431                           	
+   432  04B3                     l1020:	
+   433                           ;ADC.c: 97: unsigned char i,j;
+   434                           ;ADC.c: 98: for(i=x;i>0;i--)
+   435  04B3  0871               	movf	(DelayXms@x),w
+   436  04B4  00F0               	movwf	(??_DelayXms+0)+0
+   437  04B5  0870               	movf	(??_DelayXms+0)+0,w
+   438  04B6  00F2               	movwf	(DelayXms@i)
+   439                           	
+   440  04B7                     l1022:	
+   441  04B7  08F2               	movf	(DelayXms@i),f
+   442  04B8  1D03               	skipz
+   443  04B9  2CBB               	goto	u171
+   444  04BA  2CBC               	goto	u170
+   445  04BB                     u171:
+   446  04BB  2CBE               	goto	l1026
+   447  04BC                     u170:
+   448  04BC  2CD9               	goto	l573
+   449                           	
+   450  04BD                     l1024:	
+   451  04BD  2CD9               	goto	l573
+   452                           	line	99
+   453                           	
+   454  04BE                     l569:	
+   455                           	
+   456  04BE                     l1026:	
+   457                           ;ADC.c: 99: for(j=153;j>0;j--);
+   458  04BE  3099               	movlw	(099h)
+   459  04BF  00F0               	movwf	(??_DelayXms+0)+0
+   460  04C0  0870               	movf	(??_DelayXms+0)+0,w
+   461  04C1  00F3               	movwf	(DelayXms@j)
+   462                           	
+   463  04C2                     l1028:	
+   464  04C2  08F3               	movf	(DelayXms@j),f
+   465  04C3  1D03               	skipz
+   466  04C4  2CC6               	goto	u181
+   467  04C5  2CC7               	goto	u180
+   468  04C6                     u181:
+   469  04C6  2CC9               	goto	l1032
+   470  04C7                     u180:
+   471  04C7  2CD1               	goto	l1036
+   472                           	
+   473  04C8                     l1030:	
+   474  04C8  2CD1               	goto	l1036
+   475                           	
+   476  04C9                     l571:	
+   477                           	
+   478  04C9                     l1032:	
+   479  04C9  3001               	movlw	low(01h)
+   480  04CA  02F3               	subwf	(DelayXms@j),f
+   481                           	
+   482  04CB                     l1034:	
+   483  04CB  08F3               	movf	(DelayXms@j),f
+   484  04CC  1D03               	skipz
+   485  04CD  2CCF               	goto	u191
+   486  04CE  2CD0               	goto	u190
+   487  04CF                     u191:
+   488  04CF  2CC9               	goto	l1032
+   489  04D0                     u190:
+   490  04D0  2CD1               	goto	l1036
+   491                           	
+   492  04D1                     l572:	
+   493                           	line	98
+   494                           	
+   495  04D1                     l1036:	
+   496  04D1  3001               	movlw	low(01h)
+   497  04D2  02F2               	subwf	(DelayXms@i),f
+   498                           	
+   499  04D3                     l1038:	
+   500  04D3  08F2               	movf	(DelayXms@i),f
+   501  04D4  1D03               	skipz
+   502  04D5  2CD7               	goto	u201
+   503  04D6  2CD8               	goto	u200
+   504  04D7                     u201:
+   505  04D7  2CBE               	goto	l1026
+   506  04D8                     u200:
+   507  04D8  2CD9               	goto	l573
+   508                           	
+   509  04D9                     l570:	
+   510                           	line	100
+   511                           	
+   512  04D9                     l573:	
+   513  04D9  0008               	return
+   514                           	opt stack 0
+   515                           GLOBAL	__end_of_DelayXms
+   516  04DA                     	__end_of_DelayXms:
+   517 ;; =============== function _DelayXms ends ============
+   518                           
+   519                           	signat	_DelayXms,4216
+   520                           	global	_ADC_Result
+   521                           psect	text142,local,class=CODE,delta=2
+   522                           global __ptext142
+   523  04DA                     __ptext142:
+   524                           
+   525 ;; *************** function _ADC_Result *****************
+   526 ;; Defined at:
+   527 ;;		line 73 in file "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\ADC_Demo\ADC.c"
+   528 ;; Parameters:    Size  Location     Type
+   529 ;;  adch            1    wreg     unsigned char 
+   530 ;; Auto vars:     Size  Location     Type
+   531 ;;  adch            1    1[COMMON] unsigned char 
+   532 ;;  i               1    2[COMMON] unsigned char 
+   533 ;; Return value:  Size  Location     Type
+   534 ;;                  1    wreg      unsigned char 
+   535 ;; Registers used:
+   536 ;;		wreg, status,2, status,0
+   537 ;; Tracked objects:
+   538 ;;		On entry : 0/0
+   539 ;;		On exit  : 0/0
+   540 ;;		Unchanged: 0/0
+   541 ;; Data sizes:     COMMON   BANK0   BANK1
+   542 ;;      Params:         0       0       0
+   543 ;;      Locals:         2       0       0
+   544 ;;      Temps:          1       0       0
+   545 ;;      Totals:         3       0       0
+   546 ;;Total ram usage:        3 bytes
+   547 ;; Hardware stack levels used:    1
+   548 ;; This function calls:
+   549 ;;		Nothing
+   550 ;; This function is called by:
+   551 ;;		_main
+   552 ;; This function uses a non-reentrant model
+   553 ;;
+   554                           psect	text142
+   555                           	file	"E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\ADC_Demo\ADC.c"
+   556                           	line	73
+   557                           	global	__size_of_ADC_Result
+   558  002A                     	__size_of_ADC_Result	equ	__end_of_ADC_Result-_ADC_Result
+   559                           	
+   560  04DA                     _ADC_Result:	
+   561                           	opt	stack 7
+   562                           ; Regs used in _ADC_Result: [wreg+status,2+status,0]
+   563                           ;ADC_Result@adch stored from wreg
+   564  04DA  00F1               	movwf	(ADC_Result@adch)
+   565                           	line	74
+   566                           	
+   567  04DB                     l998:	
+   568                           ;ADC.c: 74: ADCON1 = 0;
+   569  04DB  1683               	bsf	status, 5	;RP0=1, select bank1
+   570  04DC  1303               	bcf	status, 6	;RP1=0, select bank1
+   571  04DD  019F               	clrf	(159)^080h	;volatile
+   572                           	line	75
+   573                           	
+   574  04DE                     l1000:	
+   575                           ;ADC.c: 75: ADCON0 = 0X41 | (adch << 2);
+   576  04DE  0871               	movf	(ADC_Result@adch),w
+   577  04DF  00F0               	movwf	(??_ADC_Result+0)+0
+   578  04E0  3001               	movlw	(02h)-1
+   579  04E1                     u145:
+   580  04E1  1003               	clrc
+   581  04E2  0DF0               	rlf	(??_ADC_Result+0)+0,f
+   582  04E3  3EFF               	addlw	-1
+   583  04E4  1D03               	skipz
+   584  04E5  2CE1               	goto	u145
+   585  04E6  1003               	clrc
+   586  04E7  0D70               	rlf	(??_ADC_Result+0)+0,w
+   587  04E8  3841               	iorlw	041h
+   588  04E9  1283               	bcf	status, 5	;RP0=0, select bank0
+   589  04EA  1303               	bcf	status, 6	;RP1=0, select bank0
+   590  04EB  009F               	movwf	(31)	;volatile
+   591                           	line	76
+   592                           	
+   593  04EC                     l1002:	
+   594                           # 76 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\ADC_Demo\ADC.c"
+   595  04EC  0000               nop ;#
+   596                           psect	text142
+   597                           	line	77
+   598                           	
+   599  04ED                     l1004:	
+   600                           # 77 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\ADC_Demo\ADC.c"
+   601  04ED  0000               nop ;#
+   602                           psect	text142
+   603                           	line	78
+   604                           	
+   605  04EE                     l1006:	
+   606                           ;ADC.c: 78: GODONE = 1;
+   607  04EE  1283               	bcf	status, 5	;RP0=0, select bank0
+   608  04EF  1303               	bcf	status, 6	;RP1=0, select bank0
+   609  04F0  149F               	bsf	(249/8),(249)&7
+   610                           	line	80
+   611                           	
+   612  04F1                     l1008:	
+   613                           ;ADC.c: 80: unsigned char i = 0;
+   614  04F1  01F2               	clrf	(ADC_Result@i)
+   615                           	line	81
+   616                           ;ADC.c: 81: while(GODONE)
+   617  04F2  2CFC               	goto	l562
+   618                           	
+   619  04F3                     l563:	
+   620                           	line	83
+   621                           	
+   622  04F3                     l1010:	
+   623                           ;ADC.c: 82: {
+   624                           ;ADC.c: 83: if(0 == (--i))
+   625  04F3  3001               	movlw	low(01h)
+   626  04F4  02F2               	subwf	(ADC_Result@i),f
+   627  04F5  1D03               	btfss	status,2
+   628  04F6  2CF8               	goto	u151
+   629  04F7  2CF9               	goto	u150
+   630  04F8                     u151:
+   631  04F8  2CFC               	goto	l562
+   632  04F9                     u150:
+   633                           	line	84
+   634                           	
+   635  04F9                     l1012:	
+   636                           ;ADC.c: 84: return 0;
+   637  04F9  3000               	movlw	(0)
+   638  04FA  2D03               	goto	l565
+   639                           	
+   640  04FB                     l1014:	
+   641  04FB  2D03               	goto	l565
+   642                           	
+   643  04FC                     l564:	
+   644                           	line	85
+   645                           	
+   646  04FC                     l562:	
+   647                           	line	81
+   648  04FC  189F               	btfsc	(249/8),(249)&7
+   649  04FD  2CFF               	goto	u161
+   650  04FE  2D00               	goto	u160
+   651  04FF                     u161:
+   652  04FF  2CF3               	goto	l1010
+   653  0500                     u160:
+   654  0500  2D01               	goto	l1016
+   655                           	
+   656  0501                     l566:	
+   657                           	line	86
+   658                           	
+   659  0501                     l1016:	
+   660                           ;ADC.c: 85: }
+   661                           ;ADC.c: 86: return ADRESH;
+   662  0501  081E               	movf	(30),w	;volatile
+   663  0502  2D03               	goto	l565
+   664                           	
+   665  0503                     l1018:	
+   666                           	line	87
+   667                           	
+   668  0503                     l565:	
+   669  0503  0008               	return
+   670                           	opt stack 0
+   671                           GLOBAL	__end_of_ADC_Result
+   672  0504                     	__end_of_ADC_Result:
+   673 ;; =============== function _ADC_Result ends ============
+   674                           
+   675                           	signat	_ADC_Result,4217
+   676                           	global	_ADC_Sample
+   677                           psect	text143,local,class=CODE,delta=2
+   678                           global __ptext143
+   679  0504                     __ptext143:
+   680                           
+   681 ;; *************** function _ADC_Sample *****************
+   682 ;; Defined at:
+   683 ;;		line 25 in file "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\ADC_Demo\ADC.c"
+   684 ;; Parameters:    Size  Location     Type
+   685 ;;  adch            1    wreg     unsigned char 
+   686 ;; Auto vars:     Size  Location     Type
+   687 ;;  adch            1    4[COMMON] unsigned char 
+   688 ;;  ad_temp         2    6[COMMON] volatile unsigned int 
+   689 ;;  i               1    5[COMMON] unsigned char 
+   690 ;; Return value:  Size  Location     Type
+   691 ;;		None               void
+   692 ;; Registers used:
+   693 ;;		wreg, status,2, status,0, btemp+1
+   694 ;; Tracked objects:
+   695 ;;		On entry : 0/0
+   696 ;;		On exit  : 0/0
+   697 ;;		Unchanged: 0/0
+   698 ;; Data sizes:     COMMON   BANK0   BANK1
+   699 ;;      Params:         0       0       0
+   700 ;;      Locals:         4       0       0
+   701 ;;      Temps:          4       0       0
+   702 ;;      Totals:         8       0       0
+   703 ;;Total ram usage:        8 bytes
+   704 ;; Hardware stack levels used:    1
+   705 ;; This function calls:
+   706 ;;		Nothing
+   707 ;; This function is called by:
+   708 ;;		_main
+   709 ;; This function uses a non-reentrant model
+   710 ;;
+   711                           psect	text143
+   712                           	file	"E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\ADC_Demo\ADC.c"
+   713                           	line	25
+   714                           	global	__size_of_ADC_Sample
+   715  00FC                     	__size_of_ADC_Sample	equ	__end_of_ADC_Sample-_ADC_Sample
+   716                           	
+   717  0504                     _ADC_Sample:	
+   718                           	opt	stack 7
+   719                           ; Regs used in _ADC_Sample: [wreg+status,2+status,0+btemp+1]
+   720                           ;ADC_Sample@adch stored from wreg
+   721                           	line	30
+   722  0504  00F4               	movwf	(ADC_Sample@adch)
+   723                           	
+   724  0505                     l1824:	
+   725                           ;ADC.c: 26: static unsigned long adsum = 0;
+   726                           ;ADC.c: 27: static unsigned int admin = 0,admax = 0;
+   727                           ;ADC.c: 28: static unsigned char adtimes = 0;
+   728                           ;ADC.c: 29: volatile unsigned int ad_temp;
+   729                           ;ADC.c: 30: ADCON1 = 0;
+   730  0505  1683               	bsf	status, 5	;RP0=1, select bank1
+   731  0506  1303               	bcf	status, 6	;RP1=0, select bank1
+   732  0507  019F               	clrf	(159)^080h	;volatile
+   733                           	line	31
+   734                           	
+   735  0508                     l1826:	
+   736                           ;ADC.c: 31: ADCON0 = 0X41 | (adch << 2);
+   737  0508  0874               	movf	(ADC_Sample@adch),w
+   738  0509  00F0               	movwf	(??_ADC_Sample+0)+0
+   739  050A  3001               	movlw	(02h)-1
+   740  050B                     u2345:
+   741  050B  1003               	clrc
+   742  050C  0DF0               	rlf	(??_ADC_Sample+0)+0,f
+   743  050D  3EFF               	addlw	-1
+   744  050E  1D03               	skipz
+   745  050F  2D0B               	goto	u2345
+   746  0510  1003               	clrc
+   747  0511  0D70               	rlf	(??_ADC_Sample+0)+0,w
+   748  0512  3841               	iorlw	041h
+   749  0513  1283               	bcf	status, 5	;RP0=0, select bank0
+   750  0514  1303               	bcf	status, 6	;RP1=0, select bank0
+   751  0515  009F               	movwf	(31)	;volatile
+   752                           	line	32
+   753                           	
+   754  0516                     l1828:	
+   755                           # 32 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\ADC_Demo\ADC.c"
+   756  0516  0000               nop ;#
+   757                           psect	text143
+   758                           	line	33
+   759                           	
+   760  0517                     l1830:	
+   761                           # 33 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\ADC_Demo\ADC.c"
+   762  0517  0000               nop ;#
+   763                           psect	text143
+   764                           	line	34
+   765                           	
+   766  0518                     l1832:	
+   767                           ;ADC.c: 34: GODONE = 1;
+   768  0518  1283               	bcf	status, 5	;RP0=0, select bank0
+   769  0519  1303               	bcf	status, 6	;RP1=0, select bank0
+   770  051A  149F               	bsf	(249/8),(249)&7
+   771                           	line	36
+   772                           	
+   773  051B                     l1834:	
+   774                           ;ADC.c: 36: unsigned char i = 0;
+   775  051B  01F5               	clrf	(ADC_Sample@i)
+   776                           	line	37
+   777                           ;ADC.c: 37: while(GODONE)
+   778  051C  2D25               	goto	l549
+   779                           	
+   780  051D                     l550:	
+   781                           	line	39
+   782                           	
+   783  051D                     l1836:	
+   784                           ;ADC.c: 38: {
+   785                           ;ADC.c: 39: if(0 == (--i))
+   786  051D  3001               	movlw	low(01h)
+   787  051E  02F5               	subwf	(ADC_Sample@i),f
+   788  051F  1D03               	btfss	status,2
+   789  0520  2D22               	goto	u2351
+   790  0521  2D23               	goto	u2350
+   791  0522                     u2351:
+   792  0522  2D25               	goto	l549
+   793  0523                     u2350:
+   794  0523  2DFF               	goto	l552
+   795                           	line	40
+   796                           	
+   797  0524                     l1838:	
+   798                           ;ADC.c: 40: return;
+   799  0524  2DFF               	goto	l552
+   800                           	
+   801  0525                     l551:	
+   802                           	line	41
+   803                           	
+   804  0525                     l549:	
+   805                           	line	37
+   806  0525  189F               	btfsc	(249/8),(249)&7
+   807  0526  2D28               	goto	u2361
+   808  0527  2D29               	goto	u2360
+   809  0528                     u2361:
+   810  0528  2D1D               	goto	l1836
+   811  0529                     u2360:
+   812  0529  2D2A               	goto	l1840
+   813                           	
+   814  052A                     l553:	
+   815                           	line	43
+   816                           	
+   817  052A                     l1840:	
+   818                           ;ADC.c: 41: }
+   819                           ;ADC.c: 43: ad_temp=(ADRESH<<4)+(ADRESL>>4);
+   820  052A  1683               	bsf	status, 5	;RP0=1, select bank1
+   821  052B  1303               	bcf	status, 6	;RP1=0, select bank1
+   822  052C  081E               	movf	(158)^080h,w	;volatile
+   823  052D  00F0               	movwf	(??_ADC_Sample+0)+0
+   824  052E  3004               	movlw	04h
+   825  052F                     u2375:
+   826  052F  1003               	clrc
+   827  0530  0CF0               	rrf	(??_ADC_Sample+0)+0,f
+   828  0531  3EFF               	addlw	-1
+   829  0532  1D03               	skipz
+   830  0533  2D2F               	goto	u2375
+   831  0534  1283               	bcf	status, 5	;RP0=0, select bank0
+   832  0535  1303               	bcf	status, 6	;RP1=0, select bank0
+   833  0536  081E               	movf	(30),w	;volatile
+   834  0537  00F1               	movwf	(??_ADC_Sample+1)+0
+   835  0538  01F2               	clrf	(??_ADC_Sample+1)+0+1
+   836  0539  3004               	movlw	04h
+   837  053A  00FF               	movwf	btemp+1
+   838  053B                     u2385:
+   839  053B  1003               	clrc
+   840  053C  0DF1               	rlf	(??_ADC_Sample+1)+0,f
+   841  053D  0DF2               	rlf	(??_ADC_Sample+1)+1,f
+   842  053E  0BFF               	decfsz	btemp+1,f
+   843  053F  2D3B               	goto	u2385
+   844  0540  0870               	movf	0+(??_ADC_Sample+0)+0,w
+   845  0541  0771               	addwf	0+(??_ADC_Sample+1)+0,w
+   846  0542  00F6               	movwf	(ADC_Sample@ad_temp)
+   847  0543  3000               	movlw	0
+   848  0544  1803               	skipnc
+   849  0545  3001               	movlw	1
+   850  0546  0772               	addwf	1+(??_ADC_Sample+1)+0,w
+   851  0547  00F7               	movwf	1+(ADC_Sample@ad_temp)
+   852                           	line	45
+   853                           	
+   854  0548                     l1842:	
+   855                           ;ADC.c: 45: if(0 == admax)
+   856  0548  087B               	movf	((ADC_Sample@admax+1)),w
+   857  0549  047A               	iorwf	((ADC_Sample@admax)),w
+   858  054A  1D03               	skipz
+   859  054B  2D4D               	goto	u2391
+   860  054C  2D4E               	goto	u2390
+   861  054D                     u2391:
+   862  054D  2D5B               	goto	l1846
+   863  054E                     u2390:
+   864                           	line	47
+   865                           	
+   866  054E                     l1844:	
+   867                           ;ADC.c: 46: {
+   868                           ;ADC.c: 47: admax = ad_temp;
+   869  054E  0877               	movf	(ADC_Sample@ad_temp+1),w	;volatile
+   870  054F  01FB               	clrf	(ADC_Sample@admax+1)
+   871  0550  07FB               	addwf	(ADC_Sample@admax+1)
+   872  0551  0876               	movf	(ADC_Sample@ad_temp),w	;volatile
+   873  0552  01FA               	clrf	(ADC_Sample@admax)
+   874  0553  07FA               	addwf	(ADC_Sample@admax)
+   875                           
+   876                           	line	48
+   877                           ;ADC.c: 48: admin = ad_temp;
+   878  0554  0877               	movf	(ADC_Sample@ad_temp+1),w	;volatile
+   879  0555  01A5               	clrf	(ADC_Sample@admin+1)
+   880  0556  07A5               	addwf	(ADC_Sample@admin+1)
+   881  0557  0876               	movf	(ADC_Sample@ad_temp),w	;volatile
+   882  0558  01A4               	clrf	(ADC_Sample@admin)
+   883  0559  07A4               	addwf	(ADC_Sample@admin)
+   884                           
+   885                           	line	49
+   886                           ;ADC.c: 49: }
+   887  055A  2D7F               	goto	l1854
+   888                           	line	50
+   889                           	
+   890  055B                     l554:	
+   891                           	
+   892  055B                     l1846:	
+   893                           ;ADC.c: 50: else if(ad_temp > admax)
+   894  055B  0877               	movf	(ADC_Sample@ad_temp+1),w	;volatile
+   895  055C  027B               	subwf	(ADC_Sample@admax+1),w
+   896  055D  1D03               	skipz
+   897  055E  2D61               	goto	u2405
+   898  055F  0876               	movf	(ADC_Sample@ad_temp),w	;volatile
+   899  0560  027A               	subwf	(ADC_Sample@admax),w
+   900  0561                     u2405:
+   901  0561  1803               	skipnc
+   902  0562  2D64               	goto	u2401
+   903  0563  2D65               	goto	u2400
+   904  0564                     u2401:
+   905  0564  2D6C               	goto	l1850
+   906  0565                     u2400:
+   907                           	line	51
+   908                           	
+   909  0565                     l1848:	
+   910                           ;ADC.c: 51: admax = ad_temp;
+   911  0565  0877               	movf	(ADC_Sample@ad_temp+1),w	;volatile
+   912  0566  01FB               	clrf	(ADC_Sample@admax+1)
+   913  0567  07FB               	addwf	(ADC_Sample@admax+1)
+   914  0568  0876               	movf	(ADC_Sample@ad_temp),w	;volatile
+   915  0569  01FA               	clrf	(ADC_Sample@admax)
+   916  056A  07FA               	addwf	(ADC_Sample@admax)
+   917                           
+   918  056B  2D7F               	goto	l1854
+   919                           	line	52
+   920                           	
+   921  056C                     l556:	
+   922                           	
+   923  056C                     l1850:	
+   924                           ;ADC.c: 52: else if(ad_temp < admin)
+   925  056C  0825               	movf	(ADC_Sample@admin+1),w
+   926  056D  0277               	subwf	(ADC_Sample@ad_temp+1),w	;volatile
+   927  056E  1D03               	skipz
+   928  056F  2D72               	goto	u2415
+   929  0570  0824               	movf	(ADC_Sample@admin),w
+   930  0571  0276               	subwf	(ADC_Sample@ad_temp),w	;volatile
+   931  0572                     u2415:
+   932  0572  1803               	skipnc
+   933  0573  2D75               	goto	u2411
+   934  0574  2D76               	goto	u2410
+   935  0575                     u2411:
+   936  0575  2D7F               	goto	l1854
+   937  0576                     u2410:
+   938                           	line	53
+   939                           	
+   940  0576                     l1852:	
+   941                           ;ADC.c: 53: admin = ad_temp;
+   942  0576  0877               	movf	(ADC_Sample@ad_temp+1),w	;volatile
+   943  0577  01A5               	clrf	(ADC_Sample@admin+1)
+   944  0578  07A5               	addwf	(ADC_Sample@admin+1)
+   945  0579  0876               	movf	(ADC_Sample@ad_temp),w	;volatile
+   946  057A  01A4               	clrf	(ADC_Sample@admin)
+   947  057B  07A4               	addwf	(ADC_Sample@admin)
+   948                           
+   949  057C  2D7F               	goto	l1854
+   950                           	
+   951  057D                     l558:	
+   952  057D  2D7F               	goto	l1854
+   953                           	line	55
+   954                           	
+   955  057E                     l557:	
+   956  057E  2D7F               	goto	l1854
+   957                           	
+   958  057F                     l555:	
+   959                           	
+   960  057F                     l1854:	
+   961                           ;ADC.c: 55: adsum += ad_temp;
+   962  057F  0876               	movf	(ADC_Sample@ad_temp),w	;volatile
+   963  0580  00F0               	movwf	((??_ADC_Sample+0)+0)
+   964  0581  0877               	movf	(ADC_Sample@ad_temp+1),w	;volatile
+   965  0582  00F1               	movwf	((??_ADC_Sample+0)+0+1)
+   966  0583  01F2               	clrf	((??_ADC_Sample+0)+0+2)
+   967  0584  01F3               	clrf	((??_ADC_Sample+0)+0+3)
+   968  0585  0870               	movf	0+(??_ADC_Sample+0)+0,w
+   969  0586  07A0               	addwf	(ADC_Sample@adsum),f
+   970  0587  0871               	movf	1+(??_ADC_Sample+0)+0,w
+   971  0588  1103               	clrz
+   972  0589  1803               	skipnc
+   973  058A  3E01               	addlw	1
+   974  058B  1903               	skipnz
+   975  058C  2D8E               	goto	u2421
+   976  058D  07A1               	addwf	(ADC_Sample@adsum+1),f
+   977  058E                     u2421:
+   978  058E  0872               	movf	2+(??_ADC_Sample+0)+0,w
+   979  058F  1103               	clrz
+   980  0590  1803               	skipnc
+   981  0591  3E01               	addlw	1
+   982  0592  1903               	skipnz
+   983  0593  2D95               	goto	u2422
+   984  0594  07A2               	addwf	(ADC_Sample@adsum+2),f
+   985  0595                     u2422:
+   986  0595  0873               	movf	3+(??_ADC_Sample+0)+0,w
+   987  0596  1103               	clrz
+   988  0597  1803               	skipnc
+   989  0598  3E01               	addlw	1
+   990  0599  1903               	skipnz
+   991  059A  2D9C               	goto	u2423
+   992  059B  07A3               	addwf	(ADC_Sample@adsum+3),f
+   993  059C                     u2423:
+   994                           
+   995                           	line	56
+   996                           	
+   997  059C                     l1856:	
+   998                           ;ADC.c: 56: if(++adtimes >= 10)
+   999  059C  3001               	movlw	(01h)
+  1000  059D  00F0               	movwf	(??_ADC_Sample+0)+0
+  1001  059E  0870               	movf	(??_ADC_Sample+0)+0,w
+  1002  059F  07FC               	addwf	(ADC_Sample@adtimes),f
+  1003  05A0  300A               	movlw	(0Ah)
+  1004  05A1  027C               	subwf	((ADC_Sample@adtimes)),w
+  1005  05A2  1C03               	skipc
+  1006  05A3  2DA5               	goto	u2431
+  1007  05A4  2DA6               	goto	u2430
+  1008  05A5                     u2431:
+  1009  05A5  2DFF               	goto	l552
+  1010  05A6                     u2430:
+  1011                           	line	58
+  1012                           	
+  1013  05A6                     l1858:	
+  1014                           ;ADC.c: 57: {
+  1015                           ;ADC.c: 58: adsum -= admax;
+  1016  05A6  087A               	movf	(ADC_Sample@admax),w
+  1017  05A7  00F0               	movwf	((??_ADC_Sample+0)+0)
+  1018  05A8  087B               	movf	(ADC_Sample@admax+1),w
+  1019  05A9  00F1               	movwf	((??_ADC_Sample+0)+0+1)
+  1020  05AA  01F2               	clrf	((??_ADC_Sample+0)+0+2)
+  1021  05AB  01F3               	clrf	((??_ADC_Sample+0)+0+3)
+  1022  05AC  0870               	movf	0+(??_ADC_Sample+0)+0,w
+  1023  05AD  02A0               	subwf	(ADC_Sample@adsum),f
+  1024  05AE  0871               	movf	1+(??_ADC_Sample+0)+0,w
+  1025  05AF  1C03               	skipc
+  1026  05B0  0F71               	incfsz	1+(??_ADC_Sample+0)+0,w
+  1027  05B1  2DB3               	goto	u2445
+  1028  05B2  2DB4               	goto	u2446
+  1029  05B3                     u2445:
+  1030  05B3  02A1               	subwf	(ADC_Sample@adsum+1),f
+  1031  05B4                     u2446:
+  1032  05B4  0872               	movf	2+(??_ADC_Sample+0)+0,w
+  1033  05B5  1C03               	skipc
+  1034  05B6  0F72               	incfsz	2+(??_ADC_Sample+0)+0,w
+  1035  05B7  2DB9               	goto	u2447
+  1036  05B8  2DBA               	goto	u2448
+  1037  05B9                     u2447:
+  1038  05B9  02A2               	subwf	(ADC_Sample@adsum+2),f
+  1039  05BA                     u2448:
+  1040  05BA  0873               	movf	3+(??_ADC_Sample+0)+0,w
+  1041  05BB  1C03               	skipc
+  1042  05BC  0F73               	incfsz	3+(??_ADC_Sample+0)+0,w
+  1043  05BD  2DBF               	goto	u2449
+  1044  05BE  2DC0               	goto	u2440
+  1045  05BF                     u2449:
+  1046  05BF  02A3               	subwf	(ADC_Sample@adsum+3),f
+  1047  05C0                     u2440:
+  1048                           
+  1049                           	line	59
+  1050                           ;ADC.c: 59: adsum -= admin;
+  1051  05C0  0824               	movf	(ADC_Sample@admin),w
+  1052  05C1  00F0               	movwf	((??_ADC_Sample+0)+0)
+  1053  05C2  0825               	movf	(ADC_Sample@admin+1),w
+  1054  05C3  00F1               	movwf	((??_ADC_Sample+0)+0+1)
+  1055  05C4  01F2               	clrf	((??_ADC_Sample+0)+0+2)
+  1056  05C5  01F3               	clrf	((??_ADC_Sample+0)+0+3)
+  1057  05C6  0870               	movf	0+(??_ADC_Sample+0)+0,w
+  1058  05C7  02A0               	subwf	(ADC_Sample@adsum),f
+  1059  05C8  0871               	movf	1+(??_ADC_Sample+0)+0,w
+  1060  05C9  1C03               	skipc
+  1061  05CA  0F71               	incfsz	1+(??_ADC_Sample+0)+0,w
+  1062  05CB  2DCD               	goto	u2455
+  1063  05CC  2DCE               	goto	u2456
+  1064  05CD                     u2455:
+  1065  05CD  02A1               	subwf	(ADC_Sample@adsum+1),f
+  1066  05CE                     u2456:
+  1067  05CE  0872               	movf	2+(??_ADC_Sample+0)+0,w
+  1068  05CF  1C03               	skipc
+  1069  05D0  0F72               	incfsz	2+(??_ADC_Sample+0)+0,w
+  1070  05D1  2DD3               	goto	u2457
+  1071  05D2  2DD4               	goto	u2458
+  1072  05D3                     u2457:
+  1073  05D3  02A2               	subwf	(ADC_Sample@adsum+2),f
+  1074  05D4                     u2458:
+  1075  05D4  0873               	movf	3+(??_ADC_Sample+0)+0,w
+  1076  05D5  1C03               	skipc
+  1077  05D6  0F73               	incfsz	3+(??_ADC_Sample+0)+0,w
+  1078  05D7  2DD9               	goto	u2459
+  1079  05D8  2DDA               	goto	u2450
+  1080  05D9                     u2459:
+  1081  05D9  02A3               	subwf	(ADC_Sample@adsum+3),f
+  1082  05DA                     u2450:
+  1083                           
+  1084                           	line	61
+  1085                           	
+  1086  05DA                     l1860:	
+  1087                           ;ADC.c: 61: adresult = adsum >> 3;
+  1088  05DA  0820               	movf	(ADC_Sample@adsum),w
+  1089  05DB  00F0               	movwf	(??_ADC_Sample+0)+0
+  1090  05DC  0821               	movf	(ADC_Sample@adsum+1),w
+  1091  05DD  00F1               	movwf	((??_ADC_Sample+0)+0+1)
+  1092  05DE  0822               	movf	(ADC_Sample@adsum+2),w
+  1093  05DF  00F2               	movwf	((??_ADC_Sample+0)+0+2)
+  1094  05E0  0823               	movf	(ADC_Sample@adsum+3),w
+  1095  05E1  00F3               	movwf	((??_ADC_Sample+0)+0+3)
+  1096  05E2  3003               	movlw	03h
+  1097  05E3                     u2465:
+  1098  05E3  1003               	clrc
+  1099  05E4  0CF3               	rrf	(??_ADC_Sample+0)+3,f
+  1100  05E5  0CF2               	rrf	(??_ADC_Sample+0)+2,f
+  1101  05E6  0CF1               	rrf	(??_ADC_Sample+0)+1,f
+  1102  05E7  0CF0               	rrf	(??_ADC_Sample+0)+0,f
+  1103  05E8                     u2460:
+  1104  05E8  3EFF               	addlw	-1
+  1105  05E9  1D03               	skipz
+  1106  05EA  2DE3               	goto	u2465
+  1107  05EB  0871               	movf	1+(??_ADC_Sample+0)+0,w
+  1108  05EC  01A7               	clrf	(_adresult+1)	;volatile
+  1109  05ED  07A7               	addwf	(_adresult+1)	;volatile
+  1110  05EE  0870               	movf	0+(??_ADC_Sample+0)+0,w
+  1111  05EF  01A6               	clrf	(_adresult)	;volatile
+  1112  05F0  07A6               	addwf	(_adresult)	;volatile
+  1113                           
+  1114                           	line	63
+  1115                           	
+  1116  05F1                     l1862:	
+  1117                           ;ADC.c: 63: adsum = 0;
+  1118  05F1  3000               	movlw	0
+  1119  05F2  00A3               	movwf	(ADC_Sample@adsum+3)
+  1120  05F3  3000               	movlw	0
+  1121  05F4  00A2               	movwf	(ADC_Sample@adsum+2)
+  1122  05F5  3000               	movlw	0
+  1123  05F6  00A1               	movwf	(ADC_Sample@adsum+1)
+  1124  05F7  3000               	movlw	0
+  1125  05F8  00A0               	movwf	(ADC_Sample@adsum)
+  1126                           
+  1127                           	line	64
+  1128                           	
+  1129  05F9                     l1864:	
+  1130                           ;ADC.c: 64: admin = 0;
+  1131  05F9  01A4               	clrf	(ADC_Sample@admin)
+  1132  05FA  01A5               	clrf	(ADC_Sample@admin+1)
+  1133                           	line	65
+  1134                           	
+  1135  05FB                     l1866:	
+  1136                           ;ADC.c: 65: admax = 0;
+  1137  05FB  01FA               	clrf	(ADC_Sample@admax)
+  1138  05FC  01FB               	clrf	(ADC_Sample@admax+1)
+  1139                           	line	66
+  1140                           	
+  1141  05FD                     l1868:	
+  1142                           ;ADC.c: 66: adtimes = 0;
+  1143  05FD  01FC               	clrf	(ADC_Sample@adtimes)
+  1144  05FE  2DFF               	goto	l552
+  1145                           	line	67
+  1146                           	
+  1147  05FF                     l559:	
+  1148                           	line	68
+  1149                           	
+  1150  05FF                     l552:	
+  1151  05FF  0008               	return
+  1152                           	opt stack 0
+  1153                           GLOBAL	__end_of_ADC_Sample
+  1154  0600                     	__end_of_ADC_Sample:
+  1155 ;; =============== function _ADC_Sample ends ============
+  1156                           
+  1157                           	signat	_ADC_Sample,4216
+  1158                           psect	text144,local,class=CODE,delta=2
+  1159                           global __ptext144
+  1160  0000                     __ptext144:
+  1161                           	global	btemp
+  1162  007E                     	btemp set 07Eh
+  1163                           
+  1164                           	DABS	1,126,2	;btemp
+  1165                           	global	wtemp0
+  1166  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.83 build 10920 
+Symbol Table                                                                                   Sat Oct 14 10:46:49 2017
+
+                 l550 051D                   l551 0525                   l552 05FF                   l553 052A  
+                 l554 055B                   l562 04FC                   l570 04D9                   l555 057F  
+                 l563 04F3                   l571 04C9                   l556 056C                   l564 04FC  
+                 l572 04D1                   l557 057E                   l549 0525                   l565 0503  
+                 l573 04D9                   l558 057D                   l566 0501                   l559 05FF  
+                 l576 049E                   l569 04BE                   l577 04B0                   l578 04B1  
+                 l579 04B1                   l998 04DB                   u200 04D8                   u201 04D7  
+                 u150 04F9                   u151 04F8                   u160 0500                   u161 04FF  
+                 u145 04E1                   u170 04BC                   u171 04BB                   u180 04C7  
+                 u181 04C6                   u190 04D0                   u191 04CF   __size_of_ADC_Sample 00FC  
+ __size_of_ADC_Result 002A                  l1000 04DE                  l1010 04F3                  l1002 04EC  
+                l1012 04F9                  l1004 04ED                  l1020 04B3                  l1014 04FB  
+                l1006 04EE                  l1030 04C8                  l1022 04B7                  l1016 0501  
+                l1008 04F1                  l1032 04C9                  l1024 04BD                  l1018 0503  
+                l1034 04CB                  l1026 04BE                  l1036 04D1                  l1028 04C2  
+                l1038 04D3                  l1830 0517                  l1840 052A                  l1832 0518  
+                l1824 0505                  l1850 056C                  l1842 0548                  l1834 051B  
+                l1826 0508                  l1860 05DA                  l1852 0576                  l1844 054E  
+                l1836 051D                  l1828 0516                  l1862 05F1                  l1854 057F  
+                l1846 055B                  l1838 0524                  l1870 0496                  l1864 05F9  
+                l1856 059C                  l1848 0565                  l1880 04A1                  l1872 0498  
+                l1866 05FB                  l1858 05A6                  l1882 04A5                  l1874 0499  
+                l1868 05FD                  l1884 04A8                  l1876 049E                  l1886 04AA  
+                l1878 049F                  u2400 0565                  u2401 0564                  u2410 0576  
+                u2411 0575                  u2421 058E                  u2405 0561                  u2430 05A6  
+                u2422 0595                  u2350 0523                  u2431 05A5                  u2423 059C  
+                u2415 0572                  u2351 0522                  u2440 05C0                  u2360 0529  
+                u2361 0528                  u2345 050B                  u2450 05DA                  u2460 05E8  
+                u2445 05B3                  u2446 05B4                  u2390 054E                  u2455 05CD  
+                u2447 05B9                  u2391 054D                  u2375 052F                  u2456 05CE  
+                u2448 05BA                  u2465 05E3                  u2457 05D3                  u2449 05BF  
+                u2385 053B                  u2458 05D4                  u2459 05D9                  _main 0496  
+                btemp 007E                  start 0000                 ?_main 0070                 status 0003  
+               wtemp0 007E      __end_of_DelayXms 04DA          __end_of_main 04B2                ??_main 0078  
+              _ADCON0 001F                _ADCON1 009F                _ADRESH 001E                _ADRESL 009E  
+              _ANSELH 0189                _GODONE 00F9                _INTCON 000B                _OSCCON 008F  
+        ??_ADC_Sample 0070                _TRISB5 0435          ??_ADC_Result 0070    __end_of_ADC_Sample 0600  
+  __end_of_ADC_Result 0504        __pcstackCOMMON 0070             ?_DelayXms 0070            __pbssBANK0 0020  
+          __pmaintext 0496            ??_DelayXms 0070       ADC_Sample@admax 007A       ADC_Sample@admin 0024  
+     ADC_Sample@adsum 0020  end_of_initialization 0494             DelayXms@i 0072             DelayXms@j 0073  
+           DelayXms@x 0071            main@result 0079   start_initialization 0489     __size_of_DelayXms 0028  
+   ADC_Sample@ad_temp 0076     ADC_Sample@adtimes 007C           __pbssCOMMON 007A             __ptext140 0000  
+           __ptext141 04B2             __ptext142 04DA             __ptext143 0504             __ptext144 0000  
+      ADC_Sample@adch 0074           ADC_Sample@i 0075           ADC_Result@i 0072        ADC_Result@adch 0071  
+            _DelayXms 04B2            _ADC_Sample 0504            _ADC_Result 04DA              _adresult 0026  
+       __size_of_main 001C           ?_ADC_Sample 0070           ?_ADC_Result 0070  

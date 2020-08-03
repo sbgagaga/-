@@ -1,0 +1,3 @@
+_Timer0_Isr: CODE, 17 0 25
+_main: CODE, 42 0 21
+Total: 46

@@ -1,0 +1,150 @@
+HI-TECH Software C Compiler 
+
+Linker command line:
+
+\
+  --edf=E:\cms_ice\SCMCU_IDE_V1.07_20170918_Inter\SCMCU_IDE_V1.07_20170918_Inter\data\dat\en_msgs.txt \
+  -cs -h+Delay.sym -z -QSC8P1713 -ol.obj -MDelay.map -E1 -ACONST=00h-0FFhx6 \
+  -ACODE=00h-05FFh -ASTRCODE=00h-05FFh -AENTRY=00h-0FFhx6 \
+  -ASTRING=00h-0FFhx6 -ABANK0=020h-06Fh -ABANK1=0A0h-0EFh \
+  -ARAM=020h-06Fh,0A0h-0EFh -AABS1=020h-07Fh,0A0h-0EFh -ACOMMON=070h-07Fh \
+  -ASFR0=00h-01Fh -ASFR1=080h-09Fh -ASFR2=0100h-016Fh -ASFR3=0180h-01EFh \
+  -preset_vec=00h,intentry,init,end_init -ppowerup=CODE -pfunctab=CODE \
+  -ACONFIG=02007h-02008h -pconfig=CONFIG -DCONFIG=2 -AIDLOC=02000h-02003h \
+  -pidloc=IDLOC -DIDLOC=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 \
+  -DENTRY=2 -k startup.obj Delay.obj 
+
+Object code version is 3.10
+
+Machine type is SC8P1713
+
+
+
+                Name                               Link     Load   Length Selector   Space Scale
+startup.obj     end_init                              0        0        1        0       0
+Delay.obj       text42                              5C5      5C5       1A      B8A       0
+                maintext                            5DF      5DF       21      BBE       0
+                cstackCOMMON                         70       70        4       70       1
+                cinit                               5C3      5C3        2      B86       0
+
+TOTAL           Name                               Link     Load   Length     Space
+        CLASS   CONST          
+
+        CLASS   CODE           
+                end_init                              0        0        1         0
+                text42                              5C5      5C5       1A         0
+                maintext                            5DF      5DF       21         0
+                cinit                               5C3      5C3        2         0
+
+        CLASS   STRCODE        
+
+        CLASS   ENTRY          
+
+        CLASS   STRING         
+
+        CLASS   BANK0          
+
+        CLASS   BANK1          
+
+        CLASS   RAM            
+
+        CLASS   ABS1           
+                abs_s1                               7E       7E        2         1
+
+        CLASS   COMMON         
+                cstackCOMMON                         70       70        4         1
+
+        CLASS   SFR0           
+
+        CLASS   SFR1           
+
+        CLASS   SFR2           
+
+        CLASS   SFR3           
+
+        CLASS   CONFIG         
+
+        CLASS   IDLOC          
+
+        CLASS   BANK3          
+
+        CLASS   BANK2          
+
+        CLASS   EEDATA         
+
+
+
+SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
+
+                reset_vec                      000000  000001  000001         0       0  CODE        2
+                cstackCOMMON                   000070  000004  000074        70       1  COMMON      1
+                cinit                          0005C3  000002  0005C5       B86       0  CODE        2
+                text42                         0005C5  00001A  0005DF       B8A       0  CODE        2
+                maintext                       0005DF  000021  000600       BBE       0  CODE        2
+
+
+UNUSED ADDRESS RANGES
+
+        Name                Unused          Largest block    Delta
+        BANK0            020-06F            50           1
+        BANK1            0A0-0EF            50           1
+        CODE             001-5C2           5C2           2
+        COMMON           074-07D             A           1
+        CONFIG           2007-2008             2           2
+        CONST            001-5C2           100           2
+        ENTRY            001-5C2           100           2
+        IDLOC            2000-2003             4           2
+        RAM              020-06F            50           1
+                         0A0-0EF            50
+        SFR0             000-01F            20           1
+        SFR1             080-09F            20           1
+        SFR2             100-16F            70           1
+        SFR3             180-1EF            70           1
+        STRCODE          001-5C2           5C2           2
+        STRING           001-5C2           100           2
+
+                                  Symbol Table
+
+??_DelayXms           cstackCOMMON 070  ??_main               cstackCOMMON 072
+?_DelayXms            cstackCOMMON 070  ?_main                cstackCOMMON 070
+DelayXms@i            cstackCOMMON 071  DelayXms@x            cstackCOMMON 070
+_DelayXms             text42       5C5  __Habs1               abs1         000
+__Hbank0              bank0        000  __Hbank1              bank1        000
+__Hbank2              bank2        000  __Hbank3              bank3        000
+__Hcinit              cinit        000  __Hclrtext            clrtext      000
+__Hcode               code         000  __Hcommon             common       000
+__Hconfig             config       000  __HcstackCOMMON       cstackCOMMON 000
+__Heeprom_data        eeprom_data  000  __Hend_init           end_init     001
+__Hfunctab            functab      000  __Hidloc              idloc        000
+__Hinit               init         000  __Hintentry           intentry     000
+__Hmaintext           maintext     000  __Hpowerup            powerup      000
+__Hram                ram          000  __Hreset_vec          reset_vec    000
+__Hsfr0               sfr0         000  __Hsfr1               sfr1         000
+__Hsfr2               sfr2         000  __Hsfr3               sfr3         000
+__Hstrings            strings      000  __Htext               text         000
+__Labs1               abs1         000  __Lbank0              bank0        000
+__Lbank1              bank1        000  __Lbank2              bank2        000
+__Lbank3              bank3        000  __Lcinit              cinit        000
+__Lclrtext            clrtext      000  __Lcode               code         000
+__Lcommon             common       000  __Lconfig             config       000
+__LcstackCOMMON       cstackCOMMON 000  __Leeprom_data        eeprom_data  000
+__Lend_init           end_init     000  __Lfunctab            functab      000
+__Lidloc              idloc        000  __Linit               init         000
+__Lintentry           intentry     000  __Lmaintext           maintext     000
+__Lpowerup            powerup      000  __Lram                ram          000
+__Lreset_vec          reset_vec    000  __Lsfr0               sfr0         000
+__Lsfr1               sfr1         000  __Lsfr2               sfr2         000
+__Lsfr3               sfr3         000  __Lstrings            strings      000
+__Ltext               text         000  __S0                  (abs)        600
+__S1                  (abs)        074  __end_of_DelayXms     text42       5DF
+__end_of_main         maintext     600  __pcstackCOMMON       cstackCOMMON 070
+__pmaintext           maintext     5DF  __ptext41             text41       000
+__ptext42             text42       5C5  __ptext43             text43       000
+__size_of_DelayXms    (abs)        000  __size_of_main        (abs)        000
+_exit                 init         000  _main                 maintext     5DF
+btemp                 (abs)        07E  end_of_initialization cinit        5C3
+intlevel0             functab      000  intlevel1             functab      000
+intlevel2             functab      000  intlevel3             functab      000
+intlevel4             functab      000  intlevel5             functab      000
+reset_vec             reset_vec    000  start                 init         000
+start_initialization  cinit        5C3  wtemp0                (abs)        07E

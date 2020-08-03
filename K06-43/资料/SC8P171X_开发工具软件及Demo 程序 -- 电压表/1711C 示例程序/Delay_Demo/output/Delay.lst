@@ -1,0 +1,450 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.83 build 10920 
+                                                                                               Thu Oct 19 09:46:56 2017
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 10920
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 10920"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	SC8P1713
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           	FNCALL	_main,_DelayXms
+    43                           	FNROOT	_main
+    44                           psect	text41,local,class=CODE,delta=2
+    45                           global __ptext41
+    46  0000                     __ptext41:
+    47                           	file	"Delay.as"
+    48                           	line	#
+    49                           psect cinit,class=CODE,delta=2
+    50                           global start_initialization
+    51  05C3                     start_initialization:
+    52                           
+    53                           psect cinit,class=CODE,delta=2
+    54                           global end_of_initialization
+    55                           
+    56                           ;End of C runtime variable initialization code
+    57                           
+    58  05C3                     end_of_initialization:
+    59  05C3  0183               clrf status
+    60  05C4  2DDF               ljmp _main	;jump to C main() function
+    61                           psect	cstackCOMMON,class=COMMON,space=1
+    62                           global __pcstackCOMMON
+    63  0070                     __pcstackCOMMON:
+    64                           	global	?_DelayXms
+    65  0070                     ?_DelayXms:	; 0 bytes @ 0x0
+    66                           	global	??_DelayXms
+    67  0070                     ??_DelayXms:	; 0 bytes @ 0x0
+    68                           	global	?_main
+    69  0070                     ?_main:	; 0 bytes @ 0x0
+    70                           	global	DelayXms@x
+    71  0070                     DelayXms@x:	; 1 bytes @ 0x0
+    72  0070                     	ds	1
+    73                           	global	DelayXms@i
+    74  0071                     DelayXms@i:	; 1 bytes @ 0x1
+    75  0071                     	ds	1
+    76                           	global	??_main
+    77  0072                     ??_main:	; 0 bytes @ 0x2
+    78  0072                     	ds	2
+    79 ;;Data sizes: Strings 0, constant 0, data 0, bss 0, persistent 0 stack 0
+    80 ;;Auto spaces:   Size  Autos    Used
+    81 ;; COMMON          14      4       4
+    82 ;; BANK0           80      0       0
+    83 ;; BANK1           80      0       0
+    84                           
+    85 ;;
+    86 ;; Pointer list with targets:
+    87                           
+    88                           
+    89                           
+    90 ;;
+    91 ;; Critical Paths under _main in COMMON
+    92 ;;
+    93 ;;   _main->_DelayXms
+    94 ;;
+    95 ;; Critical Paths under _main in BANK0
+    96 ;;
+    97 ;;   None.
+    98 ;;
+    99 ;; Critical Paths under _main in BANK1
+   100 ;;
+   101 ;;   None.
+   102                           
+   103 ;;
+   104 ;;Main: autosize = 0, tempsize = 2, incstack = 0, save=0
+   105 ;;
+   106                           
+   107 ;;
+   108 ;;Call Graph Tables:
+   109 ;;
+   110 ;; ---------------------------------------------------------------------------------
+   111 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   112 ;; ---------------------------------------------------------------------------------
+   113 ;; (0) _main                                                 2     2      0      30
+   114 ;;                                              2 COMMON     2     2      0
+   115 ;;                           _DelayXms
+   116 ;; ---------------------------------------------------------------------------------
+   117 ;; (1) _DelayXms                                             2     2      0      30
+   118 ;;                                              0 COMMON     2     2      0
+   119 ;; ---------------------------------------------------------------------------------
+   120 ;; Estimated maximum stack depth 1
+   121 ;; ---------------------------------------------------------------------------------
+   122                           
+   123 ;; Call Graph Graphs:
+   124                           
+   125 ;; _main (ROOT)
+   126 ;;   _DelayXms
+   127 ;;
+   128                           
+   129 ;; Address spaces:
+   130                           
+   131 ;;Name               Size   Autos  Total    Cost      Usage
+   132 ;;BITCOMMON            E      0       0       0        0.0%
+   133 ;;NULL                 0      0       0       0        0.0%
+   134 ;;CODE                 0      0       0       0        0.0%
+   135 ;;COMMON               E      4       4       1       28.6%
+   136 ;;BITSFR0              0      0       0       1        0.0%
+   137 ;;SFR0                 0      0       0       1        0.0%
+   138 ;;BITSFR1              0      0       0       2        0.0%
+   139 ;;SFR1                 0      0       0       2        0.0%
+   140 ;;STACK                0      0       1       2        0.0%
+   141 ;;ABS                  0      0       0       3        0.0%
+   142 ;;BITBANK0            50      0       0       4        0.0%
+   143 ;;BITSFR3              0      0       0       4        0.0%
+   144 ;;SFR3                 0      0       0       4        0.0%
+   145 ;;BANK0               50      0       0       5        0.0%
+   146 ;;BITSFR2              0      0       0       5        0.0%
+   147 ;;SFR2                 0      0       0       5        0.0%
+   148 ;;BITBANK1            50      0       0       6        0.0%
+   149 ;;BANK1               50      0       0       7        0.0%
+   150 ;;DATA                 0      0       0       8        0.0%
+   151                           
+   152                           	global	_main
+   153                           psect	maintext,global,class=CODE,delta=2
+   154                           global __pmaintext
+   155  05DF                     __pmaintext:
+   156                           
+   157 ;; *************** function _main *****************
+   158 ;; Defined at:
+   159 ;;		line 36 in file "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\Delay_Demo\Delay.c"
+   160 ;; Parameters:    Size  Location     Type
+   161 ;;		None
+   162 ;; Auto vars:     Size  Location     Type
+   163 ;;		None
+   164 ;; Return value:  Size  Location     Type
+   165 ;;		None               void
+   166 ;; Registers used:
+   167 ;;		wreg, status,2, status,0, pclath, cstack
+   168 ;; Tracked objects:
+   169 ;;		On entry : 17F/0
+   170 ;;		On exit  : 0/0
+   171 ;;		Unchanged: 0/0
+   172 ;; Data sizes:     COMMON   BANK0   BANK1
+   173 ;;      Params:         0       0       0
+   174 ;;      Locals:         0       0       0
+   175 ;;      Temps:          2       0       0
+   176 ;;      Totals:         2       0       0
+   177 ;;Total ram usage:        2 bytes
+   178 ;; Hardware stack levels required when called:    1
+   179 ;; This function calls:
+   180 ;;		_DelayXms
+   181 ;; This function is called by:
+   182 ;;		Startup code after reset
+   183 ;; This function uses a non-reentrant model
+   184 ;;
+   185                           psect	maintext
+   186                           	file	"E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\Delay_Demo\Delay.c"
+   187                           	line	36
+   188                           	global	__size_of_main
+   189  0021                     	__size_of_main	equ	__end_of_main-_main
+   190                           	
+   191  05DF                     _main:	
+   192                           	opt	stack 7
+   193                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   194                           	line	37
+   195                           	
+   196  05DF                     l1706:	
+   197                           ;Delay.c: 37: DelayXms(50);
+   198  05DF  3032               	movlw	(032h)
+   199  05E0  25C5               	fcall	_DelayXms
+   200  05E1  2DE2               	goto	l1708
+   201                           	line	38
+   202                           ;Delay.c: 38: while(1)
+   203                           	
+   204  05E2                     l558:	
+   205                           	line	40
+   206                           	
+   207  05E2                     l1708:	
+   208                           ;Delay.c: 39: {
+   209                           ;Delay.c: 40: _nop();
+   210  05E2  0000               	nop
+   211                           	line	41
+   212                           	
+   213  05E3                     l1710:	
+   214                           ;Delay.c: 41: _delay(1000);
+   215                           	opt asmopt_off
+   216  05E3  30F9               movlw	249
+   217  05E4  00F2               movwf	(??_main+0)+0,f
+   218  05E5                     u2177:
+   219  05E5  0064               	clrwdt
+   220  05E6  0BF2               decfsz	(??_main+0)+0,f
+   221  05E7  2DE5               	goto	u2177
+   222  05E8  2DE9               	nop2	;nop
+   223  05E9  0064               	clrwdt
+   224                           opt asmopt_on
+   225                           
+   226                           	line	42
+   227                           	
+   228  05EA                     l1712:	
+   229                           # 42 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\Delay_Demo\Delay.c"
+   230  05EA  0064               clrwdt ;#
+   231                           psect	maintext
+   232                           	line	43
+   233                           	
+   234  05EB                     l1714:	
+   235                           ;Delay.c: 43: _delay((unsigned long)((400)*(8000000/4000000.0)));
+   236                           	opt asmopt_off
+   237  05EB  30C7               movlw	199
+   238  05EC  00F2               movwf	(??_main+0)+0,f
+   239  05ED                     u2187:
+   240  05ED  0064               	clrwdt
+   241  05EE  0BF2               decfsz	(??_main+0)+0,f
+   242  05EF  2DED               	goto	u2187
+   243  05F0  2DF1               	nop2	;nop
+   244  05F1  0064               	clrwdt
+   245                           opt asmopt_on
+   246                           
+   247                           	line	44
+   248                           	
+   249  05F2                     l1716:	
+   250                           # 44 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\Delay_Demo\Delay.c"
+   251  05F2  0064               clrwdt ;#
+   252                           psect	maintext
+   253                           	line	45
+   254                           	
+   255  05F3                     l1718:	
+   256                           ;Delay.c: 45: _delay((unsigned long)((2)*(8000000/4000.0)));
+   257                           	opt asmopt_off
+   258  05F3  3006               movlw	6
+   259  05F4  00F3               movwf	((??_main+0)+0+1),f
+   260  05F5  3030               	movlw	48
+   261  05F6  00F2               movwf	((??_main+0)+0),f
+   262  05F7                     u2197:
+   263  05F7  0BF2               	decfsz	((??_main+0)+0),f
+   264  05F8  2DF7               	goto	u2197
+   265  05F9  0BF3               	decfsz	((??_main+0)+0+1),f
+   266  05FA  2DF7               	goto	u2197
+   267  05FB  0064               	clrwdt
+   268                           opt asmopt_on
+   269                           
+   270                           	line	46
+   271                           	
+   272  05FC                     l1720:	
+   273                           # 46 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\Delay_Demo\Delay.c"
+   274  05FC  0064               clrwdt ;#
+   275                           psect	maintext
+   276  05FD  2DE2               	goto	l1708
+   277                           	line	47
+   278                           	
+   279  05FE                     l559:	
+   280                           	line	38
+   281  05FE  2DE2               	goto	l1708
+   282                           	
+   283  05FF                     l560:	
+   284                           	line	48
+   285                           	
+   286  05FF                     l561:	
+   287                           	global	start
+   288  05FF  2800               	ljmp	start
+   289                           	opt stack 0
+   290                           GLOBAL	__end_of_main
+   291  0600                     	__end_of_main:
+   292 ;; =============== function _main ends ============
+   293                           
+   294                           	signat	_main,88
+   295                           	global	_DelayXms
+   296                           psect	text42,local,class=CODE,delta=2
+   297                           global __ptext42
+   298  05C5                     __ptext42:
+   299                           
+   300 ;; *************** function _DelayXms *****************
+   301 ;; Defined at:
+   302 ;;		line 19 in file "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\Delay_Demo\Delay.c"
+   303 ;; Parameters:    Size  Location     Type
+   304 ;;  x               1    wreg     unsigned char 
+   305 ;; Auto vars:     Size  Location     Type
+   306 ;;  x               1    0[COMMON] unsigned char 
+   307 ;;  i               1    1[COMMON] unsigned char 
+   308 ;; Return value:  Size  Location     Type
+   309 ;;		None               void
+   310 ;; Registers used:
+   311 ;;		wreg, status,2, status,0
+   312 ;; Tracked objects:
+   313 ;;		On entry : 0/0
+   314 ;;		On exit  : 0/0
+   315 ;;		Unchanged: 0/0
+   316 ;; Data sizes:     COMMON   BANK0   BANK1
+   317 ;;      Params:         0       0       0
+   318 ;;      Locals:         2       0       0
+   319 ;;      Temps:          0       0       0
+   320 ;;      Totals:         2       0       0
+   321 ;;Total ram usage:        2 bytes
+   322 ;; Hardware stack levels used:    1
+   323 ;; This function calls:
+   324 ;;		Nothing
+   325 ;; This function is called by:
+   326 ;;		_main
+   327 ;; This function uses a non-reentrant model
+   328 ;;
+   329                           psect	text42
+   330                           	file	"E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\Delay_Demo\Delay.c"
+   331                           	line	19
+   332                           	global	__size_of_DelayXms
+   333  001A                     	__size_of_DelayXms	equ	__end_of_DelayXms-_DelayXms
+   334                           	
+   335  05C5                     _DelayXms:	
+   336                           	opt	stack 7
+   337                           ; Regs used in _DelayXms: [wreg+status,2+status,0]
+   338                           ;DelayXms@x stored from wreg
+   339  05C5  00F0               	movwf	(DelayXms@x)
+   340                           	line	20
+   341                           	
+   342  05C6                     l934:	
+   343                           ;Delay.c: 20: unsigned char i = 0;;
+   344  05C6  01F1               	clrf	(DelayXms@i)
+   345                           	line	22
+   346                           ;Delay.c: 22: while(--x)
+   347  05C7  2DD7               	goto	l938
+   348                           	
+   349  05C8                     l550:	
+   350                           	line	24
+   351                           # 24 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\Delay_Demo\Delay.c"
+   352  05C8  0064               clrwdt ;#
+   353                           psect	text42
+   354                           	line	25
+   355                           ;Delay.c: 25: while(--i)
+   356  05C9  2DCF               	goto	l936
+   357                           	
+   358  05CA                     l552:	
+   359                           	line	27
+   360                           # 27 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\Delay_Demo\Delay.c"
+   361  05CA  0000               nop ;#
+   362                           	line	28
+   363                           # 28 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\Delay_Demo\Delay.c"
+   364  05CB  0000               nop ;#
+   365                           	line	29
+   366                           # 29 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\Delay_Demo\Delay.c"
+   367  05CC  0000               nop ;#
+   368                           	line	30
+   369                           # 30 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\Delay_Demo\Delay.c"
+   370  05CD  0000               nop ;#
+   371                           psect	text42
+   372  05CE  2DCF               	goto	l936
+   373                           	line	31
+   374                           	
+   375  05CF                     l551:	
+   376                           	line	25
+   377                           	
+   378  05CF                     l936:	
+   379  05CF  3001               	movlw	low(01h)
+   380  05D0  02F1               	subwf	(DelayXms@i),f
+   381  05D1  1D03               	btfss	status,2
+   382  05D2  2DD4               	goto	u21
+   383  05D3  2DD5               	goto	u20
+   384  05D4                     u21:
+   385  05D4  2DCA               	goto	l552
+   386  05D5                     u20:
+   387  05D5  2DD7               	goto	l938
+   388                           	
+   389  05D6                     l553:	
+   390  05D6  2DD7               	goto	l938
+   391                           	line	32
+   392                           	
+   393  05D7                     l549:	
+   394                           	line	22
+   395                           	
+   396  05D7                     l938:	
+   397  05D7  3001               	movlw	low(01h)
+   398  05D8  02F0               	subwf	(DelayXms@x),f
+   399  05D9  1D03               	btfss	status,2
+   400  05DA  2DDC               	goto	u31
+   401  05DB  2DDD               	goto	u30
+   402  05DC                     u31:
+   403  05DC  2DC8               	goto	l550
+   404  05DD                     u30:
+   405  05DD  2DDE               	goto	l555
+   406                           	
+   407  05DE                     l554:	
+   408                           	line	33
+   409                           	
+   410  05DE                     l555:	
+   411  05DE  0008               	return
+   412                           	opt stack 0
+   413                           GLOBAL	__end_of_DelayXms
+   414  05DF                     	__end_of_DelayXms:
+   415 ;; =============== function _DelayXms ends ============
+   416                           
+   417                           	signat	_DelayXms,4216
+   418                           psect	text43,local,class=CODE,delta=2
+   419                           global __ptext43
+   420  0000                     __ptext43:
+   421                           	global	btemp
+   422  007E                     	btemp set 07Eh
+   423                           
+   424                           	DABS	1,126,2	;btemp
+   425                           	global	wtemp0
+   426  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.83 build 10920 
+Symbol Table                                                                                   Thu Oct 19 09:46:56 2017
+
+                  u20 05D5                    u21 05D4                    u30 05DD                    u31 05DC  
+                 l550 05C8                   l551 05CF                   l552 05CA                   l560 05FF  
+                 l553 05D6                   l561 05FF                   l554 05DE                   l555 05DE  
+                 l549 05D7                   l558 05E2                   l559 05FE                   l934 05C6  
+                 l936 05CF                   l938 05D7                  l1710 05E3                  l1720 05FC  
+                l1712 05EA                  l1714 05EB                  l1706 05DF                  l1716 05F2  
+                l1708 05E2                  l1718 05F3                  u2177 05E5                  u2187 05ED  
+                u2197 05F7                  _main 05DF                  btemp 007E                  start 0000  
+               ?_main 0070                 status 0003                 wtemp0 007E      __end_of_DelayXms 05DF  
+        __end_of_main 0600                ??_main 0072        __pcstackCOMMON 0070             ?_DelayXms 0070  
+          __pmaintext 05DF            ??_DelayXms 0070  end_of_initialization 05C3             DelayXms@i 0071  
+           DelayXms@x 0070   start_initialization 05C3     __size_of_DelayXms 001A              _DelayXms 05C5  
+            __ptext41 0000              __ptext42 05C5              __ptext43 0000         __size_of_main 0021  

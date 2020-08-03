@@ -1,0 +1,10 @@
+[PROJECT]
+Version=1.18
+Compile=1
+Device=SC8P1713
+config=37FF,FFEF,FFFF,FFFF,FFFF,2915,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,
+[FILE]
+SourceFile=Timer0.c
+OtherFile=Timer0.c
+OtherFile=Timer1.c
+OtherFile=Timer2.c

@@ -1,0 +1,1613 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.83 build 10920 
+                                                                                               Wed Oct 18 14:36:55 2017
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 10920
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 10920"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	SC8P1713
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           	FNCALL	_main,_I2C_WriteStart
+    43                           	FNCALL	_main,_I2C_Write1Byte
+    44                           	FNCALL	_main,_I2C_WriteStop
+    45                           	FNCALL	_main,_I2C_Read1Byte
+    46                           	FNCALL	_I2C_Read1Byte,_I2C_WaitMoment
+    47                           	FNCALL	_I2C_WriteStop,_I2C_WaitMoment
+    48                           	FNCALL	_I2C_Write1Byte,_I2C_WaitMoment
+    49                           	FNCALL	_I2C_WriteStart,_I2C_WaitMoment
+    50                           	FNROOT	_main
+    51                           	FNCALL	intlevel1,_ISR
+    52                           	global	intlevel1
+    53                           	FNROOT	intlevel1
+    54                           	global	_Recebuffer
+    55                           	global	_Sendbuffer
+    56                           	global	ISR@tcount
+    57                           	global	_B_MainLoop
+    58                           	global	_INTCON
+    59                           psect	text250,local,class=CODE,delta=2
+    60                           global __ptext250
+    61  0000                     __ptext250:
+    62  000B                     _INTCON	set	11
+    63                           	global	_PIR1
+    64  000C                     _PIR1	set	12
+    65                           	global	_PIR2
+    66  000D                     _PIR2	set	13
+    67                           	global	_PORTB
+    68  0006                     _PORTB	set	6
+    69                           	global	_T2CON
+    70  0012                     _T2CON	set	18
+    71                           	global	_RC0
+    72  0038                     _RC0	set	56
+    73                           	global	_RC1
+    74  0039                     _RC1	set	57
+    75                           	global	_TMR2IF
+    76  0061                     _TMR2IF	set	97
+    77                           	global	_OSCCON
+    78  008F                     _OSCCON	set	143
+    79                           	global	_PIE1
+    80  008C                     _PIE1	set	140
+    81                           	global	_PIE2
+    82  008D                     _PIE2	set	141
+    83                           	global	_PR2
+    84  0092                     _PR2	set	146
+    85                           	global	_TRISB
+    86  0086                     _TRISB	set	134
+    87                           	global	_TMR2IE
+    88  0461                     _TMR2IE	set	1121
+    89                           	global	_TRISC0
+    90  0438                     _TRISC0	set	1080
+    91                           	global	_TRISC1
+    92  0439                     _TRISC1	set	1081
+    93                           	file	"IIC_DEMO.as"
+    94                           	line	#
+    95                           psect cinit,class=CODE,delta=2
+    96                           global start_initialization
+    97  0149                     start_initialization:
+    98                           
+    99                           psect	bitbssCOMMON,class=COMMON,bit,space=1
+   100                           global __pbitbssCOMMON
+   101  03B8                     __pbitbssCOMMON:
+   102  03B8                     _B_MainLoop:
+   103  03B8                            ds      1
+   104                           
+   105                           psect	bssCOMMON,class=COMMON,space=1
+   106                           global __pbssCOMMON
+   107  0078                     __pbssCOMMON:
+   108  0078                     ISR@tcount:
+   109  0078                            ds      1
+   110                           
+   111                           psect	bssBANK0,class=BANK0,space=1
+   112                           global __pbssBANK0
+   113  0020                     __pbssBANK0:
+   114  0020                     _Recebuffer:
+   115  0020                            ds      5
+   116                           
+   117  0025                     _Sendbuffer:
+   118  0025                            ds      5
+   119                           
+   120                           ; Clear objects allocated to BITCOMMON
+   121                           psect cinit,class=CODE,delta=2
+   122  0149  01F7               	clrf	((__pbitbssCOMMON/8)+0)&07Fh
+   123                           ; Clear objects allocated to COMMON
+   124                           psect cinit,class=CODE,delta=2
+   125  014A  01F8               	clrf	((__pbssCOMMON)+0)&07Fh
+   126                           ; Clear objects allocated to BANK0
+   127                           psect cinit,class=CODE,delta=2
+   128  014B  01A0               	clrf	((__pbssBANK0)+0)&07Fh
+   129  014C  01A1               	clrf	((__pbssBANK0)+1)&07Fh
+   130  014D  01A2               	clrf	((__pbssBANK0)+2)&07Fh
+   131  014E  01A3               	clrf	((__pbssBANK0)+3)&07Fh
+   132  014F  01A4               	clrf	((__pbssBANK0)+4)&07Fh
+   133  0150  01A5               	clrf	((__pbssBANK0)+5)&07Fh
+   134  0151  01A6               	clrf	((__pbssBANK0)+6)&07Fh
+   135  0152  01A7               	clrf	((__pbssBANK0)+7)&07Fh
+   136  0153  01A8               	clrf	((__pbssBANK0)+8)&07Fh
+   137  0154  01A9               	clrf	((__pbssBANK0)+9)&07Fh
+   138                           psect cinit,class=CODE,delta=2
+   139                           global end_of_initialization
+   140                           
+   141                           ;End of C runtime variable initialization code
+   142                           
+   143  0155                     end_of_initialization:
+   144  0155  0183               clrf status
+   145  0156  2811               ljmp _main	;jump to C main() function
+   146                           psect	cstackCOMMON,class=COMMON,space=1
+   147                           global __pcstackCOMMON
+   148  0070                     __pcstackCOMMON:
+   149                           	global	?_I2C_WriteStart
+   150  0070                     ?_I2C_WriteStart:	; 0 bytes @ 0x0
+   151                           	global	?_I2C_WriteStop
+   152  0070                     ?_I2C_WriteStop:	; 0 bytes @ 0x0
+   153                           	global	?_I2C_WaitMoment
+   154  0070                     ?_I2C_WaitMoment:	; 0 bytes @ 0x0
+   155                           	global	?_main
+   156  0070                     ?_main:	; 0 bytes @ 0x0
+   157                           	global	?_ISR
+   158  0070                     ?_ISR:	; 0 bytes @ 0x0
+   159                           	global	??_ISR
+   160  0070                     ??_ISR:	; 0 bytes @ 0x0
+   161                           	global	?_I2C_Write1Byte
+   162  0070                     ?_I2C_Write1Byte:	; 1 bytes @ 0x0
+   163                           	global	?_I2C_Read1Byte
+   164  0070                     ?_I2C_Read1Byte:	; 1 bytes @ 0x0
+   165  0070                     	ds	5
+   166                           	global	??_I2C_WriteStart
+   167  0075                     ??_I2C_WriteStart:	; 0 bytes @ 0x5
+   168                           	global	??_I2C_Write1Byte
+   169  0075                     ??_I2C_Write1Byte:	; 0 bytes @ 0x5
+   170                           	global	??_I2C_WriteStop
+   171  0075                     ??_I2C_WriteStop:	; 0 bytes @ 0x5
+   172                           	global	??_I2C_Read1Byte
+   173  0075                     ??_I2C_Read1Byte:	; 0 bytes @ 0x5
+   174                           	global	??_I2C_WaitMoment
+   175  0075                     ??_I2C_WaitMoment:	; 0 bytes @ 0x5
+   176  0075                     	ds	1
+   177                           	global	??_main
+   178  0076                     ??_main:	; 0 bytes @ 0x6
+   179  0076                     	ds	1
+   180                           psect	cstackBANK0,class=BANK0,space=1
+   181                           global __pcstackBANK0
+   182  002A                     __pcstackBANK0:
+   183                           	global	I2C_Write1Byte@data
+   184  002A                     I2C_Write1Byte@data:	; 1 bytes @ 0x0
+   185                           	global	I2C_Read1Byte@ack
+   186  002A                     I2C_Read1Byte@ack:	; 1 bytes @ 0x0
+   187  002A                     	ds	1
+   188                           	global	I2C_Write1Byte@i
+   189  002B                     I2C_Write1Byte@i:	; 1 bytes @ 0x1
+   190                           	global	I2C_Read1Byte@data
+   191  002B                     I2C_Read1Byte@data:	; 1 bytes @ 0x1
+   192  002B                     	ds	1
+   193                           	global	I2C_Read1Byte@i
+   194  002C                     I2C_Read1Byte@i:	; 1 bytes @ 0x2
+   195  002C                     	ds	1
+   196                           	global	main@time1s
+   197  002D                     main@time1s:	; 1 bytes @ 0x3
+   198  002D                     	ds	1
+   199 ;;Data sizes: Strings 0, constant 0, data 0, bss 11, persistent 0 stack 0
+   200 ;;Auto spaces:   Size  Autos    Used
+   201 ;; COMMON          14      7       9
+   202 ;; BANK0           80      4      14
+   203 ;; BANK1           80      0       0
+   204                           
+   205 ;;
+   206 ;; Pointer list with targets:
+   207                           
+   208                           
+   209                           
+   210 ;;
+   211 ;; Critical Paths under _main in COMMON
+   212 ;;
+   213 ;;   _main->_I2C_Write1Byte
+   214 ;;   _main->_I2C_Read1Byte
+   215 ;;
+   216 ;; Critical Paths under _ISR in COMMON
+   217 ;;
+   218 ;;   None.
+   219 ;;
+   220 ;; Critical Paths under _main in BANK0
+   221 ;;
+   222 ;;   _main->_I2C_Read1Byte
+   223 ;;
+   224 ;; Critical Paths under _ISR in BANK0
+   225 ;;
+   226 ;;   None.
+   227 ;;
+   228 ;; Critical Paths under _main in BANK1
+   229 ;;
+   230 ;;   None.
+   231 ;;
+   232 ;; Critical Paths under _ISR in BANK1
+   233 ;;
+   234 ;;   None.
+   235                           
+   236 ;;
+   237 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   238 ;;
+   239                           
+   240 ;;
+   241 ;;Call Graph Tables:
+   242 ;;
+   243 ;; ---------------------------------------------------------------------------------
+   244 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   245 ;; ---------------------------------------------------------------------------------
+   246 ;; (0) _main                                                 2     2      0     254
+   247 ;;                                              6 COMMON     1     1      0
+   248 ;;                                              3 BANK0      1     1      0
+   249 ;;                     _I2C_WriteStart
+   250 ;;                     _I2C_Write1Byte
+   251 ;;                      _I2C_WriteStop
+   252 ;;                      _I2C_Read1Byte
+   253 ;; ---------------------------------------------------------------------------------
+   254 ;; (1) _I2C_Read1Byte                                        4     4      0     142
+   255 ;;                                              5 COMMON     1     1      0
+   256 ;;                                              0 BANK0      3     3      0
+   257 ;;                     _I2C_WaitMoment
+   258 ;; ---------------------------------------------------------------------------------
+   259 ;; (1) _I2C_WriteStop                                        0     0      0       0
+   260 ;;                     _I2C_WaitMoment
+   261 ;; ---------------------------------------------------------------------------------
+   262 ;; (1) _I2C_Write1Byte                                       3     3      0      78
+   263 ;;                                              5 COMMON     1     1      0
+   264 ;;                                              0 BANK0      2     2      0
+   265 ;;                     _I2C_WaitMoment
+   266 ;; ---------------------------------------------------------------------------------
+   267 ;; (1) _I2C_WriteStart                                       0     0      0       0
+   268 ;;                     _I2C_WaitMoment
+   269 ;; ---------------------------------------------------------------------------------
+   270 ;; (2) _I2C_WaitMoment                                       0     0      0       0
+   271 ;; ---------------------------------------------------------------------------------
+   272 ;; Estimated maximum stack depth 2
+   273 ;; ---------------------------------------------------------------------------------
+   274 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   275 ;; ---------------------------------------------------------------------------------
+   276 ;; (3) _ISR                                                  5     5      0       0
+   277 ;;                                              0 COMMON     5     5      0
+   278 ;; ---------------------------------------------------------------------------------
+   279 ;; Estimated maximum stack depth 3
+   280 ;; ---------------------------------------------------------------------------------
+   281                           
+   282 ;; Call Graph Graphs:
+   283                           
+   284 ;; _main (ROOT)
+   285 ;;   _I2C_WriteStart
+   286 ;;     _I2C_WaitMoment
+   287 ;;   _I2C_Write1Byte
+   288 ;;     _I2C_WaitMoment
+   289 ;;   _I2C_WriteStop
+   290 ;;     _I2C_WaitMoment
+   291 ;;   _I2C_Read1Byte
+   292 ;;     _I2C_WaitMoment
+   293 ;;
+   294 ;; _ISR (ROOT)
+   295 ;;
+   296                           
+   297 ;; Address spaces:
+   298                           
+   299 ;;Name               Size   Autos  Total    Cost      Usage
+   300 ;;BITCOMMON            E      0       1       0        7.1%
+   301 ;;NULL                 0      0       0       0        0.0%
+   302 ;;CODE                 0      0       0       0        0.0%
+   303 ;;COMMON               E      7       9       1       64.3%
+   304 ;;BITSFR0              0      0       0       1        0.0%
+   305 ;;SFR0                 0      0       0       1        0.0%
+   306 ;;BITSFR1              0      0       0       2        0.0%
+   307 ;;SFR1                 0      0       0       2        0.0%
+   308 ;;STACK                0      0       2       2        0.0%
+   309 ;;ABS                  0      0      17       3        0.0%
+   310 ;;BITBANK0            50      0       0       4        0.0%
+   311 ;;BITSFR3              0      0       0       4        0.0%
+   312 ;;SFR3                 0      0       0       4        0.0%
+   313 ;;BANK0               50      4       E       5       17.5%
+   314 ;;BITSFR2              0      0       0       5        0.0%
+   315 ;;SFR2                 0      0       0       5        0.0%
+   316 ;;BITBANK1            50      0       0       6        0.0%
+   317 ;;BANK1               50      0       0       7        0.0%
+   318 ;;DATA                 0      0      19       8        0.0%
+   319                           
+   320                           	global	_main
+   321                           psect	maintext,global,class=CODE,delta=2
+   322                           global __pmaintext
+   323  0011                     __pmaintext:
+   324                           
+   325 ;; *************** function _main *****************
+   326 ;; Defined at:
+   327 ;;		line 31 in file "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\IIC_Demo\IIC_Soft_Master.c"
+   328 ;; Parameters:    Size  Location     Type
+   329 ;;		None
+   330 ;; Auto vars:     Size  Location     Type
+   331 ;;  time1s          1    3[BANK0 ] unsigned char 
+   332 ;; Return value:  Size  Location     Type
+   333 ;;		None               void
+   334 ;; Registers used:
+   335 ;;		wreg, status,2, status,0, pclath, cstack
+   336 ;; Tracked objects:
+   337 ;;		On entry : 17F/0
+   338 ;;		On exit  : 0/0
+   339 ;;		Unchanged: 0/0
+   340 ;; Data sizes:     COMMON   BANK0   BANK1
+   341 ;;      Params:         0       0       0
+   342 ;;      Locals:         0       1       0
+   343 ;;      Temps:          1       0       0
+   344 ;;      Totals:         1       1       0
+   345 ;;Total ram usage:        2 bytes
+   346 ;; Hardware stack levels required when called:    3
+   347 ;; This function calls:
+   348 ;;		_I2C_WriteStart
+   349 ;;		_I2C_Write1Byte
+   350 ;;		_I2C_WriteStop
+   351 ;;		_I2C_Read1Byte
+   352 ;; This function is called by:
+   353 ;;		Startup code after reset
+   354 ;; This function uses a non-reentrant model
+   355 ;;
+   356                           psect	maintext
+   357                           	file	"E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\IIC_Demo\IIC_Soft_Master.
+                                 c"
+   358                           	line	31
+   359                           	global	__size_of_main
+   360  0069                     	__size_of_main	equ	__end_of_main-_main
+   361                           	
+   362  0011                     _main:	
+   363                           	opt	stack 5
+   364                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   365                           	line	32
+   366                           	
+   367  0011                     l2153:	
+   368                           ;IIC_Soft_Master.c: 32: _nop();
+   369  0011  0000               	nop
+   370                           	line	33
+   371                           # 33 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\IIC_Demo\IIC_Soft_Master.c
+                                 "
+   372  0012  0064               clrwdt ;#
+   373                           psect	maintext
+   374                           	line	34
+   375                           	
+   376  0013                     l2155:	
+   377                           ;IIC_Soft_Master.c: 34: OSCCON = 0x71;
+   378  0013  3071               	movlw	(071h)
+   379  0014  1683               	bsf	status, 5	;RP0=1, select bank1
+   380  0015  1303               	bcf	status, 6	;RP1=0, select bank1
+   381  0016  008F               	movwf	(143)^080h	;volatile
+   382                           	line	36
+   383                           	
+   384  0017                     l2157:	
+   385                           ;IIC_Soft_Master.c: 36: INTCON = 0;
+   386  0017  018B               	clrf	(11)	;volatile
+   387                           	line	37
+   388                           	
+   389  0018                     l2159:	
+   390                           ;IIC_Soft_Master.c: 37: TRISB = 0;
+   391  0018  0186               	clrf	(134)^080h	;volatile
+   392                           	line	38
+   393                           	
+   394  0019                     l2161:	
+   395                           ;IIC_Soft_Master.c: 38: PORTB = 0;
+   396  0019  1283               	bcf	status, 5	;RP0=0, select bank0
+   397  001A  1303               	bcf	status, 6	;RP1=0, select bank0
+   398  001B  0186               	clrf	(6)	;volatile
+   399                           	line	40
+   400                           	
+   401  001C                     l2163:	
+   402                           ;IIC_Soft_Master.c: 40: PIR1 = 0;
+   403  001C  018C               	clrf	(12)	;volatile
+   404                           	line	41
+   405                           	
+   406  001D                     l2165:	
+   407                           ;IIC_Soft_Master.c: 41: PIR2 = 0;
+   408  001D  018D               	clrf	(13)	;volatile
+   409                           	line	42
+   410                           	
+   411  001E                     l2167:	
+   412                           ;IIC_Soft_Master.c: 42: PIE1 = 0;
+   413  001E  1683               	bsf	status, 5	;RP0=1, select bank1
+   414  001F  1303               	bcf	status, 6	;RP1=0, select bank1
+   415  0020  018C               	clrf	(140)^080h	;volatile
+   416                           	line	43
+   417                           	
+   418  0021                     l2169:	
+   419                           ;IIC_Soft_Master.c: 43: PIE2 = 0;
+   420  0021  018D               	clrf	(141)^080h	;volatile
+   421                           	line	46
+   422                           	
+   423  0022                     l2171:	
+   424                           ;IIC_Soft_Master.c: 46: PR2 = 250;
+   425  0022  30FA               	movlw	(0FAh)
+   426  0023  0092               	movwf	(146)^080h	;volatile
+   427                           	line	47
+   428                           	
+   429  0024                     l2173:	
+   430                           ;IIC_Soft_Master.c: 47: T2CON = 4;
+   431  0024  3004               	movlw	(04h)
+   432  0025  1283               	bcf	status, 5	;RP0=0, select bank0
+   433  0026  1303               	bcf	status, 6	;RP1=0, select bank0
+   434  0027  0092               	movwf	(18)	;volatile
+   435                           	line	48
+   436                           	
+   437  0028                     l2175:	
+   438                           ;IIC_Soft_Master.c: 48: TMR2IE = 1;
+   439  0028  1683               	bsf	status, 5	;RP0=1, select bank1
+   440  0029  1303               	bcf	status, 6	;RP1=0, select bank1
+   441  002A  148C               	bsf	(1121/8)^080h,(1121)&7
+   442                           	line	50
+   443                           	
+   444  002B                     l2177:	
+   445                           ;IIC_Soft_Master.c: 50: INTCON = 0XC0;
+   446  002B  30C0               	movlw	(0C0h)
+   447  002C  008B               	movwf	(11)	;volatile
+   448  002D  282E               	goto	l2179
+   449                           	line	54
+   450                           ;IIC_Soft_Master.c: 52: unsigned char time1s;
+   451                           ;IIC_Soft_Master.c: 54: while(1)
+   452                           	
+   453  002E                     l557:	
+   454                           	line	56
+   455                           	
+   456  002E                     l2179:	
+   457                           ;IIC_Soft_Master.c: 55: {
+   458                           ;IIC_Soft_Master.c: 56: if(B_MainLoop)
+   459  002E  1C77               	btfss	(_B_MainLoop/8),(_B_MainLoop)&7
+   460  002F  2831               	goto	u2441
+   461  0030  2832               	goto	u2440
+   462  0031                     u2441:
+   463  0031  282E               	goto	l2179
+   464  0032                     u2440:
+   465                           	line	58
+   466                           	
+   467  0032                     l2181:	
+   468                           ;IIC_Soft_Master.c: 57: {
+   469                           ;IIC_Soft_Master.c: 58: B_MainLoop = 0;
+   470  0032  1077               	bcf	(_B_MainLoop/8),(_B_MainLoop)&7
+   471                           	line	59
+   472                           # 59 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\IIC_Demo\IIC_Soft_Master.c
+                                 "
+   473  0033  0064               clrwdt ;#
+   474                           psect	maintext
+   475                           	line	61
+   476                           	
+   477  0034                     l2183:	
+   478                           ;IIC_Soft_Master.c: 61: if(++time1s >= 200)
+   479  0034  3001               	movlw	(01h)
+   480  0035  00F6               	movwf	(??_main+0)+0
+   481  0036  0876               	movf	(??_main+0)+0,w
+   482  0037  1283               	bcf	status, 5	;RP0=0, select bank0
+   483  0038  1303               	bcf	status, 6	;RP1=0, select bank0
+   484  0039  07AD               	addwf	(main@time1s),f
+   485  003A  30C8               	movlw	(0C8h)
+   486  003B  022D               	subwf	((main@time1s)),w
+   487  003C  1C03               	skipc
+   488  003D  283F               	goto	u2451
+   489  003E  2840               	goto	u2450
+   490  003F                     u2451:
+   491  003F  282E               	goto	l2179
+   492  0040                     u2450:
+   493                           	line	63
+   494                           	
+   495  0040                     l2185:	
+   496                           ;IIC_Soft_Master.c: 62: {
+   497                           ;IIC_Soft_Master.c: 63: time1s = 0;
+   498  0040  01AD               	clrf	(main@time1s)
+   499                           	line	64
+   500                           	
+   501  0041                     l2187:	
+   502                           ;IIC_Soft_Master.c: 64: Sendbuffer[0]++;
+   503  0041  3001               	movlw	(01h)
+   504  0042  00F6               	movwf	(??_main+0)+0
+   505  0043  0876               	movf	(??_main+0)+0,w
+   506  0044  07A5               	addwf	(_Sendbuffer),f	;volatile
+   507                           	line	67
+   508                           	
+   509  0045                     l2189:	
+   510                           ;IIC_Soft_Master.c: 67: I2C_WriteStart();
+   511  0045  2136               	fcall	_I2C_WriteStart
+   512                           	line	68
+   513                           	
+   514  0046                     l2191:	
+   515                           ;IIC_Soft_Master.c: 68: I2C_Write1Byte(0xa0);
+   516  0046  30A0               	movlw	(0A0h)
+   517  0047  20CD               	fcall	_I2C_Write1Byte
+   518                           	line	69
+   519                           	
+   520  0048                     l2193:	
+   521                           ;IIC_Soft_Master.c: 69: I2C_Write1Byte(0x4);
+   522  0048  3004               	movlw	(04h)
+   523  0049  20CD               	fcall	_I2C_Write1Byte
+   524                           	line	70
+   525                           	
+   526  004A                     l2195:	
+   527                           ;IIC_Soft_Master.c: 70: I2C_Write1Byte(Sendbuffer[0]);
+   528  004A  1283               	bcf	status, 5	;RP0=0, select bank0
+   529  004B  1303               	bcf	status, 6	;RP1=0, select bank0
+   530  004C  0825               	movf	(_Sendbuffer),w	;volatile
+   531  004D  20CD               	fcall	_I2C_Write1Byte
+   532                           	line	71
+   533                           	
+   534  004E                     l2197:	
+   535                           ;IIC_Soft_Master.c: 71: I2C_Write1Byte(~Sendbuffer[0]);
+   536  004E  1283               	bcf	status, 5	;RP0=0, select bank0
+   537  004F  1303               	bcf	status, 6	;RP1=0, select bank0
+   538  0050  0925               	comf	(_Sendbuffer),w	;volatile
+   539  0051  20CD               	fcall	_I2C_Write1Byte
+   540                           	line	72
+   541                           	
+   542  0052                     l2199:	
+   543                           ;IIC_Soft_Master.c: 72: I2C_Write1Byte(0x3);
+   544  0052  3003               	movlw	(03h)
+   545  0053  20CD               	fcall	_I2C_Write1Byte
+   546                           	line	73
+   547                           	
+   548  0054                     l2201:	
+   549                           ;IIC_Soft_Master.c: 73: I2C_WriteStop();
+   550  0054  2123               	fcall	_I2C_WriteStop
+   551                           	line	76
+   552                           	
+   553  0055                     l2203:	
+   554                           ;IIC_Soft_Master.c: 76: I2C_WriteStart();
+   555  0055  2136               	fcall	_I2C_WriteStart
+   556                           	line	77
+   557                           	
+   558  0056                     l2205:	
+   559                           ;IIC_Soft_Master.c: 77: I2C_Write1Byte(0xa1);
+   560  0056  30A1               	movlw	(0A1h)
+   561  0057  20CD               	fcall	_I2C_Write1Byte
+   562                           	line	78
+   563                           	
+   564  0058                     l2207:	
+   565                           ;IIC_Soft_Master.c: 78: Recebuffer[0] = I2C_Read1Byte(0);
+   566  0058  3000               	movlw	(0)
+   567  0059  207A               	fcall	_I2C_Read1Byte
+   568  005A  00F6               	movwf	(??_main+0)+0
+   569  005B  0876               	movf	(??_main+0)+0,w
+   570  005C  1283               	bcf	status, 5	;RP0=0, select bank0
+   571  005D  1303               	bcf	status, 6	;RP1=0, select bank0
+   572  005E  00A0               	movwf	(_Recebuffer)	;volatile
+   573                           	line	79
+   574                           	
+   575  005F                     l2209:	
+   576                           ;IIC_Soft_Master.c: 79: Recebuffer[1] = I2C_Read1Byte(0);
+   577  005F  3000               	movlw	(0)
+   578  0060  207A               	fcall	_I2C_Read1Byte
+   579  0061  00F6               	movwf	(??_main+0)+0
+   580  0062  0876               	movf	(??_main+0)+0,w
+   581  0063  1283               	bcf	status, 5	;RP0=0, select bank0
+   582  0064  1303               	bcf	status, 6	;RP1=0, select bank0
+   583  0065  00A1               	movwf	0+(_Recebuffer)+01h	;volatile
+   584                           	line	80
+   585                           	
+   586  0066                     l2211:	
+   587                           ;IIC_Soft_Master.c: 80: Recebuffer[2] = I2C_Read1Byte(0);
+   588  0066  3000               	movlw	(0)
+   589  0067  207A               	fcall	_I2C_Read1Byte
+   590  0068  00F6               	movwf	(??_main+0)+0
+   591  0069  0876               	movf	(??_main+0)+0,w
+   592  006A  1283               	bcf	status, 5	;RP0=0, select bank0
+   593  006B  1303               	bcf	status, 6	;RP1=0, select bank0
+   594  006C  00A2               	movwf	0+(_Recebuffer)+02h	;volatile
+   595                           	line	81
+   596                           	
+   597  006D                     l2213:	
+   598                           ;IIC_Soft_Master.c: 81: Recebuffer[3] = I2C_Read1Byte(1);
+   599  006D  3001               	movlw	(01h)
+   600  006E  207A               	fcall	_I2C_Read1Byte
+   601  006F  00F6               	movwf	(??_main+0)+0
+   602  0070  0876               	movf	(??_main+0)+0,w
+   603  0071  1283               	bcf	status, 5	;RP0=0, select bank0
+   604  0072  1303               	bcf	status, 6	;RP1=0, select bank0
+   605  0073  00A3               	movwf	0+(_Recebuffer)+03h	;volatile
+   606                           	line	82
+   607                           	
+   608  0074                     l2215:	
+   609                           ;IIC_Soft_Master.c: 82: I2C_WriteStop();
+   610  0074  2123               	fcall	_I2C_WriteStop
+   611  0075  282E               	goto	l2179
+   612                           	line	83
+   613                           	
+   614  0076                     l559:	
+   615  0076  282E               	goto	l2179
+   616                           	line	84
+   617                           	
+   618  0077                     l558:	
+   619  0077  282E               	goto	l2179
+   620                           	line	85
+   621                           	
+   622  0078                     l560:	
+   623                           	line	54
+   624  0078  282E               	goto	l2179
+   625                           	
+   626  0079                     l561:	
+   627                           	line	86
+   628                           	
+   629  0079                     l562:	
+   630                           	global	start
+   631  0079  2810               	ljmp	start
+   632                           	opt stack 0
+   633                           GLOBAL	__end_of_main
+   634  007A                     	__end_of_main:
+   635 ;; =============== function _main ends ============
+   636                           
+   637                           	signat	_main,88
+   638                           	global	_I2C_Read1Byte
+   639                           psect	text251,local,class=CODE,delta=2
+   640                           global __ptext251
+   641  007A                     __ptext251:
+   642                           
+   643 ;; *************** function _I2C_Read1Byte *****************
+   644 ;; Defined at:
+   645 ;;		line 197 in file "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\IIC_Demo\IIC_Soft_Master.c"
+   646 ;; Parameters:    Size  Location     Type
+   647 ;;  ack             1    wreg     unsigned char 
+   648 ;; Auto vars:     Size  Location     Type
+   649 ;;  ack             1    0[BANK0 ] unsigned char 
+   650 ;;  i               1    2[BANK0 ] unsigned char 
+   651 ;;  data            1    1[BANK0 ] unsigned char 
+   652 ;; Return value:  Size  Location     Type
+   653 ;;                  1    wreg      unsigned char 
+   654 ;; Registers used:
+   655 ;;		wreg, status,2, status,0, pclath, cstack
+   656 ;; Tracked objects:
+   657 ;;		On entry : 0/0
+   658 ;;		On exit  : 0/0
+   659 ;;		Unchanged: 0/0
+   660 ;; Data sizes:     COMMON   BANK0   BANK1
+   661 ;;      Params:         0       0       0
+   662 ;;      Locals:         0       3       0
+   663 ;;      Temps:          1       0       0
+   664 ;;      Totals:         1       3       0
+   665 ;;Total ram usage:        4 bytes
+   666 ;; Hardware stack levels used:    1
+   667 ;; Hardware stack levels required when called:    2
+   668 ;; This function calls:
+   669 ;;		_I2C_WaitMoment
+   670 ;; This function is called by:
+   671 ;;		_main
+   672 ;; This function uses a non-reentrant model
+   673 ;;
+   674                           psect	text251
+   675                           	file	"E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\IIC_Demo\IIC_Soft_Master.
+                                 c"
+   676                           	line	197
+   677                           	global	__size_of_I2C_Read1Byte
+   678  0053                     	__size_of_I2C_Read1Byte	equ	__end_of_I2C_Read1Byte-_I2C_Read1Byte
+   679                           	
+   680  007A                     _I2C_Read1Byte:	
+   681                           	opt	stack 5
+   682                           ; Regs used in _I2C_Read1Byte: [wreg+status,2+status,0+pclath+cstack]
+   683                           ;I2C_Read1Byte@ack stored from wreg
+   684                           	line	199
+   685  007A  1283               	bcf	status, 5	;RP0=0, select bank0
+   686  007B  1303               	bcf	status, 6	;RP1=0, select bank0
+   687  007C  00AA               	movwf	(I2C_Read1Byte@ack)
+   688                           	
+   689  007D                     l2113:	
+   690                           ;IIC_Soft_Master.c: 198: unsigned char i,data;
+   691                           ;IIC_Soft_Master.c: 199: TRISC1 = 1;
+   692  007D  1683               	bsf	status, 5	;RP0=1, select bank1
+   693  007E  1303               	bcf	status, 6	;RP1=0, select bank1
+   694  007F  1487               	bsf	(1081/8)^080h,(1081)&7
+   695                           	line	200
+   696                           ;IIC_Soft_Master.c: 200: TRISC0 = 1;
+   697  0080  1407               	bsf	(1080/8)^080h,(1080)&7
+   698                           	line	201
+   699                           	
+   700  0081                     l2115:	
+   701                           ;IIC_Soft_Master.c: 201: I2C_WaitMoment();
+   702  0081  2157               	fcall	_I2C_WaitMoment
+   703                           	line	203
+   704                           ;IIC_Soft_Master.c: 203: while(!RC0);
+   705  0082  2883               	goto	l586
+   706                           	
+   707  0083                     l587:	
+   708                           	
+   709  0083                     l586:	
+   710  0083  1283               	bcf	status, 5	;RP0=0, select bank0
+   711  0084  1303               	bcf	status, 6	;RP1=0, select bank0
+   712  0085  1C07               	btfss	(56/8),(56)&7
+   713  0086  2888               	goto	u2381
+   714  0087  2889               	goto	u2380
+   715  0088                     u2381:
+   716  0088  2883               	goto	l586
+   717  0089                     u2380:
+   718                           	
+   719  0089                     l588:	
+   720                           	line	204
+   721                           ;IIC_Soft_Master.c: 204: TRISC0 = 0;
+   722  0089  1683               	bsf	status, 5	;RP0=1, select bank1
+   723  008A  1303               	bcf	status, 6	;RP1=0, select bank1
+   724  008B  1007               	bcf	(1080/8)^080h,(1080)&7
+   725                           	line	205
+   726                           ;IIC_Soft_Master.c: 205: RC0 = 0;
+   727  008C  1283               	bcf	status, 5	;RP0=0, select bank0
+   728  008D  1303               	bcf	status, 6	;RP1=0, select bank0
+   729  008E  1007               	bcf	(56/8),(56)&7
+   730                           	line	206
+   731                           	
+   732  008F                     l2117:	
+   733                           ;IIC_Soft_Master.c: 206: I2C_WaitMoment();
+   734  008F  2157               	fcall	_I2C_WaitMoment
+   735                           	line	208
+   736                           	
+   737  0090                     l2119:	
+   738                           ;IIC_Soft_Master.c: 208: data <<= 1;
+   739  0090  1003               	clrc
+   740  0091  1283               	bcf	status, 5	;RP0=0, select bank0
+   741  0092  1303               	bcf	status, 6	;RP1=0, select bank0
+   742  0093  0DAB               	rlf	(I2C_Read1Byte@data),f
+   743                           
+   744                           	line	209
+   745                           	
+   746  0094                     l2121:	
+   747                           ;IIC_Soft_Master.c: 209: if(RC1) data |= 0x1;
+   748  0094  1C87               	btfss	(57/8),(57)&7
+   749  0095  2897               	goto	u2391
+   750  0096  2898               	goto	u2390
+   751  0097                     u2391:
+   752  0097  2899               	goto	l589
+   753  0098                     u2390:
+   754                           	
+   755  0098                     l2123:	
+   756  0098  142B               	bsf	(I2C_Read1Byte@data)+(0/8),(0)&7
+   757                           	
+   758  0099                     l589:	
+   759                           	line	212
+   760                           ;IIC_Soft_Master.c: 212: for(i = 0; i < 7; i++)
+   761  0099  01AC               	clrf	(I2C_Read1Byte@i)
+   762                           	
+   763  009A                     l2125:	
+   764  009A  3007               	movlw	(07h)
+   765  009B  022C               	subwf	(I2C_Read1Byte@i),w
+   766  009C  1C03               	skipc
+   767  009D  289F               	goto	u2401
+   768  009E  28A0               	goto	u2400
+   769  009F                     u2401:
+   770  009F  28A2               	goto	l590
+   771  00A0                     u2400:
+   772  00A0  28B5               	goto	l591
+   773                           	
+   774  00A1                     l2127:	
+   775  00A1  28B5               	goto	l591
+   776                           	line	213
+   777                           	
+   778  00A2                     l590:	
+   779                           	line	214
+   780                           ;IIC_Soft_Master.c: 213: {
+   781                           ;IIC_Soft_Master.c: 214: RC0 = 1;
+   782  00A2  1407               	bsf	(56/8),(56)&7
+   783                           	line	215
+   784                           	
+   785  00A3                     l2129:	
+   786                           ;IIC_Soft_Master.c: 215: data <<= 1;
+   787  00A3  1003               	clrc
+   788  00A4  0DAB               	rlf	(I2C_Read1Byte@data),f
+   789                           
+   790                           	line	216
+   791                           	
+   792  00A5                     l2131:	
+   793                           ;IIC_Soft_Master.c: 216: if(RC1) data |= 0x1;
+   794  00A5  1C87               	btfss	(57/8),(57)&7
+   795  00A6  28A8               	goto	u2411
+   796  00A7  28A9               	goto	u2410
+   797  00A8                     u2411:
+   798  00A8  28AA               	goto	l592
+   799  00A9                     u2410:
+   800                           	
+   801  00A9                     l2133:	
+   802  00A9  142B               	bsf	(I2C_Read1Byte@data)+(0/8),(0)&7
+   803                           	
+   804  00AA                     l592:	
+   805                           	line	217
+   806                           ;IIC_Soft_Master.c: 217: RC0 = 0;
+   807  00AA  1007               	bcf	(56/8),(56)&7
+   808                           	line	212
+   809                           	
+   810  00AB                     l2135:	
+   811  00AB  3001               	movlw	(01h)
+   812  00AC  00F5               	movwf	(??_I2C_Read1Byte+0)+0
+   813  00AD  0875               	movf	(??_I2C_Read1Byte+0)+0,w
+   814  00AE  07AC               	addwf	(I2C_Read1Byte@i),f
+   815                           	
+   816  00AF                     l2137:	
+   817  00AF  3007               	movlw	(07h)
+   818  00B0  022C               	subwf	(I2C_Read1Byte@i),w
+   819  00B1  1C03               	skipc
+   820  00B2  28B4               	goto	u2421
+   821  00B3  28B5               	goto	u2420
+   822  00B4                     u2421:
+   823  00B4  28A2               	goto	l590
+   824  00B5                     u2420:
+   825                           	
+   826  00B5                     l591:	
+   827                           	line	220
+   828                           ;IIC_Soft_Master.c: 218: }
+   829                           ;IIC_Soft_Master.c: 220: TRISC1 = 0;
+   830  00B5  1683               	bsf	status, 5	;RP0=1, select bank1
+   831  00B6  1303               	bcf	status, 6	;RP1=0, select bank1
+   832  00B7  1087               	bcf	(1081/8)^080h,(1081)&7
+   833                           	line	222
+   834                           	
+   835  00B8                     l2139:	
+   836                           ;IIC_Soft_Master.c: 222: if(ack)RC1 = 1;
+   837  00B8  1283               	bcf	status, 5	;RP0=0, select bank0
+   838  00B9  1303               	bcf	status, 6	;RP1=0, select bank0
+   839  00BA  082A               	movf	(I2C_Read1Byte@ack),w
+   840  00BB  1D03               	skipz
+   841  00BC  28BE               	goto	u2430
+   842  00BD  28C0               	goto	l593
+   843  00BE                     u2430:
+   844                           	
+   845  00BE                     l2141:	
+   846  00BE  1487               	bsf	(57/8),(57)&7
+   847  00BF  28C2               	goto	l2143
+   848                           	line	223
+   849                           	
+   850  00C0                     l593:	
+   851                           ;IIC_Soft_Master.c: 223: else RC1 = 0;
+   852  00C0  1087               	bcf	(57/8),(57)&7
+   853  00C1  28C2               	goto	l2143
+   854                           	
+   855  00C2                     l594:	
+   856                           	line	225
+   857                           	
+   858  00C2                     l2143:	
+   859                           ;IIC_Soft_Master.c: 225: I2C_WaitMoment();
+   860  00C2  2157               	fcall	_I2C_WaitMoment
+   861                           	line	226
+   862                           	
+   863  00C3                     l2145:	
+   864                           ;IIC_Soft_Master.c: 226: RC0 = 1;
+   865  00C3  1283               	bcf	status, 5	;RP0=0, select bank0
+   866  00C4  1303               	bcf	status, 6	;RP1=0, select bank0
+   867  00C5  1407               	bsf	(56/8),(56)&7
+   868                           	line	227
+   869                           ;IIC_Soft_Master.c: 227: I2C_WaitMoment();
+   870  00C6  2157               	fcall	_I2C_WaitMoment
+   871                           	line	228
+   872                           	
+   873  00C7                     l2147:	
+   874                           ;IIC_Soft_Master.c: 228: RC0 = 0;
+   875  00C7  1283               	bcf	status, 5	;RP0=0, select bank0
+   876  00C8  1303               	bcf	status, 6	;RP1=0, select bank0
+   877  00C9  1007               	bcf	(56/8),(56)&7
+   878                           	line	229
+   879                           	
+   880  00CA                     l2149:	
+   881                           ;IIC_Soft_Master.c: 229: return data;
+   882  00CA  082B               	movf	(I2C_Read1Byte@data),w
+   883  00CB  28CC               	goto	l595
+   884                           	
+   885  00CC                     l2151:	
+   886                           	line	230
+   887                           	
+   888  00CC                     l595:	
+   889  00CC  0008               	return
+   890                           	opt stack 0
+   891                           GLOBAL	__end_of_I2C_Read1Byte
+   892  00CD                     	__end_of_I2C_Read1Byte:
+   893 ;; =============== function _I2C_Read1Byte ends ============
+   894                           
+   895                           	signat	_I2C_Read1Byte,4217
+   896                           	global	_I2C_WriteStop
+   897                           psect	text252,local,class=CODE,delta=2
+   898                           global __ptext252
+   899  0123                     __ptext252:
+   900                           
+   901 ;; *************** function _I2C_WriteStop *****************
+   902 ;; Defined at:
+   903 ;;		line 138 in file "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\IIC_Demo\IIC_Soft_Master.c"
+   904 ;; Parameters:    Size  Location     Type
+   905 ;;		None
+   906 ;; Auto vars:     Size  Location     Type
+   907 ;;		None
+   908 ;; Return value:  Size  Location     Type
+   909 ;;		None               void
+   910 ;; Registers used:
+   911 ;;		status,2, status,0, pclath, cstack
+   912 ;; Tracked objects:
+   913 ;;		On entry : 0/0
+   914 ;;		On exit  : 0/0
+   915 ;;		Unchanged: 0/0
+   916 ;; Data sizes:     COMMON   BANK0   BANK1
+   917 ;;      Params:         0       0       0
+   918 ;;      Locals:         0       0       0
+   919 ;;      Temps:          0       0       0
+   920 ;;      Totals:         0       0       0
+   921 ;;Total ram usage:        0 bytes
+   922 ;; Hardware stack levels used:    1
+   923 ;; Hardware stack levels required when called:    2
+   924 ;; This function calls:
+   925 ;;		_I2C_WaitMoment
+   926 ;; This function is called by:
+   927 ;;		_main
+   928 ;; This function uses a non-reentrant model
+   929 ;;
+   930                           psect	text252
+   931                           	file	"E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\IIC_Demo\IIC_Soft_Master.
+                                 c"
+   932                           	line	138
+   933                           	global	__size_of_I2C_WriteStop
+   934  0013                     	__size_of_I2C_WriteStop	equ	__end_of_I2C_WriteStop-_I2C_WriteStop
+   935                           	
+   936  0123                     _I2C_WriteStop:	
+   937                           	opt	stack 5
+   938                           ; Regs used in _I2C_WriteStop: [status,2+status,0+pclath+cstack]
+   939                           	line	139
+   940                           	
+   941  0123                     l2101:	
+   942                           ;IIC_Soft_Master.c: 139: TRISC1 = 0;
+   943  0123  1683               	bsf	status, 5	;RP0=1, select bank1
+   944  0124  1303               	bcf	status, 6	;RP1=0, select bank1
+   945  0125  1087               	bcf	(1081/8)^080h,(1081)&7
+   946                           	line	140
+   947                           ;IIC_Soft_Master.c: 140: TRISC0 = 0;
+   948  0126  1007               	bcf	(1080/8)^080h,(1080)&7
+   949                           	line	141
+   950                           	
+   951  0127                     l2103:	
+   952                           ;IIC_Soft_Master.c: 141: I2C_WaitMoment();
+   953  0127  2157               	fcall	_I2C_WaitMoment
+   954                           	line	143
+   955                           	
+   956  0128                     l2105:	
+   957                           ;IIC_Soft_Master.c: 143: RC1 = 0;
+   958  0128  1283               	bcf	status, 5	;RP0=0, select bank0
+   959  0129  1303               	bcf	status, 6	;RP1=0, select bank0
+   960  012A  1087               	bcf	(57/8),(57)&7
+   961                           	line	144
+   962                           	
+   963  012B                     l2107:	
+   964                           ;IIC_Soft_Master.c: 144: RC0 = 1;
+   965  012B  1407               	bsf	(56/8),(56)&7
+   966                           	line	145
+   967                           ;IIC_Soft_Master.c: 145: I2C_WaitMoment();
+   968  012C  2157               	fcall	_I2C_WaitMoment
+   969                           	line	146
+   970                           	
+   971  012D                     l2109:	
+   972                           ;IIC_Soft_Master.c: 146: RC1 = 1;
+   973  012D  1283               	bcf	status, 5	;RP0=0, select bank0
+   974  012E  1303               	bcf	status, 6	;RP1=0, select bank0
+   975  012F  1487               	bsf	(57/8),(57)&7
+   976                           	line	148
+   977                           ;IIC_Soft_Master.c: 148: I2C_WaitMoment();
+   978  0130  2157               	fcall	_I2C_WaitMoment
+   979                           	line	149
+   980                           	
+   981  0131                     l2111:	
+   982                           ;IIC_Soft_Master.c: 149: RC0 = 0;
+   983  0131  1283               	bcf	status, 5	;RP0=0, select bank0
+   984  0132  1303               	bcf	status, 6	;RP1=0, select bank0
+   985  0133  1007               	bcf	(56/8),(56)&7
+   986                           	line	150
+   987                           ;IIC_Soft_Master.c: 150: I2C_WaitMoment();
+   988  0134  2157               	fcall	_I2C_WaitMoment
+   989                           	line	151
+   990                           	
+   991  0135                     l576:	
+   992  0135  0008               	return
+   993                           	opt stack 0
+   994                           GLOBAL	__end_of_I2C_WriteStop
+   995  0136                     	__end_of_I2C_WriteStop:
+   996 ;; =============== function _I2C_WriteStop ends ============
+   997                           
+   998                           	signat	_I2C_WriteStop,88
+   999                           	global	_I2C_Write1Byte
+  1000                           psect	text253,local,class=CODE,delta=2
+  1001                           global __ptext253
+  1002  00CD                     __ptext253:
+  1003                           
+  1004 ;; *************** function _I2C_Write1Byte *****************
+  1005 ;; Defined at:
+  1006 ;;		line 160 in file "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\IIC_Demo\IIC_Soft_Master.c"
+  1007 ;; Parameters:    Size  Location     Type
+  1008 ;;  data            1    wreg     unsigned char 
+  1009 ;; Auto vars:     Size  Location     Type
+  1010 ;;  data            1    0[BANK0 ] unsigned char 
+  1011 ;;  i               1    1[BANK0 ] unsigned char 
+  1012 ;; Return value:  Size  Location     Type
+  1013 ;;                  1    wreg      unsigned char 
+  1014 ;; Registers used:
+  1015 ;;		wreg, status,2, status,0, pclath, cstack
+  1016 ;; Tracked objects:
+  1017 ;;		On entry : 0/0
+  1018 ;;		On exit  : 0/0
+  1019 ;;		Unchanged: 0/0
+  1020 ;; Data sizes:     COMMON   BANK0   BANK1
+  1021 ;;      Params:         0       0       0
+  1022 ;;      Locals:         0       2       0
+  1023 ;;      Temps:          1       0       0
+  1024 ;;      Totals:         1       2       0
+  1025 ;;Total ram usage:        3 bytes
+  1026 ;; Hardware stack levels used:    1
+  1027 ;; Hardware stack levels required when called:    2
+  1028 ;; This function calls:
+  1029 ;;		_I2C_WaitMoment
+  1030 ;; This function is called by:
+  1031 ;;		_main
+  1032 ;; This function uses a non-reentrant model
+  1033 ;;
+  1034                           psect	text253
+  1035                           	file	"E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\IIC_Demo\IIC_Soft_Master.
+                                 c"
+  1036                           	line	160
+  1037                           	global	__size_of_I2C_Write1Byte
+  1038  0035                     	__size_of_I2C_Write1Byte	equ	__end_of_I2C_Write1Byte-_I2C_Write1Byte
+  1039                           	
+  1040  00CD                     _I2C_Write1Byte:	
+  1041                           	opt	stack 5
+  1042                           ; Regs used in _I2C_Write1Byte: [wreg+status,2+status,0+pclath+cstack]
+  1043                           ;I2C_Write1Byte@data stored from wreg
+  1044  00CD  1283               	bcf	status, 5	;RP0=0, select bank0
+  1045  00CE  1303               	bcf	status, 6	;RP1=0, select bank0
+  1046  00CF  00AA               	movwf	(I2C_Write1Byte@data)
+  1047                           	line	161
+  1048                           	
+  1049  00D0                     l2073:	
+  1050                           ;IIC_Soft_Master.c: 161: unsigned char i = 8;
+  1051  00D0  3008               	movlw	(08h)
+  1052  00D1  00F5               	movwf	(??_I2C_Write1Byte+0)+0
+  1053  00D2  0875               	movf	(??_I2C_Write1Byte+0)+0,w
+  1054  00D3  00AB               	movwf	(I2C_Write1Byte@i)
+  1055                           	line	162
+  1056                           	
+  1057  00D4                     l2075:	
+  1058                           ;IIC_Soft_Master.c: 162: TRISC1 = 0;
+  1059  00D4  1683               	bsf	status, 5	;RP0=1, select bank1
+  1060  00D5  1303               	bcf	status, 6	;RP1=0, select bank1
+  1061  00D6  1087               	bcf	(1081/8)^080h,(1081)&7
+  1062                           	line	163
+  1063                           	
+  1064  00D7                     l2077:	
+  1065                           ;IIC_Soft_Master.c: 163: TRISC0 = 0;
+  1066  00D7  1007               	bcf	(1080/8)^080h,(1080)&7
+  1067  00D8  28D9               	goto	l2079
+  1068                           	line	164
+  1069                           ;IIC_Soft_Master.c: 164: do
+  1070                           	
+  1071  00D9                     l579:	
+  1072                           	line	166
+  1073                           	
+  1074  00D9                     l2079:	
+  1075                           ;IIC_Soft_Master.c: 165: {
+  1076                           ;IIC_Soft_Master.c: 166: RC0 = 0;
+  1077  00D9  1283               	bcf	status, 5	;RP0=0, select bank0
+  1078  00DA  1007               	bcf	(56/8),(56)&7
+  1079                           	line	167
+  1080                           	
+  1081  00DB                     l2081:	
+  1082                           ;IIC_Soft_Master.c: 167: if(data&0x80)
+  1083  00DB  1FAA               	btfss	(I2C_Write1Byte@data),(7)&7
+  1084  00DC  28DE               	goto	u2361
+  1085  00DD  28DF               	goto	u2360
+  1086  00DE                     u2361:
+  1087  00DE  28E1               	goto	l580
+  1088  00DF                     u2360:
+  1089                           	line	168
+  1090                           	
+  1091  00DF                     l2083:	
+  1092                           ;IIC_Soft_Master.c: 168: RC1 = 1;
+  1093  00DF  1487               	bsf	(57/8),(57)&7
+  1094  00E0  28E2               	goto	l581
+  1095                           	line	169
+  1096                           	
+  1097  00E1                     l580:	
+  1098                           	line	170
+  1099                           ;IIC_Soft_Master.c: 169: else
+  1100                           ;IIC_Soft_Master.c: 170: RC1 = 0;
+  1101  00E1  1087               	bcf	(57/8),(57)&7
+  1102                           	
+  1103  00E2                     l581:	
+  1104                           	line	172
+  1105                           ;IIC_Soft_Master.c: 172: RC0 = 1;
+  1106  00E2  1407               	bsf	(56/8),(56)&7
+  1107                           	line	173
+  1108                           	
+  1109  00E3                     l2085:	
+  1110                           ;IIC_Soft_Master.c: 173: data <<= 1;
+  1111  00E3  1003               	clrc
+  1112  00E4  0DAA               	rlf	(I2C_Write1Byte@data),f
+  1113                           
+  1114                           	line	175
+  1115                           	
+  1116  00E5                     l2087:	
+  1117                           ;IIC_Soft_Master.c: 174: }
+  1118                           ;IIC_Soft_Master.c: 175: while(--i);
+  1119  00E5  3001               	movlw	low(01h)
+  1120  00E6  02AB               	subwf	(I2C_Write1Byte@i),f
+  1121  00E7  1D03               	btfss	status,2
+  1122  00E8  28EA               	goto	u2371
+  1123  00E9  28EB               	goto	u2370
+  1124  00EA                     u2371:
+  1125  00EA  28D9               	goto	l2079
+  1126  00EB                     u2370:
+  1127                           	
+  1128  00EB                     l582:	
+  1129                           	line	176
+  1130                           ;IIC_Soft_Master.c: 176: RC0 = 0;
+  1131  00EB  1007               	bcf	(56/8),(56)&7
+  1132                           	line	178
+  1133                           ;IIC_Soft_Master.c: 178: TRISC1 = 1;
+  1134  00EC  1683               	bsf	status, 5	;RP0=1, select bank1
+  1135  00ED  1303               	bcf	status, 6	;RP1=0, select bank1
+  1136  00EE  1487               	bsf	(1081/8)^080h,(1081)&7
+  1137                           	line	180
+  1138                           	
+  1139  00EF                     l2089:	
+  1140                           ;IIC_Soft_Master.c: 180: I2C_WaitMoment();
+  1141  00EF  2157               	fcall	_I2C_WaitMoment
+  1142                           	line	181
+  1143                           	
+  1144  00F0                     l2091:	
+  1145                           ;IIC_Soft_Master.c: 181: RC0 = 1;
+  1146  00F0  1283               	bcf	status, 5	;RP0=0, select bank0
+  1147  00F1  1303               	bcf	status, 6	;RP1=0, select bank0
+  1148  00F2  1407               	bsf	(56/8),(56)&7
+  1149                           	line	182
+  1150                           ;IIC_Soft_Master.c: 182: I2C_WaitMoment();
+  1151  00F3  2157               	fcall	_I2C_WaitMoment
+  1152                           	line	184
+  1153                           	
+  1154  00F4                     l2093:	
+  1155                           ;IIC_Soft_Master.c: 184: i = RC1;
+  1156  00F4  3000               	movlw	0
+  1157  00F5  1283               	bcf	status, 5	;RP0=0, select bank0
+  1158  00F6  1303               	bcf	status, 6	;RP1=0, select bank0
+  1159  00F7  1887               	btfsc	(57/8),(57)&7
+  1160  00F8  3001               	movlw	1
+  1161  00F9  00F5               	movwf	(??_I2C_Write1Byte+0)+0
+  1162  00FA  0875               	movf	(??_I2C_Write1Byte+0)+0,w
+  1163  00FB  00AB               	movwf	(I2C_Write1Byte@i)
+  1164                           	line	185
+  1165                           	
+  1166  00FC                     l2095:	
+  1167                           ;IIC_Soft_Master.c: 185: RC0 = 0;
+  1168  00FC  1007               	bcf	(56/8),(56)&7
+  1169                           	line	186
+  1170                           	
+  1171  00FD                     l2097:	
+  1172                           ;IIC_Soft_Master.c: 186: TRISC1 = 0;
+  1173  00FD  1683               	bsf	status, 5	;RP0=1, select bank1
+  1174  00FE  1303               	bcf	status, 6	;RP1=0, select bank1
+  1175  00FF  1087               	bcf	(1081/8)^080h,(1081)&7
+  1176  0100  2901               	goto	l583
+  1177                           	line	187
+  1178                           	
+  1179  0101                     l2099:	
+  1180                           	line	188
+  1181                           ;IIC_Soft_Master.c: 187: return i;
+  1182                           ;	Return value of _I2C_Write1Byte is never used
+  1183                           	
+  1184  0101                     l583:	
+  1185  0101  0008               	return
+  1186                           	opt stack 0
+  1187                           GLOBAL	__end_of_I2C_Write1Byte
+  1188  0102                     	__end_of_I2C_Write1Byte:
+  1189 ;; =============== function _I2C_Write1Byte ends ============
+  1190                           
+  1191                           	signat	_I2C_Write1Byte,4217
+  1192                           	global	_I2C_WriteStart
+  1193                           psect	text254,local,class=CODE,delta=2
+  1194                           global __ptext254
+  1195  0136                     __ptext254:
+  1196                           
+  1197 ;; *************** function _I2C_WriteStart *****************
+  1198 ;; Defined at:
+  1199 ;;		line 116 in file "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\IIC_Demo\IIC_Soft_Master.c"
+  1200 ;; Parameters:    Size  Location     Type
+  1201 ;;		None
+  1202 ;; Auto vars:     Size  Location     Type
+  1203 ;;		None
+  1204 ;; Return value:  Size  Location     Type
+  1205 ;;		None               void
+  1206 ;; Registers used:
+  1207 ;;		status,2, status,0, pclath, cstack
+  1208 ;; Tracked objects:
+  1209 ;;		On entry : 0/0
+  1210 ;;		On exit  : 0/0
+  1211 ;;		Unchanged: 0/0
+  1212 ;; Data sizes:     COMMON   BANK0   BANK1
+  1213 ;;      Params:         0       0       0
+  1214 ;;      Locals:         0       0       0
+  1215 ;;      Temps:          0       0       0
+  1216 ;;      Totals:         0       0       0
+  1217 ;;Total ram usage:        0 bytes
+  1218 ;; Hardware stack levels used:    1
+  1219 ;; Hardware stack levels required when called:    2
+  1220 ;; This function calls:
+  1221 ;;		_I2C_WaitMoment
+  1222 ;; This function is called by:
+  1223 ;;		_main
+  1224 ;; This function uses a non-reentrant model
+  1225 ;;
+  1226                           psect	text254
+  1227                           	file	"E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\IIC_Demo\IIC_Soft_Master.
+                                 c"
+  1228                           	line	116
+  1229                           	global	__size_of_I2C_WriteStart
+  1230  0013                     	__size_of_I2C_WriteStart	equ	__end_of_I2C_WriteStart-_I2C_WriteStart
+  1231                           	
+  1232  0136                     _I2C_WriteStart:	
+  1233                           	opt	stack 5
+  1234                           ; Regs used in _I2C_WriteStart: [status,2+status,0+pclath+cstack]
+  1235                           	line	117
+  1236                           	
+  1237  0136                     l2061:	
+  1238                           ;IIC_Soft_Master.c: 117: TRISC1 = 0;
+  1239  0136  1683               	bsf	status, 5	;RP0=1, select bank1
+  1240  0137  1303               	bcf	status, 6	;RP1=0, select bank1
+  1241  0138  1087               	bcf	(1081/8)^080h,(1081)&7
+  1242                           	line	118
+  1243                           ;IIC_Soft_Master.c: 118: TRISC0 = 0;
+  1244  0139  1007               	bcf	(1080/8)^080h,(1080)&7
+  1245                           	line	119
+  1246                           	
+  1247  013A                     l2063:	
+  1248                           ;IIC_Soft_Master.c: 119: I2C_WaitMoment();
+  1249  013A  2157               	fcall	_I2C_WaitMoment
+  1250                           	line	121
+  1251                           	
+  1252  013B                     l2065:	
+  1253                           ;IIC_Soft_Master.c: 121: RC1 = 1;
+  1254  013B  1283               	bcf	status, 5	;RP0=0, select bank0
+  1255  013C  1303               	bcf	status, 6	;RP1=0, select bank0
+  1256  013D  1487               	bsf	(57/8),(57)&7
+  1257                           	line	122
+  1258                           	
+  1259  013E                     l2067:	
+  1260                           ;IIC_Soft_Master.c: 122: RC0 = 1;
+  1261  013E  1407               	bsf	(56/8),(56)&7
+  1262                           	line	123
+  1263                           ;IIC_Soft_Master.c: 123: I2C_WaitMoment();
+  1264  013F  2157               	fcall	_I2C_WaitMoment
+  1265                           	line	124
+  1266                           	
+  1267  0140                     l2069:	
+  1268                           ;IIC_Soft_Master.c: 124: RC1 = 0;
+  1269  0140  1283               	bcf	status, 5	;RP0=0, select bank0
+  1270  0141  1303               	bcf	status, 6	;RP1=0, select bank0
+  1271  0142  1087               	bcf	(57/8),(57)&7
+  1272                           	line	126
+  1273                           ;IIC_Soft_Master.c: 126: I2C_WaitMoment();
+  1274  0143  2157               	fcall	_I2C_WaitMoment
+  1275                           	line	127
+  1276                           	
+  1277  0144                     l2071:	
+  1278                           ;IIC_Soft_Master.c: 127: RC0 = 0;
+  1279  0144  1283               	bcf	status, 5	;RP0=0, select bank0
+  1280  0145  1303               	bcf	status, 6	;RP1=0, select bank0
+  1281  0146  1007               	bcf	(56/8),(56)&7
+  1282                           	line	128
+  1283                           ;IIC_Soft_Master.c: 128: I2C_WaitMoment();
+  1284  0147  2157               	fcall	_I2C_WaitMoment
+  1285                           	line	129
+  1286                           	
+  1287  0148                     l573:	
+  1288  0148  0008               	return
+  1289                           	opt stack 0
+  1290                           GLOBAL	__end_of_I2C_WriteStart
+  1291  0149                     	__end_of_I2C_WriteStart:
+  1292 ;; =============== function _I2C_WriteStart ends ============
+  1293                           
+  1294                           	signat	_I2C_WriteStart,88
+  1295                           	global	_I2C_WaitMoment
+  1296                           psect	text255,local,class=CODE,delta=2
+  1297                           global __ptext255
+  1298  0157                     __ptext255:
+  1299                           
+  1300 ;; *************** function _I2C_WaitMoment *****************
+  1301 ;; Defined at:
+  1302 ;;		line 234 in file "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\IIC_Demo\IIC_Soft_Master.c"
+  1303 ;; Parameters:    Size  Location     Type
+  1304 ;;		None
+  1305 ;; Auto vars:     Size  Location     Type
+  1306 ;;		None
+  1307 ;; Return value:  Size  Location     Type
+  1308 ;;		None               void
+  1309 ;; Registers used:
+  1310 ;;		None
+  1311 ;; Tracked objects:
+  1312 ;;		On entry : 0/0
+  1313 ;;		On exit  : 0/0
+  1314 ;;		Unchanged: 0/0
+  1315 ;; Data sizes:     COMMON   BANK0   BANK1
+  1316 ;;      Params:         0       0       0
+  1317 ;;      Locals:         0       0       0
+  1318 ;;      Temps:          0       0       0
+  1319 ;;      Totals:         0       0       0
+  1320 ;;Total ram usage:        0 bytes
+  1321 ;; Hardware stack levels used:    1
+  1322 ;; Hardware stack levels required when called:    1
+  1323 ;; This function calls:
+  1324 ;;		Nothing
+  1325 ;; This function is called by:
+  1326 ;;		_I2C_WriteStart
+  1327 ;;		_I2C_WriteStop
+  1328 ;;		_I2C_Write1Byte
+  1329 ;;		_I2C_Read1Byte
+  1330 ;; This function uses a non-reentrant model
+  1331 ;;
+  1332                           psect	text255
+  1333                           	file	"E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\IIC_Demo\IIC_Soft_Master.
+                                 c"
+  1334                           	line	234
+  1335                           	global	__size_of_I2C_WaitMoment
+  1336  0003                     	__size_of_I2C_WaitMoment	equ	__end_of_I2C_WaitMoment-_I2C_WaitMoment
+  1337                           	
+  1338  0157                     _I2C_WaitMoment:	
+  1339                           	opt	stack 5
+  1340                           ; Regs used in _I2C_WaitMoment: []
+  1341                           	line	235
+  1342                           	
+  1343  0157                     l2059:	
+  1344                           # 235 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\IIC_Demo\IIC_Soft_Master.
+                                 c"
+  1345  0157  0000               nop ;#
+  1346                           	line	236
+  1347                           # 236 "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\IIC_Demo\IIC_Soft_Master.
+                                 c"
+  1348  0158  0000               nop ;#
+  1349                           psect	text255
+  1350                           	line	237
+  1351                           	
+  1352  0159                     l598:	
+  1353  0159  0008               	return
+  1354                           	opt stack 0
+  1355                           GLOBAL	__end_of_I2C_WaitMoment
+  1356  015A                     	__end_of_I2C_WaitMoment:
+  1357 ;; =============== function _I2C_WaitMoment ends ============
+  1358                           
+  1359                           	signat	_I2C_WaitMoment,88
+  1360                           	global	_ISR
+  1361                           psect	text256,local,class=CODE,delta=2
+  1362                           global __ptext256
+  1363  0102                     __ptext256:
+  1364                           
+  1365 ;; *************** function _ISR *****************
+  1366 ;; Defined at:
+  1367 ;;		line 90 in file "E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\IIC_Demo\IIC_Soft_Master.c"
+  1368 ;; Parameters:    Size  Location     Type
+  1369 ;;		None
+  1370 ;; Auto vars:     Size  Location     Type
+  1371 ;;		None
+  1372 ;; Return value:  Size  Location     Type
+  1373 ;;		None               void
+  1374 ;; Registers used:
+  1375 ;;		wreg, status,2, status,0
+  1376 ;; Tracked objects:
+  1377 ;;		On entry : 0/0
+  1378 ;;		On exit  : 0/0
+  1379 ;;		Unchanged: 0/0
+  1380 ;; Data sizes:     COMMON   BANK0   BANK1
+  1381 ;;      Params:         0       0       0
+  1382 ;;      Locals:         0       0       0
+  1383 ;;      Temps:          5       0       0
+  1384 ;;      Totals:         5       0       0
+  1385 ;;Total ram usage:        5 bytes
+  1386 ;; Hardware stack levels used:    1
+  1387 ;; This function calls:
+  1388 ;;		Nothing
+  1389 ;; This function is called by:
+  1390 ;;		Interrupt level 1
+  1391 ;; This function uses a non-reentrant model
+  1392 ;;
+  1393                           psect	text256
+  1394                           	file	"E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\IIC_Demo\IIC_Soft_Master.
+                                 c"
+  1395                           	line	90
+  1396                           	global	__size_of_ISR
+  1397  0021                     	__size_of_ISR	equ	__end_of_ISR-_ISR
+  1398                           	
+  1399  0102                     _ISR:	
+  1400                           	opt	stack 5
+  1401                           ; Regs used in _ISR: [wreg+status,2+status,0]
+  1402                           psect	intentry,class=CODE,delta=2
+  1403                           global __pintentry
+  1404  0004                     __pintentry:
+  1405                           global interrupt_function
+  1406  0004                     interrupt_function:
+  1407                           	global saved_w
+  1408  007E                     	saved_w	set	btemp+0
+  1409  0004  00FE               	movwf	saved_w
+  1410  0005  0E03               	swapf	status,w
+  1411  0006  00F1               	movwf	(??_ISR+1)
+  1412  0007  0804               	movf	fsr0,w
+  1413  0008  00F2               	movwf	(??_ISR+2)
+  1414  0009  080A               	movf	pclath,w
+  1415  000A  00F3               	movwf	(??_ISR+3)
+  1416  000B  1283               	bcf	status, 5	;RP0=0, select bank0
+  1417  000C  1303               	bcf	status, 6	;RP1=0, select bank0
+  1418  000D  087F               	movf	btemp+1,w
+  1419  000E  00F4               	movwf	(??_ISR+4)
+  1420  000F  2902               	ljmp	_ISR
+  1421                           psect	text256
+  1422                           	line	92
+  1423                           	
+  1424  0102                     i1l967:	
+  1425                           ;IIC_Soft_Master.c: 91: static unsigned char tcount;
+  1426                           ;IIC_Soft_Master.c: 92: if(TMR2IF)
+  1427  0102  1C8C               	btfss	(97/8),(97)&7
+  1428  0103  2905               	goto	u1_21
+  1429  0104  2906               	goto	u1_20
+  1430  0105                     u1_21:
+  1431  0105  2915               	goto	i1l975
+  1432  0106                     u1_20:
+  1433                           	line	94
+  1434                           	
+  1435  0106                     i1l969:	
+  1436                           ;IIC_Soft_Master.c: 93: {
+  1437                           ;IIC_Soft_Master.c: 94: TMR2IF = 0;
+  1438  0106  108C               	bcf	(97/8),(97)&7
+  1439                           	line	96
+  1440                           	
+  1441  0107                     i1l971:	
+  1442                           ;IIC_Soft_Master.c: 96: if(++tcount >= 40)
+  1443  0107  3001               	movlw	(01h)
+  1444  0108  00F0               	movwf	(??_ISR+0)+0
+  1445  0109  0870               	movf	(??_ISR+0)+0,w
+  1446  010A  07F8               	addwf	(ISR@tcount),f
+  1447  010B  3028               	movlw	(028h)
+  1448  010C  0278               	subwf	((ISR@tcount)),w
+  1449  010D  1C03               	skipc
+  1450  010E  2910               	goto	u2_21
+  1451  010F  2911               	goto	u2_20
+  1452  0110                     u2_21:
+  1453  0110  2918               	goto	i1l570
+  1454  0111                     u2_20:
+  1455                           	line	98
+  1456                           	
+  1457  0111                     i1l973:	
+  1458                           ;IIC_Soft_Master.c: 97: {
+  1459                           ;IIC_Soft_Master.c: 98: tcount = 0;
+  1460  0111  01F8               	clrf	(ISR@tcount)
+  1461                           	line	99
+  1462                           ;IIC_Soft_Master.c: 99: B_MainLoop = 1;
+  1463  0112  1477               	bsf	(_B_MainLoop/8),(_B_MainLoop)&7
+  1464  0113  2918               	goto	i1l570
+  1465                           	line	100
+  1466                           	
+  1467  0114                     i1l568:	
+  1468                           	line	101
+  1469                           ;IIC_Soft_Master.c: 100: }
+  1470                           ;IIC_Soft_Master.c: 101: }
+  1471  0114  2918               	goto	i1l570
+  1472                           	line	102
+  1473                           	
+  1474  0115                     i1l567:	
+  1475                           	line	104
+  1476                           	
+  1477  0115                     i1l975:	
+  1478                           ;IIC_Soft_Master.c: 102: else
+  1479                           ;IIC_Soft_Master.c: 103: {
+  1480                           ;IIC_Soft_Master.c: 104: PIR1 = 0;
+  1481  0115  018C               	clrf	(12)	;volatile
+  1482                           	line	105
+  1483                           ;IIC_Soft_Master.c: 105: PIR2 = 0;
+  1484  0116  018D               	clrf	(13)	;volatile
+  1485  0117  2918               	goto	i1l570
+  1486                           	line	106
+  1487                           	
+  1488  0118                     i1l569:	
+  1489                           	line	107
+  1490                           	
+  1491  0118                     i1l570:	
+  1492  0118  0874               	movf	(??_ISR+4),w
+  1493  0119  00FF               	movwf	btemp+1
+  1494  011A  0873               	movf	(??_ISR+3),w
+  1495  011B  008A               	movwf	pclath
+  1496  011C  0872               	movf	(??_ISR+2),w
+  1497  011D  0084               	movwf	fsr0
+  1498  011E  0E71               	swapf	(??_ISR+1)^0FFFFFF80h,w
+  1499  011F  0083               	movwf	status
+  1500  0120  0EFE               	swapf	saved_w,f
+  1501  0121  0E7E               	swapf	saved_w,w
+  1502  0122  0009               	retfie
+  1503                           	opt stack 0
+  1504                           GLOBAL	__end_of_ISR
+  1505  0123                     	__end_of_ISR:
+  1506 ;; =============== function _ISR ends ============
+  1507                           
+  1508                           	signat	_ISR,88
+  1509                           psect	text257,local,class=CODE,delta=2
+  1510                           global __ptext257
+  1511  0000                     __ptext257:
+  1512                           	global	btemp
+  1513  007E                     	btemp set 07Eh
+  1514                           
+  1515                           	DABS	1,126,2	;btemp
+  1516                           	global	wtemp0
+  1517  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.83 build 10920 
+Symbol Table                                                                                   Wed Oct 18 14:36:55 2017
+
+                    l560 0078                      l561 0079                      l562 0079  
+                    l580 00E1                      l573 0148                      l581 00E2  
+                    l557 002E                      l582 00EB                      l590 00A2  
+                    l558 0077                      l583 0101                      l591 00B5  
+                    l559 0076                      l576 0135                      l592 00AA  
+                    l593 00C0                      l594 00C2                      l586 0083  
+                    l579 00D9                      l595 00CC                      l587 0083  
+                    l588 0089                      l589 0099                      l598 0159  
+                    _RC0 0038                      _RC1 0039                      _PR2 0092  
+                    _ISR 0102                      fsr0 0004                     ?_ISR 0070  
+                   l2101 0123                     l2111 0131                     l2103 0127  
+                   l2105 0128                     l2121 0094                     l2113 007D  
+                   l2201 0054                     l2107 012B                     l2131 00A5  
+                   l2123 0098                     l2115 0081                     l2211 0066  
+                   l2203 0055                     l2061 0136                     l2109 012D  
+                   l2141 00BE                     l2133 00A9                     l2125 009A  
+                   l2117 008F                     l2213 006D                     l2205 0056  
+                   l2071 0144                     l2063 013A                     l2151 00CC  
+                   l2143 00C2                     l2135 00AB                     l2127 00A1  
+                   l2119 0090                     l2215 0074                     l2207 0058  
+                   l2065 013B                     l2081 00DB                     l2073 00D0  
+                   l2145 00C3                     l2137 00AF                     l2129 00A3  
+                   l2209 005F                     l2161 0019                     l2153 0011  
+                   l2059 0157                     l2067 013E                     l2091 00F0  
+                   l2083 00DF                     l2075 00D4                     l2147 00C7  
+                   l2139 00B8                     l2171 0022                     l2163 001C  
+                   l2155 0013                     l2069 0140                     l2093 00F4  
+                   l2085 00E3                     l2077 00D7                     l2149 00CA  
+                   l2181 0032                     l2173 0024                     l2165 001D  
+                   l2157 0017                     l2095 00FC                     l2087 00E5  
+                   l2079 00D9                     l2191 0046                     l2183 0034  
+                   l2175 0028                     l2167 001E                     l2159 0018  
+                   l2097 00FD                     l2089 00EF                     l2193 0048  
+                   l2185 0040                     l2177 002B                     l2169 0021  
+                   l2099 0101                     l2195 004A                     l2187 0041  
+                   l2179 002E                     l2197 004E                     l2189 0045  
+                   l2199 0052                     u2400 00A0                     u2401 009F  
+                   u2410 00A9                     u2411 00A8                     u2420 00B5  
+                   u2421 00B4                     u2430 00BE                     u2360 00DF  
+                   u2440 0032                     u2361 00DE                     u2441 0031  
+                   u2370 00EB                     u2450 0040                     u2371 00EA  
+                   u2451 003F                     u2380 0089                     u2381 0088  
+                   u2390 0098                     u2391 0097                     _PIE1 008C  
+                   _PIE2 008D                     _PIR1 000C                     _PIR2 000D  
+                   u1_20 0106                     u1_21 0105                     u2_20 0111  
+                   u2_21 0110                     _main 0011                     btemp 007E  
+                   start 0010                    ??_ISR 0070                    ?_main 0070  
+                  _T2CON 0012                    i1l570 0118                    i1l567 0115  
+                  i1l568 0114                    i1l569 0118                    i1l971 0107  
+                  i1l973 0111                    i1l975 0115                    i1l967 0102  
+                  i1l969 0106                    _PORTB 0006   __size_of_I2C_Read1Byte 0053  
+                  _TRISB 0086           __pbitbssCOMMON 03B8                    pclath 000A  
+                  status 0003                    wtemp0 007E             __end_of_main 007A  
+                 ??_main 0076               _Recebuffer 0020   __size_of_I2C_WriteStop 0013  
+                 _INTCON 000B                   _OSCCON 008F                   _TMR2IE 0461  
+                 _TMR2IF 0061                   _TRISC0 0438                   _TRISC1 0439  
+             _Sendbuffer 0025            _I2C_Read1Byte 007A          I2C_Write1Byte@i 002B  
+       I2C_Read1Byte@ack 002A                   saved_w 007E           ?_I2C_Read1Byte 0070  
+         __pcstackCOMMON 0070  __size_of_I2C_WaitMoment 0003            _I2C_WriteStop 0123  
+         I2C_Read1Byte@i 002C               __pbssBANK0 0020                ISR@tcount 0078  
+             __pmaintext 0011  __size_of_I2C_Write1Byte 0035           ?_I2C_WriteStop 0070  
+             __pintentry 0004  __size_of_I2C_WriteStart 0013          ??_I2C_Read1Byte 0075  
+           __size_of_ISR 0021     end_of_initialization 0155        I2C_Read1Byte@data 002B  
+        ??_I2C_WriteStop 0075           _I2C_WaitMoment 0157   __end_of_I2C_WaitMoment 015A  
+             main@time1s 002D           _I2C_Write1Byte 00CD           _I2C_WriteStart 0136  
+    start_initialization 0149              __end_of_ISR 0123   __end_of_I2C_Write1Byte 0102  
+        ?_I2C_WaitMoment 0070   __end_of_I2C_WriteStart 0149              __pbssCOMMON 0078  
+          __pcstackBANK0 002A       I2C_Write1Byte@data 002A          ?_I2C_Write1Byte 0070  
+        ?_I2C_WriteStart 0070                __ptext250 0000                __ptext251 007A  
+              __ptext252 0123                __ptext253 00CD                __ptext254 0136  
+              __ptext255 0157                __ptext256 0102                __ptext257 0000  
+      interrupt_function 0004    __end_of_I2C_Read1Byte 00CD    __end_of_I2C_WriteStop 0136  
+       ??_I2C_WaitMoment 0075            __size_of_main 0069         ??_I2C_Write1Byte 0075  
+               intlevel1 0000         ??_I2C_WriteStart 0075               _B_MainLoop 03B8  

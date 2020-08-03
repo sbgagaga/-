@@ -1,0 +1,508 @@
+---- E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\ADC_Demo\ADC.c ----------------------------------------------------------------------
+1:                /**********************************************************
+2:                AD检测范例程序
+3:                **********************************************************/
+4:                
+5:                #include <SC.h>
+6:                
+7:                
+8:                volatile unsigned int	adresult;
+9:                
+10:               void ADC_Sample(unsigned char adch);
+11:               void DelayXms(unsigned char x);
+12:               
+13:               
+14:               #define _DEBUG			//调试程序用
+15:               
+16:               /**********************************************************
+17:               函数名称：AD_Sample
+18:               函数功能：AD检测
+19:               入口参数：adch - 检测通道
+20:               出口参数：无 
+21:               备    注：采样通道需自行设置为模拟口
+22:               	      采样10次,取中间八次的平均值为采样结果存于adresult中
+23:               **********************************************************/
+24:               void ADC_Sample(unsigned char adch)
+25:               {
+  0504    00F4    LD	0x74,A
+26:               	static unsigned long adsum = 0;
+27:               	static unsigned int admin = 0,admax = 0;
+28:               	static unsigned char adtimes = 0;
+29:               	volatile unsigned int ad_temp;
+30:               	ADCON1 = 0;						//左对齐
+  0505    1683    SETB	0x3,5
+  0506    1303    CLRB	0x3,6
+  0507    019F    CLR	0x1F
+31:               	ADCON0 = 0X41 | (adch << 2);	//16分频
+  0508    0874    LD	A,0x74
+  0509    00F0    LD	0x70,A
+  050A    3001    LDIA	0x1
+  050B    1003    CLRB	0x3,0
+  050C    0DF0    RLCR	0x70
+  050D    3EFF    ADDIA	0xFF
+  050E    1D03    SNZB	0x3,2
+  050F    2D0B    JP	0x50B
+  0510    1003    CLRB	0x3,0
+  0511    0D70    RLCA	0x70
+  0512    3841    ORIA	0x41
+  0513    1283    CLRB	0x3,5
+  0514    1303    CLRB	0x3,6
+  0515    009F    LD	0x1F,A
+  0516    0000    NOP
+  0517    0000    NOP
+32:               	asm("nop");
+33:               	asm("nop");
+34:               	GODONE = 1;						//开始转换
+  0518    1283    CLRB	0x3,5
+  0519    1303    CLRB	0x3,6
+  051A    149F    SETB	0x1F,1
+35:               
+36:               	unsigned char i = 0;
+  051B    01F5    CLR	0x75
+37:               	while(GODONE)
+  051C    2D25    JP	0x525
+38:               	{
+39:               		if(0 == (--i))
+  051D    3001    LDIA	0x1
+  051E    02F5    SUBR	0x75
+  051F    1D03    SNZB	0x3,2
+  0520    2D22    JP	0x522
+  0521    2D23    JP	0x523
+  0522    2D25    JP	0x525
+  0523    2DFF    JP	0x5FF
+40:               			return;
+  0524    2DFF    JP	0x5FF
+  0525    189F    SZB	0x1F,1
+  0526    2D28    JP	0x528
+  0527    2D29    JP	0x529
+  0528    2D1D    JP	0x51D
+  0529    2D2A    JP	0x52A
+41:               	}
+42:               	
+43:               	ad_temp=(ADRESH<<4)+(ADRESL>>4);	//计算12位AD值
+  052A    1683    SETB	0x3,5
+  052B    1303    CLRB	0x3,6
+  052C    081E    LD	A,0x1E
+  052D    00F0    LD	0x70,A
+  052E    3004    LDIA	0x4
+  052F    1003    CLRB	0x3,0
+  0530    0CF0    RRCR	0x70
+  0531    3EFF    ADDIA	0xFF
+  0532    1D03    SNZB	0x3,2
+  0533    2D2F    JP	0x52F
+  0534    1283    CLRB	0x3,5
+  0535    1303    CLRB	0x3,6
+  0536    081E    LD	A,0x1E
+  0537    00F1    LD	0x71,A
+  0538    01F2    CLR	0x72
+  0539    3004    LDIA	0x4
+  053A    00FF    LD	0x7F,A
+  053B    1003    CLRB	0x3,0
+  053C    0DF1    RLCR	0x71
+  053D    0DF2    RLCR	0x72
+  053E    0BFF    SZDECR	0x7F
+  053F    2D3B    JP	0x53B
+  0540    0870    LD	A,0x70
+  0541    0771    ADDA	0x71
+  0542    00F6    LD	0x76,A
+  0543    3000    LDIA	0x0
+  0544    1803    SZB	0x3,0
+  0545    3001    LDIA	0x1
+  0546    0772    ADDA	0x72
+  0547    00F7    LD	0x77,A
+44:               	
+45:               	if(0 == admax)
+  0548    087B    LD	A,0x7B
+  0549    047A    ORA	0x7A
+  054A    1D03    SNZB	0x3,2
+  054B    2D4D    JP	0x54D
+  054C    2D4E    JP	0x54E
+  054D    2D5B    JP	0x55B
+46:               	{
+47:               		admax = ad_temp;
+  054E    0877    LD	A,0x77
+  054F    01FB    CLR	0x7B
+  0550    07FB    ADDR	0x7B
+  0551    0876    LD	A,0x76
+  0552    01FA    CLR	0x7A
+  0553    07FA    ADDR	0x7A
+48:               		admin = ad_temp;
+  0554    0877    LD	A,0x77
+  0555    01A5    CLR	0x25
+  0556    07A5    ADDR	0x25
+  0557    0876    LD	A,0x76
+  0558    01A4    CLR	0x24
+  0559    07A4    ADDR	0x24
+49:               	}
+  055A    2D7F    JP	0x57F
+50:               	else if(ad_temp > admax)
+  055B    0877    LD	A,0x77
+  055C    027B    SUBA	0x7B
+  055D    1D03    SNZB	0x3,2
+  055E    2D61    JP	0x561
+  055F    0876    LD	A,0x76
+  0560    027A    SUBA	0x7A
+  0561    1803    SZB	0x3,0
+  0562    2D64    JP	0x564
+  0563    2D65    JP	0x565
+  0564    2D6C    JP	0x56C
+51:               		admax = ad_temp;				//AD采样最大值
+  0565    0877    LD	A,0x77
+  0566    01FB    CLR	0x7B
+  0567    07FB    ADDR	0x7B
+  0568    0876    LD	A,0x76
+  0569    01FA    CLR	0x7A
+  056A    07FA    ADDR	0x7A
+  056B    2D7F    JP	0x57F
+52:               	else if(ad_temp < admin)
+  056C    0825    LD	A,0x25
+  056D    0277    SUBA	0x77
+  056E    1D03    SNZB	0x3,2
+  056F    2D72    JP	0x572
+  0570    0824    LD	A,0x24
+  0571    0276    SUBA	0x76
+  0572    1803    SZB	0x3,0
+  0573    2D75    JP	0x575
+  0574    2D76    JP	0x576
+  0575    2D7F    JP	0x57F
+53:               		admin = ad_temp;				//AD采样最小值
+  0576    0877    LD	A,0x77
+  0577    01A5    CLR	0x25
+  0578    07A5    ADDR	0x25
+  0579    0876    LD	A,0x76
+  057A    01A4    CLR	0x24
+  057B    07A4    ADDR	0x24
+  057C    2D7F    JP	0x57F
+  057D    2D7F    JP	0x57F
+  057E    2D7F    JP	0x57F
+54:               	
+55:               	adsum += ad_temp;
+  057F    0876    LD	A,0x76
+  0580    00F0    LD	0x70,A
+  0581    0877    LD	A,0x77
+  0582    00F1    LD	0x71,A
+  0583    01F2    CLR	0x72
+  0584    01F3    CLR	0x73
+  0585    0870    LD	A,0x70
+  0586    07A0    ADDR	0x20
+  0587    0871    LD	A,0x71
+  0588    1103    CLRB	0x3,2
+  0589    1803    SZB	0x3,0
+  058A    3E01    ADDIA	0x1
+  058B    1903    SZB	0x3,2
+  058C    2D8E    JP	0x58E
+  058D    07A1    ADDR	0x21
+  058E    0872    LD	A,0x72
+  058F    1103    CLRB	0x3,2
+  0590    1803    SZB	0x3,0
+  0591    3E01    ADDIA	0x1
+  0592    1903    SZB	0x3,2
+  0593    2D95    JP	0x595
+  0594    07A2    ADDR	0x22
+  0595    0873    LD	A,0x73
+  0596    1103    CLRB	0x3,2
+  0597    1803    SZB	0x3,0
+  0598    3E01    ADDIA	0x1
+  0599    1903    SZB	0x3,2
+  059A    2D9C    JP	0x59C
+  059B    07A3    ADDR	0x23
+56:               	if(++adtimes >= 10)
+  059C    3001    LDIA	0x1
+  059D    00F0    LD	0x70,A
+  059E    0870    LD	A,0x70
+  059F    07FC    ADDR	0x7C
+  05A0    300A    LDIA	0xA
+  05A1    027C    SUBA	0x7C
+  05A2    1C03    SNZB	0x3,0
+  05A3    2DA5    JP	0x5A5
+  05A4    2DA6    JP	0x5A6
+  05A5    2DFF    JP	0x5FF
+57:               	{
+58:               		adsum -= admax;
+  05A6    087A    LD	A,0x7A
+  05A7    00F0    LD	0x70,A
+  05A8    087B    LD	A,0x7B
+  05A9    00F1    LD	0x71,A
+  05AA    01F2    CLR	0x72
+  05AB    01F3    CLR	0x73
+  05AC    0870    LD	A,0x70
+  05AD    02A0    SUBR	0x20
+  05AE    0871    LD	A,0x71
+  05AF    1C03    SNZB	0x3,0
+  05B0    0F71    SZINCA	0x71
+  05B1    2DB3    JP	0x5B3
+  05B2    2DB4    JP	0x5B4
+  05B3    02A1    SUBR	0x21
+  05B4    0872    LD	A,0x72
+  05B5    1C03    SNZB	0x3,0
+  05B6    0F72    SZINCA	0x72
+  05B7    2DB9    JP	0x5B9
+  05B8    2DBA    JP	0x5BA
+  05B9    02A2    SUBR	0x22
+  05BA    0873    LD	A,0x73
+  05BB    1C03    SNZB	0x3,0
+  05BC    0F73    SZINCA	0x73
+  05BD    2DBF    JP	0x5BF
+  05BE    2DC0    JP	0x5C0
+  05BF    02A3    SUBR	0x23
+59:               		adsum -= admin;
+  05C0    0824    LD	A,0x24
+  05C1    00F0    LD	0x70,A
+  05C2    0825    LD	A,0x25
+  05C3    00F1    LD	0x71,A
+  05C4    01F2    CLR	0x72
+  05C5    01F3    CLR	0x73
+  05C6    0870    LD	A,0x70
+  05C7    02A0    SUBR	0x20
+  05C8    0871    LD	A,0x71
+  05C9    1C03    SNZB	0x3,0
+  05CA    0F71    SZINCA	0x71
+  05CB    2DCD    JP	0x5CD
+  05CC    2DCE    JP	0x5CE
+  05CD    02A1    SUBR	0x21
+  05CE    0872    LD	A,0x72
+  05CF    1C03    SNZB	0x3,0
+  05D0    0F72    SZINCA	0x72
+  05D1    2DD3    JP	0x5D3
+  05D2    2DD4    JP	0x5D4
+  05D3    02A2    SUBR	0x22
+  05D4    0873    LD	A,0x73
+  05D5    1C03    SNZB	0x3,0
+  05D6    0F73    SZINCA	0x73
+  05D7    2DD9    JP	0x5D9
+  05D8    2DDA    JP	0x5DA
+  05D9    02A3    SUBR	0x23
+60:               		
+61:               		adresult = adsum >> 3;		//8次平均值作为最终结果
+  05DA    0820    LD	A,0x20
+  05DB    00F0    LD	0x70,A
+  05DC    0821    LD	A,0x21
+  05DD    00F1    LD	0x71,A
+  05DE    0822    LD	A,0x22
+  05DF    00F2    LD	0x72,A
+  05E0    0823    LD	A,0x23
+  05E1    00F3    LD	0x73,A
+  05E2    3003    LDIA	0x3
+  05E3    1003    CLRB	0x3,0
+  05E4    0CF3    RRCR	0x73
+  05E5    0CF2    RRCR	0x72
+  05E6    0CF1    RRCR	0x71
+  05E7    0CF0    RRCR	0x70
+  05E8    3EFF    ADDIA	0xFF
+  05E9    1D03    SNZB	0x3,2
+  05EA    2DE3    JP	0x5E3
+  05EB    0871    LD	A,0x71
+  05EC    01A7    CLR	0x27
+  05ED    07A7    ADDR	0x27
+  05EE    0870    LD	A,0x70
+  05EF    01A6    CLR	0x26
+  05F0    07A6    ADDR	0x26
+62:               		
+63:               		adsum = 0;
+  05F1    3000    LDIA	0x0
+  05F2    00A3    LD	0x23,A
+  05F3    3000    LDIA	0x0
+  05F4    00A2    LD	0x22,A
+  05F5    3000    LDIA	0x0
+  05F6    00A1    LD	0x21,A
+  05F7    3000    LDIA	0x0
+  05F8    00A0    LD	0x20,A
+64:               		admin = 0;
+  05F9    01A4    CLR	0x24
+  05FA    01A5    CLR	0x25
+65:               		admax = 0;
+  05FB    01FA    CLR	0x7A
+  05FC    01FB    CLR	0x7B
+66:               		adtimes = 0;
+  05FD    01FC    CLR	0x7C
+  05FE    2DFF    JP	0x5FF
+67:               	}
+68:               }
+69:               
+70:               
+71:               //ADC单次采样
+72:               unsigned char ADC_Result(unsigned char adch)
+73:               {
+  04DA    00F1    LD	0x71,A
+74:               	ADCON1 = 0;						//左对齐
+  04DB    1683    SETB	0x3,5
+  04DC    1303    CLRB	0x3,6
+  04DD    019F    CLR	0x1F
+75:               	ADCON0 = 0X41 | (adch << 2);	//16分频
+  04DE    0871    LD	A,0x71
+  04DF    00F0    LD	0x70,A
+  04E0    3001    LDIA	0x1
+  04E1    1003    CLRB	0x3,0
+  04E2    0DF0    RLCR	0x70
+  04E3    3EFF    ADDIA	0xFF
+  04E4    1D03    SNZB	0x3,2
+  04E5    2CE1    JP	0x4E1
+  04E6    1003    CLRB	0x3,0
+  04E7    0D70    RLCA	0x70
+  04E8    3841    ORIA	0x41
+  04E9    1283    CLRB	0x3,5
+  04EA    1303    CLRB	0x3,6
+  04EB    009F    LD	0x1F,A
+  04EC    0000    NOP
+  04ED    0000    NOP
+76:               	asm("nop");
+77:               	asm("nop");
+78:               	GODONE = 1;						//开始转换
+  04EE    1283    CLRB	0x3,5
+  04EF    1303    CLRB	0x3,6
+  04F0    149F    SETB	0x1F,1
+79:               
+80:               	unsigned char i = 0;
+  04F1    01F2    CLR	0x72
+81:               	while(GODONE)
+  04F2    2CFC    JP	0x4FC
+82:               	{
+83:               		if(0 == (--i))
+  04F3    3001    LDIA	0x1
+  04F4    02F2    SUBR	0x72
+  04F5    1D03    SNZB	0x3,2
+  04F6    2CF8    JP	0x4F8
+  04F7    2CF9    JP	0x4F9
+  04F8    2CFC    JP	0x4FC
+84:               			return 0;				//转换超时
+  04F9    3000    LDIA	0x0
+  04FA    2D03    JP	0x503
+  04FB    2D03    JP	0x503
+  04FC    189F    SZB	0x1F,1
+  04FD    2CFF    JP	0x4FF
+  04FE    2D00    JP	0x500
+  04FF    2CF3    JP	0x4F3
+  0500    2D01    JP	0x501
+85:               	}
+86:               	return ADRESH;
+  0501    081E    LD	A,0x1E
+  0502    2D03    JP	0x503
+  0503    0008    RET
+87:               }
+88:               /***********************************************************
+89:               函数名称：DelayXms
+90:               函数功能：毫秒级非精准延时
+91:               入口参数：x - 延时时间
+92:               出口参数：
+93:               备    注：
+94:               ***********************************************************/
+95:               void DelayXms(unsigned char x)
+96:               {
+  04B2    00F1    LD	0x71,A
+97:               	unsigned char i,j;
+98:               	for(i=x;i>0;i--)
+  04B3    0871    LD	A,0x71
+  04B4    00F0    LD	0x70,A
+  04B5    0870    LD	A,0x70
+  04B6    00F2    LD	0x72,A
+  04B7    08F2    TESTZ	0x72
+  04B8    1D03    SNZB	0x3,2
+  04B9    2CBB    JP	0x4BB
+  04BA    2CBC    JP	0x4BC
+  04BB    2CBE    JP	0x4BE
+  04BC    2CD9    JP	0x4D9
+  04BD    2CD9    JP	0x4D9
+99:               		for(j=153;j>0;j--);
+  04BE    3099    LDIA	0x99
+  04BF    00F0    LD	0x70,A
+  04C0    0870    LD	A,0x70
+  04C1    00F3    LD	0x73,A
+  04C2    08F3    TESTZ	0x73
+  04C3    1D03    SNZB	0x3,2
+  04C4    2CC6    JP	0x4C6
+  04C5    2CC7    JP	0x4C7
+  04C6    2CC9    JP	0x4C9
+  04C7    2CD1    JP	0x4D1
+  04C8    2CD1    JP	0x4D1
+  04C9    3001    LDIA	0x1
+  04CA    02F3    SUBR	0x73
+  04CB    08F3    TESTZ	0x73
+  04CC    1D03    SNZB	0x3,2
+  04CD    2CCF    JP	0x4CF
+  04CE    2CD0    JP	0x4D0
+  04CF    2CC9    JP	0x4C9
+  04D0    2CD1    JP	0x4D1
+  04D1    3001    LDIA	0x1
+  04D2    02F2    SUBR	0x72
+  04D3    08F2    TESTZ	0x72
+  04D4    1D03    SNZB	0x3,2
+  04D5    2CD7    JP	0x4D7
+  04D6    2CD8    JP	0x4D8
+  04D7    2CBE    JP	0x4BE
+  04D8    2CD9    JP	0x4D9
+  04D9    0008    RET
+100:              }
+101:              
+102:              /***********************************************************
+103:              main主函数
+104:              ***********************************************************/
+105:              void main()
+106:              {
+  0496    0000    NOP
+  0497    0064    CLRWDT
+107:              	asm("nop");
+108:              	asm("clrwdt");
+109:              	INTCON = 0;				//禁止中断
+  0498    018B    CLR	0xB
+110:              	OSCCON = 0X71;			//配置振荡为8M
+  0499    3071    LDIA	0x71
+  049A    1683    SETB	0x3,5
+  049B    1303    CLRB	0x3,6
+  049C    008F    LD	0xF,A
+  049D    2C9E    JP	0x49E
+111:              	
+112:              	while(1)
+  049E    0064    CLRWDT
+113:              	{
+114:              		asm("clrwdt");
+115:              		DelayXms(1);
+  049F    3001    LDIA	0x1
+  04A0    24B2    CALL	0x4B2
+116:              
+117:              #ifdef _DEBUG		
+118:              		ANSELH = 0X20;
+  04A1    3020    LDIA	0x20
+  04A2    1683    SETB	0x3,5
+  04A3    1703    SETB	0x3,6
+  04A4    0089    LD	0x9,A
+119:              		TRISB5 = 1;
+  04A5    1683    SETB	0x3,5
+  04A6    1303    CLRB	0x3,6
+  04A7    1686    SETB	0x6,5
+120:              		ADC_Sample(13);
+  04A8    300D    LDIA	0xD
+  04A9    2504    CALL	0x504
+121:              		
+122:              		unsigned char result;
+123:              		
+124:              		result = ADC_Result(13);
+  04AA    300D    LDIA	0xD
+  04AB    24DA    CALL	0x4DA
+  04AC    00F8    LD	0x78,A
+  04AD    0878    LD	A,0x78
+  04AE    00F9    LD	0x79,A
+  04AF    2C9E    JP	0x49E
+  04B0    2C9E    JP	0x49E
+  04B1    2800    JP	0x0
+125:              #endif
+126:              	}
+127:              }
+---- stringtab ------------------------------------------------------------------
+---- reset_enter ------------------------------------------------------------------
+  0000    2C89    JP	0x489
+---- start_initialization ------------------------------------------------------------------
+  0489    01FA    CLR	0x7A
+  048A    01FB    CLR	0x7B
+  048B    01FC    CLR	0x7C
+  048C    01A0    CLR	0x20
+  048D    01A1    CLR	0x21
+  048E    01A2    CLR	0x22
+  048F    01A3    CLR	0x23
+  0490    01A4    CLR	0x24
+  0491    01A5    CLR	0x25
+  0492    01A6    CLR	0x26
+  0493    01A7    CLR	0x27
+  0494    0183    CLR	0x3
+  0495    2C96    JP	0x496
+---- interrupt_function_enter ----------------------------------------------------------
+---- common_function ------------------------------------------------------------------

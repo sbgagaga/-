@@ -1,0 +1,16 @@
+[PROJECT]
+Version=1.18
+Compile=1
+Device=SC8P1713S
+config=3FFF,FFEF,FFFF,FFFF,FFFF,2915,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,
+[FILE]
+SourceFile=Display_lcd.c
+SourceFile=AD.c
+SourceFile=XLD-DLZFQ-20180105_V1.0.C
+SourceFile=Kscan.c
+HeadFile=Display_lcd.h
+HeadFile=global_variable.h
+HeadFile=TypeDef.h
+HeadFile=main.h
+HeadFile=AD.h
+HeadFile=Kscan.h

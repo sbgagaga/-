@@ -1,0 +1,2 @@
+Error[1347]:		µÚ0ÐÐ	can't find 0x1 words (0x1 withtotal) for psect "text8" in class "CODE" (largest unused contiguous range 0x0)
+(908) exit status = 1

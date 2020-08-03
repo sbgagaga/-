@@ -1,0 +1,13 @@
+[PROJECT]
+Version=1.18
+Compile=1
+Device=SC8P1713
+config=37FF,FFEF,FFFF,FFFF,FFFF,2915,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,FFFF,
+[FILE]
+SourceFile=CCP1_PWM.c
+OtherFile=CCP2_PWM.c
+OtherFile=CCP1_PWM.c
+OtherFile=CCP1_compare.c
+OtherFile=CCP1_Catch.c
+OtherFile=CCP2_Catch.c
+OtherFile=CCP2_Compare.c

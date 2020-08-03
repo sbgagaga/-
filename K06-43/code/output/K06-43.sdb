@@ -1,0 +1,318 @@
+[p PRO_MODE GLOBOPT AUTOSTATIC PIC14 PICREGULAR PICMID SPACEOPT ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip SC8P1713S ]
+[d frameptr 6 ]
+"9 C:\Users\Administrator\Desktop\project\K06-43\code\ADC.c
+[v _ADCPro ADCPro `(v  1 e 1 0 ]
+"50
+[v _ADCRead ADCRead `(v  1 e 1 0 ]
+"115
+[v _ADSample ADSample `(uc  1 e 1 0 ]
+"6 C:\Users\Administrator\Desktop\project\K06-43\code\Beep.c
+[v _BeepPro BeepPro `(v  1 e 1 0 ]
+"3 C:\Users\Administrator\Desktop\project\K06-43\code\Charge.c
+[v _ChargePro ChargePro `(v  1 e 1 0 ]
+"6 C:\Users\Administrator\Desktop\project\K06-43\code\even.c
+[v _Isr_Timer Isr_Timer `II(v  1 e 1 0 ]
+"18 C:\Users\Administrator\Desktop\project\K06-43\code\K06-43.c
+[v _Apply Apply `(v  1 e 1 0 ]
+"89
+[v _SystemInit SystemInit `(v  1 e 1 0 ]
+"98
+[v _GPIOInit GPIOInit `(v  1 e 1 0 ]
+"123
+[v _TimerInit TimerInit `(v  1 e 1 0 ]
+"10 C:\Users\Administrator\Desktop\project\K06-43\code\Key.c
+[v _KeyScan KeyScan `(v  1 e 1 0 ]
+"7 C:\Users\Administrator\Desktop\project\K06-43\code\LED.c
+[v _LEDScan LEDScan `(v  1 e 1 0 ]
+"68
+[v _DisplayIcon DisplayIcon `(v  1 e 1 0 ]
+"3 C:\Users\Administrator\Desktop\project\K06-43\code\main.c
+[v _main main `(v  1 e 1 0 ]
+"62 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"6 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"6 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"15 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"3 C:\Users\Administrator\Desktop\project\K06-43\code\ADC.c
+[v _ADCState ADCState `uc  1 e 1 0 ]
+"4
+[v _ADCVal ADCVal `[3]ui  1 e 6 0 ]
+"5
+[v _ADmax ADmax `ui  1 e 2 0 ]
+[v _ADmin ADmin `ui  1 e 2 0 ]
+[v _ADsum ADsum `ui  1 e 2 0 ]
+"6
+[v _ADcnt ADcnt `uc  1 e 1 0 ]
+[s S918 . 4 `*.4ui 1 ADCmax 1 0 `*.4ui 1 ADCmin 1 1 `*.4ui 1 ADCSum 1 2 `*.4uc 1 ADCCnt 1 3 ]
+"7
+[v _ADCModule ADCModule `S918  1 e 4 0 ]
+"3 C:\Users\Administrator\Desktop\project\K06-43\code\Beep.c
+[v _BeepFlag BeepFlag `b  1 e 0 0 ]
+"4
+[v _BeepCnt BeepCnt `uc  1 e 1 0 ]
+[v _BeepTemp BeepTemp `uc  1 e 1 0 ]
+"3 C:\Users\Administrator\Desktop\project\K06-43\code\even.c
+[v _TimerTick TimerTick `ui  1 e 2 0 ]
+[s S302 . 1 `uc 1 flag_2mStick 1 0 :1:0 
+`uc 1 flag_5mStick 1 0 :1:1 
+`uc 1 flag_10mStick 1 0 :1:2 
+`uc 1 flag_15mStick 1 0 :1:3 
+`uc 1 flag_20mStick 1 0 :1:4 
+`uc 1 flag_50mStick 1 0 :1:5 
+`uc 1 flag_100mStick 1 0 :1:6 
+`uc 1 flag_200mStick 1 0 :1:7 
+]
+"4
+[v _struct_TimerTick struct_TimerTick `S302  1 e 1 0 ]
+"3 C:\Users\Administrator\Desktop\project\K06-43\code\K06-43.c
+[v _SystemONFlag SystemONFlag `uc  1 e 1 0 ]
+"4
+[v _VarPowerUpCount VarPowerUpCount `ui  1 e 2 0 ]
+"7
+[v _Time1sCnt Time1sCnt `uc  1 e 1 0 ]
+"13
+[v _USBFlag USBFlag `b  1 e 0 0 ]
+"14
+[v _AllLedFlag AllLedFlag `b  1 e 0 0 ]
+"3 C:\Users\Administrator\Desktop\project\K06-43\code\Key.c
+[v _KeyInFlag KeyInFlag `b  1 e 0 0 ]
+[v _USBInFlag USBInFlag `b  1 e 0 0 ]
+"4
+[v _KeyInBuf KeyInBuf `b  1 e 0 0 ]
+"5
+[v _KeyFlag KeyFlag `b  1 e 0 0 ]
+"6
+[v _KeyLock KeyLock `b  1 e 0 0 ]
+[v _USBLock USBLock `b  1 e 0 0 ]
+"7
+[v _KeyCnt KeyCnt `ui  1 e 2 0 ]
+"8
+[v _USBCnt USBCnt `i  1 e 2 0 ]
+"4 C:\Users\Administrator\Desktop\project\K06-43\code\LED.c
+[v _LED_RAM LED_RAM `[4]uc  1 e 4 0 ]
+"17 E:\SCMCU_IDE_V2.00.08_Beta9\data\include\SC8P1713C.h
+[v _PORTA PORTA `VEuc  1 e 1 @5 ]
+"18
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"19
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+"22
+[v _PORTE PORTE `VEuc  1 e 1 @9 ]
+"24
+[v _INTCON INTCON `VEuc  1 e 1 @11 ]
+"27
+[v _TMR1L TMR1L `VEuc  1 e 1 @14 ]
+"28
+[v _TMR1H TMR1H `VEuc  1 e 1 @15 ]
+"29
+[v _T1CON T1CON `VEuc  1 e 1 @16 ]
+"45
+[v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
+"46
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @31 ]
+"50
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+"51
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"52
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"53
+[v _TRISE TRISE `VEuc  1 e 1 @137 ]
+"54
+[v _PIE1 PIE1 `VEuc  1 e 1 @140 ]
+"57
+[v _OSCCON OSCCON `VEuc  1 e 1 @143 ]
+"63
+[v _WPUB WPUB `VEuc  1 e 1 @149 ]
+"71
+[v _ADRESL ADRESL `VEuc  1 e 1 @158 ]
+"72
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @159 ]
+"76
+[v _WDTCON WDTCON `VEuc  1 e 1 @261 ]
+"99
+[v _WPUE WPUE `VEuc  1 e 1 @282 ]
+"110
+[v _WPUA WPUA `VEuc  1 e 1 @398 ]
+"111
+[v _WPUC WPUC `VEuc  1 e 1 @399 ]
+"136
+[v _RA0 RA0 `VEb  1 e 0 @40 ]
+"137
+[v _RA1 RA1 `VEb  1 e 0 @41 ]
+"138
+[v _RA2 RA2 `VEb  1 e 0 @42 ]
+"139
+[v _RA3 RA3 `VEb  1 e 0 @43 ]
+"140
+[v _RA4 RA4 `VEb  1 e 0 @44 ]
+"141
+[v _RA5 RA5 `VEb  1 e 0 @45 ]
+"150
+[v _RB4 RB4 `VEb  1 e 0 @52 ]
+"151
+[v _RB5 RB5 `VEb  1 e 0 @53 ]
+"152
+[v _RB6 RB6 `VEb  1 e 0 @54 ]
+"153
+[v _RB7 RB7 `VEb  1 e 0 @55 ]
+"156
+[v _RC0 RC0 `VEb  1 e 0 @56 ]
+"157
+[v _RC1 RC1 `VEb  1 e 0 @57 ]
+"158
+[v _RC2 RC2 `VEb  1 e 0 @58 ]
+"166
+[v _RE0 RE0 `VEb  1 e 0 @72 ]
+"186
+[v _TMR1IF TMR1IF `VEb  1 e 0 @96 ]
+"243
+[v _GODONE GODONE `VEb  1 e 0 @249 ]
+"259
+[v _RBPU RBPU `VEb  1 e 0 @1039 ]
+"275
+[v _TRISB1 TRISB1 `VEb  1 e 0 @1073 ]
+"276
+[v _TRISB2 TRISB2 `VEb  1 e 0 @1074 ]
+"280
+[v _TRISB6 TRISB6 `VEb  1 e 0 @1078 ]
+"281
+[v _TRISB7 TRISB7 `VEb  1 e 0 @1079 ]
+"342
+[v _WPUB1 WPUB1 `VEb  1 e 0 @1193 ]
+"343
+[v _WPUB2 WPUB2 `VEb  1 e 0 @1194 ]
+"347
+[v _WPUB6 WPUB6 `VEb  1 e 0 @1198 ]
+"348
+[v _WPUB7 WPUB7 `VEb  1 e 0 @1199 ]
+"410
+[v _ANS8 ANS8 `VEb  1 e 0 @3144 ]
+"412
+[v _ANS10 ANS10 `VEb  1 e 0 @3146 ]
+"3 C:\Users\Administrator\Desktop\project\K06-43\code\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"12
+} 0
+"89 C:\Users\Administrator\Desktop\project\K06-43\code\K06-43.c
+[v _SystemInit SystemInit `(v  1 e 1 0 ]
+{
+"96
+} 0
+"123
+[v _TimerInit TimerInit `(v  1 e 1 0 ]
+{
+"131
+} 0
+"98
+[v _GPIOInit GPIOInit `(v  1 e 1 0 ]
+{
+"121
+} 0
+"18
+[v _Apply Apply `(v  1 e 1 0 ]
+{
+"87
+} 0
+"7 C:\Users\Administrator\Desktop\project\K06-43\code\LED.c
+[v _LEDScan LEDScan `(v  1 e 1 0 ]
+{
+"9
+[v LEDScan@LEDScanIndex LEDScanIndex `uc  1 s 1 LEDScanIndex ]
+"66
+} 0
+"10 C:\Users\Administrator\Desktop\project\K06-43\code\Key.c
+[v _KeyScan KeyScan `(v  1 e 1 0 ]
+{
+"90
+} 0
+"3 C:\Users\Administrator\Desktop\project\K06-43\code\Charge.c
+[v _ChargePro ChargePro `(v  1 e 1 0 ]
+{
+"9
+} 0
+"6 C:\Users\Administrator\Desktop\project\K06-43\code\Beep.c
+[v _BeepPro BeepPro `(v  1 e 1 0 ]
+{
+"34
+} 0
+"9 C:\Users\Administrator\Desktop\project\K06-43\code\ADC.c
+[v _ADCPro ADCPro `(v  1 e 1 0 ]
+{
+"48
+} 0
+"50
+[v _ADCRead ADCRead `(v  1 e 1 0 ]
+{
+[v ADCRead@ch ch `uc  1 a 1 wreg ]
+"52
+[v ADCRead@ad_temp ad_temp `ui  1 a 2 33 ]
+[v ADCRead@AD_L AD_L `ui  1 a 2 31 ]
+[v ADCRead@AD_H AD_H `ui  1 a 2 29 ]
+"50
+[v ADCRead@ch ch `uc  1 a 1 wreg ]
+[s S918 . 4 `*.4ui 1 ADCmax 1 0 `*.4ui 1 ADCmin 1 1 `*.4ui 1 ADCSum 1 2 `*.4uc 1 ADCCnt 1 3 ]
+[v ADCRead@Module Module `S918  1 p 4 13 ]
+[v ADCRead@Val Val `*.4ui  1 p 1 17 ]
+"54
+[v ADCRead@ch ch `uc  1 a 1 28 ]
+"106
+} 0
+"15 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"6 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwdiv@quotient quotient `ui  1 a 2 11 ]
+"12
+[v ___lwdiv@counter counter `uc  1 a 1 10 ]
+"6
+[v ___lwdiv@divisor divisor `ui  1 p 2 6 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 8 ]
+"31
+} 0
+"115 C:\Users\Administrator\Desktop\project\K06-43\code\ADC.c
+[v _ADSample ADSample `(uc  1 e 1 0 ]
+{
+[v ADSample@ch ch `uc  1 a 1 wreg ]
+"122
+[v ADSample@i i `VEuc  1 a 1 2 ]
+"115
+[v ADSample@ch ch `uc  1 a 1 wreg ]
+"117
+[v ADSample@ch ch `uc  1 a 1 1 ]
+"129
+} 0
+"6 C:\Users\Administrator\Desktop\project\K06-43\code\even.c
+[v _Isr_Timer Isr_Timer `II(v  1 e 1 0 ]
+{
+"39
+} 0
+"6 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwmod@counter counter `uc  1 a 1 4 ]
+"6
+[v ___lwmod@divisor divisor `ui  1 p 2 0 ]
+[v ___lwmod@dividend dividend `ui  1 p 2 2 ]
+"26
+} 0

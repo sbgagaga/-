@@ -1,0 +1,917 @@
+---- E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\LCD_Demo\LCD.c ----------------------------------------------------------------------
+1:                
+2:                /***********************************************************
+3:                1/2bias LCD驱动程序，适用于CMS89FXXX系列系列芯片(不适用于89F6385/6395/2385/2395)
+4:                RC0-RC3作为LCD驱动的COM口，内置上下拉电阻；
+5:                RA和RE作为LCD驱动的SEG口，在LCD.H文件里面设置
+6:                通过软件控制LCD时序
+7:                ***********************************************************/
+8:                #include <SC.h>
+9:                #include "LCD.h"
+10:               
+11:               void SET_DISP(unsigned char*);	//显示设置
+12:               void LCD_DISP(void);	//LCD显示
+13:               
+14:               unsigned char tcount;	//计时，TMR2每进1次中断加1
+15:               
+16:               void main(void)
+17:               {
+  0256    0064    CLRWDT
+18:               	CLRWDT();		// 清看门狗
+19:               	OSCCON = 0x71;	// 设置振荡器为内振8M
+  0257    3071    LDIA	0x71
+  0258    1683    SETB	0x3,5
+  0259    1303    CLRB	0x3,6
+  025A    008F    LD	0xF,A
+20:               	PORTA = 0;
+  025B    1283    CLRB	0x3,5
+  025C    1303    CLRB	0x3,6
+  025D    0185    CLR	0x5
+21:               	TRISA = 0;		//PA口做输出
+  025E    1683    SETB	0x3,5
+  025F    1303    CLRB	0x3,6
+  0260    0185    CLR	0x5
+22:               	PORTC = 0;
+  0261    1283    CLRB	0x3,5
+  0262    1303    CLRB	0x3,6
+  0263    0187    CLR	0x7
+23:               	TRISC = 0XF;	//RC0-RC3为LCD的COM口
+  0264    300F    LDIA	0xF
+  0265    1683    SETB	0x3,5
+  0266    1303    CLRB	0x3,6
+  0267    0087    LD	0x7,A
+24:               	PORTE = 0;
+  0268    1283    CLRB	0x3,5
+  0269    1303    CLRB	0x3,6
+  026A    0189    CLR	0x9
+25:               	TRISE = 0;
+  026B    1683    SETB	0x3,5
+  026C    1303    CLRB	0x3,6
+  026D    0189    CLR	0x9
+26:               	OPTION_REG = 0;	//设置预分频器给TMR0
+  026E    0181    CLR	0x1
+27:               	INTCON = 0;		//关闭所有中断
+  026F    018B    CLR	0xB
+28:               	TMR2 = 124;		//TMR2阈值
+  0270    307C    LDIA	0x7C
+  0271    1283    CLRB	0x3,5
+  0272    1303    CLRB	0x3,6
+  0273    0091    LD	0x11,A
+29:               	T2CON = 4;		//使能TMR2计数
+  0274    3004    LDIA	0x4
+  0275    0092    LD	0x12,A
+30:               	TMR2IE = 1;		// 允许TMR2中断
+  0276    1683    SETB	0x3,5
+  0277    1303    CLRB	0x3,6
+  0278    148C    SETB	0xC,1
+31:               	PEIE = 1;		// 允许外设中断
+  0279    170B    SETB	0xB,6
+32:               	GIE = 1;		// 允许全局中断
+  027A    178B    SETB	0xB,7
+  027B    2A7C    JP	0x27C
+33:               	while (1)
+  027C    0064    CLRWDT
+34:               	{
+35:               		CLRWDT();	// 清看门狗
+36:               		if(tcount>15)	//125*16=2ms,每2ms进一次显示
+  027D    3010    LDIA	0x10
+  027E    1283    CLRB	0x3,5
+  027F    1303    CLRB	0x3,6
+  0280    0225    SUBA	0x25
+  0281    1C03    SNZB	0x3,0
+  0282    2A84    JP	0x284
+  0283    2A85    JP	0x285
+  0284    2A7C    JP	0x27C
+37:               		{
+38:               			tcount=0;
+  0285    01A5    CLR	0x25
+39:               			LCD_DISP();	//2ms进一次LCD显示分支
+  0286    2011    CALL	0x11
+  0287    2A7C    JP	0x27C
+  0288    2A7C    JP	0x27C
+  0289    2A7C    JP	0x27C
+  028A    2810    JP	0x10
+40:               		}
+41:               	}
+42:               }
+43:               
+44:               /*****************************************************
+45:               中断函数，其中"interrupt"为中断关键字，不能修改；"isr"为用户定义名字，可修改
+46:               *****************************************************/
+47:               static void interrupt isr(void)	
+48:               {
+49:               	if(TMR2IF)
+  02A8    1C8C    SNZB	0xC,1
+  02A9    2AAB    JP	0x2AB
+  02AA    2AAC    JP	0x2AC
+  02AB    2AB2    JP	0x2B2
+50:               	{				// TMR2会自动加载
+51:               		TMR2IF = 0;	// 清除中断标志位
+  02AC    108C    CLRB	0xC,1
+52:               		tcount++;	//每125us+1
+  02AD    3001    LDIA	0x1
+  02AE    00F0    LD	0x70,A
+  02AF    0870    LD	A,0x70
+  02B0    07A5    ADDR	0x25
+  02B1    2AB2    JP	0x2B2
+  02B2    0874    LD	A,0x74
+  02B3    00FF    LD	0x7F,A
+  02B4    0873    LD	A,0x73
+  02B5    008A    LD	0xA,A
+  02B6    0872    LD	A,0x72
+  02B7    0084    LD	0x4,A
+  02B8    0E71    SWAPA	0x71
+  02B9    0083    LD	0x3,A
+  02BA    0EFE    SWAPR	0x7E
+  02BB    0E7E    SWAPA	0x7E
+  02BC    0009    RETI
+53:               	}
+54:               }
+55:               
+56:               /*****************************************************
+57:               显示设置函数
+58:               将要显示的数据赋给数组RDATA[0]-RDATA[3]
+59:               *****************************************************/
+60:               void SET_DISP(unsigned char *RDATA)
+61:               {					//实际应用中修改该函数内容，设置要显示的值
+  028B    00F6    LD	0x76,A
+62:               	*RDATA=0x1;
+  028C    0876    LD	A,0x76
+  028D    0084    LD	0x4,A
+  028E    1383    CLRB	0x3,7
+  028F    0180    CLR	0x0
+  0290    1403    SETB	0x3,0
+  0291    0D80    RLCR	0x0
+63:               	*(RDATA+1)=0x2;
+  0292    3002    LDIA	0x2
+  0293    00F5    LD	0x75,A
+  0294    0876    LD	A,0x76
+  0295    3E01    ADDIA	0x1
+  0296    0084    LD	0x4,A
+  0297    0875    LD	A,0x75
+  0298    0080    LD	0x0,A
+64:               	*(RDATA+2)=0x4;
+  0299    3004    LDIA	0x4
+  029A    00F5    LD	0x75,A
+  029B    0876    LD	A,0x76
+  029C    3E02    ADDIA	0x2
+  029D    0084    LD	0x4,A
+  029E    0875    LD	A,0x75
+  029F    0080    LD	0x0,A
+65:               	*(RDATA+3)=0x8;
+  02A0    3008    LDIA	0x8
+  02A1    00F5    LD	0x75,A
+  02A2    0876    LD	A,0x76
+  02A3    3E03    ADDIA	0x3
+  02A4    0084    LD	0x4,A
+  02A5    0875    LD	A,0x75
+  02A6    0080    LD	0x0,A
+  02A7    0008    RET
+66:               }
+67:               /*****************************************************
+68:               LCD显示程序
+69:               *****************************************************/
+70:               void LCD_DISP(void)
+71:               {
+72:               	static unsigned char dcount;
+73:               	unsigned char display[4];
+74:               	SET_DISP(display);		//显示设置
+  0011    3020    LDIA	0x20
+  0012    228B    CALL	0x28B
+75:               	
+76:               	LCDCON0 = 0B10000000;	//使能LCD模块 
+  0013    3080    LDIA	0x80
+  0014    1683    SETB	0x3,5
+  0015    1703    SETB	0x3,6
+  0016    0090    LD	0x10,A
+77:               	TRISC = 0B00001111;		//PORTC,0~PORTC,3--LCD-COM口 ;PORTC,4--LED-COM口	
+  0017    300F    LDIA	0xF
+  0018    1683    SETB	0x3,5
+  0019    1303    CLRB	0x3,6
+  001A    0087    LD	0x7,A
+78:               	COMEN = 0B00001111;  	//对应IO口为LED功能的COM口(COM0-COM3)
+  001B    300F    LDIA	0xF
+  001C    1683    SETB	0x3,5
+  001D    1703    SETB	0x3,6
+  001E    0097    LD	0x17,A
+79:               	dcount++;
+  001F    3001    LDIA	0x1
+  0020    00F7    LD	0x77,A
+  0021    0877    LD	A,0x77
+  0022    1283    CLRB	0x3,5
+  0023    1303    CLRB	0x3,6
+  0024    07A4    ADDR	0x24
+80:               	
+81:               	switch(dcount&7)
+  0025    2A3F    JP	0x23F
+82:               	{	
+83:               	case 0:		//COM0输出低电平
+84:               		if(display[0] & 0x01)  {P_SEG0 = 1;} else {P_SEG0 = 0;}
+  0026    1C20    SNZB	0x20,0
+  0027    2829    JP	0x29
+  0028    282A    JP	0x2A
+  0029    282C    JP	0x2C
+  002A    1485    SETB	0x5,1
+  002B    282D    JP	0x2D
+  002C    1085    CLRB	0x5,1
+85:               		if(display[0] & 0x02)  {P_SEG1 = 1;} else {P_SEG1 = 0;}					 
+  002D    1CA0    SNZB	0x20,1
+  002E    2830    JP	0x30
+  002F    2831    JP	0x31
+  0030    2833    JP	0x33
+  0031    1505    SETB	0x5,2
+  0032    2834    JP	0x34
+  0033    1105    CLRB	0x5,2
+86:               		if(display[0] & 0x04)  {P_SEG2 = 1;} else {P_SEG2 = 0;}
+  0034    1D20    SNZB	0x20,2
+  0035    2837    JP	0x37
+  0036    2838    JP	0x38
+  0037    283A    JP	0x3A
+  0038    1585    SETB	0x5,3
+  0039    283B    JP	0x3B
+  003A    1185    CLRB	0x5,3
+87:               		if(display[0] & 0x08)  {P_SEG3 = 1;} else {P_SEG3 = 0;}			
+  003B    1DA0    SNZB	0x20,3
+  003C    283E    JP	0x3E
+  003D    283F    JP	0x3F
+  003E    2841    JP	0x41
+  003F    1605    SETB	0x5,4
+  0040    2842    JP	0x42
+  0041    1205    CLRB	0x5,4
+88:               		if(display[0] & 0x10)  {P_SEG4 = 1;} else {P_SEG4 = 0;}
+  0042    1E20    SNZB	0x20,4
+  0043    2845    JP	0x45
+  0044    2846    JP	0x46
+  0045    2848    JP	0x48
+  0046    1685    SETB	0x5,5
+  0047    2849    JP	0x49
+  0048    1285    CLRB	0x5,5
+89:               		if(display[0] & 0x20)  {P_SEG5 = 1;} else {P_SEG5 = 0;}
+  0049    1EA0    SNZB	0x20,5
+  004A    284C    JP	0x4C
+  004B    284D    JP	0x4D
+  004C    284F    JP	0x4F
+  004D    1486    SETB	0x6,1
+  004E    2850    JP	0x50
+  004F    1086    CLRB	0x6,1
+90:               		if(display[0] & 0x40)  {P_SEG6 = 1;} else {P_SEG6 = 0;}
+  0050    1F20    SNZB	0x20,6
+  0051    2853    JP	0x53
+  0052    2854    JP	0x54
+  0053    2856    JP	0x56
+  0054    1506    SETB	0x6,2
+  0055    2857    JP	0x57
+  0056    1106    CLRB	0x6,2
+91:               		if(display[0] & 0x80)  {P_SEG7 = 1;} else {P_SEG7 = 0;}
+  0057    1FA0    SNZB	0x20,7
+  0058    285A    JP	0x5A
+  0059    285B    JP	0x5B
+  005A    285D    JP	0x5D
+  005B    1586    SETB	0x6,3
+  005C    285E    JP	0x5E
+  005D    1186    CLRB	0x6,3
+92:               		
+93:               		P_COM0=0;		//COM0输出低
+  005E    1007    CLRB	0x7,0
+94:               		IO_COM0=0;		//COM0做输出		
+  005F    1683    SETB	0x3,5
+  0060    1303    CLRB	0x3,6
+  0061    1007    CLRB	0x7,0
+95:               		DIS_COM0;		//关闭COM0内部上下拉使能 
+  0062    30FE    LDIA	0xFE
+  0063    00F7    LD	0x77,A
+  0064    0877    LD	A,0x77
+  0065    1683    SETB	0x3,5
+  0066    1703    SETB	0x3,6
+  0067    0597    ANDR	0x17
+96:               		break;		
+  0068    2A55    JP	0x255
+97:               	case 1:		//COM1输出低电平
+98:               		if(display[1] & 0x01)  {P_SEG0 = 1;} else {P_SEG0 = 0;}			 
+  0069    1C21    SNZB	0x21,0
+  006A    286C    JP	0x6C
+  006B    286D    JP	0x6D
+  006C    286F    JP	0x6F
+  006D    1485    SETB	0x5,1
+  006E    2870    JP	0x70
+  006F    1085    CLRB	0x5,1
+99:               		if(display[1] & 0x02)  {P_SEG1 = 1;} else {P_SEG1 = 0;}							 
+  0070    1CA1    SNZB	0x21,1
+  0071    2873    JP	0x73
+  0072    2874    JP	0x74
+  0073    2876    JP	0x76
+  0074    1505    SETB	0x5,2
+  0075    2877    JP	0x77
+  0076    1105    CLRB	0x5,2
+100:              		if(display[1] & 0x04)  {P_SEG2 = 1;} else {P_SEG2 = 0;}
+  0077    1D21    SNZB	0x21,2
+  0078    287A    JP	0x7A
+  0079    287B    JP	0x7B
+  007A    287D    JP	0x7D
+  007B    1585    SETB	0x5,3
+  007C    287E    JP	0x7E
+  007D    1185    CLRB	0x5,3
+101:              		if(display[1] & 0x08)  {P_SEG3 = 1;} else {P_SEG3 = 0;}					
+  007E    1DA1    SNZB	0x21,3
+  007F    2881    JP	0x81
+  0080    2882    JP	0x82
+  0081    2884    JP	0x84
+  0082    1605    SETB	0x5,4
+  0083    2885    JP	0x85
+  0084    1205    CLRB	0x5,4
+102:              		if(display[1] & 0x10)  {P_SEG4 = 1;} else {P_SEG4 = 0;}
+  0085    1E21    SNZB	0x21,4
+  0086    2888    JP	0x88
+  0087    2889    JP	0x89
+  0088    288B    JP	0x8B
+  0089    1685    SETB	0x5,5
+  008A    288C    JP	0x8C
+  008B    1285    CLRB	0x5,5
+103:              		if(display[1] & 0x20)  {P_SEG5 = 1;} else {P_SEG5 = 0;}
+  008C    1EA1    SNZB	0x21,5
+  008D    288F    JP	0x8F
+  008E    2890    JP	0x90
+  008F    2892    JP	0x92
+  0090    1486    SETB	0x6,1
+  0091    2893    JP	0x93
+  0092    1086    CLRB	0x6,1
+104:              		if(display[1] & 0x40)  {P_SEG6 = 1;} else {P_SEG6 = 0;}
+  0093    1F21    SNZB	0x21,6
+  0094    2896    JP	0x96
+  0095    2897    JP	0x97
+  0096    2899    JP	0x99
+  0097    1506    SETB	0x6,2
+  0098    289A    JP	0x9A
+  0099    1106    CLRB	0x6,2
+105:              		if(display[1] & 0x80)  {P_SEG7 = 1;} else {P_SEG7 = 0;}
+  009A    1FA1    SNZB	0x21,7
+  009B    289D    JP	0x9D
+  009C    289E    JP	0x9E
+  009D    28A0    JP	0xA0
+  009E    1586    SETB	0x6,3
+  009F    28A1    JP	0xA1
+  00A0    1186    CLRB	0x6,3
+106:              		
+107:              		P_COM1=0;		//COM1输出低
+  00A1    1087    CLRB	0x7,1
+108:              		IO_COM1=0;		//COM1做输出		
+  00A2    1683    SETB	0x3,5
+  00A3    1303    CLRB	0x3,6
+  00A4    1087    CLRB	0x7,1
+109:              		DIS_COM1;		//关闭COM1内部上下拉使能
+  00A5    30FD    LDIA	0xFD
+  00A6    00F7    LD	0x77,A
+  00A7    0877    LD	A,0x77
+  00A8    1683    SETB	0x3,5
+  00A9    1703    SETB	0x3,6
+  00AA    0597    ANDR	0x17
+110:              		break;
+  00AB    2A55    JP	0x255
+111:              	case 2:		//COM2输出低电平
+112:              		if(display[2] & 0x01)  {P_SEG0 = 1;} else {P_SEG0 = 0;}			 
+  00AC    1C22    SNZB	0x22,0
+  00AD    28AF    JP	0xAF
+  00AE    28B0    JP	0xB0
+  00AF    28B2    JP	0xB2
+  00B0    1485    SETB	0x5,1
+  00B1    28B3    JP	0xB3
+  00B2    1085    CLRB	0x5,1
+113:              		if(display[2] & 0x02)  {P_SEG1 = 1;} else {P_SEG1 = 0;}							 
+  00B3    1CA2    SNZB	0x22,1
+  00B4    28B6    JP	0xB6
+  00B5    28B7    JP	0xB7
+  00B6    28B9    JP	0xB9
+  00B7    1505    SETB	0x5,2
+  00B8    28BA    JP	0xBA
+  00B9    1105    CLRB	0x5,2
+114:              		if(display[2] & 0x04)  {P_SEG2 = 1;} else {P_SEG2 = 0;}
+  00BA    1D22    SNZB	0x22,2
+  00BB    28BD    JP	0xBD
+  00BC    28BE    JP	0xBE
+  00BD    28C0    JP	0xC0
+  00BE    1585    SETB	0x5,3
+  00BF    28C1    JP	0xC1
+  00C0    1185    CLRB	0x5,3
+115:              		if(display[2] & 0x08)  {P_SEG3 = 1;} else {P_SEG3 = 0;}					
+  00C1    1DA2    SNZB	0x22,3
+  00C2    28C4    JP	0xC4
+  00C3    28C5    JP	0xC5
+  00C4    28C7    JP	0xC7
+  00C5    1605    SETB	0x5,4
+  00C6    28C8    JP	0xC8
+  00C7    1205    CLRB	0x5,4
+116:              		if(display[2] & 0x10)  {P_SEG4 = 1;} else {P_SEG4 = 0;}
+  00C8    1E22    SNZB	0x22,4
+  00C9    28CB    JP	0xCB
+  00CA    28CC    JP	0xCC
+  00CB    28CE    JP	0xCE
+  00CC    1685    SETB	0x5,5
+  00CD    28CF    JP	0xCF
+  00CE    1285    CLRB	0x5,5
+117:              		if(display[2] & 0x20)  {P_SEG5 = 1;} else {P_SEG5 = 0;}
+  00CF    1EA2    SNZB	0x22,5
+  00D0    28D2    JP	0xD2
+  00D1    28D3    JP	0xD3
+  00D2    28D5    JP	0xD5
+  00D3    1486    SETB	0x6,1
+  00D4    28D6    JP	0xD6
+  00D5    1086    CLRB	0x6,1
+118:              		if(display[2] & 0x40)  {P_SEG6 = 1;} else {P_SEG6 = 0;}
+  00D6    1F22    SNZB	0x22,6
+  00D7    28D9    JP	0xD9
+  00D8    28DA    JP	0xDA
+  00D9    28DC    JP	0xDC
+  00DA    1506    SETB	0x6,2
+  00DB    28DD    JP	0xDD
+  00DC    1106    CLRB	0x6,2
+119:              		if(display[2] & 0x80)  {P_SEG7 = 1;} else {P_SEG7 = 0;}
+  00DD    1FA2    SNZB	0x22,7
+  00DE    28E0    JP	0xE0
+  00DF    28E1    JP	0xE1
+  00E0    28E3    JP	0xE3
+  00E1    1586    SETB	0x6,3
+  00E2    28E4    JP	0xE4
+  00E3    1186    CLRB	0x6,3
+120:              		
+121:              		P_COM2=0;		//COM1输出低
+  00E4    1107    CLRB	0x7,2
+122:              		IO_COM2=0;		//COM1做输出		
+  00E5    1683    SETB	0x3,5
+  00E6    1303    CLRB	0x3,6
+  00E7    1107    CLRB	0x7,2
+123:              		DIS_COM2;		//关闭COM1内部上下拉使能
+  00E8    30FB    LDIA	0xFB
+  00E9    00F7    LD	0x77,A
+  00EA    0877    LD	A,0x77
+  00EB    1683    SETB	0x3,5
+  00EC    1703    SETB	0x3,6
+  00ED    0597    ANDR	0x17
+124:              		break;	
+  00EE    2A55    JP	0x255
+125:              	case 3:		//COM3输出低电平
+126:              		if(display[3] & 0x01)  {P_SEG0 = 1;} else {P_SEG0 = 0;}			 
+  00EF    1C23    SNZB	0x23,0
+  00F0    28F2    JP	0xF2
+  00F1    28F3    JP	0xF3
+  00F2    28F5    JP	0xF5
+  00F3    1485    SETB	0x5,1
+  00F4    28F6    JP	0xF6
+  00F5    1085    CLRB	0x5,1
+127:              		if(display[3] & 0x02)  {P_SEG1 = 1;} else {P_SEG1 = 0;}							 
+  00F6    1CA3    SNZB	0x23,1
+  00F7    28F9    JP	0xF9
+  00F8    28FA    JP	0xFA
+  00F9    28FC    JP	0xFC
+  00FA    1505    SETB	0x5,2
+  00FB    28FD    JP	0xFD
+  00FC    1105    CLRB	0x5,2
+128:              		if(display[3] & 0x04)  {P_SEG2 = 1;} else {P_SEG2 = 0;}
+  00FD    1D23    SNZB	0x23,2
+  00FE    2900    JP	0x100
+  00FF    2901    JP	0x101
+  0100    2903    JP	0x103
+  0101    1585    SETB	0x5,3
+  0102    2904    JP	0x104
+  0103    1185    CLRB	0x5,3
+129:              		if(display[3] & 0x08)  {P_SEG3 = 1;} else {P_SEG3 = 0;}					
+  0104    1DA3    SNZB	0x23,3
+  0105    2907    JP	0x107
+  0106    2908    JP	0x108
+  0107    290A    JP	0x10A
+  0108    1605    SETB	0x5,4
+  0109    290B    JP	0x10B
+  010A    1205    CLRB	0x5,4
+130:              		if(display[3] & 0x10)  {P_SEG4 = 1;} else {P_SEG4 = 0;}
+  010B    1E23    SNZB	0x23,4
+  010C    290E    JP	0x10E
+  010D    290F    JP	0x10F
+  010E    2911    JP	0x111
+  010F    1685    SETB	0x5,5
+  0110    2912    JP	0x112
+  0111    1285    CLRB	0x5,5
+131:              		if(display[3] & 0x20)  {P_SEG5 = 1;} else {P_SEG5 = 0;}
+  0112    1EA3    SNZB	0x23,5
+  0113    2915    JP	0x115
+  0114    2916    JP	0x116
+  0115    2918    JP	0x118
+  0116    1486    SETB	0x6,1
+  0117    2919    JP	0x119
+  0118    1086    CLRB	0x6,1
+132:              		if(display[3] & 0x40)  {P_SEG6 = 1;} else {P_SEG6 = 0;}
+  0119    1F23    SNZB	0x23,6
+  011A    291C    JP	0x11C
+  011B    291D    JP	0x11D
+  011C    291F    JP	0x11F
+  011D    1506    SETB	0x6,2
+  011E    2920    JP	0x120
+  011F    1106    CLRB	0x6,2
+133:              		if(display[3] & 0x80)  {P_SEG7 = 1;} else {P_SEG7 = 0;}
+  0120    1FA3    SNZB	0x23,7
+  0121    2923    JP	0x123
+  0122    2924    JP	0x124
+  0123    2926    JP	0x126
+  0124    1586    SETB	0x6,3
+  0125    2927    JP	0x127
+  0126    1186    CLRB	0x6,3
+134:              		
+135:              		P_COM3=0;		//COM1输出低
+  0127    1187    CLRB	0x7,3
+136:              		IO_COM3=0;		//COM1做输出		
+  0128    1683    SETB	0x3,5
+  0129    1303    CLRB	0x3,6
+  012A    1187    CLRB	0x7,3
+137:              		DIS_COM3;		//关闭COM1内部上下拉使能
+  012B    30F7    LDIA	0xF7
+  012C    00F7    LD	0x77,A
+  012D    0877    LD	A,0x77
+  012E    1683    SETB	0x3,5
+  012F    1703    SETB	0x3,6
+  0130    0597    ANDR	0x17
+138:              		break;
+  0131    2A55    JP	0x255
+139:              	case 4:		//COM0输出高电平	
+140:              		if(display[0] & 0x01)  {P_SEG0 = 0;} else {P_SEG0 = 1;}			 
+  0132    1C20    SNZB	0x20,0
+  0133    2935    JP	0x135
+  0134    2936    JP	0x136
+  0135    2938    JP	0x138
+  0136    1085    CLRB	0x5,1
+  0137    2939    JP	0x139
+  0138    1485    SETB	0x5,1
+141:              		if(display[0] & 0x02)  {P_SEG1 = 0;} else {P_SEG1 = 1;}							 
+  0139    1CA0    SNZB	0x20,1
+  013A    293C    JP	0x13C
+  013B    293D    JP	0x13D
+  013C    293F    JP	0x13F
+  013D    1105    CLRB	0x5,2
+  013E    2940    JP	0x140
+  013F    1505    SETB	0x5,2
+142:              		if(display[0] & 0x04)  {P_SEG2 = 0;} else {P_SEG2 = 1;}
+  0140    1D20    SNZB	0x20,2
+  0141    2943    JP	0x143
+  0142    2944    JP	0x144
+  0143    2946    JP	0x146
+  0144    1185    CLRB	0x5,3
+  0145    2947    JP	0x147
+  0146    1585    SETB	0x5,3
+143:              		if(display[0] & 0x08)  {P_SEG3 = 0;} else {P_SEG3 = 1;}					
+  0147    1DA0    SNZB	0x20,3
+  0148    294A    JP	0x14A
+  0149    294B    JP	0x14B
+  014A    294D    JP	0x14D
+  014B    1205    CLRB	0x5,4
+  014C    294E    JP	0x14E
+  014D    1605    SETB	0x5,4
+144:              		if(display[0] & 0x10)  {P_SEG4 = 0;} else {P_SEG4 = 1;}
+  014E    1E20    SNZB	0x20,4
+  014F    2951    JP	0x151
+  0150    2952    JP	0x152
+  0151    2954    JP	0x154
+  0152    1285    CLRB	0x5,5
+  0153    2955    JP	0x155
+  0154    1685    SETB	0x5,5
+145:              		if(display[0] & 0x20)  {P_SEG5 = 0;} else {P_SEG5 = 1;}
+  0155    1EA0    SNZB	0x20,5
+  0156    2958    JP	0x158
+  0157    2959    JP	0x159
+  0158    295B    JP	0x15B
+  0159    1086    CLRB	0x6,1
+  015A    295C    JP	0x15C
+  015B    1486    SETB	0x6,1
+146:              		if(display[0] & 0x40)  {P_SEG6 = 0;} else {P_SEG6 = 1;}
+  015C    1F20    SNZB	0x20,6
+  015D    295F    JP	0x15F
+  015E    2960    JP	0x160
+  015F    2962    JP	0x162
+  0160    1106    CLRB	0x6,2
+  0161    2963    JP	0x163
+  0162    1506    SETB	0x6,2
+147:              		if(display[0] & 0x80)  {P_SEG7 = 0;} else {P_SEG7 = 1;}
+  0163    1FA0    SNZB	0x20,7
+  0164    2966    JP	0x166
+  0165    2967    JP	0x167
+  0166    2969    JP	0x169
+  0167    1186    CLRB	0x6,3
+  0168    296A    JP	0x16A
+  0169    1586    SETB	0x6,3
+148:              		
+149:              		P_COM0=1;		//COM0输出高
+  016A    1407    SETB	0x7,0
+150:              		IO_COM0=0;		//COM0做输出		
+  016B    1683    SETB	0x3,5
+  016C    1303    CLRB	0x3,6
+  016D    1007    CLRB	0x7,0
+151:              		DIS_COM0;		//关闭COM0内部上下拉使能 
+  016E    30FE    LDIA	0xFE
+  016F    00F7    LD	0x77,A
+  0170    0877    LD	A,0x77
+  0171    1683    SETB	0x3,5
+  0172    1703    SETB	0x3,6
+  0173    0597    ANDR	0x17
+152:              		break;		
+  0174    2A55    JP	0x255
+153:              	case 5:		//COM1输出高电平
+154:              		if(display[1] & 0x01)  {P_SEG0 = 0;} else {P_SEG0 = 1;}			 
+  0175    1C21    SNZB	0x21,0
+  0176    2978    JP	0x178
+  0177    2979    JP	0x179
+  0178    297B    JP	0x17B
+  0179    1085    CLRB	0x5,1
+  017A    297C    JP	0x17C
+  017B    1485    SETB	0x5,1
+155:              		if(display[1] & 0x02)  {P_SEG1 = 0;} else {P_SEG1 = 1;}							 
+  017C    1CA1    SNZB	0x21,1
+  017D    297F    JP	0x17F
+  017E    2980    JP	0x180
+  017F    2982    JP	0x182
+  0180    1105    CLRB	0x5,2
+  0181    2983    JP	0x183
+  0182    1505    SETB	0x5,2
+156:              		if(display[1] & 0x04)  {P_SEG2 = 0;} else {P_SEG2 = 1;}
+  0183    1D21    SNZB	0x21,2
+  0184    2986    JP	0x186
+  0185    2987    JP	0x187
+  0186    2989    JP	0x189
+  0187    1185    CLRB	0x5,3
+  0188    298A    JP	0x18A
+  0189    1585    SETB	0x5,3
+157:              		if(display[1] & 0x08)  {P_SEG3 = 0;} else {P_SEG3 = 1;}					
+  018A    1DA1    SNZB	0x21,3
+  018B    298D    JP	0x18D
+  018C    298E    JP	0x18E
+  018D    2990    JP	0x190
+  018E    1205    CLRB	0x5,4
+  018F    2991    JP	0x191
+  0190    1605    SETB	0x5,4
+158:              		if(display[1] & 0x10)  {P_SEG4 = 0;} else {P_SEG4 = 1;}
+  0191    1E21    SNZB	0x21,4
+  0192    2994    JP	0x194
+  0193    2995    JP	0x195
+  0194    2997    JP	0x197
+  0195    1285    CLRB	0x5,5
+  0196    2998    JP	0x198
+  0197    1685    SETB	0x5,5
+159:              		if(display[1] & 0x20)  {P_SEG5 = 0;} else {P_SEG5 = 1;}
+  0198    1EA1    SNZB	0x21,5
+  0199    299B    JP	0x19B
+  019A    299C    JP	0x19C
+  019B    299E    JP	0x19E
+  019C    1086    CLRB	0x6,1
+  019D    299F    JP	0x19F
+  019E    1486    SETB	0x6,1
+160:              		if(display[1] & 0x40)  {P_SEG6 = 0;} else {P_SEG6 = 1;}
+  019F    1F21    SNZB	0x21,6
+  01A0    29A2    JP	0x1A2
+  01A1    29A3    JP	0x1A3
+  01A2    29A5    JP	0x1A5
+  01A3    1106    CLRB	0x6,2
+  01A4    29A6    JP	0x1A6
+  01A5    1506    SETB	0x6,2
+161:              		if(display[1] & 0x80)  {P_SEG7 = 0;} else {P_SEG7 = 1;}
+  01A6    1FA1    SNZB	0x21,7
+  01A7    29A9    JP	0x1A9
+  01A8    29AA    JP	0x1AA
+  01A9    29AC    JP	0x1AC
+  01AA    1186    CLRB	0x6,3
+  01AB    29AD    JP	0x1AD
+  01AC    1586    SETB	0x6,3
+162:              		
+163:              		P_COM1=1;		//COM1输出高
+  01AD    1487    SETB	0x7,1
+164:              		IO_COM1=0;		//COM1做输出		
+  01AE    1683    SETB	0x3,5
+  01AF    1303    CLRB	0x3,6
+  01B0    1087    CLRB	0x7,1
+165:              		DIS_COM1;		//关闭COM1内部上下拉使能
+  01B1    30FD    LDIA	0xFD
+  01B2    00F7    LD	0x77,A
+  01B3    0877    LD	A,0x77
+  01B4    1683    SETB	0x3,5
+  01B5    1703    SETB	0x3,6
+  01B6    0597    ANDR	0x17
+166:              		break;
+  01B7    2A55    JP	0x255
+167:              	case 6:		//COM2输出高电平
+168:              		if(display[2] & 0x01)  {P_SEG0 = 0;} else {P_SEG0 = 1;}			 
+  01B8    1C22    SNZB	0x22,0
+  01B9    29BB    JP	0x1BB
+  01BA    29BC    JP	0x1BC
+  01BB    29BE    JP	0x1BE
+  01BC    1085    CLRB	0x5,1
+  01BD    29BF    JP	0x1BF
+  01BE    1485    SETB	0x5,1
+169:              		if(display[2] & 0x02)  {P_SEG1 = 0;} else {P_SEG1 = 1;}							 
+  01BF    1CA2    SNZB	0x22,1
+  01C0    29C2    JP	0x1C2
+  01C1    29C3    JP	0x1C3
+  01C2    29C5    JP	0x1C5
+  01C3    1105    CLRB	0x5,2
+  01C4    29C6    JP	0x1C6
+  01C5    1505    SETB	0x5,2
+170:              		if(display[2] & 0x04)  {P_SEG2 = 0;} else {P_SEG2 = 1;}
+  01C6    1D22    SNZB	0x22,2
+  01C7    29C9    JP	0x1C9
+  01C8    29CA    JP	0x1CA
+  01C9    29CC    JP	0x1CC
+  01CA    1185    CLRB	0x5,3
+  01CB    29CD    JP	0x1CD
+  01CC    1585    SETB	0x5,3
+171:              		if(display[2] & 0x08)  {P_SEG3 = 0;} else {P_SEG3 = 1;}					
+  01CD    1DA2    SNZB	0x22,3
+  01CE    29D0    JP	0x1D0
+  01CF    29D1    JP	0x1D1
+  01D0    29D3    JP	0x1D3
+  01D1    1205    CLRB	0x5,4
+  01D2    29D4    JP	0x1D4
+  01D3    1605    SETB	0x5,4
+172:              		if(display[2] & 0x10)  {P_SEG4 = 0;} else {P_SEG4 = 1;}
+  01D4    1E22    SNZB	0x22,4
+  01D5    29D7    JP	0x1D7
+  01D6    29D8    JP	0x1D8
+  01D7    29DA    JP	0x1DA
+  01D8    1285    CLRB	0x5,5
+  01D9    29DB    JP	0x1DB
+  01DA    1685    SETB	0x5,5
+173:              		if(display[2] & 0x20)  {P_SEG5 = 0;} else {P_SEG5 = 1;}
+  01DB    1EA2    SNZB	0x22,5
+  01DC    29DE    JP	0x1DE
+  01DD    29DF    JP	0x1DF
+  01DE    29E1    JP	0x1E1
+  01DF    1086    CLRB	0x6,1
+  01E0    29E2    JP	0x1E2
+  01E1    1486    SETB	0x6,1
+174:              		if(display[2] & 0x40)  {P_SEG6 = 0;} else {P_SEG6 = 1;}
+  01E2    1F22    SNZB	0x22,6
+  01E3    29E5    JP	0x1E5
+  01E4    29E6    JP	0x1E6
+  01E5    29E8    JP	0x1E8
+  01E6    1106    CLRB	0x6,2
+  01E7    29E9    JP	0x1E9
+  01E8    1506    SETB	0x6,2
+175:              		if(display[2] & 0x80)  {P_SEG7 = 0;} else {P_SEG7 = 1;}
+  01E9    1FA2    SNZB	0x22,7
+  01EA    29EC    JP	0x1EC
+  01EB    29ED    JP	0x1ED
+  01EC    29EF    JP	0x1EF
+  01ED    1186    CLRB	0x6,3
+  01EE    29F0    JP	0x1F0
+  01EF    1586    SETB	0x6,3
+176:              		
+177:              		P_COM2=1;		//COM1输出高
+  01F0    1507    SETB	0x7,2
+178:              		IO_COM2=0;		//COM1做输出		
+  01F1    1683    SETB	0x3,5
+  01F2    1303    CLRB	0x3,6
+  01F3    1107    CLRB	0x7,2
+179:              		DIS_COM2;		//关闭COM1内部上下拉使能
+  01F4    30FB    LDIA	0xFB
+  01F5    00F7    LD	0x77,A
+  01F6    0877    LD	A,0x77
+  01F7    1683    SETB	0x3,5
+  01F8    1703    SETB	0x3,6
+  01F9    0597    ANDR	0x17
+180:              		break;	
+  01FA    2A55    JP	0x255
+181:              	case 7:		//COM3输出高电平
+182:              		if(display[3] & 0x01)  {P_SEG0 = 0;} else {P_SEG0 = 1;}			 
+  01FB    1C23    SNZB	0x23,0
+  01FC    29FE    JP	0x1FE
+  01FD    29FF    JP	0x1FF
+  01FE    2A01    JP	0x201
+  01FF    1085    CLRB	0x5,1
+  0200    2A02    JP	0x202
+  0201    1485    SETB	0x5,1
+183:              		if(display[3] & 0x02)  {P_SEG1 = 0;} else {P_SEG1 = 1;}							 
+  0202    1CA3    SNZB	0x23,1
+  0203    2A05    JP	0x205
+  0204    2A06    JP	0x206
+  0205    2A08    JP	0x208
+  0206    1105    CLRB	0x5,2
+  0207    2A09    JP	0x209
+  0208    1505    SETB	0x5,2
+184:              		if(display[3] & 0x04)  {P_SEG2 = 0;} else {P_SEG2 = 1;}
+  0209    1D23    SNZB	0x23,2
+  020A    2A0C    JP	0x20C
+  020B    2A0D    JP	0x20D
+  020C    2A0F    JP	0x20F
+  020D    1185    CLRB	0x5,3
+  020E    2A10    JP	0x210
+  020F    1585    SETB	0x5,3
+185:              		if(display[3] & 0x08)  {P_SEG3 = 0;} else {P_SEG3 = 1;}					
+  0210    1DA3    SNZB	0x23,3
+  0211    2A13    JP	0x213
+  0212    2A14    JP	0x214
+  0213    2A16    JP	0x216
+  0214    1205    CLRB	0x5,4
+  0215    2A17    JP	0x217
+  0216    1605    SETB	0x5,4
+186:              		if(display[3] & 0x10)  {P_SEG4 = 0;} else {P_SEG4 = 1;}
+  0217    1E23    SNZB	0x23,4
+  0218    2A1A    JP	0x21A
+  0219    2A1B    JP	0x21B
+  021A    2A1D    JP	0x21D
+  021B    1285    CLRB	0x5,5
+  021C    2A1E    JP	0x21E
+  021D    1685    SETB	0x5,5
+187:              		if(display[3] & 0x20)  {P_SEG5 = 0;} else {P_SEG5 = 1;}
+  021E    1EA3    SNZB	0x23,5
+  021F    2A21    JP	0x221
+  0220    2A22    JP	0x222
+  0221    2A24    JP	0x224
+  0222    1086    CLRB	0x6,1
+  0223    2A25    JP	0x225
+  0224    1486    SETB	0x6,1
+188:              		if(display[3] & 0x40)  {P_SEG6 = 0;} else {P_SEG6 = 1;}
+  0225    1F23    SNZB	0x23,6
+  0226    2A28    JP	0x228
+  0227    2A29    JP	0x229
+  0228    2A2B    JP	0x22B
+  0229    1106    CLRB	0x6,2
+  022A    2A2C    JP	0x22C
+  022B    1506    SETB	0x6,2
+189:              		if(display[3] & 0x80)  {P_SEG7 = 0;} else {P_SEG7 = 1;}
+  022C    1FA3    SNZB	0x23,7
+  022D    2A2F    JP	0x22F
+  022E    2A30    JP	0x230
+  022F    2A32    JP	0x232
+  0230    1186    CLRB	0x6,3
+  0231    2A33    JP	0x233
+  0232    1586    SETB	0x6,3
+190:              		
+191:              		P_COM3=1;		//COM3输出高
+  0233    1587    SETB	0x7,3
+192:              		IO_COM3=0;		//COM3做输出		
+  0234    1683    SETB	0x3,5
+  0235    1303    CLRB	0x3,6
+  0236    1187    CLRB	0x7,3
+193:              		DIS_COM3;		//关闭COM1内部上下拉使能
+  0237    30F7    LDIA	0xF7
+  0238    00F7    LD	0x77,A
+  0239    0877    LD	A,0x77
+  023A    1683    SETB	0x3,5
+  023B    1703    SETB	0x3,6
+  023C    0597    ANDR	0x17
+194:              		break;
+  023D    2A55    JP	0x255
+195:              		}
+  023E    2A55    JP	0x255
+  023F    1283    CLRB	0x3,5
+  0240    1303    CLRB	0x3,6
+  0241    0824    LD	A,0x24
+  0242    3907    ANDIA	0x7
+  0243    00F7    LD	0x77,A
+  0244    01F8    CLR	0x78
+  0245    0878    LD	A,0x78
+  0246    3A00    XORIA	0x0
+  0247    1903    SZB	0x3,2
+  0248    2A4A    JP	0x24A
+  0249    2A55    JP	0x255
+  024A    0877    LD	A,0x77
+  024B    0084    LD	0x4,A
+  024C    3008    LDIA	0x8
+  024D    0204    SUBA	0x4
+  024E    1803    SZB	0x3,0
+  024F    2A55    JP	0x255
+  0250    3002    LDIA	0x2
+  0251    008A    LD	0xA,A
+  0252    30BD    LDIA	0xBD
+  0253    0704    ADDA	0x4
+  0254    0082    LD	0x2,A
+  0255    0008    RET
+  02BD    2826    JP	0x26
+  02BE    2869    JP	0x69
+  02BF    28AC    JP	0xAC
+  02C0    28EF    JP	0xEF
+  02C1    2932    JP	0x132
+  02C2    2975    JP	0x175
+  02C3    29B8    JP	0x1B8
+  02C4    29FB    JP	0x1FB
+196:              }
+197:              
+198:              
+199:              
+200:              
+201:              
+---- stringtab ------------------------------------------------------------------
+---- reset_enter ------------------------------------------------------------------
+  0000    2810    JP	0x10
+  0010    2AC5    JP	0x2C5
+---- start_initialization ------------------------------------------------------------------
+  02C5    01A4    CLR	0x24
+  02C6    01A5    CLR	0x25
+  02C7    0183    CLR	0x3
+  02C8    2A56    JP	0x256
+---- interrupt_function_enter ----------------------------------------------------------
+  0004    00FE    LD	0x7E,A
+  0005    0E03    SWAPA	0x3
+  0006    00F1    LD	0x71,A
+  0007    0804    LD	A,0x4
+  0008    00F2    LD	0x72,A
+  0009    080A    LD	A,0xA
+  000A    00F3    LD	0x73,A
+  000B    1283    CLRB	0x3,5
+  000C    1303    CLRB	0x3,6
+  000D    087F    LD	A,0x7F
+  000E    00F4    LD	0x74,A
+  000F    2AA8    JP	0x2A8
+---- common_function ------------------------------------------------------------------

@@ -1,0 +1,116 @@
+---- E:\中微资料\公司资料\程序和推广资料\89示例程序\示例程序\Delay_Demo\Delay.c ----------------------------------------------------------------------
+1:                /**********************************************************
+2:                延时函数使用范例
+3:                **********************************************************/
+4:                
+5:                #include <sc.h>
+6:                
+7:                #ifndef _XTAL_FREQ
+8:                 #define _XTAL_FREQ 8000000			//8Mhz,使用内置延时函数必须定义主频
+9:                #endif
+10:               
+11:               //微秒级非精准延时函数
+12:               void DelayXus(unsigned char x)
+13:               {
+14:               	while(--x);
+15:               }
+16:               
+17:               //毫秒级非精准延时函数
+18:               void DelayXms(unsigned char x)
+19:               {
+  05C5    00F0    LD	0x70,A
+20:               	unsigned char i = 0;;
+  05C6    01F1    CLR	0x71
+21:               	
+22:               	while(--x)
+  05C7    2DD7    JP	0x5D7
+  05C8    0064    CLRWDT
+23:               	{
+24:               		asm("clrwdt"); 
+25:               		while(--i)
+  05C9    2DCF    JP	0x5CF
+  05CA    0000    NOP
+  05CB    0000    NOP
+  05CC    0000    NOP
+  05CD    0000    NOP
+  05CE    2DCF    JP	0x5CF
+  05CF    3001    LDIA	0x1
+  05D0    02F1    SUBR	0x71
+  05D1    1D03    SNZB	0x3,2
+  05D2    2DD4    JP	0x5D4
+  05D3    2DD5    JP	0x5D5
+  05D4    2DCA    JP	0x5CA
+  05D5    2DD7    JP	0x5D7
+  05D6    2DD7    JP	0x5D7
+  05D7    3001    LDIA	0x1
+  05D8    02F0    SUBR	0x70
+  05D9    1D03    SNZB	0x3,2
+  05DA    2DDC    JP	0x5DC
+  05DB    2DDD    JP	0x5DD
+  05DC    2DC8    JP	0x5C8
+  05DD    2DDE    JP	0x5DE
+  05DE    0008    RET
+26:               		{
+27:               			asm("nop");
+28:               			asm("nop");
+29:               			asm("nop");
+30:               			asm("nop");
+31:               		}
+32:               	}
+33:               }
+34:               
+35:               void main(void)
+36:               {
+37:               	DelayXms(50);
+  05DF    3032    LDIA	0x32
+  05E0    25C5    CALL	0x5C5
+  05E1    2DE2    JP	0x5E2
+38:               	while(1)
+39:               	{
+40:               		NOP();
+  05E2    0000    NOP
+41:               		_delay(1000);		//延时1000指令周期(编译器内置函数)
+  05E3    30F9    LDIA	0xF9
+  05E4    00F2    LD	0x72,A
+  05E5    0064    CLRWDT
+  05E6    0BF2    SZDECR	0x72
+  05E7    2DE5    JP	0x5E5
+  05E8    2DE9    JP	0x5E9
+  05E9    0064    CLRWDT
+  05EA    0064    CLRWDT
+42:               		CLRWDT();
+43:               		__delay_us(400);	//延时400us(编译器内置函数)
+  05EB    30C7    LDIA	0xC7
+  05EC    00F2    LD	0x72,A
+  05ED    0064    CLRWDT
+  05EE    0BF2    SZDECR	0x72
+  05EF    2DED    JP	0x5ED
+  05F0    2DF1    JP	0x5F1
+  05F1    0064    CLRWDT
+  05F2    0064    CLRWDT
+44:               		CLRWDT();
+45:               		__delay_ms(2);		//延时2ms(编译器内置函数)
+  05F3    3006    LDIA	0x6
+  05F4    00F3    LD	0x73,A
+  05F5    3030    LDIA	0x30
+  05F6    00F2    LD	0x72,A
+  05F7    0BF2    SZDECR	0x72
+  05F8    2DF7    JP	0x5F7
+  05F9    0BF3    SZDECR	0x73
+  05FA    2DF7    JP	0x5F7
+  05FB    0064    CLRWDT
+  05FC    0064    CLRWDT
+  05FD    2DE2    JP	0x5E2
+  05FE    2DE2    JP	0x5E2
+46:               		CLRWDT();
+47:               	}
+48:               }
+49:               
+---- stringtab ------------------------------------------------------------------
+---- reset_enter ------------------------------------------------------------------
+  0000    2DC3    JP	0x5C3
+---- start_initialization ------------------------------------------------------------------
+  05C3    0183    CLR	0x3
+  05C4    2DDF    JP	0x5DF
+---- interrupt_function_enter ----------------------------------------------------------
+---- common_function ------------------------------------------------------------------
