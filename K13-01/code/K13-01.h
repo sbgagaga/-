@@ -22,7 +22,6 @@ typedef struct
 }TYPE_UNION_LockSta;
 
 extern uint8 LockNumb;
-//extern TYPE_UNION_LockSta LockSta;
 
 extern uint8 BatPercent;
 extern uint8 WorkMin;

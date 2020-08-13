@@ -92,7 +92,7 @@
 50:                           ADCPro();
   06B9    256C    CALL	0x56C
 51:                           Motor();
-  06BA    2474    CALL	0x474
+  06BA    2476    CALL	0x476
 52:                           DisplayPro();
   06BB    27A3    CALL	0x7A3
   06BC    3064    LDIA	0x64
@@ -108,7 +108,7 @@
 58:                           Sec1sCnt=0;
   06C1    01BB    CLR	0x3B
 59:                           Sec1sPro();
-  06C2    2A0F    JP	0x20F
+  06C2    2A11    JP	0x211
 60:                       }
 61:                       
 62:                   }
@@ -419,295 +419,295 @@
 68:                   static uint8 ActualPercent=0;
 69:                   uint8 PercentErr=0;
 70:                   uint16 TempPercent=0;
-  020F    01D3    CLR	0x53
-  0210    01D4    CLR	0x54
+  0211    01D3    CLR	0x53
+  0212    01D4    CLR	0x54
 71:               
 72:                   /*充电数字增加时间*/
 73:                   if(USBFlag)
-  0211    1DF1    SNZB	0x71,3
-  0212    2A6E    JP	0x26E
+  0213    1DF1    SNZB	0x71,3
+  0214    2A70    JP	0x270
 74:                   {
 75:                       if(ADCVal[2]<BAT_3V3) 
-  0213    3001    LDIA	0x1
-  0214    024C    SUBA	0x4C
-  0215    3013    LDIA	0x13
-  0216    1903    SZB	0x3,2
-  0217    024B    SUBA	0x4B
-  0218    1803    SZB	0x3,0
-  0219    2A1C    JP	0x21C
+  0215    3001    LDIA	0x1
+  0216    024C    SUBA	0x4C
+  0217    3013    LDIA	0x13
+  0218    1903    SZB	0x3,2
+  0219    024B    SUBA	0x4B
+  021A    1803    SZB	0x3,0
+  021B    2A1E    JP	0x21E
 76:                       {
 77:                           TempPercent=0; 
-  021A    01D3    CLR	0x53
-  021B    2A25    JP	0x225
+  021C    01D3    CLR	0x53
+  021D    2A27    JP	0x227
 78:                       }
 79:                       else if(ADCVal[2]>BAT_4V2)
-  021C    3001    LDIA	0x1
-  021D    024C    SUBA	0x4C
-  021E    305F    LDIA	0x5F
-  021F    1903    SZB	0x3,2
-  0220    024B    SUBA	0x4B
-  0221    1C03    SNZB	0x3,0
-  0222    2A27    JP	0x227
+  021E    3001    LDIA	0x1
+  021F    024C    SUBA	0x4C
+  0220    305F    LDIA	0x5F
+  0221    1903    SZB	0x3,2
+  0222    024B    SUBA	0x4B
+  0223    1C03    SNZB	0x3,0
+  0224    2A29    JP	0x229
 80:                       {
 81:                           TempPercent=99; 
-  0223    3063    LDIA	0x63
-  0224    00D3    LD	0x53,A
-  0225    01D4    CLR	0x54
+  0225    3063    LDIA	0x63
+  0226    00D3    LD	0x53,A
+  0227    01D4    CLR	0x54
 82:                       }
-  0226    2A43    JP	0x243
+  0228    2A45    JP	0x245
 83:                       else
 84:                       {
 85:                           TempPercent=ADCVal[2]-BAT_3V3;
-  0227    084C    LD	A,0x4C
-  0228    00D4    LD	0x54,A
-  0229    084B    LD	A,0x4B
-  022A    00D3    LD	0x53,A
-  022B    30ED    LDIA	0xED
-  022C    22DA    CALL	0x2DA
+  0229    084C    LD	A,0x4C
+  022A    00D4    LD	0x54,A
+  022B    084B    LD	A,0x4B
+  022C    00D3    LD	0x53,A
+  022D    30ED    LDIA	0xED
+  022E    22DC    CALL	0x2DC
 86:                           TempPercent=TempPercent*4/3;
-  022D    3003    LDIA	0x3
-  022E    00F5    LD	0x75,A
-  022F    01F6    CLR	0x76
-  0230    0854    LD	A,0x54
-  0231    00D1    LD	0x51,A
-  0232    0853    LD	A,0x53
-  0233    00D0    LD	0x50,A
-  0234    1003    CLRB	0x3,0
-  0235    0DD0    RLCR	0x50
-  0236    0DD1    RLCR	0x51
-  0237    1003    CLRB	0x3,0
-  0238    0DD0    RLCR	0x50
-  0239    0DD1    RLCR	0x51
-  023A    0850    LD	A,0x50
-  023B    00F7    LD	0x77,A
-  023C    0851    LD	A,0x51
-  023D    00F8    LD	0x78,A
-  023E    264F    CALL	0x64F
-  023F    0876    LD	A,0x76
-  0240    00D4    LD	0x54,A
-  0241    0875    LD	A,0x75
-  0242    00D3    LD	0x53,A
+  022F    3003    LDIA	0x3
+  0230    00F5    LD	0x75,A
+  0231    01F6    CLR	0x76
+  0232    0854    LD	A,0x54
+  0233    00D1    LD	0x51,A
+  0234    0853    LD	A,0x53
+  0235    00D0    LD	0x50,A
+  0236    1003    CLRB	0x3,0
+  0237    0DD0    RLCR	0x50
+  0238    0DD1    RLCR	0x51
+  0239    1003    CLRB	0x3,0
+  023A    0DD0    RLCR	0x50
+  023B    0DD1    RLCR	0x51
+  023C    0850    LD	A,0x50
+  023D    00F7    LD	0x77,A
+  023E    0851    LD	A,0x51
+  023F    00F8    LD	0x78,A
+  0240    264F    CALL	0x64F
+  0241    0876    LD	A,0x76
+  0242    00D4    LD	0x54,A
+  0243    0875    LD	A,0x75
+  0244    00D3    LD	0x53,A
 87:                       }
 88:                       if(ActualPercent>TempPercent)
 89:                       {
 90:                           if(ActualPercent)
-  0243    22CF    CALL	0x2CF
-  0244    1803    SZB	0x3,0
-  0245    2A4A    JP	0x24A
-  0246    1903    SZB	0x3,2
-  0247    2A59    JP	0x259
+  0245    22D1    CALL	0x2D1
+  0246    1803    SZB	0x3,0
+  0247    2A4C    JP	0x24C
+  0248    1903    SZB	0x3,2
+  0249    2A5B    JP	0x25B
 91:                           {
 92:                               ActualPercent--;
-  0248    03C0    DECR	0x40
-  0249    2A59    JP	0x259
+  024A    03C0    DECR	0x40
+  024B    2A5B    JP	0x25B
 93:                           }
 94:                       }
 95:                       else if(ActualPercent<TempPercent)
-  024A    00D0    LD	0x50,A
-  024B    01D1    CLR	0x51
-  024C    0854    LD	A,0x54
-  024D    0251    SUBA	0x51
-  024E    1D03    SNZB	0x3,2
-  024F    2A52    JP	0x252
-  0250    0853    LD	A,0x53
-  0251    0250    SUBA	0x50
-  0252    1803    SZB	0x3,0
-  0253    2A59    JP	0x259
+  024C    00D0    LD	0x50,A
+  024D    01D1    CLR	0x51
+  024E    0854    LD	A,0x54
+  024F    0251    SUBA	0x51
+  0250    1D03    SNZB	0x3,2
+  0251    2A54    JP	0x254
+  0252    0853    LD	A,0x53
+  0253    0250    SUBA	0x50
+  0254    1803    SZB	0x3,0
+  0255    2A5B    JP	0x25B
 96:                       {
 97:                           if(ActualPercent<99)
-  0254    3063    LDIA	0x63
-  0255    0240    SUBA	0x40
-  0256    1803    SZB	0x3,0
-  0257    2A59    JP	0x259
+  0256    3063    LDIA	0x63
+  0257    0240    SUBA	0x40
+  0258    1803    SZB	0x3,0
+  0259    2A5B    JP	0x25B
 98:                           {
 99:                               ActualPercent++;
-  0258    0AC0    INCR	0x40
+  025A    0AC0    INCR	0x40
 100:                          }
 101:                      }
 102:                      if(ActualPercent>BatPercent)
-  0259    0840    LD	A,0x40
-  025A    0246    SUBA	0x46
-  025B    1803    SZB	0x3,0
-  025C    2A6C    JP	0x26C
+  025B    0840    LD	A,0x40
+  025C    0246    SUBA	0x46
+  025D    1803    SZB	0x3,0
+  025E    2A6E    JP	0x26E
 103:                      {
 104:                          PercentErr=ActualPercent-BatPercent;
-  025D    0846    LD	A,0x46
-  025E    0240    SUBA	0x40
-  025F    00D2    LD	0x52,A
+  025F    0846    LD	A,0x46
+  0260    0240    SUBA	0x40
+  0261    00D2    LD	0x52,A
 105:                          if(PercentErr<5)
-  0260    3005    LDIA	0x5
-  0261    0252    SUBA	0x52
-  0262    1803    SZB	0x3,0
-  0263    2A6A    JP	0x26A
+  0262    3005    LDIA	0x5
+  0263    0252    SUBA	0x52
+  0264    1803    SZB	0x3,0
+  0265    2A6C    JP	0x26C
 106:                          {
 107:                              BatAddTime=90-15*PercentErr;
-  0264    30F1    LDIA	0xF1
-  0265    00F5    LD	0x75,A
-  0266    0852    LD	A,0x52
-  0267    2795    CALL	0x795
-  0268    3E5A    ADDIA	0x5A
-  0269    2A6D    JP	0x26D
+  0266    30F1    LDIA	0xF1
+  0267    00F5    LD	0x75,A
+  0268    0852    LD	A,0x52
+  0269    2795    CALL	0x795
+  026A    3E5A    ADDIA	0x5A
+  026B    2A6F    JP	0x26F
 108:                          }
 109:                          else
 110:                          {
 111:                              BatAddTime=15;
-  026A    300F    LDIA	0xF
-  026B    2A6D    JP	0x26D
+  026C    300F    LDIA	0xF
+  026D    2A6F    JP	0x26F
 112:                          }
 113:                      }
 114:                      else
 115:                      {
 116:                          BatAddTime=240;
-  026C    30F0    LDIA	0xF0
-  026D    00C5    LD	0x45,A
+  026E    30F0    LDIA	0xF0
+  026F    00C5    LD	0x45,A
 117:                      }
 118:                  }
 119:              
 120:                  /*工作数字减少时间*/
 121:                  if(WorkFlag)
-  026E    1D71    SNZB	0x71,2
-  026F    2ACC    JP	0x2CC
+  0270    1D71    SNZB	0x71,2
+  0271    2ACE    JP	0x2CE
 122:                  {
 123:                      if(ADCVal[2]<BAT_3V2) 
-  0270    3001    LDIA	0x1
-  0271    024C    SUBA	0x4C
-  0272    300B    LDIA	0xB
-  0273    1903    SZB	0x3,2
-  0274    024B    SUBA	0x4B
-  0275    1803    SZB	0x3,0
-  0276    2A79    JP	0x279
+  0272    3001    LDIA	0x1
+  0273    024C    SUBA	0x4C
+  0274    300B    LDIA	0xB
+  0275    1903    SZB	0x3,2
+  0276    024B    SUBA	0x4B
+  0277    1803    SZB	0x3,0
+  0278    2A7B    JP	0x27B
 124:                      {
 125:                          TempPercent=0; 
-  0277    01D3    CLR	0x53
-  0278    2A82    JP	0x282
+  0279    01D3    CLR	0x53
+  027A    2A84    JP	0x284
 126:                      }
 127:                      else if(ADCVal[2]>BAT_4V0)
-  0279    3001    LDIA	0x1
-  027A    024C    SUBA	0x4C
-  027B    304E    LDIA	0x4E
-  027C    1903    SZB	0x3,2
-  027D    024B    SUBA	0x4B
-  027E    1C03    SNZB	0x3,0
-  027F    2A84    JP	0x284
+  027B    3001    LDIA	0x1
+  027C    024C    SUBA	0x4C
+  027D    304E    LDIA	0x4E
+  027E    1903    SZB	0x3,2
+  027F    024B    SUBA	0x4B
+  0280    1C03    SNZB	0x3,0
+  0281    2A86    JP	0x286
 128:                      {
 129:                          TempPercent=99; 
-  0280    3063    LDIA	0x63
-  0281    00D3    LD	0x53,A
-  0282    01D4    CLR	0x54
+  0282    3063    LDIA	0x63
+  0283    00D3    LD	0x53,A
+  0284    01D4    CLR	0x54
 130:                      }
-  0283    2A8A    JP	0x28A
+  0285    2A8C    JP	0x28C
 131:                      else
 132:                      {
 133:                          TempPercent=ADCVal[2]-BAT_3V2;
-  0284    084C    LD	A,0x4C
-  0285    00D4    LD	0x54,A
-  0286    084B    LD	A,0x4B
-  0287    00D3    LD	0x53,A
-  0288    30F5    LDIA	0xF5
-  0289    22DA    CALL	0x2DA
+  0286    084C    LD	A,0x4C
+  0287    00D4    LD	0x54,A
+  0288    084B    LD	A,0x4B
+  0289    00D3    LD	0x53,A
+  028A    30F5    LDIA	0xF5
+  028B    22DC    CALL	0x2DC
 134:                      }
 135:                      if(TempPercent>=33)
-  028A    3000    LDIA	0x0
-  028B    0254    SUBA	0x54
-  028C    3021    LDIA	0x21
-  028D    1903    SZB	0x3,2
-  028E    0253    SUBA	0x53
-  028F    1C03    SNZB	0x3,0
-  0290    2A9E    JP	0x29E
+  028C    3000    LDIA	0x0
+  028D    0254    SUBA	0x54
+  028E    3021    LDIA	0x21
+  028F    1903    SZB	0x3,2
+  0290    0253    SUBA	0x53
+  0291    1C03    SNZB	0x3,0
+  0292    2AA0    JP	0x2A0
 136:                      {
 137:                          TempPercent=33+(ADCVal[2]-BAT_3V6)*2; 
-  0291    084C    LD	A,0x4C
-  0292    00D4    LD	0x54,A
-  0293    084B    LD	A,0x4B
-  0294    00D3    LD	0x53,A
-  0295    30C9    LDIA	0xC9
-  0296    1003    CLRB	0x3,0
-  0297    0DD3    RLCR	0x53
-  0298    0DD4    RLCR	0x54
-  0299    07D3    ADDR	0x53
-  029A    1803    SZB	0x3,0
-  029B    0AD4    INCR	0x54
-  029C    30FD    LDIA	0xFD
-  029D    07D4    ADDR	0x54
+  0293    084C    LD	A,0x4C
+  0294    00D4    LD	0x54,A
+  0295    084B    LD	A,0x4B
+  0296    00D3    LD	0x53,A
+  0297    30C9    LDIA	0xC9
+  0298    1003    CLRB	0x3,0
+  0299    0DD3    RLCR	0x53
+  029A    0DD4    RLCR	0x54
+  029B    07D3    ADDR	0x53
+  029C    1803    SZB	0x3,0
+  029D    0AD4    INCR	0x54
+  029E    30FD    LDIA	0xFD
+  029F    07D4    ADDR	0x54
 138:                      }
 139:                      if(ActualPercent>TempPercent)
 140:                      {
 141:                          if(ActualPercent)
-  029E    22CF    CALL	0x2CF
-  029F    1803    SZB	0x3,0
-  02A0    2AA5    JP	0x2A5
-  02A1    1903    SZB	0x3,2
-  02A2    2AB4    JP	0x2B4
+  02A0    22D1    CALL	0x2D1
+  02A1    1803    SZB	0x3,0
+  02A2    2AA7    JP	0x2A7
+  02A3    1903    SZB	0x3,2
+  02A4    2AB6    JP	0x2B6
 142:                          {
 143:                              ActualPercent--;
-  02A3    03C0    DECR	0x40
-  02A4    2AB4    JP	0x2B4
+  02A5    03C0    DECR	0x40
+  02A6    2AB6    JP	0x2B6
 144:                          }
 145:                      }
 146:                      else if(ActualPercent<TempPercent)
-  02A5    00D0    LD	0x50,A
-  02A6    01D1    CLR	0x51
-  02A7    0854    LD	A,0x54
-  02A8    0251    SUBA	0x51
-  02A9    1D03    SNZB	0x3,2
-  02AA    2AAD    JP	0x2AD
-  02AB    0853    LD	A,0x53
-  02AC    0250    SUBA	0x50
-  02AD    1803    SZB	0x3,0
-  02AE    2AB4    JP	0x2B4
+  02A7    00D0    LD	0x50,A
+  02A8    01D1    CLR	0x51
+  02A9    0854    LD	A,0x54
+  02AA    0251    SUBA	0x51
+  02AB    1D03    SNZB	0x3,2
+  02AC    2AAF    JP	0x2AF
+  02AD    0853    LD	A,0x53
+  02AE    0250    SUBA	0x50
+  02AF    1803    SZB	0x3,0
+  02B0    2AB6    JP	0x2B6
 147:                      {
 148:                          if(ActualPercent<99)
-  02AF    3063    LDIA	0x63
-  02B0    0240    SUBA	0x40
-  02B1    1803    SZB	0x3,0
-  02B2    2AB4    JP	0x2B4
+  02B1    3063    LDIA	0x63
+  02B2    0240    SUBA	0x40
+  02B3    1803    SZB	0x3,0
+  02B4    2AB6    JP	0x2B6
 149:                          {
 150:                              ActualPercent++;
-  02B3    0AC0    INCR	0x40
+  02B5    0AC0    INCR	0x40
 151:                          }
 152:                      }
 153:                      if(ActualPercent<BatPercent)
-  02B4    0846    LD	A,0x46
-  02B5    0240    SUBA	0x40
-  02B6    1803    SZB	0x3,0
-  02B7    2ACC    JP	0x2CC
+  02B6    0846    LD	A,0x46
+  02B7    0240    SUBA	0x40
+  02B8    1803    SZB	0x3,0
+  02B9    2ACE    JP	0x2CE
 154:                      {
 155:                          PercentErr=BatPercent-ActualPercent;
-  02B8    0840    LD	A,0x40
-  02B9    0246    SUBA	0x46
-  02BA    00D2    LD	0x52,A
+  02BA    0840    LD	A,0x40
+  02BB    0246    SUBA	0x46
+  02BC    00D2    LD	0x52,A
 156:                          if(PercentErr<5&&ActualPercent)
-  02BB    3005    LDIA	0x5
-  02BC    0252    SUBA	0x52
-  02BD    1803    SZB	0x3,0
-  02BE    2AC9    JP	0x2C9
-  02BF    0840    LD	A,0x40
-  02C0    1903    SZB	0x3,2
-  02C1    2AC9    JP	0x2C9
+  02BD    3005    LDIA	0x5
+  02BE    0252    SUBA	0x52
+  02BF    1803    SZB	0x3,0
+  02C0    2ACB    JP	0x2CB
+  02C1    0840    LD	A,0x40
+  02C2    1903    SZB	0x3,2
+  02C3    2ACB    JP	0x2CB
 157:                          {
 158:                              BatDecTime=75-15*PercentErr;
-  02C2    30F1    LDIA	0xF1
-  02C3    00F5    LD	0x75,A
-  02C4    0852    LD	A,0x52
-  02C5    2795    CALL	0x795
-  02C6    3E4B    ADDIA	0x4B
-  02C7    00C4    LD	0x44,A
+  02C4    30F1    LDIA	0xF1
+  02C5    00F5    LD	0x75,A
+  02C6    0852    LD	A,0x52
+  02C7    2795    CALL	0x795
+  02C8    3E4B    ADDIA	0x4B
+  02C9    00C4    LD	0x44,A
 159:                          }
-  02C8    0008    RET
+  02CA    0008    RET
 160:                          else
 161:                          {
 162:                              BatDecTime=8;
-  02C9    3008    LDIA	0x8
-  02CA    00C4    LD	0x44,A
-  02CB    0008    RET
+  02CB    3008    LDIA	0x8
+  02CC    00C4    LD	0x44,A
+  02CD    0008    RET
 163:                          }
 164:                      }
 165:                      else
 166:                      {
 167:                          BatDecTime=210;
-  02CC    30D2    LDIA	0xD2
-  02CD    00C4    LD	0x44,A
-  02CE    0008    RET
+  02CE    30D2    LDIA	0xD2
+  02CF    00C4    LD	0x44,A
+  02D0    0008    RET
 168:                      }
 169:                  }
 170:                  else
@@ -1131,27 +1131,25 @@
 7:                void Motor()
 8:                {
 9:                    if(!WorkFlag)
-  0474    1971    SZB	0x71,2
-  0475    2C7D    JP	0x47D
+  0476    1971    SZB	0x71,2
+  0477    2C7E    JP	0x47E
 10:                   {
-11:                       MotorOff();
-  0476    1185    CLRB	0x5,3
+11:                       //MotorOff();
 12:                       WorkCnt=0;
-  0477    1683    SETB	0x3,5
-  0478    01D7    CLR	0x57
-  0479    01D8    CLR	0x58
+  0478    1683    SETB	0x3,5
+  0479    01D7    CLR	0x57
+  047A    01D8    CLR	0x58
 13:                       TimeDecCnt=0;
-  047A    01D5    CLR	0x55
-  047B    01D6    CLR	0x56
+  047B    01D5    CLR	0x55
+  047C    01D6    CLR	0x56
 14:                   }
-  047C    2CA9    JP	0x4A9
+  047D    2CA9    JP	0x4A9
 15:                   else if(WorkFlag&&!LockSta.LockFlag)
-  047D    1971    SZB	0x71,2
-  047E    1B2B    SZB	0x2B,6
-  047F    2CA9    JP	0x4A9
+  047E    1971    SZB	0x71,2
+  047F    1B2B    SZB	0x2B,6
+  0480    2CA9    JP	0x4A9
 16:                   {
-17:                       MotorOn();
-  0480    1585    SETB	0x5,3
+17:                       //MotorOn();
 18:                       TimeDecCnt++;
   0481    1683    SETB	0x3,5
   0482    0AD5    INCR	0x55
@@ -1415,12 +1413,12 @@
 21:               	{
 22:               		KeyCnt++;
 23:               		if(KeyCnt>=10)
-  0159    2209    CALL	0x209
+  0159    220B    CALL	0x20B
   015A    300A    LDIA	0xA
   015B    1903    SZB	0x3,2
   015C    0229    SUBA	0x29
   015D    1C03    SNZB	0x3,0
-  015E    29F6    JP	0x1F6
+  015E    29F8    JP	0x1F8
 24:               		{
 25:               			WorkFlag=~WorkFlag; 
   015F    3004    LDIA	0x4
@@ -1438,34 +1436,34 @@
 28:               				OnOffFlag=1;
   0169    17F0    SETB	0x70,7
 29:               			}
-  016A    29F6    JP	0x1F6
+  016A    29F8    JP	0x1F8
 30:               			else
 31:               			{
 32:               				OnOffFlag=0;
   016B    13F0    CLRB	0x70,7
 33:               				WorkMin=0;
   016C    01FA    CLR	0x7A
-  016D    29F6    JP	0x1F6
+  016D    29F8    JP	0x1F8
 34:               			}
 35:               		}
 36:               	}
 37:               	else if(KeyPress&&KeyCnt>=10&&KeyCnt<250&&KeyInBuf==KeyPress&&!USBFlag)
   016E    1EF0    SNZB	0x70,5
-  016F    299C    JP	0x19C
+  016F    299E    JP	0x19E
   0170    3000    LDIA	0x0
   0171    022A    SUBA	0x2A
   0172    300A    LDIA	0xA
   0173    1903    SZB	0x3,2
   0174    0229    SUBA	0x29
   0175    1C03    SNZB	0x3,0
-  0176    299C    JP	0x19C
+  0176    299E    JP	0x19E
   0177    3000    LDIA	0x0
   0178    022A    SUBA	0x2A
   0179    30FA    LDIA	0xFA
   017A    1903    SZB	0x3,2
   017B    0229    SUBA	0x29
   017C    1803    SZB	0x3,0
-  017D    299C    JP	0x19C
+  017D    299E    JP	0x19E
   017E    1EF0    SNZB	0x70,5
   017F    2982    JP	0x182
   0180    3001    LDIA	0x1
@@ -1480,206 +1478,209 @@
   0189    0675    XORA	0x75
   018A    1903    SZB	0x3,2
   018B    19F1    SZB	0x71,3
-  018C    299C    JP	0x19C
+  018C    299E    JP	0x19E
 38:               	{
 39:               		KeyCnt++;
 40:               		if(KeyCnt>=250)
-  018D    2209    CALL	0x209
+  018D    220B    CALL	0x20B
   018E    30FA    LDIA	0xFA
   018F    1903    SZB	0x3,2
   0190    0229    SUBA	0x29
   0191    1C03    SNZB	0x3,0
-  0192    29F6    JP	0x1F6
+  0192    29F8    JP	0x1F8
 41:               		{
 42:               			LockNumb=2;
   0193    3002    LDIA	0x2
   0194    00BC    LD	0x3C,A
 43:               			if(!LockSta.LockFlag)
   0195    1B2B    SZB	0x2B,6
-  0196    2999    JP	0x199
+  0196    299A    JP	0x19A
 44:               			{
 45:               				LockSta.LockStart=1;
   0197    142B    SETB	0x2B,0
-46:               				
+46:               				LockSta.UnlockEnd=0;
+  0198    12AB    CLRB	0x2B,5
 47:               			}
-  0198    299A    JP	0x19A
+  0199    299C    JP	0x19C
 48:               			else
 49:               			{
 50:               				LockSta.UnlockStart=1;
-  0199    15AB    SETB	0x2B,3
-51:               			}
-52:               			OnOffFlag=0;
-  019A    13F0    CLRB	0x70,7
-  019B    29F6    JP	0x1F6
-53:               		}
-54:               	}
-55:               	else if(KeyPress&&KeyCnt>=250&&KeyInBuf==KeyPress&&!LockSta.LockEnd&&!LockSta.UnlockEnd)
-  019C    1EF0    SNZB	0x70,5
-  019D    29D8    JP	0x1D8
-  019E    3000    LDIA	0x0
-  019F    022A    SUBA	0x2A
-  01A0    30FA    LDIA	0xFA
-  01A1    1903    SZB	0x3,2
-  01A2    0229    SUBA	0x29
-  01A3    1C03    SNZB	0x3,0
-  01A4    29D8    JP	0x1D8
-  01A5    1EF0    SNZB	0x70,5
-  01A6    29A9    JP	0x1A9
-  01A7    3001    LDIA	0x1
-  01A8    29AA    JP	0x1AA
-  01A9    3000    LDIA	0x0
-  01AA    00F5    LD	0x75,A
-  01AB    1F70    SNZB	0x70,6
-  01AC    29AF    JP	0x1AF
-  01AD    3001    LDIA	0x1
-  01AE    29B0    JP	0x1B0
-  01AF    3000    LDIA	0x0
-  01B0    0675    XORA	0x75
-  01B1    1903    SZB	0x3,2
-  01B2    192B    SZB	0x2B,2
-  01B3    29D8    JP	0x1D8
-  01B4    1AAB    SZB	0x2B,5
-  01B5    29D8    JP	0x1D8
-56:               	{
-57:               		KeyCnt++;
-  01B6    0AA9    INCR	0x29
-  01B7    1903    SZB	0x3,2
-  01B8    0AAA    INCR	0x2A
-58:               		if(KeyCnt>=1750)
-  01B9    3006    LDIA	0x6
-  01BA    022A    SUBA	0x2A
-  01BB    30D6    LDIA	0xD6
-  01BC    1903    SZB	0x3,2
-  01BD    0229    SUBA	0x29
-  01BE    1C03    SNZB	0x3,0
-  01BF    29F6    JP	0x1F6
-59:               		{
-60:               			KeyCnt=1750;
-  01C0    30D6    LDIA	0xD6
-  01C1    00A9    LD	0x29,A
-  01C2    3006    LDIA	0x6
-  01C3    00AA    LD	0x2A,A
-61:               			LockSta.LockFlag=!LockSta.LockFlag;
-  01C4    1003    CLRB	0x3,0
-  01C5    1F2B    SNZB	0x2B,6
-  01C6    1403    SETB	0x3,0
-  01C7    1283    CLRB	0x3,5
-  01C8    1303    CLRB	0x3,6
-  01C9    1C03    SNZB	0x3,0
-  01CA    29CD    JP	0x1CD
-  01CB    172B    SETB	0x2B,6
-  01CC    29CE    JP	0x1CE
-  01CD    132B    CLRB	0x2B,6
-62:               			if(LockSta.LockFlag)
-  01CE    1F2B    SNZB	0x2B,6
-  01CF    29D4    JP	0x1D4
-63:               			{
-64:               				LockSta.LockStart=0;
-  01D0    102B    CLRB	0x2B,0
-65:               				LockSta.LockEnd=1;
-  01D1    152B    SETB	0x2B,2
-66:               				WorkFlag=0;
-  01D2    1171    CLRB	0x71,2
-67:               			}
-  01D3    29F6    JP	0x1F6
-68:               			else
-69:               			{
-70:               				LockSta.UnlockStart=0;
-  01D4    11AB    CLRB	0x2B,3
-71:               				LockSta.UnlockEnd=1;
-  01D5    16AB    SETB	0x2B,5
-72:               				WorkFlag=1;
-  01D6    1571    SETB	0x71,2
-  01D7    29F6    JP	0x1F6
-73:               			}
-74:               		}
-75:               	}
-76:               	else if(!KeyPress||KeyInBuf!=KeyPress)
-  01D8    1EF0    SNZB	0x70,5
-  01D9    29E8    JP	0x1E8
+  019A    15AB    SETB	0x2B,3
+51:               				LockSta.LockEnd=0;
+  019B    112B    CLRB	0x2B,2
+52:               			}
+53:               			OnOffFlag=0;
+  019C    13F0    CLRB	0x70,7
+  019D    29F8    JP	0x1F8
+54:               		}
+55:               	}
+56:               	else if(KeyPress&&KeyCnt>=250&&KeyInBuf==KeyPress&&!LockSta.LockEnd&&!LockSta.UnlockEnd)
+  019E    1EF0    SNZB	0x70,5
+  019F    29DA    JP	0x1DA
+  01A0    3000    LDIA	0x0
+  01A1    022A    SUBA	0x2A
+  01A2    30FA    LDIA	0xFA
+  01A3    1903    SZB	0x3,2
+  01A4    0229    SUBA	0x29
+  01A5    1C03    SNZB	0x3,0
+  01A6    29DA    JP	0x1DA
+  01A7    1EF0    SNZB	0x70,5
+  01A8    29AB    JP	0x1AB
+  01A9    3001    LDIA	0x1
+  01AA    29AC    JP	0x1AC
+  01AB    3000    LDIA	0x0
+  01AC    00F5    LD	0x75,A
+  01AD    1F70    SNZB	0x70,6
+  01AE    29B1    JP	0x1B1
+  01AF    3001    LDIA	0x1
+  01B0    29B2    JP	0x1B2
+  01B1    3000    LDIA	0x0
+  01B2    0675    XORA	0x75
+  01B3    1903    SZB	0x3,2
+  01B4    192B    SZB	0x2B,2
+  01B5    29DA    JP	0x1DA
+  01B6    1AAB    SZB	0x2B,5
+  01B7    29DA    JP	0x1DA
+57:               	{
+58:               		KeyCnt++;
+  01B8    0AA9    INCR	0x29
+  01B9    1903    SZB	0x3,2
+  01BA    0AAA    INCR	0x2A
+59:               		if(KeyCnt>=1750)
+  01BB    3006    LDIA	0x6
+  01BC    022A    SUBA	0x2A
+  01BD    30D6    LDIA	0xD6
+  01BE    1903    SZB	0x3,2
+  01BF    0229    SUBA	0x29
+  01C0    1C03    SNZB	0x3,0
+  01C1    29F8    JP	0x1F8
+60:               		{
+61:               			KeyCnt=1750;
+  01C2    30D6    LDIA	0xD6
+  01C3    00A9    LD	0x29,A
+  01C4    3006    LDIA	0x6
+  01C5    00AA    LD	0x2A,A
+62:               			LockSta.LockFlag=!LockSta.LockFlag;
+  01C6    1003    CLRB	0x3,0
+  01C7    1F2B    SNZB	0x2B,6
+  01C8    1403    SETB	0x3,0
+  01C9    1283    CLRB	0x3,5
+  01CA    1303    CLRB	0x3,6
+  01CB    1C03    SNZB	0x3,0
+  01CC    29CF    JP	0x1CF
+  01CD    172B    SETB	0x2B,6
+  01CE    29D0    JP	0x1D0
+  01CF    132B    CLRB	0x2B,6
+63:               			if(LockSta.LockFlag)
+  01D0    1F2B    SNZB	0x2B,6
+  01D1    29D6    JP	0x1D6
+64:               			{
+65:               				LockSta.LockStart=0;
+  01D2    102B    CLRB	0x2B,0
+66:               				LockSta.LockEnd=1;
+  01D3    152B    SETB	0x2B,2
+67:               				WorkFlag=0;
+  01D4    1171    CLRB	0x71,2
+68:               			}
+  01D5    29F8    JP	0x1F8
+69:               			else
+70:               			{
+71:               				LockSta.UnlockStart=0;
+  01D6    11AB    CLRB	0x2B,3
+72:               				LockSta.UnlockEnd=1;
+  01D7    16AB    SETB	0x2B,5
+73:               				WorkFlag=1;
+  01D8    1571    SETB	0x71,2
+  01D9    29F8    JP	0x1F8
+74:               			}
+75:               		}
+76:               	}
+77:               	else if(!KeyPress||KeyInBuf!=KeyPress)
   01DA    1EF0    SNZB	0x70,5
-  01DB    29DE    JP	0x1DE
-  01DC    3001    LDIA	0x1
-  01DD    29DF    JP	0x1DF
-  01DE    3000    LDIA	0x0
-  01DF    00F5    LD	0x75,A
-  01E0    1F70    SNZB	0x70,6
-  01E1    29E4    JP	0x1E4
-  01E2    3001    LDIA	0x1
-  01E3    29E5    JP	0x1E5
-  01E4    3000    LDIA	0x0
-  01E5    0675    XORA	0x75
-  01E6    1903    SZB	0x3,2
-  01E7    29F6    JP	0x1F6
-77:               	{
-78:               		KeyCnt=0;
-  01E8    01A9    CLR	0x29
-  01E9    01AA    CLR	0x2A
-79:               		LockSta.UnlockEnd=0;
-  01EA    12AB    CLRB	0x2B,5
-80:               		if((LockSta.LockFlag&&WorkFlag)||LockSta.UnlockStart)
-  01EB    1F2B    SNZB	0x2B,6
-  01EC    29EF    JP	0x1EF
-  01ED    1971    SZB	0x71,2
+  01DB    29EA    JP	0x1EA
+  01DC    1EF0    SNZB	0x70,5
+  01DD    29E0    JP	0x1E0
+  01DE    3001    LDIA	0x1
+  01DF    29E1    JP	0x1E1
+  01E0    3000    LDIA	0x0
+  01E1    00F5    LD	0x75,A
+  01E2    1F70    SNZB	0x70,6
+  01E3    29E6    JP	0x1E6
+  01E4    3001    LDIA	0x1
+  01E5    29E7    JP	0x1E7
+  01E6    3000    LDIA	0x0
+  01E7    0675    XORA	0x75
+  01E8    1903    SZB	0x3,2
+  01E9    29F8    JP	0x1F8
+78:               	{
+79:               		KeyCnt=0;
+  01EA    01A9    CLR	0x29
+  01EB    01AA    CLR	0x2A
+80:               		LockSta.UnlockEnd=0;
+  01EC    12AB    CLRB	0x2B,5
+81:               		if((LockSta.LockFlag&&WorkFlag)||LockSta.UnlockStart)
+  01ED    1F2B    SNZB	0x2B,6
   01EE    29F1    JP	0x1F1
-  01EF    1DAB    SNZB	0x2B,3
-  01F0    29F4    JP	0x1F4
-81:               		{
-82:               			LockSta.UnlockStart=0;
-  01F1    11AB    CLRB	0x2B,3
-83:               			LockSta.UnlockFail=1;
-  01F2    162B    SETB	0x2B,4
-84:               			WorkFlag=0;
-  01F3    1171    CLRB	0x71,2
-85:               		}
-86:               		if(LockSta.LockStart)
-  01F4    182B    SZB	0x2B,0
-87:               		{
-88:               			LockSta.LockStart=0;
-  01F5    102B    CLRB	0x2B,0
-89:               		}
-90:               	}
-91:               	KeyInBuf=KeyPress;
-  01F6    1370    CLRB	0x70,6
-  01F7    1AF0    SZB	0x70,5
-  01F8    1770    SETB	0x70,6
-92:               
-93:               	if(!PIN_USB)
-  01F9    1283    CLRB	0x3,5
-  01FA    1303    CLRB	0x3,6
-  01FB    1B85    SZB	0x5,7
-  01FC    29FF    JP	0x1FF
-94:               	{
-95:               		USBLink=1;
-  01FD    1670    SETB	0x70,4
-96:               	}
-  01FE    2A00    JP	0x200
-97:               	else
-98:               	{
-99:               		USBLink=0;
-  01FF    1270    CLRB	0x70,4
-100:              	}
-101:              	/*USB判断*/
-102:              	if(USBLink&&!IovFlag)
-  0200    1A70    SZB	0x70,4
-  0201    1A71    SZB	0x71,4
-  0202    2A06    JP	0x206
-103:              	{
-104:              		USBFlag=1;
-  0203    15F1    SETB	0x71,3
-105:              		LockSta.LockFlag=0;
-  0204    132B    CLRB	0x2B,6
-106:              	}
-  0205    0008    RET
-107:              	else if(!USBLink)
-  0206    1E70    SNZB	0x70,4
-108:              	{
-109:              		USBFlag=0;
-  0207    11F1    CLRB	0x71,3
-  0208    0008    RET
-110:              	}
-111:              }
-112:              
+  01EF    1971    SZB	0x71,2
+  01F0    29F3    JP	0x1F3
+  01F1    1DAB    SNZB	0x2B,3
+  01F2    29F6    JP	0x1F6
+82:               		{
+83:               			LockSta.UnlockStart=0;
+  01F3    11AB    CLRB	0x2B,3
+84:               			LockSta.UnlockFail=1;
+  01F4    162B    SETB	0x2B,4
+85:               			WorkFlag=0;
+  01F5    1171    CLRB	0x71,2
+86:               		}
+87:               		if(LockSta.LockStart)
+  01F6    182B    SZB	0x2B,0
+88:               		{
+89:               			LockSta.LockStart=0;
+  01F7    102B    CLRB	0x2B,0
+90:               		}
+91:               	}
+92:               	KeyInBuf=KeyPress;
+  01F8    1370    CLRB	0x70,6
+  01F9    1AF0    SZB	0x70,5
+  01FA    1770    SETB	0x70,6
+93:               
+94:               	if(!PIN_USB)
+  01FB    1283    CLRB	0x3,5
+  01FC    1303    CLRB	0x3,6
+  01FD    1B85    SZB	0x5,7
+  01FE    2A01    JP	0x201
+95:               	{
+96:               		USBLink=1;
+  01FF    1670    SETB	0x70,4
+97:               	}
+  0200    2A02    JP	0x202
+98:               	else
+99:               	{
+100:              		USBLink=0;
+  0201    1270    CLRB	0x70,4
+101:              	}
+102:              	/*USB判断*/
+103:              	if(USBLink&&!IovFlag)
+  0202    1A70    SZB	0x70,4
+  0203    1A71    SZB	0x71,4
+  0204    2A08    JP	0x208
+104:              	{
+105:              		USBFlag=1;
+  0205    15F1    SETB	0x71,3
+106:              		LockSta.LockFlag=0;
+  0206    132B    CLRB	0x2B,6
+107:              	}
+  0207    0008    RET
+108:              	else if(!USBLink)
+  0208    1E70    SNZB	0x70,4
+109:              	{
+110:              		USBFlag=0;
+  0209    11F1    CLRB	0x71,3
+  020A    0008    RET
+111:              	}
+112:              }
+113:              
 ---- C:\Users\Administrator\Desktop\project\K13-01\code\LED.c ----------------------------------------------------------------------
 1:                #include "LED.h"
 2:                
@@ -1702,226 +1703,226 @@
 19:                   static uint8 LEDScanIndex=0;
 20:               
 21:                   Pin_LED1_CFG(IN,0);
-  02E0    1683    SETB	0x3,5
-  02E1    1686    SETB	0x6,5
-  02E2    1295    CLRB	0x15,5
+  02E2    1683    SETB	0x3,5
+  02E3    1686    SETB	0x6,5
+  02E4    1295    CLRB	0x15,5
 22:                   Pin_LED2_CFG(IN,0);
-  02E3    1606    SETB	0x6,4
-  02E4    1215    CLRB	0x15,4
+  02E5    1606    SETB	0x6,4
+  02E6    1215    CLRB	0x15,4
 23:                   Pin_LED3_CFG(IN,0);
-  02E5    1586    SETB	0x6,3
-  02E6    1195    CLRB	0x15,3
+  02E7    1586    SETB	0x6,3
+  02E8    1195    CLRB	0x15,3
 24:                   Pin_LED4_CFG(IN,0);
-  02E7    1587    SETB	0x7,3
-  02E8    1703    SETB	0x3,6
-  02E9    118F    CLRB	0xF,3
+  02E9    1587    SETB	0x7,3
+  02EA    1703    SETB	0x3,6
+  02EB    118F    CLRB	0xF,3
 25:                   Pin_LED5_CFG(IN,0);
-  02EA    1303    CLRB	0x3,6
-  02EB    1507    SETB	0x7,2
-  02EC    1703    SETB	0x3,6
-  02ED    110F    CLRB	0xF,2
-  02EE    0000    NOP
-  02EF    0000    NOP
+  02EC    1303    CLRB	0x3,6
+  02ED    1507    SETB	0x7,2
+  02EE    1703    SETB	0x3,6
+  02EF    110F    CLRB	0xF,2
+  02F0    0000    NOP
+  02F1    0000    NOP
 26:                   asm("nop");	asm("nop");
 27:               
 28:                   switch(LEDScanIndex)
-  02F0    2B46    JP	0x346
+  02F2    2B48    JP	0x348
 29:                   {
 30:                       case 0:
 31:                       if(LEDArrMap[0]&0x02) 
-  02F1    1CA0    SNZB	0x20,1
-  02F2    2AF4    JP	0x2F4
+  02F3    1CA0    SNZB	0x20,1
+  02F4    2AF6    JP	0x2F6
 32:                       {
 33:                           Pin_LED2_CFG(OUT,0);PIN_LED2=L ;
-  02F3    2375    CALL	0x375
+  02F5    2377    CALL	0x377
 34:                       }
 35:               		if(LEDArrMap[0]&0x04)  
-  02F4    1D20    SNZB	0x20,2
-  02F5    2AF7    JP	0x2F7
+  02F6    1D20    SNZB	0x20,2
+  02F7    2AF9    JP	0x2F9
 36:                       {
 37:                           Pin_LED3_CFG(OUT,0);PIN_LED3=L ;
-  02F6    236F    CALL	0x36F
+  02F8    2371    CALL	0x371
 38:                       }
 39:               		if(LEDArrMap[0]&0x08) 
-  02F7    1DA0    SNZB	0x20,3
-  02F8    2AFA    JP	0x2FA
+  02F9    1DA0    SNZB	0x20,3
+  02FA    2AFC    JP	0x2FC
 40:                       {
 41:                           Pin_LED4_CFG(OUT,0);PIN_LED4=L ;
-  02F9    2359    CALL	0x359
+  02FB    2363    CALL	0x363
 42:                       }
 43:               		if(LEDArrMap[0]&0x10) 
-  02FA    1E20    SNZB	0x20,4
-  02FB    2AFD    JP	0x2FD
+  02FC    1E20    SNZB	0x20,4
+  02FD    2AFF    JP	0x2FF
 44:                       {
 45:                           Pin_LED5_CFG(OUT,0);PIN_LED5=L ;
-  02FC    2361    CALL	0x361
+  02FE    235B    CALL	0x35B
 46:                       }
 47:               		Pin_LED1_CFG(OUT,0);PIN_LED1=H ;
-  02FD    1683    SETB	0x3,5
-  02FE    1286    CLRB	0x6,5
-  02FF    1295    CLRB	0x15,5
-  0300    1283    CLRB	0x3,5
-  0301    1686    SETB	0x6,5
+  02FF    1683    SETB	0x3,5
+  0300    1286    CLRB	0x6,5
+  0301    1295    CLRB	0x15,5
+  0302    1283    CLRB	0x3,5
+  0303    1686    SETB	0x6,5
 48:                       break;
-  0302    2B53    JP	0x353
+  0304    2B55    JP	0x355
 49:               
 50:                       case 1:
 51:                       if(LEDArrMap[1]&0x01)
-  0303    1C21    SNZB	0x21,0
-  0304    2B06    JP	0x306
+  0305    1C21    SNZB	0x21,0
+  0306    2B08    JP	0x308
 52:                       {
 53:                           Pin_LED1_CFG(OUT,0);PIN_LED1=L ;
-  0305    2369    CALL	0x369
+  0307    236B    CALL	0x36B
 54:                       } 
 55:                       if(LEDArrMap[1]&0x04) 
-  0306    1D21    SNZB	0x21,2
-  0307    2B09    JP	0x309
+  0308    1D21    SNZB	0x21,2
+  0309    2B0B    JP	0x30B
 56:                       {
 57:                           Pin_LED3_CFG(OUT,0);PIN_LED3=L ; 
-  0308    236F    CALL	0x36F
+  030A    2371    CALL	0x371
 58:                       }
 59:                       if(LEDArrMap[1]&0x08) 
-  0309    1DA1    SNZB	0x21,3
-  030A    2B0C    JP	0x30C
+  030B    1DA1    SNZB	0x21,3
+  030C    2B0E    JP	0x30E
 60:                       {
 61:                           Pin_LED4_CFG(OUT,0);PIN_LED4=L ;
-  030B    2359    CALL	0x359
+  030D    2363    CALL	0x363
 62:                       }
 63:                       if(LEDArrMap[1]&0x10)
-  030C    1E21    SNZB	0x21,4
-  030D    2B0F    JP	0x30F
+  030E    1E21    SNZB	0x21,4
+  030F    2B11    JP	0x311
 64:                       {
 65:                           Pin_LED5_CFG(OUT,0);PIN_LED5=L ;
-  030E    2361    CALL	0x361
+  0310    235B    CALL	0x35B
 66:                       } 
 67:                       Pin_LED2_CFG(OUT,0); PIN_LED2=H ;
-  030F    1683    SETB	0x3,5
-  0310    1206    CLRB	0x6,4
-  0311    1215    CLRB	0x15,4
-  0312    1283    CLRB	0x3,5
-  0313    1606    SETB	0x6,4
+  0311    1683    SETB	0x3,5
+  0312    1206    CLRB	0x6,4
+  0313    1215    CLRB	0x15,4
+  0314    1283    CLRB	0x3,5
+  0315    1606    SETB	0x6,4
 68:                       break;
-  0314    2B53    JP	0x353
+  0316    2B55    JP	0x355
 69:               
 70:                       case 2:
 71:                       if(LEDArrMap[2]&0x01) 
-  0315    1C22    SNZB	0x22,0
-  0316    2B18    JP	0x318
+  0317    1C22    SNZB	0x22,0
+  0318    2B1A    JP	0x31A
 72:                       {
 73:                           Pin_LED1_CFG(OUT,0);PIN_LED1=L ;
-  0317    2369    CALL	0x369
+  0319    236B    CALL	0x36B
 74:                       }
 75:               		if(LEDArrMap[2]&0x02) 
-  0318    1CA2    SNZB	0x22,1
-  0319    2B1B    JP	0x31B
+  031A    1CA2    SNZB	0x22,1
+  031B    2B1D    JP	0x31D
 76:                       {
 77:                           Pin_LED2_CFG(OUT,0);PIN_LED2=L ;
-  031A    2375    CALL	0x375
+  031C    2377    CALL	0x377
 78:                       }
 79:               		if(LEDArrMap[2]&0x08) 
-  031B    1DA2    SNZB	0x22,3
-  031C    2B1E    JP	0x31E
+  031D    1DA2    SNZB	0x22,3
+  031E    2B20    JP	0x320
 80:                       {
 81:                           Pin_LED4_CFG(OUT,0);PIN_LED4=L ;
-  031D    2359    CALL	0x359
+  031F    2363    CALL	0x363
 82:                       }
 83:               		if(LEDArrMap[2]&0x10) 
-  031E    1E22    SNZB	0x22,4
-  031F    2B21    JP	0x321
+  0320    1E22    SNZB	0x22,4
+  0321    2B23    JP	0x323
 84:                       {
 85:                           Pin_LED5_CFG(OUT,0);PIN_LED5=L ;
-  0320    2361    CALL	0x361
+  0322    235B    CALL	0x35B
 86:                       }
 87:               		Pin_LED3_CFG(OUT,0);PIN_LED3=H ;
-  0321    1683    SETB	0x3,5
-  0322    1186    CLRB	0x6,3
-  0323    1195    CLRB	0x15,3
-  0324    1283    CLRB	0x3,5
-  0325    1586    SETB	0x6,3
+  0323    1683    SETB	0x3,5
+  0324    1186    CLRB	0x6,3
+  0325    1195    CLRB	0x15,3
+  0326    1283    CLRB	0x3,5
+  0327    1586    SETB	0x6,3
 88:                       break;
-  0326    2B53    JP	0x353
+  0328    2B55    JP	0x355
 89:               
 90:                       case 3:
 91:                       if(LEDArrMap[3]&0x01)
-  0327    1C23    SNZB	0x23,0
-  0328    2B2A    JP	0x32A
+  0329    1C23    SNZB	0x23,0
+  032A    2B2C    JP	0x32C
 92:                       {
 93:                           Pin_LED1_CFG(OUT,0);PIN_LED1=L ;
-  0329    2369    CALL	0x369
+  032B    236B    CALL	0x36B
 94:                       }
 95:               		if(LEDArrMap[3]&0x02)
-  032A    1CA3    SNZB	0x23,1
-  032B    2B2D    JP	0x32D
+  032C    1CA3    SNZB	0x23,1
+  032D    2B2F    JP	0x32F
 96:                       {
 97:                           Pin_LED2_CFG(OUT,0);PIN_LED2=L ;
-  032C    2375    CALL	0x375
+  032E    2377    CALL	0x377
 98:                       }
 99:               		if(LEDArrMap[3]&0x04)
-  032D    1D23    SNZB	0x23,2
-  032E    2B30    JP	0x330
+  032F    1D23    SNZB	0x23,2
+  0330    2B32    JP	0x332
 100:                      {
 101:                          Pin_LED3_CFG(OUT,0);PIN_LED3=L ; 
-  032F    236F    CALL	0x36F
+  0331    2371    CALL	0x371
 102:                      }
 103:              		Pin_LED4_CFG(OUT,0);PIN_LED4=H ;
-  0330    1683    SETB	0x3,5
-  0331    1187    CLRB	0x7,3
-  0332    1703    SETB	0x3,6
-  0333    118F    CLRB	0xF,3
-  0334    1283    CLRB	0x3,5
-  0335    1303    CLRB	0x3,6
-  0336    1587    SETB	0x7,3
+  0332    1683    SETB	0x3,5
+  0333    1187    CLRB	0x7,3
+  0334    1703    SETB	0x3,6
+  0335    118F    CLRB	0xF,3
+  0336    1283    CLRB	0x3,5
+  0337    1303    CLRB	0x3,6
+  0338    1587    SETB	0x7,3
 104:                      break;
-  0337    2B53    JP	0x353
+  0339    2B55    JP	0x355
 105:              
 106:                      case 4:
 107:                      if(LEDArrMap[4]&0x01)
-  0338    1C24    SNZB	0x24,0
-  0339    2B3B    JP	0x33B
+  033A    1C24    SNZB	0x24,0
+  033B    2B3D    JP	0x33D
 108:                      {
 109:                          Pin_LED1_CFG(OUT,0);PIN_LED1=L ;
-  033A    2369    CALL	0x369
+  033C    236B    CALL	0x36B
 110:                      }
 111:              		if(LEDArrMap[4]&0x04)
-  033B    1D24    SNZB	0x24,2
-  033C    2B3E    JP	0x33E
+  033D    1D24    SNZB	0x24,2
+  033E    2B40    JP	0x340
 112:                      {
 113:                          Pin_LED3_CFG(OUT,0);PIN_LED3=L ; 
-  033D    236F    CALL	0x36F
+  033F    2371    CALL	0x371
 114:                      }
 115:                      Pin_LED5_CFG(OUT,0);PIN_LED5=H ;
-  033E    1683    SETB	0x3,5
-  033F    1107    CLRB	0x7,2
-  0340    1703    SETB	0x3,6
-  0341    110F    CLRB	0xF,2
-  0342    1283    CLRB	0x3,5
-  0343    1303    CLRB	0x3,6
-  0344    1507    SETB	0x7,2
+  0340    1683    SETB	0x3,5
+  0341    1107    CLRB	0x7,2
+  0342    1703    SETB	0x3,6
+  0343    110F    CLRB	0xF,2
+  0344    1283    CLRB	0x3,5
+  0345    1303    CLRB	0x3,6
+  0346    1507    SETB	0x7,2
 116:                  }
-  0345    2B53    JP	0x353
-  0346    1283    CLRB	0x3,5
-  0347    1303    CLRB	0x3,6
-  0348    083A    LD	A,0x3A
-  0349    0084    LD	0x4,A
-  034A    3005    LDIA	0x5
-  034B    0204    SUBA	0x4
-  034C    1803    SZB	0x3,0
-  034D    2B53    JP	0x353
-  034E    3007    LDIA	0x7
-  034F    008A    LD	0xA,A
-  0350    30C1    LDIA	0xC1
-  0351    0704    ADDA	0x4
-  0352    0082    LD	0x2,A
-  0353    3005    LDIA	0x5
+  0347    2B55    JP	0x355
+  0348    1283    CLRB	0x3,5
+  0349    1303    CLRB	0x3,6
+  034A    083A    LD	A,0x3A
+  034B    0084    LD	0x4,A
+  034C    3005    LDIA	0x5
+  034D    0204    SUBA	0x4
+  034E    1803    SZB	0x3,0
+  034F    2B55    JP	0x355
+  0350    3007    LDIA	0x7
+  0351    008A    LD	0xA,A
+  0352    30C1    LDIA	0xC1
+  0353    0704    ADDA	0x4
+  0354    0082    LD	0x2,A
+  0355    3005    LDIA	0x5
 117:                  LEDScanIndex++;
-  0354    0ABA    INCR	0x3A
+  0356    0ABA    INCR	0x3A
 118:                  if(LEDScanIndex>=5)
-  0355    023A    SUBA	0x3A
-  0356    1803    SZB	0x3,0
+  0357    023A    SUBA	0x3A
+  0358    1803    SZB	0x3,0
 119:                  {
 120:                      LEDScanIndex=0;
-  0357    01BA    CLR	0x3A
-  0358    0008    RET
+  0359    01BA    CLR	0x3A
+  035A    0008    RET
 121:                  }
 122:              }
 123:              
@@ -1993,9 +1994,9 @@
   07A4    01D9    CLR	0x59
   07A5    01DA    CLR	0x5A
 147:                  WorkLedPro();
-  07A6    237B    CALL	0x37B
+  07A6    237D    CALL	0x37D
 148:                  USBLedPro();
-  07A7    2407    CALL	0x407
+  07A7    2409    CALL	0x409
 149:                  LockPro();
   07A8    24D7    CALL	0x4D7
 150:                  ErrPro();
@@ -2015,126 +2016,126 @@
 157:                  static uint8 cnt=0;
 158:              
 159:                  if(USBFlag&&!WorkFlag&&!OnOffFlag)//充电正常
-  0407    19F1    SZB	0x71,3
-  0408    1971    SZB	0x71,2
-  0409    2C5E    JP	0x45E
-  040A    1BF0    SZB	0x70,7
-  040B    2C5E    JP	0x45E
-  040C    3028    LDIA	0x28
+  0409    19F1    SZB	0x71,3
+  040A    1971    SZB	0x71,2
+  040B    2C60    JP	0x460
+  040C    1BF0    SZB	0x70,7
+  040D    2C60    JP	0x460
+  040E    3028    LDIA	0x28
 160:                  {
 161:                      cnt++;
-  040D    1283    CLRB	0x3,5
-  040E    0AB8    INCR	0x38
+  040F    1283    CLRB	0x3,5
+  0410    0AB8    INCR	0x38
 162:                      if(cnt>=40)
-  040F    0238    SUBA	0x38
-  0410    1C03    SNZB	0x3,0
-  0411    2C18    JP	0x418
-  0412    300B    LDIA	0xB
+  0411    0238    SUBA	0x38
+  0412    1C03    SNZB	0x3,0
+  0413    2C1A    JP	0x41A
+  0414    300B    LDIA	0xB
 163:                      {
 164:                          cnt=0;
-  0413    01B8    CLR	0x38
+  0415    01B8    CLR	0x38
 165:                          index++;
-  0414    0AB9    INCR	0x39
+  0416    0AB9    INCR	0x39
 166:                          if(index>=11)
-  0415    0239    SUBA	0x39
-  0416    1803    SZB	0x3,0
+  0417    0239    SUBA	0x39
+  0418    1803    SZB	0x3,0
 167:                          {
 168:                              index=0;
-  0417    01B9    CLR	0x39
+  0419    01B9    CLR	0x39
 169:                          }
 170:                      }
 171:                      if(BatPercent<99)
-  0418    3063    LDIA	0x63
-  0419    0246    SUBA	0x46
+  041A    3063    LDIA	0x63
+  041B    0246    SUBA	0x46
 172:                      {
 173:                          LedIndex=NumbArr[BatPercent/10];
-  041A    300A    LDIA	0xA
-  041B    1803    SZB	0x3,0
-  041C    2C47    JP	0x447
-  041D    00F5    LD	0x75,A
-  041E    0846    LD	A,0x46
-  041F    26E4    CALL	0x6E4
+  041C    300A    LDIA	0xA
+  041D    1803    SZB	0x3,0
+  041E    2C49    JP	0x449
+  041F    00F5    LD	0x75,A
+  0420    0846    LD	A,0x46
+  0421    26E4    CALL	0x6E4
 174:                          LedIndex|=((uint16)NumbArr[BatPercent%10]&~HideNumbArr[index])<<7;
-  0420    2462    CALL	0x462
-  0421    26C8    CALL	0x6C8
-  0422    246E    CALL	0x46E
-  0423    0839    LD	A,0x39
-  0424    3EBE    ADDIA	0xBE
-  0425    0084    LD	0x4,A
-  0426    0900    COMA	0x0
-  0427    054D    ANDA	0x4D
-  0428    00CE    LD	0x4E,A
-  0429    3007    LDIA	0x7
-  042A    01CF    CLR	0x4F
-  042B    00FF    LD	0x7F,A
-  042C    1003    CLRB	0x3,0
-  042D    0DCE    RLCR	0x4E
-  042E    0DCF    RLCR	0x4F
-  042F    0BFF    SZDECR	0x7F
-  0430    2C2C    JP	0x42C
-  0431    084E    LD	A,0x4E
-  0432    1683    SETB	0x3,5
-  0433    04D9    ORR	0x59
-  0434    1283    CLRB	0x3,5
-  0435    084F    LD	A,0x4F
-  0436    1683    SETB	0x3,5
-  0437    04DA    ORR	0x5A
+  0422    2464    CALL	0x464
+  0423    26C8    CALL	0x6C8
+  0424    2470    CALL	0x470
+  0425    0839    LD	A,0x39
+  0426    3EBE    ADDIA	0xBE
+  0427    0084    LD	0x4,A
+  0428    0900    COMA	0x0
+  0429    054D    ANDA	0x4D
+  042A    00CE    LD	0x4E,A
+  042B    3007    LDIA	0x7
+  042C    01CF    CLR	0x4F
+  042D    00FF    LD	0x7F,A
+  042E    1003    CLRB	0x3,0
+  042F    0DCE    RLCR	0x4E
+  0430    0DCF    RLCR	0x4F
+  0431    0BFF    SZDECR	0x7F
+  0432    2C2E    JP	0x42E
+  0433    084E    LD	A,0x4E
+  0434    1683    SETB	0x3,5
+  0435    04D9    ORR	0x59
+  0436    1283    CLRB	0x3,5
+  0437    084F    LD	A,0x4F
+  0438    1683    SETB	0x3,5
+  0439    04DA    ORR	0x5A
 175:                          LedIndex&=~HideNumbArr[index];
-  0438    1283    CLRB	0x3,5
-  0439    0839    LD	A,0x39
-  043A    3EBE    ADDIA	0xBE
-  043B    0084    LD	0x4,A
-  043C    0900    COMA	0x0
-  043D    00CD    LD	0x4D,A
-  043E    01CE    CLR	0x4E
-  043F    09CE    COMR	0x4E
-  0440    1683    SETB	0x3,5
-  0441    05D9    ANDR	0x59
-  0442    1283    CLRB	0x3,5
-  0443    084E    LD	A,0x4E
-  0444    1683    SETB	0x3,5
-  0445    05DA    ANDR	0x5A
+  043A    1283    CLRB	0x3,5
+  043B    0839    LD	A,0x39
+  043C    3EBE    ADDIA	0xBE
+  043D    0084    LD	0x4,A
+  043E    0900    COMA	0x0
+  043F    00CD    LD	0x4D,A
+  0440    01CE    CLR	0x4E
+  0441    09CE    COMR	0x4E
+  0442    1683    SETB	0x3,5
+  0443    05D9    ANDR	0x59
+  0444    1283    CLRB	0x3,5
+  0445    084E    LD	A,0x4E
+  0446    1683    SETB	0x3,5
+  0447    05DA    ANDR	0x5A
 176:                      }
-  0446    0008    RET
+  0448    0008    RET
 177:                      else
 178:                      {
 179:                          index=0;
-  0447    01B9    CLR	0x39
+  0449    01B9    CLR	0x39
 180:                          LedIndex=NumbArr[BatPercent/10];
-  0448    00F5    LD	0x75,A
-  0449    0846    LD	A,0x46
-  044A    26E4    CALL	0x6E4
+  044A    00F5    LD	0x75,A
+  044B    0846    LD	A,0x46
+  044C    26E4    CALL	0x6E4
 181:                          LedIndex|=NumbArr[BatPercent%10]<<7;
-  044B    2462    CALL	0x462
-  044C    26C8    CALL	0x6C8
-  044D    246E    CALL	0x46E
-  044E    3007    LDIA	0x7
-  044F    01CE    CLR	0x4E
-  0450    00FF    LD	0x7F,A
-  0451    1003    CLRB	0x3,0
-  0452    0DCD    RLCR	0x4D
-  0453    0DCE    RLCR	0x4E
-  0454    0BFF    SZDECR	0x7F
-  0455    2C51    JP	0x451
-  0456    084D    LD	A,0x4D
-  0457    1683    SETB	0x3,5
-  0458    04D9    ORR	0x59
-  0459    1283    CLRB	0x3,5
-  045A    084E    LD	A,0x4E
-  045B    1683    SETB	0x3,5
-  045C    04DA    ORR	0x5A
-  045D    0008    RET
+  044D    2464    CALL	0x464
+  044E    26C8    CALL	0x6C8
+  044F    2470    CALL	0x470
+  0450    3007    LDIA	0x7
+  0451    01CE    CLR	0x4E
+  0452    00FF    LD	0x7F,A
+  0453    1003    CLRB	0x3,0
+  0454    0DCD    RLCR	0x4D
+  0455    0DCE    RLCR	0x4E
+  0456    0BFF    SZDECR	0x7F
+  0457    2C53    JP	0x453
+  0458    084D    LD	A,0x4D
+  0459    1683    SETB	0x3,5
+  045A    04D9    ORR	0x59
+  045B    1283    CLRB	0x3,5
+  045C    084E    LD	A,0x4E
+  045D    1683    SETB	0x3,5
+  045E    04DA    ORR	0x5A
+  045F    0008    RET
 182:                      }
 183:                      
 184:                  }
 185:                  else
 186:                  {
 187:                      index=0;
-  045E    1283    CLRB	0x3,5
-  045F    01B9    CLR	0x39
+  0460    1283    CLRB	0x3,5
+  0461    01B9    CLR	0x39
 188:                      cnt=0;
-  0460    01B8    CLR	0x38
-  0461    0008    RET
+  0462    01B8    CLR	0x38
+  0463    0008    RET
 189:                  }
 190:              }
 191:              
@@ -2146,161 +2147,161 @@
 197:                  static uint8 cnt=0;
 198:                  static bit dir=0;
 199:                  if(WorkFlag&&!LockSta.LockStart&&!OnOffFlag&&!LockSta.LockFlag)
-  037B    1D71    SNZB	0x71,2
-  037C    2BA5    JP	0x3A5
-  037D    1283    CLRB	0x3,5
-  037E    1C2B    SNZB	0x2B,0
-  037F    1BF0    SZB	0x70,7
-  0380    2BA5    JP	0x3A5
-  0381    1B2B    SZB	0x2B,6
-  0382    2BA5    JP	0x3A5
+  037D    1D71    SNZB	0x71,2
+  037E    2BA7    JP	0x3A7
+  037F    1283    CLRB	0x3,5
+  0380    1C2B    SNZB	0x2B,0
+  0381    1BF0    SZB	0x70,7
+  0382    2BA7    JP	0x3A7
+  0383    1B2B    SZB	0x2B,6
+  0384    2BA7    JP	0x3A7
 200:                  {
 201:                      if(BatPercent<=10)
-  0383    300B    LDIA	0xB
-  0384    0246    SUBA	0x46
-  0385    1803    SZB	0x3,0
-  0386    2B90    JP	0x390
-  0387    3028    LDIA	0x28
+  0385    300B    LDIA	0xB
+  0386    0246    SUBA	0x46
+  0387    1803    SZB	0x3,0
+  0388    2B92    JP	0x392
+  0389    3028    LDIA	0x28
 202:                      {
 203:                          LedSwitchCnt++;
-  0388    0AB7    INCR	0x37
+  038A    0AB7    INCR	0x37
 204:                          if(LedSwitchCnt>=40)
-  0389    0237    SUBA	0x37
-  038A    1C03    SNZB	0x3,0
-  038B    2B92    JP	0x392
-  038C    3008    LDIA	0x8
+  038B    0237    SUBA	0x37
+  038C    1C03    SNZB	0x3,0
+  038D    2B94    JP	0x394
+  038E    3008    LDIA	0x8
 205:                          {
 206:                              LedSwitchCnt=0;
-  038D    01B7    CLR	0x37
+  038F    01B7    CLR	0x37
 207:                              LedSwitchFlag=!LedSwitchFlag;
-  038E    06F0    XORR	0x70
-  038F    2B92    JP	0x392
+  0390    06F0    XORR	0x70
+  0391    2B94    JP	0x394
 208:                          }
 209:                      }
 210:                      else
 211:                      {
 212:                          LedSwitchCnt=0;
-  0390    01B7    CLR	0x37
+  0392    01B7    CLR	0x37
 213:                          LedSwitchFlag=1;
-  0391    15F0    SETB	0x70,3
+  0393    15F0    SETB	0x70,3
 214:                      }
 215:                      if(LedSwitchFlag)
-  0392    1DF0    SNZB	0x70,3
-  0393    0008    RET
+  0394    1DF0    SNZB	0x70,3
+  0395    0008    RET
 216:                      {
 217:                          LedIndex|=NumbArr[BatPercent/10];
-  0394    300A    LDIA	0xA
-  0395    00F5    LD	0x75,A
-  0396    0846    LD	A,0x46
-  0397    26E4    CALL	0x6E4
-  0398    3EC9    ADDIA	0xC9
-  0399    0084    LD	0x4,A
-  039A    1383    CLRB	0x3,7
-  039B    0800    LD	A,0x0
-  039C    1683    SETB	0x3,5
-  039D    04D9    ORR	0x59
+  0396    300A    LDIA	0xA
+  0397    00F5    LD	0x75,A
+  0398    0846    LD	A,0x46
+  0399    26E4    CALL	0x6E4
+  039A    3EC9    ADDIA	0xC9
+  039B    0084    LD	0x4,A
+  039C    1383    CLRB	0x3,7
+  039D    0800    LD	A,0x0
+  039E    1683    SETB	0x3,5
+  039F    04D9    ORR	0x59
 218:                          LedIndex|=(uint16)NumbArr[BatPercent%10]<<7;
-  039E    300A    LDIA	0xA
-  039F    00F5    LD	0x75,A
-  03A0    1283    CLRB	0x3,5
-  03A1    0846    LD	A,0x46
-  03A2    26C8    CALL	0x6C8
-  03A3    23E3    CALL	0x3E3
-  03A4    0008    RET
+  03A0    300A    LDIA	0xA
+  03A1    00F5    LD	0x75,A
+  03A2    1283    CLRB	0x3,5
+  03A3    0846    LD	A,0x46
+  03A4    26C8    CALL	0x6C8
+  03A5    23E5    CALL	0x3E5
+  03A6    0008    RET
 219:                      }
 220:                  }
 221:                  else if(OnOffFlag)
-  03A5    1FF0    SNZB	0x70,7
-  03A6    0008    RET
-  03A7    3028    LDIA	0x28
+  03A7    1FF0    SNZB	0x70,7
+  03A8    0008    RET
+  03A9    3028    LDIA	0x28
 222:                  {
 223:                      cnt++;
-  03A8    1283    CLRB	0x3,5
-  03A9    0AB5    INCR	0x35
+  03AA    1283    CLRB	0x3,5
+  03AB    0AB5    INCR	0x35
 224:                      if(cnt>=40)
-  03AA    0235    SUBA	0x35
-  03AB    1C03    SNZB	0x3,0
-  03AC    2BBB    JP	0x3BB
-  03AD    3007    LDIA	0x7
+  03AC    0235    SUBA	0x35
+  03AD    1C03    SNZB	0x3,0
+  03AE    2BBD    JP	0x3BD
+  03AF    3007    LDIA	0x7
 225:                      {
 226:                          cnt=0;
-  03AE    01B5    CLR	0x35
+  03B0    01B5    CLR	0x35
 227:                          index++;
-  03AF    0AB6    INCR	0x36
+  03B1    0AB6    INCR	0x36
 228:                          if(index>=7)
-  03B0    0236    SUBA	0x36
-  03B1    1C03    SNZB	0x3,0
-  03B2    2BBB    JP	0x3BB
+  03B2    0236    SUBA	0x36
+  03B3    1C03    SNZB	0x3,0
+  03B4    2BBD    JP	0x3BD
 229:                          {
 230:                              if(dir)
-  03B3    1D70    SNZB	0x70,2
-  03B4    2BB8    JP	0x3B8
+  03B5    1D70    SNZB	0x70,2
+  03B6    2BBA    JP	0x3BA
 231:                              {
 232:                                  OnOffFlag=0;
-  03B5    13F0    CLRB	0x70,7
+  03B7    13F0    CLRB	0x70,7
 233:                                  WorkMin=0;
-  03B6    01FA    CLR	0x7A
-  03B7    0008    RET
+  03B8    01FA    CLR	0x7A
+  03B9    0008    RET
 234:                                  return;
 235:                              }
 236:                              dir=!dir;
-  03B8    3004    LDIA	0x4
-  03B9    06F0    XORR	0x70
+  03BA    3004    LDIA	0x4
+  03BB    06F0    XORR	0x70
 237:                              index=0;
-  03BA    01B6    CLR	0x36
+  03BC    01B6    CLR	0x36
 238:                          }
 239:                      }
 240:                      if(!dir)
-  03BB    1970    SZB	0x70,2
-  03BC    2BCA    JP	0x3CA
+  03BD    1970    SZB	0x70,2
+  03BE    2BCC    JP	0x3CC
 241:                      {
 242:                          LedIndex=NumbArr[BatPercent/10];
-  03BD    300A    LDIA	0xA
-  03BE    00F5    LD	0x75,A
-  03BF    0846    LD	A,0x46
-  03C0    26E4    CALL	0x6E4
+  03BF    300A    LDIA	0xA
+  03C0    00F5    LD	0x75,A
+  03C1    0846    LD	A,0x46
+  03C2    26E4    CALL	0x6E4
 243:                          LedIndex|=(uint16)NumbArr[BatPercent%10]<<7;
-  03C1    2462    CALL	0x462
-  03C2    26C8    CALL	0x6C8
-  03C3    23E3    CALL	0x3E3
+  03C3    2464    CALL	0x464
+  03C4    26C8    CALL	0x6C8
+  03C5    23E5    CALL	0x3E5
 244:                          LedIndex&=~OffHideNumbArr[index];
-  03C4    1283    CLRB	0x3,5
-  03C5    1003    CLRB	0x3,0
-  03C6    0D36    RLCA	0x36
-  03C7    3EB0    ADDIA	0xB0
-  03C8    0084    LD	0x4,A
+  03C6    1283    CLRB	0x3,5
+  03C7    1003    CLRB	0x3,0
+  03C8    0D36    RLCA	0x36
+  03C9    3EB0    ADDIA	0xB0
+  03CA    0084    LD	0x4,A
 245:                      }
-  03C9    2BF8    JP	0x3F8
+  03CB    2BFA    JP	0x3FA
 246:                      else
 247:                      {
 248:                          LedIndex=NumbArr[WorkMin/10];
-  03CA    300A    LDIA	0xA
-  03CB    00F5    LD	0x75,A
-  03CC    087A    LD	A,0x7A
-  03CD    26E4    CALL	0x6E4
-  03CE    3EC9    ADDIA	0xC9
-  03CF    0084    LD	0x4,A
-  03D0    1383    CLRB	0x3,7
-  03D1    0800    LD	A,0x0
-  03D2    1683    SETB	0x3,5
-  03D3    00D9    LD	0x59,A
-  03D4    300A    LDIA	0xA
-  03D5    01DA    CLR	0x5A
+  03CC    300A    LDIA	0xA
+  03CD    00F5    LD	0x75,A
+  03CE    087A    LD	A,0x7A
+  03CF    26E4    CALL	0x6E4
+  03D0    3EC9    ADDIA	0xC9
+  03D1    0084    LD	0x4,A
+  03D2    1383    CLRB	0x3,7
+  03D3    0800    LD	A,0x0
+  03D4    1683    SETB	0x3,5
+  03D5    00D9    LD	0x59,A
+  03D6    300A    LDIA	0xA
+  03D7    01DA    CLR	0x5A
 249:                          LedIndex|=(uint16)NumbArr[WorkMin%10]<<7;
-  03D6    00F5    LD	0x75,A
-  03D7    087A    LD	A,0x7A
-  03D8    26C8    CALL	0x6C8
-  03D9    23E3    CALL	0x3E3
+  03D8    00F5    LD	0x75,A
+  03D9    087A    LD	A,0x7A
+  03DA    26C8    CALL	0x6C8
+  03DB    23E5    CALL	0x3E5
 250:                          LedIndex&=~OffHideNumbArr[6-index];
-  03DA    30FE    LDIA	0xFE
-  03DB    00F5    LD	0x75,A
-  03DC    1283    CLRB	0x3,5
-  03DD    0836    LD	A,0x36
-  03DE    2795    CALL	0x795
-  03DF    3EBC    ADDIA	0xBC
-  03E0    0084    LD	0x4,A
-  03E1    1383    CLRB	0x3,7
-  03E2    2BF8    JP	0x3F8
+  03DC    30FE    LDIA	0xFE
+  03DD    00F5    LD	0x75,A
+  03DE    1283    CLRB	0x3,5
+  03DF    0836    LD	A,0x36
+  03E0    2795    CALL	0x795
+  03E1    3EBC    ADDIA	0xBC
+  03E2    0084    LD	0x4,A
+  03E3    1383    CLRB	0x3,7
+  03E4    2BFA    JP	0x3FA
 251:                      }
 252:                  }
 253:              }
@@ -2959,7 +2960,7 @@
   0707    2F0B    JP	0x70B
 14:                   {
 15:                       LEDScan();
-  0708    22E0    CALL	0x2E0
+  0708    22E2    CALL	0x2E2
 16:                       cnt2ms=0;
   0709    01BF    CLR	0x3F
 17:                       time2ms=1;
@@ -3089,117 +3090,117 @@
   0137    3003    LDIA	0x3
   0138    0204    SUBA	0x4
   0139    0008    RET
-  0209    0AA9    INCR	0x29
-  020A    1903    SZB	0x3,2
-  020B    0AAA    INCR	0x2A
-  020C    3000    LDIA	0x0
-  020D    022A    SUBA	0x2A
-  020E    0008    RET
-  02CF    0840    LD	A,0x40
-  02D0    00D0    LD	0x50,A
-  02D1    01D1    CLR	0x51
-  02D2    0851    LD	A,0x51
-  02D3    0254    SUBA	0x54
-  02D4    1D03    SNZB	0x3,2
-  02D5    2AD8    JP	0x2D8
-  02D6    0850    LD	A,0x50
-  02D7    0253    SUBA	0x53
-  02D8    0840    LD	A,0x40
-  02D9    0008    RET
-  02DA    07D3    ADDR	0x53
-  02DB    1803    SZB	0x3,0
-  02DC    0AD4    INCR	0x54
-  02DD    30FE    LDIA	0xFE
-  02DE    07D4    ADDR	0x54
-  02DF    0008    RET
-  0359    1683    SETB	0x3,5
-  035A    1187    CLRB	0x7,3
-  035B    1703    SETB	0x3,6
-  035C    118F    CLRB	0xF,3
-  035D    1283    CLRB	0x3,5
-  035E    1303    CLRB	0x3,6
-  035F    1187    CLRB	0x7,3
-  0360    0008    RET
-  0361    1683    SETB	0x3,5
-  0362    1107    CLRB	0x7,2
-  0363    1703    SETB	0x3,6
-  0364    110F    CLRB	0xF,2
-  0365    1283    CLRB	0x3,5
-  0366    1303    CLRB	0x3,6
-  0367    1107    CLRB	0x7,2
-  0368    0008    RET
-  0369    1683    SETB	0x3,5
-  036A    1286    CLRB	0x6,5
-  036B    1295    CLRB	0x15,5
-  036C    1283    CLRB	0x3,5
-  036D    1286    CLRB	0x6,5
-  036E    0008    RET
-  036F    1683    SETB	0x3,5
-  0370    1186    CLRB	0x6,3
-  0371    1195    CLRB	0x15,3
-  0372    1283    CLRB	0x3,5
-  0373    1186    CLRB	0x6,3
-  0374    0008    RET
-  0375    1683    SETB	0x3,5
-  0376    1206    CLRB	0x6,4
-  0377    1215    CLRB	0x15,4
-  0378    1283    CLRB	0x3,5
-  0379    1206    CLRB	0x6,4
-  037A    0008    RET
-  03E3    3EC9    ADDIA	0xC9
-  03E4    0084    LD	0x4,A
-  03E5    0800    LD	A,0x0
-  03E6    1283    CLRB	0x3,5
-  03E7    00CD    LD	0x4D,A
-  03E8    3007    LDIA	0x7
-  03E9    01CE    CLR	0x4E
-  03EA    00FF    LD	0x7F,A
-  03EB    1003    CLRB	0x3,0
-  03EC    0DCD    RLCR	0x4D
-  03ED    0DCE    RLCR	0x4E
-  03EE    0BFF    SZDECR	0x7F
-  03EF    2BEB    JP	0x3EB
-  03F0    084D    LD	A,0x4D
-  03F1    1683    SETB	0x3,5
-  03F2    04D9    ORR	0x59
-  03F3    1283    CLRB	0x3,5
-  03F4    084E    LD	A,0x4E
-  03F5    1683    SETB	0x3,5
-  03F6    04DA    ORR	0x5A
-  03F7    0008    RET
-  03F8    0800    LD	A,0x0
-  03F9    00CD    LD	0x4D,A
-  03FA    0A84    INCR	0x4
-  03FB    0800    LD	A,0x0
-  03FC    00CE    LD	0x4E,A
-  03FD    09CD    COMR	0x4D
-  03FE    09CE    COMR	0x4E
-  03FF    084D    LD	A,0x4D
-  0400    1683    SETB	0x3,5
-  0401    05D9    ANDR	0x59
-  0402    1283    CLRB	0x3,5
-  0403    084E    LD	A,0x4E
-  0404    1683    SETB	0x3,5
-  0405    05DA    ANDR	0x5A
-  0406    0008    RET
-  0462    3EC9    ADDIA	0xC9
-  0463    0084    LD	0x4,A
-  0464    1383    CLRB	0x3,7
-  0465    0800    LD	A,0x0
-  0466    1683    SETB	0x3,5
-  0467    00D9    LD	0x59,A
-  0468    300A    LDIA	0xA
-  0469    01DA    CLR	0x5A
-  046A    00F5    LD	0x75,A
-  046B    1283    CLRB	0x3,5
-  046C    0846    LD	A,0x46
-  046D    0008    RET
-  046E    3EC9    ADDIA	0xC9
-  046F    0084    LD	0x4,A
-  0470    0800    LD	A,0x0
-  0471    1283    CLRB	0x3,5
-  0472    00CD    LD	0x4D,A
-  0473    0008    RET
+  020B    0AA9    INCR	0x29
+  020C    1903    SZB	0x3,2
+  020D    0AAA    INCR	0x2A
+  020E    3000    LDIA	0x0
+  020F    022A    SUBA	0x2A
+  0210    0008    RET
+  02D1    0840    LD	A,0x40
+  02D2    00D0    LD	0x50,A
+  02D3    01D1    CLR	0x51
+  02D4    0851    LD	A,0x51
+  02D5    0254    SUBA	0x54
+  02D6    1D03    SNZB	0x3,2
+  02D7    2ADA    JP	0x2DA
+  02D8    0850    LD	A,0x50
+  02D9    0253    SUBA	0x53
+  02DA    0840    LD	A,0x40
+  02DB    0008    RET
+  02DC    07D3    ADDR	0x53
+  02DD    1803    SZB	0x3,0
+  02DE    0AD4    INCR	0x54
+  02DF    30FE    LDIA	0xFE
+  02E0    07D4    ADDR	0x54
+  02E1    0008    RET
+  035B    1683    SETB	0x3,5
+  035C    1107    CLRB	0x7,2
+  035D    1703    SETB	0x3,6
+  035E    110F    CLRB	0xF,2
+  035F    1283    CLRB	0x3,5
+  0360    1303    CLRB	0x3,6
+  0361    1107    CLRB	0x7,2
+  0362    0008    RET
+  0363    1683    SETB	0x3,5
+  0364    1187    CLRB	0x7,3
+  0365    1703    SETB	0x3,6
+  0366    118F    CLRB	0xF,3
+  0367    1283    CLRB	0x3,5
+  0368    1303    CLRB	0x3,6
+  0369    1187    CLRB	0x7,3
+  036A    0008    RET
+  036B    1683    SETB	0x3,5
+  036C    1286    CLRB	0x6,5
+  036D    1295    CLRB	0x15,5
+  036E    1283    CLRB	0x3,5
+  036F    1286    CLRB	0x6,5
+  0370    0008    RET
+  0371    1683    SETB	0x3,5
+  0372    1186    CLRB	0x6,3
+  0373    1195    CLRB	0x15,3
+  0374    1283    CLRB	0x3,5
+  0375    1186    CLRB	0x6,3
+  0376    0008    RET
+  0377    1683    SETB	0x3,5
+  0378    1206    CLRB	0x6,4
+  0379    1215    CLRB	0x15,4
+  037A    1283    CLRB	0x3,5
+  037B    1206    CLRB	0x6,4
+  037C    0008    RET
+  03E5    3EC9    ADDIA	0xC9
+  03E6    0084    LD	0x4,A
+  03E7    0800    LD	A,0x0
+  03E8    1283    CLRB	0x3,5
+  03E9    00CD    LD	0x4D,A
+  03EA    3007    LDIA	0x7
+  03EB    01CE    CLR	0x4E
+  03EC    00FF    LD	0x7F,A
+  03ED    1003    CLRB	0x3,0
+  03EE    0DCD    RLCR	0x4D
+  03EF    0DCE    RLCR	0x4E
+  03F0    0BFF    SZDECR	0x7F
+  03F1    2BED    JP	0x3ED
+  03F2    084D    LD	A,0x4D
+  03F3    1683    SETB	0x3,5
+  03F4    04D9    ORR	0x59
+  03F5    1283    CLRB	0x3,5
+  03F6    084E    LD	A,0x4E
+  03F7    1683    SETB	0x3,5
+  03F8    04DA    ORR	0x5A
+  03F9    0008    RET
+  03FA    0800    LD	A,0x0
+  03FB    00CD    LD	0x4D,A
+  03FC    0A84    INCR	0x4
+  03FD    0800    LD	A,0x0
+  03FE    00CE    LD	0x4E,A
+  03FF    09CD    COMR	0x4D
+  0400    09CE    COMR	0x4E
+  0401    084D    LD	A,0x4D
+  0402    1683    SETB	0x3,5
+  0403    05D9    ANDR	0x59
+  0404    1283    CLRB	0x3,5
+  0405    084E    LD	A,0x4E
+  0406    1683    SETB	0x3,5
+  0407    05DA    ANDR	0x5A
+  0408    0008    RET
+  0464    3EC9    ADDIA	0xC9
+  0465    0084    LD	0x4,A
+  0466    1383    CLRB	0x3,7
+  0467    0800    LD	A,0x0
+  0468    1683    SETB	0x3,5
+  0469    00D9    LD	0x59,A
+  046A    300A    LDIA	0xA
+  046B    01DA    CLR	0x5A
+  046C    00F5    LD	0x75,A
+  046D    1283    CLRB	0x3,5
+  046E    0846    LD	A,0x46
+  046F    0008    RET
+  0470    3EC9    ADDIA	0xC9
+  0471    0084    LD	0x4,A
+  0472    0800    LD	A,0x0
+  0473    1283    CLRB	0x3,5
+  0474    00CD    LD	0x4D,A
+  0475    0008    RET
   04D1    00F5    LD	0x75,A
   04D2    3064    LDIA	0x64
   04D3    01F6    CLR	0x76
@@ -3323,11 +3324,11 @@
   07BE    3400    RET	0x0
   07BF    0604    XORA	0x4
   07C0    2FBA    JP	0x7BA
-  07C1    2AF1    JP	0x2F1
-  07C2    2B03    JP	0x303
-  07C3    2B15    JP	0x315
-  07C4    2B27    JP	0x327
-  07C5    2B38    JP	0x338
+  07C1    2AF3    JP	0x2F3
+  07C2    2B05    JP	0x305
+  07C3    2B17    JP	0x317
+  07C4    2B29    JP	0x329
+  07C5    2B3A    JP	0x33A
   07CA    28CB    JP	0xCB
   07CB    28D3    JP	0xD3
   07CC    28DD    JP	0xDD

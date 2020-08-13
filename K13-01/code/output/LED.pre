@@ -439,7 +439,6 @@ unsigned char reservation:2;
 
 extern unsigned char LockNumb;
 
-
 extern unsigned char BatPercent;
 extern unsigned char WorkMin;
 

@@ -181,8 +181,6 @@
 [v _WPUA WPUA `VEuc  1 e 1 @398 ]
 "111
 [v _WPUC WPUC `VEuc  1 e 1 @399 ]
-"139
-[v _RA3 RA3 `VEb  1 e 0 @43 ]
 "141
 [v _RA5 RA5 `VEb  1 e 0 @45 ]
 "142
@@ -311,7 +309,7 @@
 "9 C:\Users\Administrator\Desktop\project\K13-01\code\Key.c
 [v _KeyScan KeyScan `(v  1 e 1 0 ]
 {
-"111
+"112
 } 0
 "144 C:\Users\Administrator\Desktop\project\K13-01\code\LED.c
 [v _DisplayPro DisplayPro `(v  1 e 1 0 ]

@@ -263,8 +263,6 @@ _RA7	set	47
 _RA6	set	46
 	global	_RA5
 _RA5	set	45
-	global	_RA3
-_RA3	set	43
 	global	_ADCON1
 _ADCON1	set	159
 	global	_ADRESL
@@ -1053,12 +1051,12 @@ _main:
 ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
 	line	5
 	
-l6928:	
+l6912:	
 ;main.c: 5: SystemInit();
 	fcall	_SystemInit
 	line	8
 	
-l6930:	
+l6914:	
 ;main.c: 7: {
 ;main.c: 8: Apply();
 	fcall	_Apply
@@ -1066,7 +1064,7 @@ l6930:
 # 9 "C:\Users\Administrator\Desktop\project\K13-01\code\main.c"
 clrwdt ;# 
 psect	maintext
-	goto	l6930
+	goto	l6914
 	global	start
 	ljmp	start
 	opt stack 0
@@ -1123,7 +1121,7 @@ _SystemInit:
 ; Regs used in _SystemInit: [wreg+status,2+status,0+pclath+cstack]
 	line	115
 	
-l5348:	
+l5344:	
 # 115 "C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.c"
 nop ;# 
 	line	116
@@ -1132,7 +1130,7 @@ clrwdt ;#
 psect	text1
 	line	117
 	
-l5350:	
+l5346:	
 ;K13-01.c: 117: GPIOInit();
 	fcall	_GPIOInit
 	line	118
@@ -1140,7 +1138,7 @@ l5350:
 	fcall	_TimerInit
 	line	119
 	
-l5352:	
+l5348:	
 ;K13-01.c: 119: WDTCON=0x01;
 	movlw	low(01h)
 	bcf	status, 5	;RP0=0, select bank2
@@ -1201,7 +1199,7 @@ _TimerInit:
 ; Regs used in _TimerInit: [wreg]
 	line	164
 	
-l5260:	
+l5256:	
 ;K13-01.c: 164: OSCCON=0X61;
 	movlw	low(061h)
 	bcf	status, 6	;RP1=0, select bank1
@@ -1279,14 +1277,14 @@ _GPIOInit:
 ; Regs used in _GPIOInit: [wreg+status,2]
 	line	124
 	
-l5220:	
+l5216:	
 ;K13-01.c: 124: RBPU=0;
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
 	bcf	(1039/8)^080h,(1039)&7	;volatile
 	line	126
 	
-l5222:	
+l5218:	
 ;K13-01.c: 126: TRISA =0X00;
 	clrf	(133)^080h	;volatile
 	line	127
@@ -1297,28 +1295,28 @@ l5222:
 	clrf	(135)^080h	;volatile
 	line	132
 	
-l5224:	
+l5220:	
 ;K13-01.c: 132: WPUA =0XFF;
 	movlw	low(0FFh)
 	bsf	status, 6	;RP1=1, select bank3
 	movwf	(398)^0180h	;volatile
 	line	133
 	
-l5226:	
+l5222:	
 ;K13-01.c: 133: WPUB =0XFF;
 	movlw	low(0FFh)
 	bcf	status, 6	;RP1=0, select bank1
 	movwf	(149)^080h	;volatile
 	line	134
 	
-l5228:	
+l5224:	
 ;K13-01.c: 134: WPUC =0XFF;
 	movlw	low(0FFh)
 	bsf	status, 6	;RP1=1, select bank3
 	movwf	(399)^0180h	;volatile
 	line	138
 	
-l5230:	
+l5226:	
 ;K13-01.c: 138: PORTA = 0X80;
 	movlw	low(080h)
 	bcf	status, 5	;RP0=0, select bank0
@@ -1326,70 +1324,70 @@ l5230:
 	movwf	(5)	;volatile
 	line	139
 	
-l5232:	
+l5228:	
 ;K13-01.c: 139: PORTB = 0X80;
 	movlw	low(080h)
 	movwf	(6)	;volatile
 	line	140
 	
-l5234:	
+l5230:	
 ;K13-01.c: 140: PORTC = 0;
 	clrf	(7)	;volatile
 	line	143
 	
-l5236:	
+l5232:	
 ;K13-01.c: 143: RA5 =1;
 	bsf	(45/8),(45)&7	;volatile
 	line	144
 	
-l5238:	
+l5234:	
 ;K13-01.c: 144: RBPU=0;
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	(1039/8)^080h,(1039)&7	;volatile
 	line	145
 	
-l5240:	
+l5236:	
 ;K13-01.c: 145: TRISA6=1,WPUA6=1;
 	bsf	(1070/8)^080h,(1070)&7	;volatile
 	
-l5242:	
+l5238:	
 	bsf	status, 6	;RP1=1, select bank3
 	bsf	(3190/8)^0180h,(3190)&7	;volatile
 	line	146
 	
-l5244:	
+l5240:	
 ;K13-01.c: 146: TRISA7=1,WPUA7=1;
 	bcf	status, 6	;RP1=0, select bank1
 	bsf	(1071/8)^080h,(1071)&7	;volatile
 	
-l5246:	
+l5242:	
 	bsf	status, 6	;RP1=1, select bank3
 	bsf	(3191/8)^0180h,(3191)&7	;volatile
 	line	148
 	
-l5248:	
+l5244:	
 ;K13-01.c: 148: TRISA1=1,WPUA1=0; ANS1=1;
 	bcf	status, 6	;RP1=0, select bank1
 	bsf	(1065/8)^080h,(1065)&7	;volatile
 	
-l5250:	
+l5246:	
 	bsf	status, 6	;RP1=1, select bank3
 	bcf	(3185/8)^0180h,(3185)&7	;volatile
 	
-l5252:	
+l5248:	
 	bsf	(3137/8)^0180h,(3137)&7	;volatile
 	line	149
 	
-l5254:	
+l5250:	
 ;K13-01.c: 149: TRISA2=1,WPUA2=0; ANS2=1;
 	bcf	status, 6	;RP1=0, select bank1
 	bsf	(1066/8)^080h,(1066)&7	;volatile
 	
-l5256:	
+l5252:	
 	bsf	status, 6	;RP1=1, select bank3
 	bcf	(3186/8)^0180h,(3186)&7	;volatile
 	
-l5258:	
+l5254:	
 	bsf	(3138/8)^0180h,(3138)&7	;volatile
 	line	151
 	
@@ -1450,17 +1448,17 @@ _Apply:
 ; Regs used in _Apply: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
 	line	26
 	
-l6890:	
+l6874:	
 ;K13-01.c: 26: if(time2ms)
 	btfss	(_time2ms/8),(_time2ms)&7
 	goto	u4681
 	goto	u4680
 u4681:
-	goto	l6896
+	goto	l6880
 u4680:
 	line	28
 	
-l6892:	
+l6876:	
 ;K13-01.c: 27: {
 ;K13-01.c: 28: time2ms=0;
 	bcf	(_time2ms/8),(_time2ms)&7
@@ -1470,17 +1468,17 @@ l6892:
 	goto	u4691
 	goto	u4690
 u4691:
-	goto	l6896
+	goto	l6880
 u4690:
 	line	31
 	
-l6894:	
+l6878:	
 ;K13-01.c: 30: {
 ;K13-01.c: 31: KeyScan();
 	fcall	_KeyScan
 	line	34
 	
-l6896:	
+l6880:	
 ;K13-01.c: 32: }
 ;K13-01.c: 33: }
 ;K13-01.c: 34: if(time10ms)
@@ -1492,7 +1490,7 @@ u4701:
 u4700:
 	line	36
 	
-l6898:	
+l6882:	
 ;K13-01.c: 35: {
 ;K13-01.c: 36: time10ms=0;
 	bcf	(_time10ms/8),(_time10ms)&7
@@ -1502,10 +1500,10 @@ l6898:
 	goto	u4711
 	goto	u4710
 u4711:
-	goto	l6906
+	goto	l6890
 u4710:
 	
-l6900:	
+l6884:	
 	movlw	low(064h)
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
@@ -1514,25 +1512,25 @@ l6900:
 	goto	u4721
 	goto	u4720
 u4721:
-	goto	l6906
+	goto	l6890
 u4720:
 	line	39
 	
-l6902:	
+l6886:	
 ;K13-01.c: 38: {
 ;K13-01.c: 39: VarPowerUpCount++;
 	incf	(_VarPowerUpCount),f
 	line	40
 	
-l6904:	
+l6888:	
 ;K13-01.c: 40: ADCPro();
 	fcall	_ADCPro
 	line	41
 ;K13-01.c: 41: }
-	goto	l6912
+	goto	l6896
 	line	42
 	
-l6906:	
+l6890:	
 ;K13-01.c: 42: else if(VarPowerUpCount>=100)
 	movlw	low(064h)
 	bcf	status, 5	;RP0=0, select bank0
@@ -1542,55 +1540,55 @@ l6906:
 	goto	u4731
 	goto	u4730
 u4731:
-	goto	l6912
+	goto	l6896
 u4730:
 	line	44
 	
-l6908:	
+l6892:	
 ;K13-01.c: 43: {
 ;K13-01.c: 44: SystemONFlag=1;
 	bsf	(_SystemONFlag/8),(_SystemONFlag)&7
 	line	45
 	
-l6910:	
+l6894:	
 ;K13-01.c: 45: VarPowerUpCount=0;
 	clrf	(_VarPowerUpCount)
 	line	48
 	
-l6912:	
+l6896:	
 ;K13-01.c: 46: }
 ;K13-01.c: 48: if(SystemONFlag)
 	btfss	(_SystemONFlag/8),(_SystemONFlag)&7
 	goto	u4741
 	goto	u4740
 u4741:
-	goto	l6920
+	goto	l6904
 u4740:
 	line	50
 	
-l6914:	
+l6898:	
 ;K13-01.c: 49: {
 ;K13-01.c: 50: ADCPro();
 	fcall	_ADCPro
 	line	51
 	
-l6916:	
+l6900:	
 ;K13-01.c: 51: Motor();
 	fcall	_Motor
 	line	52
 	
-l6918:	
+l6902:	
 ;K13-01.c: 52: DisplayPro();
 	fcall	_DisplayPro
 	line	55
 	
-l6920:	
+l6904:	
 ;K13-01.c: 54: }
 ;K13-01.c: 55: Sec1sCnt++;
 	incf	(_Sec1sCnt),f
 	line	56
 	
-l6922:	
+l6906:	
 ;K13-01.c: 56: if(Sec1sCnt>=100)
 	movlw	low(064h)
 	subwf	(_Sec1sCnt),w
@@ -1602,13 +1600,13 @@ u4751:
 u4750:
 	line	58
 	
-l6924:	
+l6908:	
 ;K13-01.c: 57: {
 ;K13-01.c: 58: Sec1sCnt=0;
 	clrf	(_Sec1sCnt)
 	line	59
 	
-l6926:	
+l6910:	
 ;K13-01.c: 59: Sec1sPro();
 	fcall	_Sec1sPro
 	line	63
@@ -1669,24 +1667,24 @@ _Sec1sPro:
 ; Regs used in _Sec1sPro: [wreg+status,2+status,0+pclath+cstack]
 	line	69
 	
-l6578:	
+l6570:	
 	line	70
 ;ADC.c: 70: unsigned int TempPercent=0;
 	clrf	(Sec1sPro@TempPercent)
 	clrf	(Sec1sPro@TempPercent+1)
 	line	73
 	
-l6580:	
+l6572:	
 ;ADC.c: 73: if(USBFlag)
 	btfss	(_USBFlag/8),(_USBFlag)&7
 	goto	u4161
 	goto	u4160
 u4161:
-	goto	l6618
+	goto	l6610
 u4160:
 	line	75
 	
-l6582:	
+l6574:	
 ;ADC.c: 74: {
 ;ADC.c: 75: if(ADCVal[2]<275)
 	movlw	01h
@@ -1698,21 +1696,21 @@ l6582:
 	goto	u4171
 	goto	u4170
 u4171:
-	goto	l6586
+	goto	l6578
 u4170:
 	line	77
 	
-l6584:	
+l6576:	
 ;ADC.c: 76: {
 ;ADC.c: 77: TempPercent=0;
 	clrf	(Sec1sPro@TempPercent)
 	clrf	(Sec1sPro@TempPercent+1)
 	line	78
 ;ADC.c: 78: }
-	goto	l6594
+	goto	l6586
 	line	79
 	
-l6586:	
+l6578:	
 ;ADC.c: 79: else if(ADCVal[2]>350)
 	movlw	01h
 	subwf	1+(_ADCVal)+04h,w
@@ -1723,11 +1721,11 @@ l6586:
 	goto	u4181
 	goto	u4180
 u4181:
-	goto	l6590
+	goto	l6582
 u4180:
 	line	81
 	
-l6588:	
+l6580:	
 ;ADC.c: 80: {
 ;ADC.c: 81: TempPercent=99;
 	movlw	063h
@@ -1735,10 +1733,10 @@ l6588:
 	clrf	(Sec1sPro@TempPercent+1)
 	line	82
 ;ADC.c: 82: }
-	goto	l6594
+	goto	l6586
 	line	85
 	
-l6590:	
+l6582:	
 ;ADC.c: 83: else
 ;ADC.c: 84: {
 ;ADC.c: 85: TempPercent=ADCVal[2]-275;
@@ -1754,7 +1752,7 @@ l6590:
 	addwf	(Sec1sPro@TempPercent+1),f
 	line	86
 	
-l6592:	
+l6584:	
 ;ADC.c: 86: TempPercent=TempPercent*4/3;
 	movlw	03h
 	movwf	(___lwdiv@divisor)
@@ -1780,7 +1778,7 @@ l6592:
 	movwf	(Sec1sPro@TempPercent)
 	line	88
 	
-l6594:	
+l6586:	
 ;ADC.c: 87: }
 ;ADC.c: 88: if(ActualPercent>TempPercent)
 	movf	(Sec1sPro@ActualPercent),w
@@ -1797,11 +1795,11 @@ u4195:
 	goto	u4191
 	goto	u4190
 u4191:
-	goto	l6600
+	goto	l6592
 u4190:
 	line	90
 	
-l6596:	
+l6588:	
 ;ADC.c: 89: {
 ;ADC.c: 90: if(ActualPercent)
 	movf	((Sec1sPro@ActualPercent)),w
@@ -1809,18 +1807,18 @@ l6596:
 	goto	u4201
 	goto	u4200
 u4201:
-	goto	l6606
+	goto	l6598
 u4200:
 	line	92
 	
-l6598:	
+l6590:	
 ;ADC.c: 91: {
 ;ADC.c: 92: ActualPercent--;
 	decf	(Sec1sPro@ActualPercent),f
-	goto	l6606
+	goto	l6598
 	line	95
 	
-l6600:	
+l6592:	
 ;ADC.c: 95: else if(ActualPercent<TempPercent)
 	movf	(Sec1sPro@ActualPercent),w
 	movwf	(??_Sec1sPro+0)+0
@@ -1836,11 +1834,11 @@ u4215:
 	goto	u4211
 	goto	u4210
 u4211:
-	goto	l6606
+	goto	l6598
 u4210:
 	line	97
 	
-l6602:	
+l6594:	
 ;ADC.c: 96: {
 ;ADC.c: 97: if(ActualPercent<99)
 	movlw	low(063h)
@@ -1849,17 +1847,17 @@ l6602:
 	goto	u4221
 	goto	u4220
 u4221:
-	goto	l6606
+	goto	l6598
 u4220:
 	line	99
 	
-l6604:	
+l6596:	
 ;ADC.c: 98: {
 ;ADC.c: 99: ActualPercent++;
 	incf	(Sec1sPro@ActualPercent),f
 	line	102
 	
-l6606:	
+l6598:	
 ;ADC.c: 100: }
 ;ADC.c: 101: }
 ;ADC.c: 102: if(ActualPercent>BatPercent)
@@ -1869,11 +1867,11 @@ l6606:
 	goto	u4231
 	goto	u4230
 u4231:
-	goto	l6616
+	goto	l6608
 u4230:
 	line	104
 	
-l6608:	
+l6600:	
 ;ADC.c: 103: {
 ;ADC.c: 104: PercentErr=ActualPercent-BatPercent;
 	movf	(_BatPercent),w
@@ -1881,7 +1879,7 @@ l6608:
 	movwf	(Sec1sPro@PercentErr)
 	line	105
 	
-l6610:	
+l6602:	
 ;ADC.c: 105: if(PercentErr<5)
 	movlw	low(05h)
 	subwf	(Sec1sPro@PercentErr),w
@@ -1889,11 +1887,11 @@ l6610:
 	goto	u4241
 	goto	u4240
 u4241:
-	goto	l6614
+	goto	l6606
 u4240:
 	line	107
 	
-l6612:	
+l6604:	
 ;ADC.c: 106: {
 ;ADC.c: 107: BatAddTime=90-15*PercentErr;
 	movlw	low(0F1h)
@@ -1904,19 +1902,19 @@ l6612:
 	movwf	(_BatAddTime)
 	line	108
 ;ADC.c: 108: }
-	goto	l6618
+	goto	l6610
 	line	111
 	
-l6614:	
+l6606:	
 ;ADC.c: 109: else
 ;ADC.c: 110: {
 ;ADC.c: 111: BatAddTime=15;
 	movlw	low(0Fh)
 	movwf	(_BatAddTime)
-	goto	l6618
+	goto	l6610
 	line	116
 	
-l6616:	
+l6608:	
 ;ADC.c: 114: else
 ;ADC.c: 115: {
 ;ADC.c: 116: BatAddTime=240;
@@ -1924,7 +1922,7 @@ l6616:
 	movwf	(_BatAddTime)
 	line	121
 	
-l6618:	
+l6610:	
 ;ADC.c: 117: }
 ;ADC.c: 118: }
 ;ADC.c: 121: if(WorkFlag)
@@ -1932,11 +1930,11 @@ l6618:
 	goto	u4251
 	goto	u4250
 u4251:
-	goto	l6660
+	goto	l6652
 u4250:
 	line	123
 	
-l6620:	
+l6612:	
 ;ADC.c: 122: {
 ;ADC.c: 123: if(ADCVal[2]<267)
 	movlw	01h
@@ -1948,11 +1946,11 @@ l6620:
 	goto	u4261
 	goto	u4260
 u4261:
-	goto	l6624
+	goto	l6616
 u4260:
 	line	125
 	
-l6622:	
+l6614:	
 ;ADC.c: 124: {
 ;ADC.c: 125: TempPercent=0;
 	clrf	(Sec1sPro@TempPercent)
@@ -1962,7 +1960,7 @@ l6622:
 	goto	l609
 	line	127
 	
-l6624:	
+l6616:	
 ;ADC.c: 127: else if(ADCVal[2]>333)
 	movlw	01h
 	subwf	1+(_ADCVal)+04h,w
@@ -1973,11 +1971,11 @@ l6624:
 	goto	u4271
 	goto	u4270
 u4271:
-	goto	l6628
+	goto	l6620
 u4270:
 	line	129
 	
-l6626:	
+l6618:	
 ;ADC.c: 128: {
 ;ADC.c: 129: TempPercent=99;
 	movlw	063h
@@ -1988,7 +1986,7 @@ l6626:
 	goto	l609
 	line	133
 	
-l6628:	
+l6620:	
 ;ADC.c: 131: else
 ;ADC.c: 132: {
 ;ADC.c: 133: TempPercent=ADCVal[2]-267;
@@ -2017,11 +2015,11 @@ l609:
 	goto	u4281
 	goto	u4280
 u4281:
-	goto	l6636
+	goto	l6628
 u4280:
 	line	137
 	
-l6630:	
+l6622:	
 ;ADC.c: 136: {
 ;ADC.c: 137: TempPercent=33+(ADCVal[2]-300)*2;
 	movf	1+(_ADCVal)+04h,w
@@ -2029,12 +2027,12 @@ l6630:
 	movf	0+(_ADCVal)+04h,w
 	movwf	(Sec1sPro@TempPercent)
 	
-l6632:	
+l6624:	
 	clrc
 	rlf	(Sec1sPro@TempPercent),f
 	rlf	(Sec1sPro@TempPercent+1),f
 	
-l6634:	
+l6626:	
 	movlw	0C9h
 	addwf	(Sec1sPro@TempPercent),f
 	skipnc
@@ -2043,7 +2041,7 @@ l6634:
 	addwf	(Sec1sPro@TempPercent+1),f
 	line	139
 	
-l6636:	
+l6628:	
 ;ADC.c: 138: }
 ;ADC.c: 139: if(ActualPercent>TempPercent)
 	movf	(Sec1sPro@ActualPercent),w
@@ -2060,11 +2058,11 @@ u4295:
 	goto	u4291
 	goto	u4290
 u4291:
-	goto	l6642
+	goto	l6634
 u4290:
 	line	141
 	
-l6638:	
+l6630:	
 ;ADC.c: 140: {
 ;ADC.c: 141: if(ActualPercent)
 	movf	((Sec1sPro@ActualPercent)),w
@@ -2072,18 +2070,18 @@ l6638:
 	goto	u4301
 	goto	u4300
 u4301:
-	goto	l6648
+	goto	l6640
 u4300:
 	line	143
 	
-l6640:	
+l6632:	
 ;ADC.c: 142: {
 ;ADC.c: 143: ActualPercent--;
 	decf	(Sec1sPro@ActualPercent),f
-	goto	l6648
+	goto	l6640
 	line	146
 	
-l6642:	
+l6634:	
 ;ADC.c: 146: else if(ActualPercent<TempPercent)
 	movf	(Sec1sPro@ActualPercent),w
 	movwf	(??_Sec1sPro+0)+0
@@ -2099,11 +2097,11 @@ u4315:
 	goto	u4311
 	goto	u4310
 u4311:
-	goto	l6648
+	goto	l6640
 u4310:
 	line	148
 	
-l6644:	
+l6636:	
 ;ADC.c: 147: {
 ;ADC.c: 148: if(ActualPercent<99)
 	movlw	low(063h)
@@ -2112,17 +2110,17 @@ l6644:
 	goto	u4321
 	goto	u4320
 u4321:
-	goto	l6648
+	goto	l6640
 u4320:
 	line	150
 	
-l6646:	
+l6638:	
 ;ADC.c: 149: {
 ;ADC.c: 150: ActualPercent++;
 	incf	(Sec1sPro@ActualPercent),f
 	line	153
 	
-l6648:	
+l6640:	
 ;ADC.c: 151: }
 ;ADC.c: 152: }
 ;ADC.c: 153: if(ActualPercent<BatPercent)
@@ -2132,11 +2130,11 @@ l6648:
 	goto	u4331
 	goto	u4330
 u4331:
-	goto	l6660
+	goto	l6652
 u4330:
 	line	155
 	
-l6650:	
+l6642:	
 ;ADC.c: 154: {
 ;ADC.c: 155: PercentErr=BatPercent-ActualPercent;
 	movf	(Sec1sPro@ActualPercent),w
@@ -2144,7 +2142,7 @@ l6650:
 	movwf	(Sec1sPro@PercentErr)
 	line	156
 	
-l6652:	
+l6644:	
 ;ADC.c: 156: if(PercentErr<5&&ActualPercent)
 	movlw	low(05h)
 	subwf	(Sec1sPro@PercentErr),w
@@ -2152,20 +2150,20 @@ l6652:
 	goto	u4341
 	goto	u4340
 u4341:
-	goto	l6658
+	goto	l6650
 u4340:
 	
-l6654:	
+l6646:	
 	movf	((Sec1sPro@ActualPercent)),w
 	btfsc	status,2
 	goto	u4351
 	goto	u4350
 u4351:
-	goto	l6658
+	goto	l6650
 u4350:
 	line	158
 	
-l6656:	
+l6648:	
 ;ADC.c: 157: {
 ;ADC.c: 158: BatDecTime=75-15*PercentErr;
 	movlw	low(0F1h)
@@ -2179,7 +2177,7 @@ l6656:
 	goto	l623
 	line	162
 	
-l6658:	
+l6650:	
 ;ADC.c: 160: else
 ;ADC.c: 161: {
 ;ADC.c: 162: BatDecTime=8;
@@ -2188,7 +2186,7 @@ l6658:
 	goto	l623
 	line	167
 	
-l6660:	
+l6652:	
 ;ADC.c: 165: else
 ;ADC.c: 166: {
 ;ADC.c: 167: BatDecTime=210;
@@ -2252,30 +2250,30 @@ ___lwdiv:
 ; Regs used in ___lwdiv: [wreg+status,2+status,0]
 	line	14
 	
-l6508:	
+l6500:	
 	clrf	(___lwdiv@quotient)
 	clrf	(___lwdiv@quotient+1)
 	line	15
 	
-l6510:	
+l6502:	
 	movf	((___lwdiv@divisor)),w
 iorwf	((___lwdiv@divisor+1)),w
 	btfsc	status,2
 	goto	u4071
 	goto	u4070
 u4071:
-	goto	l6530
+	goto	l6522
 u4070:
 	line	16
 	
-l6512:	
+l6504:	
 	clrf	(___lwdiv@counter)
 	incf	(___lwdiv@counter),f
 	line	17
-	goto	l6516
+	goto	l6508
 	line	18
 	
-l6514:	
+l6506:	
 	clrc
 	rlf	(___lwdiv@divisor),f
 	rlf	(___lwdiv@divisor+1),f
@@ -2283,22 +2281,22 @@ l6514:
 	incf	(___lwdiv@counter),f
 	line	17
 	
-l6516:	
+l6508:	
 	btfss	(___lwdiv@divisor+1),(15)&7
 	goto	u4081
 	goto	u4080
 u4081:
-	goto	l6514
+	goto	l6506
 u4080:
 	line	22
 	
-l6518:	
+l6510:	
 	clrc
 	rlf	(___lwdiv@quotient),f
 	rlf	(___lwdiv@quotient+1),f
 	line	23
 	
-l6520:	
+l6512:	
 	movf	(___lwdiv@divisor+1),w
 	subwf	(___lwdiv@dividend+1),w
 	skipz
@@ -2310,11 +2308,11 @@ u4095:
 	goto	u4091
 	goto	u4090
 u4091:
-	goto	l6526
+	goto	l6518
 u4090:
 	line	24
 	
-l6522:	
+l6514:	
 	movf	(___lwdiv@divisor),w
 	subwf	(___lwdiv@dividend),f
 	movf	(___lwdiv@divisor+1),w
@@ -2323,26 +2321,26 @@ l6522:
 	subwf	(___lwdiv@dividend+1),f
 	line	25
 	
-l6524:	
+l6516:	
 	bsf	(___lwdiv@quotient)+(0/8),(0)&7
 	line	27
 	
-l6526:	
+l6518:	
 	clrc
 	rrf	(___lwdiv@divisor+1),f
 	rrf	(___lwdiv@divisor),f
 	line	28
 	
-l6528:	
+l6520:	
 	decfsz	(___lwdiv@counter),f
 	goto	u4101
 	goto	u4100
 u4101:
-	goto	l6518
+	goto	l6510
 u4100:
 	line	30
 	
-l6530:	
+l6522:	
 	movf	(___lwdiv@quotient+1),w
 	movwf	(?___lwdiv+1)
 	movf	(___lwdiv@quotient),w
@@ -2403,7 +2401,7 @@ _Motor:
 ; Regs used in _Motor: [wreg+status,2+status,0+pclath+cstack]
 	line	9
 	
-l6842:	
+l6830:	
 ;Motor.c: 9: if(!WorkFlag)
 	btfsc	(_WorkFlag/8),(_WorkFlag)&7
 	goto	u4571
@@ -2411,15 +2409,10 @@ l6842:
 u4571:
 	goto	l4199
 u4570:
-	line	11
-	
-l6844:	
-;Motor.c: 10: {
-;Motor.c: 11: RA3=0;
-	bcf	(43/8),(43)&7	;volatile
 	line	12
 	
-l6846:	
+l6832:	
+;Motor.c: 10: {
 ;Motor.c: 12: WorkCnt=0;
 	bsf	status, 5	;RP0=1, select bank1
 	clrf	(_WorkCnt)^080h
@@ -2430,7 +2423,7 @@ l6846:
 	clrf	(_TimeDecCnt+1)^080h
 	line	14
 ;Motor.c: 14: }
-	goto	l6870
+	goto	l6854
 	line	15
 	
 l4199:	
@@ -2439,25 +2432,20 @@ l4199:
 	goto	u4581
 	goto	u4580
 u4581:
-	goto	l6870
+	goto	l6854
 u4580:
 	
-l6848:	
+l6834:	
 	btfsc	(_LockSta),6
 	goto	u4591
 	goto	u4590
 u4591:
-	goto	l6870
+	goto	l6854
 u4590:
-	line	17
-	
-l6850:	
-;Motor.c: 16: {
-;Motor.c: 17: RA3=1;
-	bsf	(43/8),(43)&7	;volatile
 	line	18
 	
-l6852:	
+l6836:	
+;Motor.c: 16: {
 ;Motor.c: 18: TimeDecCnt++;
 	bsf	status, 5	;RP0=1, select bank1
 	incf	(_TimeDecCnt)^080h,f
@@ -2465,7 +2453,7 @@ l6852:
 	incf	(_TimeDecCnt+1)^080h,f
 	line	19
 	
-l6854:	
+l6838:	
 ;Motor.c: 19: if(TimeDecCnt>=BatDecTime*100)
 	bcf	status, 5	;RP0=0, select bank0
 	movf	(_BatDecTime),w
@@ -2491,14 +2479,14 @@ u4601:
 u4600:
 	line	21
 	
-l6856:	
+l6840:	
 ;Motor.c: 20: {
 ;Motor.c: 21: TimeDecCnt=0;
 	clrf	(_TimeDecCnt)^080h
 	clrf	(_TimeDecCnt+1)^080h
 	line	22
 	
-l6858:	
+l6842:	
 ;Motor.c: 22: if(BatPercent)
 	bcf	status, 5	;RP0=0, select bank0
 	movf	((_BatPercent)),w
@@ -2510,7 +2498,7 @@ u4611:
 u4610:
 	line	24
 	
-l6860:	
+l6844:	
 ;Motor.c: 23: {
 ;Motor.c: 24: BatPercent--;
 	decf	(_BatPercent),f
@@ -2527,7 +2515,7 @@ l4202:
 	incf	(_WorkCnt+1)^080h,f
 	line	28
 	
-l6862:	
+l6846:	
 ;Motor.c: 28: if(WorkCnt>=6000)
 	movlw	017h
 	subwf	(_WorkCnt+1)^080h,w
@@ -2538,18 +2526,18 @@ l6862:
 	goto	u4621
 	goto	u4620
 u4621:
-	goto	l6870
+	goto	l6854
 u4620:
 	line	30
 	
-l6864:	
+l6848:	
 ;Motor.c: 29: {
 ;Motor.c: 30: WorkCnt=0;
 	clrf	(_WorkCnt)^080h
 	clrf	(_WorkCnt+1)^080h
 	line	31
 	
-l6866:	
+l6850:	
 ;Motor.c: 31: if(WorkMin<99)
 	movlw	low(063h)
 	subwf	(_WorkMin),w
@@ -2561,17 +2549,17 @@ u4631:
 u4630:
 	line	33
 	
-l6868:	
+l6852:	
 ;Motor.c: 32: {
 ;Motor.c: 33: WorkMin++;
 	incf	(_WorkMin),f
-	goto	l6870
+	goto	l6854
 	line	36
 	
 l4201:	
 	line	37
 	
-l6870:	
+l6854:	
 ;Motor.c: 34: }
 ;Motor.c: 35: }
 ;Motor.c: 36: }
@@ -2580,11 +2568,11 @@ l6870:
 	goto	u4641
 	goto	u4640
 u4641:
-	goto	l6886
+	goto	l6870
 u4640:
 	line	39
 	
-l6872:	
+l6856:	
 ;Motor.c: 38: {
 ;Motor.c: 39: TimeAddCnt++;
 	bsf	status, 5	;RP0=1, select bank1
@@ -2593,7 +2581,7 @@ l6872:
 	incf	(_TimeAddCnt+1)^080h,f
 	line	40
 	
-l6874:	
+l6858:	
 ;Motor.c: 40: if(TimeAddCnt>BatAddTime*100)
 	bcf	status, 5	;RP0=0, select bank0
 	movf	(_BatAddTime),w
@@ -2615,18 +2603,18 @@ u4655:
 	goto	u4651
 	goto	u4650
 u4651:
-	goto	l6882
+	goto	l6866
 u4650:
 	line	42
 	
-l6876:	
+l6860:	
 ;Motor.c: 41: {
 ;Motor.c: 42: TimeAddCnt=0;
 	clrf	(_TimeAddCnt)^080h
 	clrf	(_TimeAddCnt+1)^080h
 	line	43
 	
-l6878:	
+l6862:	
 ;Motor.c: 43: if(BatPercent<99)
 	movlw	low(063h)
 	bcf	status, 5	;RP0=0, select bank0
@@ -2635,17 +2623,17 @@ l6878:
 	goto	u4661
 	goto	u4660
 u4661:
-	goto	l6882
+	goto	l6866
 u4660:
 	line	45
 	
-l6880:	
+l6864:	
 ;Motor.c: 44: {
 ;Motor.c: 45: BatPercent++;
 	incf	(_BatPercent),f
 	line	48
 	
-l6882:	
+l6866:	
 ;Motor.c: 46: }
 ;Motor.c: 47: }
 ;Motor.c: 48: if(BatPercent<=250)
@@ -2660,7 +2648,7 @@ u4671:
 u4670:
 	line	50
 	
-l6884:	
+l6868:	
 ;Motor.c: 49: {
 ;Motor.c: 50: RA5 =0;
 	bcf	(45/8),(45)&7	;volatile
@@ -2679,7 +2667,7 @@ l4209:
 	goto	l4212
 	line	59
 	
-l6886:	
+l6870:	
 ;Motor.c: 57: else
 ;Motor.c: 58: {
 ;Motor.c: 59: TimeAddCnt=0;
@@ -2744,21 +2732,21 @@ ___wmul:
 ; Regs used in ___wmul: [wreg+status,2+status,0]
 	line	43
 	
-l6826:	
+l6814:	
 	clrf	(___wmul@product)
 	clrf	(___wmul@product+1)
 	line	45
 	
-l6828:	
+l6816:	
 	btfss	(___wmul@multiplier),(0)&7
 	goto	u4551
 	goto	u4550
 u4551:
-	goto	l6832
+	goto	l6820
 u4550:
 	line	46
 	
-l6830:	
+l6818:	
 	movf	(___wmul@multiplicand),w
 	addwf	(___wmul@product),f
 	skipnc
@@ -2767,30 +2755,30 @@ l6830:
 	addwf	(___wmul@product+1),f
 	line	47
 	
-l6832:	
+l6820:	
 	clrc
 	rlf	(___wmul@multiplicand),f
 	rlf	(___wmul@multiplicand+1),f
 	line	48
 	
-l6834:	
+l6822:	
 	clrc
 	rrf	(___wmul@multiplier+1),f
 	rrf	(___wmul@multiplier),f
 	line	49
 	
-l6836:	
+l6824:	
 	movf	((___wmul@multiplier)),w
 iorwf	((___wmul@multiplier+1)),w
 	btfss	status,2
 	goto	u4561
 	goto	u4560
 u4561:
-	goto	l6828
+	goto	l6816
 u4560:
 	line	52
 	
-l6838:	
+l6826:	
 	movf	(___wmul@product+1),w
 	movwf	(?___wmul+1)
 	movf	(___wmul@product),w
@@ -2851,7 +2839,7 @@ _KeyScan:
 ; Regs used in _KeyScan: [wreg+status,2+status,0]
 	line	11
 	
-l5956:	
+l5952:	
 ;Key.c: 11: if(!RA6)
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
@@ -2863,7 +2851,7 @@ u2741:
 u2740:
 	line	13
 	
-l5958:	
+l5954:	
 ;Key.c: 12: {
 ;Key.c: 13: KeyPress=1;
 	bsf	(_KeyPress/8),(_KeyPress)&7
@@ -2891,7 +2879,7 @@ u2751:
 	goto	l2373
 u2750:
 	
-l5960:	
+l5956:	
 	movlw	0
 	subwf	(_KeyCnt+1),w
 	movlw	0Ah
@@ -2904,7 +2892,7 @@ u2761:
 	goto	l2373
 u2760:
 	
-l5962:	
+l5958:	
 	btfsc	(_KeyPress/8),(_KeyPress)&7
 	goto	u2771
 	goto	u2770
@@ -2932,7 +2920,7 @@ u2791:
 	goto	l2373
 u2790:
 	
-l5964:	
+l5960:	
 	btfsc	(_IovFlag/8),(_IovFlag)&7
 	goto	u2801
 	goto	u2800
@@ -2941,7 +2929,7 @@ u2801:
 u2800:
 	line	22
 	
-l5966:	
+l5962:	
 ;Key.c: 21: {
 ;Key.c: 22: KeyCnt++;
 	incf	(_KeyCnt),f
@@ -2949,7 +2937,7 @@ l5966:
 	incf	(_KeyCnt+1),f
 	line	23
 	
-l5968:	
+l5964:	
 ;Key.c: 23: if(KeyCnt>=10)
 	movlw	0
 	subwf	(_KeyCnt+1),w
@@ -2964,14 +2952,14 @@ u2811:
 u2810:
 	line	25
 	
-l5970:	
+l5966:	
 ;Key.c: 24: {
 ;Key.c: 25: WorkFlag=~WorkFlag;
 	movlw	1<<((_WorkFlag)&7)
 	xorwf	((_WorkFlag)/8),f
 	line	26
 	
-l5972:	
+l5968:	
 ;Key.c: 26: if(!WorkFlag&&WorkMin&&!USBFlag&&!LockSta.LockFlag)
 	btfsc	(_WorkFlag/8),(_WorkFlag)&7
 	goto	u2821
@@ -2980,7 +2968,7 @@ u2821:
 	goto	l2375
 u2820:
 	
-l5974:	
+l5970:	
 	movf	((_WorkMin)),w
 	btfsc	status,2
 	goto	u2831
@@ -2989,7 +2977,7 @@ u2831:
 	goto	l2375
 u2830:
 	
-l5976:	
+l5972:	
 	btfsc	(_USBFlag/8),(_USBFlag)&7
 	goto	u2841
 	goto	u2840
@@ -2997,7 +2985,7 @@ u2841:
 	goto	l2375
 u2840:
 	
-l5978:	
+l5974:	
 	btfsc	(_LockSta),6
 	goto	u2851
 	goto	u2850
@@ -3006,7 +2994,7 @@ u2851:
 u2850:
 	line	28
 	
-l5980:	
+l5976:	
 ;Key.c: 27: {
 ;Key.c: 28: OnOffFlag=1;
 	bsf	(_OnOffFlag/8),(_OnOffFlag)&7
@@ -3023,7 +3011,7 @@ l2375:
 	bcf	(_OnOffFlag/8),(_OnOffFlag)&7
 	line	33
 	
-l5982:	
+l5978:	
 ;Key.c: 33: WorkMin=0;
 	clrf	(_WorkMin)
 	goto	l2377
@@ -3038,7 +3026,7 @@ u2861:
 	goto	l2378
 u2860:
 	
-l5984:	
+l5980:	
 	movlw	0
 	subwf	(_KeyCnt+1),w
 	movlw	0Ah
@@ -3051,7 +3039,7 @@ u2871:
 	goto	l2378
 u2870:
 	
-l5986:	
+l5982:	
 	movlw	0
 	subwf	(_KeyCnt+1),w
 	movlw	0FAh
@@ -3064,7 +3052,7 @@ u2881:
 	goto	l2378
 u2880:
 	
-l5988:	
+l5984:	
 	btfsc	(_KeyPress/8),(_KeyPress)&7
 	goto	u2891
 	goto	u2890
@@ -3092,7 +3080,7 @@ u2911:
 	goto	l2378
 u2910:
 	
-l5990:	
+l5986:	
 	btfsc	(_USBFlag/8),(_USBFlag)&7
 	goto	u2921
 	goto	u2920
@@ -3101,7 +3089,7 @@ u2921:
 u2920:
 	line	39
 	
-l5992:	
+l5988:	
 ;Key.c: 38: {
 ;Key.c: 39: KeyCnt++;
 	incf	(_KeyCnt),f
@@ -3109,7 +3097,7 @@ l5992:
 	incf	(_KeyCnt+1),f
 	line	40
 	
-l5994:	
+l5990:	
 ;Key.c: 40: if(KeyCnt>=250)
 	movlw	0
 	subwf	(_KeyCnt+1),w
@@ -3124,14 +3112,14 @@ u2931:
 u2930:
 	line	42
 	
-l5996:	
+l5992:	
 ;Key.c: 41: {
 ;Key.c: 42: LockNumb=2;
 	movlw	low(02h)
 	movwf	(_LockNumb)
 	line	43
 	
-l5998:	
+l5994:	
 ;Key.c: 43: if(!LockSta.LockFlag)
 	btfsc	(_LockSta),6
 	goto	u2941
@@ -3141,10 +3129,13 @@ u2941:
 u2940:
 	line	45
 	
-l6000:	
+l5996:	
 ;Key.c: 44: {
 ;Key.c: 45: LockSta.LockStart=1;
 	bsf	(_LockSta),0
+	line	46
+;Key.c: 46: LockSta.UnlockEnd=0;
+	bcf	(_LockSta),5
 	line	47
 ;Key.c: 47: }
 	goto	l2381
@@ -3157,17 +3148,20 @@ l2380:
 ;Key.c: 50: LockSta.UnlockStart=1;
 	bsf	(_LockSta),3
 	line	51
+;Key.c: 51: LockSta.LockEnd=0;
+	bcf	(_LockSta),2
+	line	52
 	
 l2381:	
-	line	52
-;Key.c: 51: }
-;Key.c: 52: OnOffFlag=0;
+	line	53
+;Key.c: 52: }
+;Key.c: 53: OnOffFlag=0;
 	bcf	(_OnOffFlag/8),(_OnOffFlag)&7
 	goto	l2377
-	line	55
+	line	56
 	
 l2378:	
-;Key.c: 55: else if(KeyPress&&KeyCnt>=250&&KeyInBuf==KeyPress&&!LockSta.LockEnd&&!LockSta.UnlockEnd)
+;Key.c: 56: else if(KeyPress&&KeyCnt>=250&&KeyInBuf==KeyPress&&!LockSta.LockEnd&&!LockSta.UnlockEnd)
 	btfss	(_KeyPress/8),(_KeyPress)&7
 	goto	u2951
 	goto	u2950
@@ -3175,7 +3169,7 @@ u2951:
 	goto	l2383
 u2950:
 	
-l6002:	
+l5998:	
 	movlw	0
 	subwf	(_KeyCnt+1),w
 	movlw	0FAh
@@ -3188,7 +3182,7 @@ u2961:
 	goto	l2383
 u2960:
 	
-l6004:	
+l6000:	
 	btfsc	(_KeyPress/8),(_KeyPress)&7
 	goto	u2971
 	goto	u2970
@@ -3216,7 +3210,7 @@ u2991:
 	goto	l2383
 u2990:
 	
-l6006:	
+l6002:	
 	btfsc	(_LockSta),2
 	goto	u3001
 	goto	u3000
@@ -3224,25 +3218,25 @@ u3001:
 	goto	l2383
 u3000:
 	
-l6008:	
+l6004:	
 	btfsc	(_LockSta),5
 	goto	u3011
 	goto	u3010
 u3011:
 	goto	l2383
 u3010:
-	line	57
+	line	58
 	
-l6010:	
-;Key.c: 56: {
-;Key.c: 57: KeyCnt++;
+l6006:	
+;Key.c: 57: {
+;Key.c: 58: KeyCnt++;
 	incf	(_KeyCnt),f
 	skipnz
 	incf	(_KeyCnt+1),f
-	line	58
+	line	59
 	
-l6012:	
-;Key.c: 58: if(KeyCnt>=1750)
+l6008:	
+;Key.c: 59: if(KeyCnt>=1750)
 	movlw	06h
 	subwf	(_KeyCnt+1),w
 	movlw	0D6h
@@ -3254,19 +3248,19 @@ l6012:
 u3021:
 	goto	l2377
 u3020:
-	line	60
+	line	61
 	
-l6014:	
-;Key.c: 59: {
-;Key.c: 60: KeyCnt=1750;
+l6010:	
+;Key.c: 60: {
+;Key.c: 61: KeyCnt=1750;
 	movlw	0D6h
 	movwf	(_KeyCnt)
 	movlw	06h
 	movwf	((_KeyCnt))+1
-	line	61
+	line	62
 	
-l6016:	
-;Key.c: 61: LockSta.LockFlag=!LockSta.LockFlag;
+l6012:	
+;Key.c: 62: LockSta.LockFlag=!LockSta.LockFlag;
 	clrc
 	btfss	(_LockSta),6
 	setc
@@ -3284,58 +3278,58 @@ u3030:
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(_LockSta),6
 u3044:
-	line	62
+	line	63
 	
-l6018:	
-;Key.c: 62: if(LockSta.LockFlag)
+l6014:	
+;Key.c: 63: if(LockSta.LockFlag)
 	btfss	(_LockSta),6
 	goto	u3051
 	goto	u3050
 u3051:
 	goto	l2385
 u3050:
-	line	64
-	
-l6020:	
-;Key.c: 63: {
-;Key.c: 64: LockSta.LockStart=0;
-	bcf	(_LockSta),0
 	line	65
-;Key.c: 65: LockSta.LockEnd=1;
-	bsf	(_LockSta),2
+	
+l6016:	
+;Key.c: 64: {
+;Key.c: 65: LockSta.LockStart=0;
+	bcf	(_LockSta),0
 	line	66
-;Key.c: 66: WorkFlag=0;
-	bcf	(_WorkFlag/8),(_WorkFlag)&7
+;Key.c: 66: LockSta.LockEnd=1;
+	bsf	(_LockSta),2
 	line	67
-;Key.c: 67: }
-	goto	l2377
+;Key.c: 67: WorkFlag=0;
+	bcf	(_WorkFlag/8),(_WorkFlag)&7
 	line	68
+;Key.c: 68: }
+	goto	l2377
+	line	69
 	
 l2385:	
-	line	70
-;Key.c: 68: else
-;Key.c: 69: {
-;Key.c: 70: LockSta.UnlockStart=0;
-	bcf	(_LockSta),3
 	line	71
-;Key.c: 71: LockSta.UnlockEnd=1;
-	bsf	(_LockSta),5
+;Key.c: 69: else
+;Key.c: 70: {
+;Key.c: 71: LockSta.UnlockStart=0;
+	bcf	(_LockSta),3
 	line	72
-;Key.c: 72: WorkFlag=1;
+;Key.c: 72: LockSta.UnlockEnd=1;
+	bsf	(_LockSta),5
+	line	73
+;Key.c: 73: WorkFlag=1;
 	bsf	(_WorkFlag/8),(_WorkFlag)&7
 	goto	l2377
-	line	76
+	line	77
 	
 l2383:	
-;Key.c: 76: else if(!KeyPress||KeyInBuf!=KeyPress)
+;Key.c: 77: else if(!KeyPress||KeyInBuf!=KeyPress)
 	btfss	(_KeyPress/8),(_KeyPress)&7
 	goto	u3061
 	goto	u3060
 u3061:
-	goto	l6024
+	goto	l6020
 u3060:
 	
-l6022:	
+l6018:	
 	btfsc	(_KeyPress/8),(_KeyPress)&7
 	goto	u3071
 	goto	u3070
@@ -3362,22 +3356,22 @@ u3082:
 u3091:
 	goto	l2377
 u3090:
-	line	78
-	
-l6024:	
-;Key.c: 77: {
-;Key.c: 78: KeyCnt=0;
-	clrf	(_KeyCnt)
-	clrf	(_KeyCnt+1)
 	line	79
 	
-l6026:	
-;Key.c: 79: LockSta.UnlockEnd=0;
-	bcf	(_LockSta),5
+l6020:	
+;Key.c: 78: {
+;Key.c: 79: KeyCnt=0;
+	clrf	(_KeyCnt)
+	clrf	(_KeyCnt+1)
 	line	80
 	
-l6028:	
-;Key.c: 80: if((LockSta.LockFlag&&WorkFlag)||LockSta.UnlockStart)
+l6022:	
+;Key.c: 80: LockSta.UnlockEnd=0;
+	bcf	(_LockSta),5
+	line	81
+	
+l6024:	
+;Key.c: 81: if((LockSta.LockFlag&&WorkFlag)||LockSta.UnlockStart)
 	btfss	(_LockSta),6
 	goto	u3101
 	goto	u3100
@@ -3385,7 +3379,7 @@ u3101:
 	goto	l2395
 u3100:
 	
-l6030:	
+l6026:	
 	btfsc	(_WorkFlag/8),(_WorkFlag)&7
 	goto	u3111
 	goto	u3110
@@ -3402,48 +3396,48 @@ u3121:
 u3120:
 	
 l2393:	
-	line	82
-;Key.c: 81: {
-;Key.c: 82: LockSta.UnlockStart=0;
-	bcf	(_LockSta),3
 	line	83
-;Key.c: 83: LockSta.UnlockFail=1;
-	bsf	(_LockSta),4
+;Key.c: 82: {
+;Key.c: 83: LockSta.UnlockStart=0;
+	bcf	(_LockSta),3
 	line	84
-;Key.c: 84: WorkFlag=0;
-	bcf	(_WorkFlag/8),(_WorkFlag)&7
+;Key.c: 84: LockSta.UnlockFail=1;
+	bsf	(_LockSta),4
 	line	85
+;Key.c: 85: WorkFlag=0;
+	bcf	(_WorkFlag/8),(_WorkFlag)&7
+	line	86
 	
 l2391:	
-	line	86
-;Key.c: 85: }
-;Key.c: 86: if(LockSta.LockStart)
+	line	87
+;Key.c: 86: }
+;Key.c: 87: if(LockSta.LockStart)
 	btfss	(_LockSta),0
 	goto	u3131
 	goto	u3130
 u3131:
 	goto	l2377
 u3130:
-	line	88
+	line	89
 	
-l6032:	
-;Key.c: 87: {
-;Key.c: 88: LockSta.LockStart=0;
+l6028:	
+;Key.c: 88: {
+;Key.c: 89: LockSta.LockStart=0;
 	bcf	(_LockSta),0
-	line	91
+	line	92
 	
 l2377:	
-;Key.c: 89: }
 ;Key.c: 90: }
-;Key.c: 91: KeyInBuf=KeyPress;
+;Key.c: 91: }
+;Key.c: 92: KeyInBuf=KeyPress;
 	bcf	(_KeyInBuf/8),(_KeyInBuf)&7
 	btfss	(_KeyPress/8),(_KeyPress)&7
 	goto	u3145
 	bsf	(_KeyInBuf/8),(_KeyInBuf)&7
 u3145:
 
-	line	93
-;Key.c: 93: if(!RA7)
+	line	94
+;Key.c: 94: if(!RA7)
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	btfsc	(47/8),(47)&7	;volatile
@@ -3452,29 +3446,29 @@ u3145:
 u3151:
 	goto	l2397
 u3150:
-	line	95
-	
-l6034:	
-;Key.c: 94: {
-;Key.c: 95: USBLink=1;
-	bsf	(_USBLink/8),(_USBLink)&7
 	line	96
-;Key.c: 96: }
-	goto	l2398
+	
+l6030:	
+;Key.c: 95: {
+;Key.c: 96: USBLink=1;
+	bsf	(_USBLink/8),(_USBLink)&7
 	line	97
+;Key.c: 97: }
+	goto	l2398
+	line	98
 	
 l2397:	
-	line	99
-;Key.c: 97: else
-;Key.c: 98: {
-;Key.c: 99: USBLink=0;
-	bcf	(_USBLink/8),(_USBLink)&7
 	line	100
+;Key.c: 98: else
+;Key.c: 99: {
+;Key.c: 100: USBLink=0;
+	bcf	(_USBLink/8),(_USBLink)&7
+	line	101
 	
 l2398:	
-	line	102
-;Key.c: 100: }
-;Key.c: 102: if(USBLink&&!IovFlag)
+	line	103
+;Key.c: 101: }
+;Key.c: 103: if(USBLink&&!IovFlag)
 	btfss	(_USBLink/8),(_USBLink)&7
 	goto	u3161
 	goto	u3160
@@ -3482,42 +3476,42 @@ u3161:
 	goto	l2399
 u3160:
 	
-l6036:	
+l6032:	
 	btfsc	(_IovFlag/8),(_IovFlag)&7
 	goto	u3171
 	goto	u3170
 u3171:
 	goto	l2399
 u3170:
-	line	104
-	
-l6038:	
-;Key.c: 103: {
-;Key.c: 104: USBFlag=1;
-	bsf	(_USBFlag/8),(_USBFlag)&7
 	line	105
-;Key.c: 105: LockSta.LockFlag=0;
-	bcf	(_LockSta),6
+	
+l6034:	
+;Key.c: 104: {
+;Key.c: 105: USBFlag=1;
+	bsf	(_USBFlag/8),(_USBFlag)&7
 	line	106
-;Key.c: 106: }
-	goto	l2402
+;Key.c: 106: LockSta.LockFlag=0;
+	bcf	(_LockSta),6
 	line	107
+;Key.c: 107: }
+	goto	l2402
+	line	108
 	
 l2399:	
-;Key.c: 107: else if(!USBLink)
+;Key.c: 108: else if(!USBLink)
 	btfsc	(_USBLink/8),(_USBLink)&7
 	goto	u3181
 	goto	u3180
 u3181:
 	goto	l2402
 u3180:
-	line	109
+	line	110
 	
-l6040:	
-;Key.c: 108: {
-;Key.c: 109: USBFlag=0;
+l6036:	
+;Key.c: 109: {
+;Key.c: 110: USBFlag=0;
 	bcf	(_USBFlag/8),(_USBFlag)&7
-	line	111
+	line	112
 	
 l2402:	
 	return
@@ -3577,34 +3571,34 @@ _DisplayPro:
 ; Regs used in _DisplayPro: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
 	line	146
 	
-l6712:	
+l6700:	
 ;LED.c: 146: LedIndex=0;
 	bsf	status, 5	;RP0=1, select bank1
 	clrf	(_LedIndex)^080h
 	clrf	(_LedIndex+1)^080h
 	line	147
 	
-l6714:	
+l6702:	
 ;LED.c: 147: WorkLedPro();
 	fcall	_WorkLedPro
 	line	148
 	
-l6716:	
+l6704:	
 ;LED.c: 148: USBLedPro();
 	fcall	_USBLedPro
 	line	149
 	
-l6718:	
+l6706:	
 ;LED.c: 149: LockPro();
 	fcall	_LockPro
 	line	150
 	
-l6720:	
+l6708:	
 ;LED.c: 150: ErrPro();
 	fcall	_ErrPro
 	line	151
 	
-l6722:	
+l6710:	
 ;LED.c: 151: DisplayIcon(LedIndex);
 	bsf	status, 5	;RP0=1, select bank1
 	movf	(_LedIndex+1)^080h,w
@@ -3669,7 +3663,7 @@ _WorkLedPro:
 ; Regs used in _WorkLedPro: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
 	line	199
 	
-l6394:	
+l6386:	
 ;LED.c: 194: static char LedSwitchCnt=0;
 ;LED.c: 195: static bit LedSwitchFlag=0;
 ;LED.c: 196: static char index=0;
@@ -3683,7 +3677,7 @@ u3821:
 	goto	l3042
 u3820:
 	
-l6396:	
+l6388:	
 	bcf	status, 5	;RP0=0, select bank0
 	btfsc	(_LockSta),0
 	goto	u3831
@@ -3692,7 +3686,7 @@ u3831:
 	goto	l3042
 u3830:
 	
-l6398:	
+l6390:	
 	btfsc	(_OnOffFlag/8),(_OnOffFlag)&7
 	goto	u3841
 	goto	u3840
@@ -3700,7 +3694,7 @@ u3841:
 	goto	l3042
 u3840:
 	
-l6400:	
+l6392:	
 	btfsc	(_LockSta),6
 	goto	u3851
 	goto	u3850
@@ -3709,7 +3703,7 @@ u3851:
 u3850:
 	line	201
 	
-l6402:	
+l6394:	
 ;LED.c: 200: {
 ;LED.c: 201: if(BatPercent<=10)
 	movlw	low(0Bh)
@@ -3718,17 +3712,17 @@ l6402:
 	goto	u3861
 	goto	u3860
 u3861:
-	goto	l6412
+	goto	l6404
 u3860:
 	line	203
 	
-l6404:	
+l6396:	
 ;LED.c: 202: {
 ;LED.c: 203: LedSwitchCnt++;
 	incf	(WorkLedPro@LedSwitchCnt),f
 	line	204
 	
-l6406:	
+l6398:	
 ;LED.c: 204: if(LedSwitchCnt>=40)
 	movlw	low(028h)
 	subwf	(WorkLedPro@LedSwitchCnt),w
@@ -3736,36 +3730,36 @@ l6406:
 	goto	u3871
 	goto	u3870
 u3871:
-	goto	l6416
+	goto	l6408
 u3870:
 	line	206
 	
-l6408:	
+l6400:	
 ;LED.c: 205: {
 ;LED.c: 206: LedSwitchCnt=0;
 	clrf	(WorkLedPro@LedSwitchCnt)
 	line	207
 	
-l6410:	
+l6402:	
 ;LED.c: 207: LedSwitchFlag=!LedSwitchFlag;
 	movlw	1<<((WorkLedPro@LedSwitchFlag)&7)
 	xorwf	((WorkLedPro@LedSwitchFlag)/8),f
-	goto	l6416
+	goto	l6408
 	line	212
 	
-l6412:	
+l6404:	
 ;LED.c: 210: else
 ;LED.c: 211: {
 ;LED.c: 212: LedSwitchCnt=0;
 	clrf	(WorkLedPro@LedSwitchCnt)
 	line	213
 	
-l6414:	
+l6406:	
 ;LED.c: 213: LedSwitchFlag=1;
 	bsf	(WorkLedPro@LedSwitchFlag/8),(WorkLedPro@LedSwitchFlag)&7
 	line	215
 	
-l6416:	
+l6408:	
 ;LED.c: 214: }
 ;LED.c: 215: if(LedSwitchFlag)
 	btfss	(WorkLedPro@LedSwitchFlag/8),(WorkLedPro@LedSwitchFlag)&7
@@ -3776,7 +3770,7 @@ u3881:
 u3880:
 	line	217
 	
-l6418:	
+l6410:	
 ;LED.c: 216: {
 ;LED.c: 217: LedIndex|=NumbArr[BatPercent/10];
 	movlw	low(0Ah)
@@ -3791,7 +3785,7 @@ l6418:
 	iorwf	(_LedIndex)^080h,f
 	line	218
 	
-l6420:	
+l6412:	
 ;LED.c: 218: LedIndex|=(unsigned int)NumbArr[BatPercent%10]<<7;
 	movlw	low(0Ah)
 	movwf	(___lbmod@divisor)
@@ -3832,14 +3826,14 @@ u3901:
 u3900:
 	line	223
 	
-l6422:	
+l6414:	
 ;LED.c: 222: {
 ;LED.c: 223: cnt++;
 	bcf	status, 5	;RP0=0, select bank0
 	incf	(WorkLedPro@cnt),f
 	line	224
 	
-l6424:	
+l6416:	
 ;LED.c: 224: if(cnt>=40)
 	movlw	low(028h)
 	subwf	(WorkLedPro@cnt),w
@@ -3847,22 +3841,22 @@ l6424:
 	goto	u3911
 	goto	u3910
 u3911:
-	goto	l6444
+	goto	l6436
 u3910:
 	line	226
 	
-l6426:	
+l6418:	
 ;LED.c: 225: {
 ;LED.c: 226: cnt=0;
 	clrf	(WorkLedPro@cnt)
 	line	227
 	
-l6428:	
+l6420:	
 ;LED.c: 227: index++;
 	incf	(WorkLedPro@index),f
 	line	228
 	
-l6430:	
+l6422:	
 ;LED.c: 228: if(index>=7)
 	movlw	low(07h)
 	subwf	(WorkLedPro@index),w
@@ -3870,46 +3864,46 @@ l6430:
 	goto	u3921
 	goto	u3920
 u3921:
-	goto	l6444
+	goto	l6436
 u3920:
 	line	230
 	
-l6432:	
+l6424:	
 ;LED.c: 229: {
 ;LED.c: 230: if(dir)
 	btfss	(WorkLedPro@dir/8),(WorkLedPro@dir)&7
 	goto	u3931
 	goto	u3930
 u3931:
-	goto	l6440
+	goto	l6432
 u3930:
 	line	232
 	
-l6434:	
+l6426:	
 ;LED.c: 231: {
 ;LED.c: 232: OnOffFlag=0;
 	bcf	(_OnOffFlag/8),(_OnOffFlag)&7
 	line	233
 	
-l6436:	
+l6428:	
 ;LED.c: 233: WorkMin=0;
 	clrf	(_WorkMin)
 	goto	l3052
 	line	236
 	
-l6440:	
+l6432:	
 ;LED.c: 235: }
 ;LED.c: 236: dir=!dir;
 	movlw	1<<((WorkLedPro@dir)&7)
 	xorwf	((WorkLedPro@dir)/8),f
 	line	237
 	
-l6442:	
+l6434:	
 ;LED.c: 237: index=0;
 	clrf	(WorkLedPro@index)
 	line	240
 	
-l6444:	
+l6436:	
 ;LED.c: 238: }
 ;LED.c: 239: }
 ;LED.c: 240: if(!dir)
@@ -3917,11 +3911,11 @@ l6444:
 	goto	u3941
 	goto	u3940
 u3941:
-	goto	l6452
+	goto	l6444
 u3940:
 	line	242
 	
-l6446:	
+l6438:	
 ;LED.c: 241: {
 ;LED.c: 242: LedIndex=NumbArr[BatPercent/10];
 	movlw	low(0Ah)
@@ -3937,7 +3931,7 @@ l6446:
 	clrf	(_LedIndex+1)^080h
 	line	243
 	
-l6448:	
+l6440:	
 ;LED.c: 243: LedIndex|=(unsigned int)NumbArr[BatPercent%10]<<7;
 	movlw	low(0Ah)
 	movwf	(___lbmod@divisor)
@@ -3967,7 +3961,7 @@ u3955:
 	iorwf	(_LedIndex+1)^080h,f
 	line	244
 	
-l6450:	
+l6442:	
 ;LED.c: 244: LedIndex&=~OffHideNumbArr[index];
 	bcf	status, 5	;RP0=0, select bank0
 	clrc
@@ -3993,7 +3987,7 @@ l6450:
 	goto	l3052
 	line	248
 	
-l6452:	
+l6444:	
 ;LED.c: 246: else
 ;LED.c: 247: {
 ;LED.c: 248: LedIndex=NumbArr[WorkMin/10];
@@ -4010,7 +4004,7 @@ l6452:
 	clrf	(_LedIndex+1)^080h
 	line	249
 	
-l6454:	
+l6446:	
 ;LED.c: 249: LedIndex|=(unsigned int)NumbArr[WorkMin%10]<<7;
 	movlw	low(0Ah)
 	movwf	(___lbmod@divisor)
@@ -4039,7 +4033,7 @@ u3965:
 	iorwf	(_LedIndex+1)^080h,f
 	line	250
 	
-l6456:	
+l6448:	
 ;LED.c: 250: LedIndex&=~OffHideNumbArr[6-index];
 	movlw	low(-2)
 	movwf	(___bmul@multiplicand)
@@ -4124,30 +4118,30 @@ ___bmul:
 	movwf	(___bmul@multiplier)
 	line	6
 	
-l5484:	
+l5480:	
 	clrf	(___bmul@product)
 	line	43
 	
-l5486:	
+l5482:	
 	btfss	(___bmul@multiplier),(0)&7
 	goto	u1791
 	goto	u1790
 u1791:
-	goto	l5490
+	goto	l5486
 u1790:
 	line	44
 	
-l5488:	
+l5484:	
 	movf	(___bmul@multiplicand),w
 	addwf	(___bmul@product),f
 	line	45
 	
-l5490:	
+l5486:	
 	clrc
 	rlf	(___bmul@multiplicand),f
 	line	46
 	
-l5492:	
+l5488:	
 	clrc
 	rrf	(___bmul@multiplier),f
 	line	47
@@ -4156,11 +4150,11 @@ l5492:
 	goto	u1801
 	goto	u1800
 u1801:
-	goto	l5486
+	goto	l5482
 u1800:
 	line	50
 	
-l5494:	
+l5490:	
 	movf	(___bmul@product),w
 	line	51
 	
@@ -4219,7 +4213,7 @@ _USBLedPro:
 ; Regs used in _USBLedPro: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
 	line	159
 	
-l6458:	
+l6450:	
 ;LED.c: 156: static unsigned char index=0;
 ;LED.c: 157: static unsigned char cnt=0;
 ;LED.c: 159: if(USBFlag&&!WorkFlag&&!OnOffFlag)
@@ -4227,34 +4221,34 @@ l6458:
 	goto	u3971
 	goto	u3970
 u3971:
-	goto	l6490
+	goto	l6482
 u3970:
 	
-l6460:	
+l6452:	
 	btfsc	(_WorkFlag/8),(_WorkFlag)&7
 	goto	u3981
 	goto	u3980
 u3981:
-	goto	l6490
+	goto	l6482
 u3980:
 	
-l6462:	
+l6454:	
 	btfsc	(_OnOffFlag/8),(_OnOffFlag)&7
 	goto	u3991
 	goto	u3990
 u3991:
-	goto	l6490
+	goto	l6482
 u3990:
 	line	161
 	
-l6464:	
+l6456:	
 ;LED.c: 160: {
 ;LED.c: 161: cnt++;
 	bcf	status, 5	;RP0=0, select bank0
 	incf	(USBLedPro@cnt),f
 	line	162
 	
-l6466:	
+l6458:	
 ;LED.c: 162: if(cnt>=40)
 	movlw	low(028h)
 	subwf	(USBLedPro@cnt),w
@@ -4262,22 +4256,22 @@ l6466:
 	goto	u4001
 	goto	u4000
 u4001:
-	goto	l6476
+	goto	l6468
 u4000:
 	line	164
 	
-l6468:	
+l6460:	
 ;LED.c: 163: {
 ;LED.c: 164: cnt=0;
 	clrf	(USBLedPro@cnt)
 	line	165
 	
-l6470:	
+l6462:	
 ;LED.c: 165: index++;
 	incf	(USBLedPro@index),f
 	line	166
 	
-l6472:	
+l6464:	
 ;LED.c: 166: if(index>=11)
 	movlw	low(0Bh)
 	subwf	(USBLedPro@index),w
@@ -4285,17 +4279,17 @@ l6472:
 	goto	u4011
 	goto	u4010
 u4011:
-	goto	l6476
+	goto	l6468
 u4010:
 	line	168
 	
-l6474:	
+l6466:	
 ;LED.c: 167: {
 ;LED.c: 168: index=0;
 	clrf	(USBLedPro@index)
 	line	171
 	
-l6476:	
+l6468:	
 ;LED.c: 169: }
 ;LED.c: 170: }
 ;LED.c: 171: if(BatPercent<99)
@@ -4305,11 +4299,11 @@ l6476:
 	goto	u4021
 	goto	u4020
 u4021:
-	goto	l6484
+	goto	l6476
 u4020:
 	line	173
 	
-l6478:	
+l6470:	
 ;LED.c: 172: {
 ;LED.c: 173: LedIndex=NumbArr[BatPercent/10];
 	movlw	low(0Ah)
@@ -4325,7 +4319,7 @@ l6478:
 	clrf	(_LedIndex+1)^080h
 	line	174
 	
-l6480:	
+l6472:	
 ;LED.c: 174: LedIndex|=((unsigned int)NumbArr[BatPercent%10]&~HideNumbArr[index])<<7;
 	movlw	low(0Ah)
 	movwf	(___lbmod@divisor)
@@ -4361,7 +4355,7 @@ u4035:
 	iorwf	(_LedIndex+1)^080h,f
 	line	175
 	
-l6482:	
+l6474:	
 ;LED.c: 175: LedIndex&=~HideNumbArr[index];
 	bcf	status, 5	;RP0=0, select bank0
 	movf	(USBLedPro@index),w
@@ -4383,14 +4377,14 @@ l6482:
 	goto	l3029
 	line	179
 	
-l6484:	
+l6476:	
 ;LED.c: 177: else
 ;LED.c: 178: {
 ;LED.c: 179: index=0;
 	clrf	(USBLedPro@index)
 	line	180
 	
-l6486:	
+l6478:	
 ;LED.c: 180: LedIndex=NumbArr[BatPercent/10];
 	movlw	low(0Ah)
 	movwf	(___lbdiv@divisor)
@@ -4405,7 +4399,7 @@ l6486:
 	clrf	(_LedIndex+1)^080h
 	line	181
 	
-l6488:	
+l6480:	
 ;LED.c: 181: LedIndex|=NumbArr[BatPercent%10]<<7;
 	movlw	low(0Ah)
 	movwf	(___lbmod@divisor)
@@ -4436,7 +4430,7 @@ u4045:
 	goto	l3029
 	line	187
 	
-l6490:	
+l6482:	
 ;LED.c: 185: else
 ;LED.c: 186: {
 ;LED.c: 187: index=0;
@@ -4507,16 +4501,16 @@ ___lbmod:
 	movwf	(___lbmod@dividend)
 	line	9
 	
-l5522:	
+l5518:	
 	movlw	low(08h)
 	movwf	(___lbmod@counter)
 	line	10
 	
-l5524:	
+l5520:	
 	clrf	(___lbmod@rem)
 	line	12
 	
-l5526:	
+l5522:	
 	movf	(___lbmod@dividend),w
 	movwf	(??___lbmod+0)+0
 	movlw	07h
@@ -4532,37 +4526,37 @@ u1855:
 	movwf	(___lbmod@rem)
 	line	13
 	
-l5528:	
+l5524:	
 	clrc
 	rlf	(___lbmod@dividend),f
 	line	14
 	
-l5530:	
+l5526:	
 	movf	(___lbmod@divisor),w
 	subwf	(___lbmod@rem),w
 	skipc
 	goto	u1861
 	goto	u1860
 u1861:
-	goto	l5534
+	goto	l5530
 u1860:
 	line	15
 	
-l5532:	
+l5528:	
 	movf	(___lbmod@divisor),w
 	subwf	(___lbmod@rem),f
 	line	16
 	
-l5534:	
+l5530:	
 	decfsz	(___lbmod@counter),f
 	goto	u1871
 	goto	u1870
 u1871:
-	goto	l5526
+	goto	l5522
 u1870:
 	line	17
 	
-l5536:	
+l5532:	
 	movf	(___lbmod@rem),w
 	line	18
 	
@@ -4626,25 +4620,25 @@ ___lbdiv:
 	movwf	(___lbdiv@dividend)
 	line	9
 	
-l5498:	
+l5494:	
 	clrf	(___lbdiv@quotient)
 	line	10
 	
-l5500:	
+l5496:	
 	movf	((___lbdiv@divisor)),w
 	btfsc	status,2
 	goto	u1811
 	goto	u1810
 u1811:
-	goto	l5518
+	goto	l5514
 u1810:
 	line	11
 	
-l5502:	
+l5498:	
 	clrf	(___lbdiv@counter)
 	incf	(___lbdiv@counter),f
 	line	12
-	goto	l5506
+	goto	l5502
 	
 l4476:	
 	line	13
@@ -4652,11 +4646,11 @@ l4476:
 	rlf	(___lbdiv@divisor),f
 	line	14
 	
-l5504:	
+l5500:	
 	incf	(___lbdiv@counter),f
 	line	12
 	
-l5506:	
+l5502:	
 	btfss	(___lbdiv@divisor),(7)&7
 	goto	u1821
 	goto	u1820
@@ -4671,32 +4665,32 @@ l4478:
 	rlf	(___lbdiv@quotient),f
 	line	18
 	
-l5508:	
+l5504:	
 	movf	(___lbdiv@divisor),w
 	subwf	(___lbdiv@dividend),w
 	skipc
 	goto	u1831
 	goto	u1830
 u1831:
-	goto	l5514
+	goto	l5510
 u1830:
 	line	19
 	
-l5510:	
+l5506:	
 	movf	(___lbdiv@divisor),w
 	subwf	(___lbdiv@dividend),f
 	line	20
 	
-l5512:	
+l5508:	
 	bsf	(___lbdiv@quotient)+(0/8),(0)&7
 	line	22
 	
-l5514:	
+l5510:	
 	clrc
 	rrf	(___lbdiv@divisor),f
 	line	23
 	
-l5516:	
+l5512:	
 	decfsz	(___lbdiv@counter),f
 	goto	u1841
 	goto	u1840
@@ -4705,7 +4699,7 @@ u1841:
 u1840:
 	line	25
 	
-l5518:	
+l5514:	
 	movf	(___lbdiv@quotient),w
 	line	26
 	
@@ -4763,7 +4757,7 @@ _LockPro:
 ; Regs used in _LockPro: [wreg-fsr0h+status,2+status,0+btemp+1]
 	line	260
 	
-l5734:	
+l5730:	
 ;LED.c: 257: static unsigned char SwitchCnt=0,LockSwitchCnt=0;
 ;LED.c: 258: static unsigned char Ledcnt=0;
 ;LED.c: 259: static bit LedSwitchFlag=0;
@@ -4776,7 +4770,7 @@ u2291:
 u2290:
 	line	262
 	
-l5736:	
+l5732:	
 ;LED.c: 261: {
 ;LED.c: 262: if(LockSta.LockStart||LockSta.UnlockStart)
 	bcf	status, 5	;RP0=0, select bank0
@@ -4784,25 +4778,25 @@ l5736:
 	goto	u2301
 	goto	u2300
 u2301:
-	goto	l5740
+	goto	l5736
 u2300:
 	
-l5738:	
+l5734:	
 	btfss	(_LockSta),3
 	goto	u2311
 	goto	u2310
 u2311:
-	goto	l5758
+	goto	l5754
 u2310:
 	line	264
 	
-l5740:	
+l5736:	
 ;LED.c: 263: {
 ;LED.c: 264: SwitchCnt++;
 	incf	(LockPro@SwitchCnt),f
 	line	265
 	
-l5742:	
+l5738:	
 ;LED.c: 265: if(SwitchCnt>=100)
 	movlw	low(064h)
 	subwf	(LockPro@SwitchCnt),w
@@ -4810,34 +4804,34 @@ l5742:
 	goto	u2321
 	goto	u2320
 u2321:
-	goto	l5750
+	goto	l5746
 u2320:
 	line	267
 	
-l5744:	
+l5740:	
 ;LED.c: 266: {
 ;LED.c: 267: SwitchCnt=0;
 	clrf	(LockPro@SwitchCnt)
 	line	268
 	
-l5746:	
+l5742:	
 ;LED.c: 268: if(LockNumb>0)
 	movf	((_LockNumb)),w
 	btfsc	status,2
 	goto	u2331
 	goto	u2330
 u2331:
-	goto	l5750
+	goto	l5746
 u2330:
 	line	270
 	
-l5748:	
+l5744:	
 ;LED.c: 269: {
 ;LED.c: 270: LockNumb--;
 	decf	(_LockNumb),f
 	line	273
 	
-l5750:	
+l5746:	
 ;LED.c: 271: }
 ;LED.c: 272: }
 ;LED.c: 273: LedIndex=NumbArr[0];
@@ -4847,7 +4841,7 @@ l5750:
 	clrf	(_LedIndex+1)^080h
 	line	274
 	
-l5752:	
+l5748:	
 ;LED.c: 274: LedIndex|=(unsigned int)NumbArr[LockNumb+1]<<7;
 	bcf	status, 5	;RP0=0, select bank0
 	movf	(_LockNumb),w
@@ -4872,33 +4866,33 @@ u2345:
 	iorwf	(_LedIndex+1)^080h,f
 	line	275
 	
-l5754:	
+l5750:	
 ;LED.c: 275: if(LockSta.UnlockStart)
 	bcf	status, 5	;RP0=0, select bank0
 	btfss	(_LockSta),3
 	goto	u2351
 	goto	u2350
 u2351:
-	goto	l5760
+	goto	l5756
 u2350:
 	line	277
 	
-l5756:	
+l5752:	
 ;LED.c: 276: {
 ;LED.c: 277: LedIndex|=0x8000;
 	bsf	status, 5	;RP0=1, select bank1
 	bsf	(_LedIndex)^080h+(15/8),(15)&7
-	goto	l5760
+	goto	l5756
 	line	282
 	
-l5758:	
+l5754:	
 ;LED.c: 280: else
 ;LED.c: 281: {
 ;LED.c: 282: SwitchCnt=0;
 	clrf	(LockPro@SwitchCnt)
 	line	284
 	
-l5760:	
+l5756:	
 ;LED.c: 283: }
 ;LED.c: 284: if(LockSta.LockEnd||LockSta.UnlockFail)
 	bcf	status, 5	;RP0=0, select bank0
@@ -4906,25 +4900,25 @@ l5760:
 	goto	u2361
 	goto	u2360
 u2361:
-	goto	l5764
+	goto	l5760
 u2360:
 	
-l5762:	
+l5758:	
 	btfss	(_LockSta),4
 	goto	u2371
 	goto	u2370
 u2371:
-	goto	l5782
+	goto	l5778
 u2370:
 	line	286
 	
-l5764:	
+l5760:	
 ;LED.c: 285: {
 ;LED.c: 286: LockSwitchCnt++;
 	incf	(LockPro@LockSwitchCnt),f
 	line	287
 	
-l5766:	
+l5762:	
 ;LED.c: 287: if(LockSwitchCnt>=35)
 	movlw	low(023h)
 	subwf	(LockPro@LockSwitchCnt),w
@@ -4936,19 +4930,19 @@ u2381:
 u2380:
 	line	289
 	
-l5768:	
+l5764:	
 ;LED.c: 288: {
 ;LED.c: 289: LockSwitchCnt=0;
 	clrf	(LockPro@LockSwitchCnt)
 	line	290
 	
-l5770:	
+l5766:	
 ;LED.c: 290: LedSwitchFlag=!LedSwitchFlag;
 	movlw	1<<((LockPro@LedSwitchFlag)&7)
 	xorwf	((LockPro@LedSwitchFlag)/8),f
 	line	291
 	
-l5772:	
+l5768:	
 ;LED.c: 291: if(!LedSwitchFlag)
 	btfsc	(LockPro@LedSwitchFlag/8),(LockPro@LedSwitchFlag)&7
 	goto	u2391
@@ -4958,13 +4952,13 @@ u2391:
 u2390:
 	line	293
 	
-l5774:	
+l5770:	
 ;LED.c: 292: {
 ;LED.c: 293: Ledcnt++;
 	incf	(LockPro@Ledcnt),f
 	line	294
 	
-l5776:	
+l5772:	
 ;LED.c: 294: if(Ledcnt>=4)
 	movlw	low(04h)
 	subwf	(LockPro@Ledcnt),w
@@ -4976,7 +4970,7 @@ u2401:
 u2400:
 	line	296
 	
-l5778:	
+l5774:	
 ;LED.c: 295: {
 ;LED.c: 296: LockSta.LockEnd=0;
 	bcf	(_LockSta),2
@@ -4999,7 +4993,7 @@ u2411:
 u2410:
 	line	303
 	
-l5780:	
+l5776:	
 ;LED.c: 302: {
 ;LED.c: 303: LedIndex=0x8000;
 	movlw	0
@@ -5010,7 +5004,7 @@ l5780:
 	goto	l3081
 	line	308
 	
-l5782:	
+l5778:	
 ;LED.c: 306: else
 ;LED.c: 307: {
 ;LED.c: 308: Ledcnt=0;
@@ -5073,7 +5067,7 @@ _ErrPro:
 ; Regs used in _ErrPro: [wreg+status,2+status,0]
 	line	318
 	
-l5784:	
+l5780:	
 ;LED.c: 316: static unsigned char SwitchCnt=0;
 ;LED.c: 317: static bit LedSwitchFlag=0;
 ;LED.c: 318: if(IovFlag)
@@ -5081,18 +5075,18 @@ l5784:
 	goto	u2421
 	goto	u2420
 u2421:
-	goto	l5798
+	goto	l5794
 u2420:
 	line	320
 	
-l5786:	
+l5782:	
 ;LED.c: 319: {
 ;LED.c: 320: SwitchCnt++;
 	bcf	status, 5	;RP0=0, select bank0
 	incf	(ErrPro@SwitchCnt),f
 	line	321
 	
-l5788:	
+l5784:	
 ;LED.c: 321: if(SwitchCnt>=35)
 	movlw	low(023h)
 	subwf	(ErrPro@SwitchCnt),w
@@ -5100,23 +5094,23 @@ l5788:
 	goto	u2431
 	goto	u2430
 u2431:
-	goto	l5794
+	goto	l5790
 u2430:
 	line	323
 	
-l5790:	
+l5786:	
 ;LED.c: 322: {
 ;LED.c: 323: SwitchCnt=0;
 	clrf	(ErrPro@SwitchCnt)
 	line	324
 	
-l5792:	
+l5788:	
 ;LED.c: 324: LedSwitchFlag=!LedSwitchFlag;
 	movlw	1<<((ErrPro@LedSwitchFlag)&7)
 	xorwf	((ErrPro@LedSwitchFlag)/8),f
 	line	327
 	
-l5794:	
+l5790:	
 ;LED.c: 326: }
 ;LED.c: 327: if(LedSwitchFlag)
 	btfss	(ErrPro@LedSwitchFlag/8),(ErrPro@LedSwitchFlag)&7
@@ -5127,7 +5121,7 @@ u2441:
 u2440:
 	line	329
 	
-l5796:	
+l5792:	
 ;LED.c: 328: {
 ;LED.c: 329: LedIndex=0x4000;
 	movlw	0
@@ -5138,7 +5132,7 @@ l5796:
 	goto	l3092
 	line	334
 	
-l5798:	
+l5794:	
 ;LED.c: 332: else
 ;LED.c: 333: {
 ;LED.c: 334: SwitchCnt=0;
@@ -5200,10 +5194,10 @@ _DisplayIcon:
 ; Regs used in _DisplayIcon: [wreg-fsr0h+status,2+status,0+pclath]
 	line	126
 	
-l6372:	
+l6364:	
 	line	127
 	
-l6374:	
+l6366:	
 ;LED.c: 127: unsigned int Mask=0x01;
 	bcf	status, 5	;RP0=0, select bank0
 	clrf	(DisplayIcon@Mask)
@@ -5211,12 +5205,12 @@ l6374:
 	clrf	(DisplayIcon@Mask+1)
 	line	129
 	
-l6376:	
+l6368:	
 ;LED.c: 129: for(i=0;i<16;i++)
 	clrf	(DisplayIcon@i)
 	line	131
 	
-l6382:	
+l6374:	
 ;LED.c: 130: {
 ;LED.c: 131: if(index&Mask)
 	movf	(DisplayIcon@Mask),w
@@ -5231,11 +5225,11 @@ iorwf	((??_DisplayIcon+0)+1),w
 	goto	u3781
 	goto	u3780
 u3781:
-	goto	l6386
+	goto	l6378
 u3780:
 	line	133
 	
-l6384:	
+l6376:	
 ;LED.c: 132: {
 ;LED.c: 133: LEDArrMap[LEDSeg1[i]]|=(1<<LEDSeg2[i]);
 	movlw	low(01h)
@@ -5265,10 +5259,10 @@ u3794:
 	iorwf	indf,f
 	line	134
 ;LED.c: 134: }
-	goto	l6388
+	goto	l6380
 	line	137
 	
-l6386:	
+l6378:	
 ;LED.c: 135: else
 ;LED.c: 136: {
 ;LED.c: 137: LEDArrMap[LEDSeg1[i]]&=~(1<<LEDSeg2[i]);
@@ -5300,7 +5294,7 @@ u3804:
 	andwf	indf,f
 	line	140
 	
-l6388:	
+l6380:	
 ;LED.c: 138: }
 ;LED.c: 140: Mask<<=1;
 	clrc
@@ -5308,17 +5302,17 @@ l6388:
 	rlf	(DisplayIcon@Mask+1),f
 	line	129
 	
-l6390:	
+l6382:	
 	incf	(DisplayIcon@i),f
 	
-l6392:	
+l6384:	
 	movlw	low(010h)
 	subwf	(DisplayIcon@i),w
 	skipc
 	goto	u3811
 	goto	u3810
 u3811:
-	goto	l6382
+	goto	l6374
 u3810:
 	line	142
 	
@@ -5376,12 +5370,12 @@ _ADCPro:
 ; Regs used in _ADCPro: [wreg-fsr0h+status,2+status,0+pclath+cstack]
 	line	13
 	
-l6534:	
+l6526:	
 ;ADC.c: 13: switch (ADCState)
-	goto	l6544
+	goto	l6536
 	line	16
 	
-l6536:	
+l6528:	
 ;ADC.c: 16: ADCRead(0b00001111,ADCVal);
 	movlw	(low(_ADCVal|((0x0)<<8)))&0ffh
 	movwf	(ADCRead@Val)
@@ -5392,7 +5386,7 @@ l6536:
 	goto	l575
 	line	20
 	
-l6538:	
+l6530:	
 ;ADC.c: 20: ADCRead(0b00000010,ADCVal+1);
 	movlw	(low(_ADCVal|((0x0)<<8)+02h))&0ffh
 	movwf	(ADCRead@Val)
@@ -5403,7 +5397,7 @@ l6538:
 	goto	l575
 	line	24
 	
-l6540:	
+l6532:	
 ;ADC.c: 24: ADCRead(0b00000001,ADCVal+2);
 	movlw	(low(_ADCVal|((0x0)<<8)+04h))&0ffh
 	movwf	(ADCRead@Val)
@@ -5414,7 +5408,7 @@ l6540:
 	goto	l575
 	line	13
 	
-l6544:	
+l6536:	
 	movf	(_ADCState),w
 	; Switch size 1, requested type "space"
 ; Number of cases is 3, Range of values is 0 to 2
@@ -5430,18 +5424,18 @@ l6544:
 	subwf	fsr,w
 skipnc
 goto l575
-movlw high(S6992)
+movlw high(S6976)
 movwf pclath
-	movlw low(S6992)
+	movlw low(S6976)
 	addwf fsr,w
 	movwf pc
 psect	swtext1,local,class=CONST,delta=2
 global __pswtext1
 __pswtext1:
-S6992:
-	ljmp	l6536
-	ljmp	l6538
-	ljmp	l6540
+S6976:
+	ljmp	l6528
+	ljmp	l6530
+	ljmp	l6532
 psect	text19
 
 	line	26
@@ -5453,11 +5447,11 @@ l575:
 	goto	u4111
 	goto	u4110
 u4111:
-	goto	l6560
+	goto	l6552
 u4110:
 	line	29
 	
-l6546:	
+l6538:	
 ;ADC.c: 28: {
 ;ADC.c: 29: if(ADCVal[2]<267)
 	movlw	01h
@@ -5469,20 +5463,20 @@ l6546:
 	goto	u4121
 	goto	u4120
 u4121:
-	goto	l6550
+	goto	l6542
 u4120:
 	line	31
 	
-l6548:	
+l6540:	
 ;ADC.c: 30: {
 ;ADC.c: 31: BatPercent=0;
 	clrf	(_BatPercent)
 	line	32
 ;ADC.c: 32: }
-	goto	l6560
+	goto	l6552
 	line	33
 	
-l6550:	
+l6542:	
 ;ADC.c: 33: else if(ADCVal[2]>350)
 	movlw	01h
 	subwf	1+(_ADCVal)+04h,w
@@ -5493,21 +5487,21 @@ l6550:
 	goto	u4131
 	goto	u4130
 u4131:
-	goto	l6554
+	goto	l6546
 u4130:
 	line	35
 	
-l6552:	
+l6544:	
 ;ADC.c: 34: {
 ;ADC.c: 35: BatPercent=99;
 	movlw	low(063h)
 	movwf	(_BatPercent)
 	line	36
 ;ADC.c: 36: }
-	goto	l6560
+	goto	l6552
 	line	39
 	
-l6554:	
+l6546:	
 ;ADC.c: 37: else
 ;ADC.c: 38: {
 ;ADC.c: 39: BatPercent=ADCVal[2]-250;
@@ -5516,7 +5510,7 @@ l6554:
 	movwf	(_BatPercent)
 	line	50
 	
-l6560:	
+l6552:	
 ;ADC.c: 49: }
 ;ADC.c: 50: if(ADCVal[1]>58)
 	movlw	0
@@ -5528,17 +5522,17 @@ l6560:
 	goto	u4141
 	goto	u4140
 u4141:
-	goto	l6570
+	goto	l6562
 u4140:
 	line	52
 	
-l6562:	
+l6554:	
 ;ADC.c: 51: {
 ;ADC.c: 52: CurrentCnt++;
 	incf	(_CurrentCnt),f
 	line	53
 	
-l6564:	
+l6556:	
 ;ADC.c: 53: if(CurrentCnt>=200)
 	movlw	low(0C8h)
 	subwf	(_CurrentCnt),w
@@ -5550,27 +5544,27 @@ u4151:
 u4150:
 	line	55
 	
-l6566:	
+l6558:	
 ;ADC.c: 54: {
 ;ADC.c: 55: CurrentCnt=200;
 	movlw	low(0C8h)
 	movwf	(_CurrentCnt)
 	line	56
 	
-l6568:	
+l6560:	
 ;ADC.c: 56: IovFlag=1;
 	bsf	(_IovFlag/8),(_IovFlag)&7
 	goto	l588
 	line	61
 	
-l6570:	
+l6562:	
 ;ADC.c: 59: else
 ;ADC.c: 60: {
 ;ADC.c: 61: CurrentCnt=0;
 	clrf	(_CurrentCnt)
 	line	62
 	
-l6572:	
+l6564:	
 ;ADC.c: 62: IovFlag=0;
 	bcf	(_IovFlag/8),(_IovFlag)&7
 	line	64
@@ -5638,7 +5632,7 @@ _ADCRead:
 	movwf	(ADCRead@ch)^080h
 	line	180
 	
-l6324:	
+l6316:	
 ;ADC.c: 178: unsigned int ad_temp,AD_H,AD_L;
 ;ADC.c: 180: if(ADSample(ch))
 	movf	(ADCRead@ch)^080h,w
@@ -5652,7 +5646,7 @@ u3681:
 u3680:
 	line	182
 	
-l6326:	
+l6318:	
 ;ADC.c: 181: {
 ;ADC.c: 182: AD_H=ADRESH;
 	movf	(30),w	;volatile
@@ -5690,7 +5684,7 @@ l6326:
 	bsf	status, 5	;RP0=1, select bank1
 	movwf	(ADCRead@ad_temp+1)^080h
 	
-l6328:	
+l6320:	
 	movf	(ADCRead@AD_L+1)^080h,w
 	bcf	status, 5	;RP0=0, select bank0
 	movwf	(??_ADCRead+0)+0+1
@@ -5715,7 +5709,7 @@ u3695:
 	iorwf	(ADCRead@ad_temp+1)^080h,f
 	line	185
 	
-l6330:	
+l6322:	
 ;ADC.c: 185: if(ad_temp>ADCMax)
 	movf	(ADCRead@ad_temp+1)^080h,w
 	bcf	status, 5	;RP0=0, select bank0
@@ -5735,7 +5729,7 @@ u3701:
 u3700:
 	line	187
 	
-l6332:	
+l6324:	
 ;ADC.c: 186: {
 ;ADC.c: 187: ADCMax=ad_temp;
 	bsf	status, 5	;RP0=1, select bank1
@@ -5770,7 +5764,7 @@ u3711:
 u3710:
 	line	191
 	
-l6334:	
+l6326:	
 ;ADC.c: 190: {
 ;ADC.c: 191: ADCMin=ad_temp;
 	movf	(ADCRead@ad_temp+1)^080h,w
@@ -5825,12 +5819,12 @@ u3723:
 
 	line	194
 	
-l6336:	
+l6328:	
 ;ADC.c: 194: ADcnt++;
 	incf	(_ADcnt),f
 	line	195
 	
-l6338:	
+l6330:	
 ;ADC.c: 195: if(ADcnt >= 10)
 	movlw	low(0Ah)
 	subwf	(_ADcnt),w
@@ -5842,13 +5836,13 @@ u3731:
 u3730:
 	line	197
 	
-l6340:	
+l6332:	
 ;ADC.c: 196: {
 ;ADC.c: 197: ADcnt = 0;
 	clrf	(_ADcnt)
 	line	198
 	
-l6342:	
+l6334:	
 ;ADC.c: 198: ADsum= ADsum-ADCMax-ADCMin;
 	movf	(_ADCMin),w
 	movwf	((??_ADCRead+0)+0)
@@ -5924,7 +5918,7 @@ u3753:
 
 	line	199
 	
-l6344:	
+l6336:	
 ;ADC.c: 199: ADsum = ADsum >> 3;
 	movlw	03h
 u3765:
@@ -5939,10 +5933,10 @@ u3765:
 
 	line	200
 ;ADC.c: 200: switch (ADCState)
-	goto	l6354
+	goto	l6346
 	line	203
 	
-l6346:	
+l6338:	
 ;ADC.c: 203: *Val=ADsum;
 	movf	(ADCRead@Val),w
 	movwf	fsr0
@@ -5954,10 +5948,10 @@ l6346:
 	movwf	indf
 	line	204
 ;ADC.c: 204: break;
-	goto	l6356
+	goto	l6348
 	line	207
 	
-l6348:	
+l6340:	
 ;ADC.c: 207: *Val=ADsum*1000/(*(Val-1));
 	movf	(ADCRead@Val),w
 	addlw	-2
@@ -6012,10 +6006,10 @@ l6348:
 	movwf	indf
 	line	208
 ;ADC.c: 208: break;
-	goto	l6356
+	goto	l6348
 	line	211
 	
-l6350:	
+l6342:	
 ;ADC.c: 211: *Val=ADsum*100/(*(Val-2));
 	movf	(ADCRead@Val),w
 	addlw	-4
@@ -6067,10 +6061,10 @@ l6350:
 	movwf	indf
 	line	212
 ;ADC.c: 212: break;
-	goto	l6356
+	goto	l6348
 	line	200
 	
-l6354:	
+l6346:	
 	movf	(_ADCState),w
 	; Switch size 1, requested type "space"
 ; Number of cases is 3, Range of values is 0 to 2
@@ -6085,30 +6079,30 @@ l6354:
 	movlw	3
 	subwf	fsr,w
 skipnc
-goto l6356
-movlw high(S6994)
+goto l6348
+movlw high(S6978)
 movwf pclath
-	movlw low(S6994)
+	movlw low(S6978)
 	addwf fsr,w
 	movwf pc
 psect	swtext2,local,class=CONST,delta=2
 global __pswtext2
 __pswtext2:
-S6994:
-	ljmp	l6346
-	ljmp	l6348
-	ljmp	l6350
+S6978:
+	ljmp	l6338
+	ljmp	l6340
+	ljmp	l6342
 psect	text20
 
 	line	214
 	
-l6356:	
+l6348:	
 ;ADC.c: 214: ADCMax=0;
 	clrf	(_ADCMax)
 	clrf	(_ADCMax+1)
 	line	215
 	
-l6358:	
+l6350:	
 ;ADC.c: 215: ADCMin=0xFFFF;
 	movlw	0FFh
 	movwf	(_ADCMin)
@@ -6116,7 +6110,7 @@ l6358:
 	movwf	((_ADCMin))+1
 	line	216
 	
-l6360:	
+l6352:	
 ;ADC.c: 216: ADsum = 0;
 	clrf	(_ADsum)
 	clrf	(_ADsum+1)
@@ -6124,12 +6118,12 @@ l6360:
 	clrf	(_ADsum+3)
 	line	217
 	
-l6362:	
+l6354:	
 ;ADC.c: 217: ADCState++;
 	incf	(_ADCState),f
 	line	218
 	
-l6364:	
+l6356:	
 ;ADC.c: 218: if(ADCState>=3)
 	movlw	low(03h)
 	subwf	(_ADCState),w
@@ -6141,7 +6135,7 @@ u3771:
 u3770:
 	line	220
 	
-l6366:	
+l6358:	
 ;ADC.c: 219: {
 ;ADC.c: 220: ADCState=0;
 	clrf	(_ADCState)
@@ -6202,7 +6196,7 @@ ___lmul:
 ; Regs used in ___lmul: [wreg+status,2+status,0]
 	line	119
 	
-l6286:	
+l6278:	
 	clrf	(___lmul@product)
 	clrf	(___lmul@product+1)
 	clrf	(___lmul@product+2)
@@ -6215,11 +6209,11 @@ l4227:
 	goto	u3611
 	goto	u3610
 u3611:
-	goto	l6290
+	goto	l6282
 u3610:
 	line	122
 	
-l6288:	
+l6280:	
 	movf	(___lmul@multiplicand),w
 	addwf	(___lmul@product),f
 	movf	(___lmul@multiplicand+1),w
@@ -6249,7 +6243,7 @@ u3623:
 
 	line	123
 	
-l6290:	
+l6282:	
 	clrc
 	rlf	(___lmul@multiplicand),f
 	rlf	(___lmul@multiplicand+1),f
@@ -6257,7 +6251,7 @@ l6290:
 	rlf	(___lmul@multiplicand+3),f
 	line	124
 	
-l6292:	
+l6284:	
 	clrc
 	rrf	(___lmul@multiplier+3),f
 	rrf	(___lmul@multiplier+2),f
@@ -6276,7 +6270,7 @@ u3631:
 u3630:
 	line	128
 	
-l6294:	
+l6286:	
 	movf	(___lmul@product+3),w
 	movwf	(?___lmul+3)
 	movf	(___lmul@product+2),w
@@ -6344,14 +6338,14 @@ ___lldiv:
 ; Regs used in ___lldiv: [wreg+status,2+status,0]
 	line	14
 	
-l6298:	
+l6290:	
 	clrf	(___lldiv@quotient)
 	clrf	(___lldiv@quotient+1)
 	clrf	(___lldiv@quotient+2)
 	clrf	(___lldiv@quotient+3)
 	line	15
 	
-l6300:	
+l6292:	
 	movf	(___lldiv@divisor+3),w
 	iorwf	(___lldiv@divisor+2),w
 	iorwf	(___lldiv@divisor+1),w
@@ -6360,18 +6354,18 @@ l6300:
 	goto	u3641
 	goto	u3640
 u3641:
-	goto	l6320
+	goto	l6312
 u3640:
 	line	16
 	
-l6302:	
+l6294:	
 	clrf	(___lldiv@counter)
 	incf	(___lldiv@counter),f
 	line	17
-	goto	l6306
+	goto	l6298
 	line	18
 	
-l6304:	
+l6296:	
 	clrc
 	rlf	(___lldiv@divisor),f
 	rlf	(___lldiv@divisor+1),f
@@ -6381,16 +6375,16 @@ l6304:
 	incf	(___lldiv@counter),f
 	line	17
 	
-l6306:	
+l6298:	
 	btfss	(___lldiv@divisor+3),(31)&7
 	goto	u3651
 	goto	u3650
 u3651:
-	goto	l6304
+	goto	l6296
 u3650:
 	line	22
 	
-l6308:	
+l6300:	
 	clrc
 	rlf	(___lldiv@quotient),f
 	rlf	(___lldiv@quotient+1),f
@@ -6398,7 +6392,7 @@ l6308:
 	rlf	(___lldiv@quotient+3),f
 	line	23
 	
-l6310:	
+l6302:	
 	movf	(___lldiv@divisor+3),w
 	subwf	(___lldiv@dividend+3),w
 	skipz
@@ -6418,11 +6412,11 @@ u3665:
 	goto	u3661
 	goto	u3660
 u3661:
-	goto	l6316
+	goto	l6308
 u3660:
 	line	24
 	
-l6312:	
+l6304:	
 	movf	(___lldiv@divisor),w
 	subwf	(___lldiv@dividend),f
 	movf	(___lldiv@divisor+1),w
@@ -6439,11 +6433,11 @@ l6312:
 	subwf	(___lldiv@dividend+3),f
 	line	25
 	
-l6314:	
+l6306:	
 	bsf	(___lldiv@quotient)+(0/8),(0)&7
 	line	27
 	
-l6316:	
+l6308:	
 	clrc
 	rrf	(___lldiv@divisor+3),f
 	rrf	(___lldiv@divisor+2),f
@@ -6451,16 +6445,16 @@ l6316:
 	rrf	(___lldiv@divisor),f
 	line	28
 	
-l6318:	
+l6310:	
 	decfsz	(___lldiv@counter),f
 	goto	u3671
 	goto	u3670
 u3671:
-	goto	l6308
+	goto	l6300
 u3670:
 	line	30
 	
-l6320:	
+l6312:	
 	movf	(___lldiv@quotient+3),w
 	movwf	(?___lldiv+3)
 	movf	(___lldiv@quotient+2),w
@@ -6529,12 +6523,12 @@ _ADSample:
 	movwf	(ADSample@ch)
 	line	235
 	
-l6270:	
+l6262:	
 ;ADC.c: 235: ADCON1 = 0x00;
 	clrf	(159)^080h	;volatile
 	line	236
 	
-l6272:	
+l6264:	
 ;ADC.c: 236: ADCON0 = 0X41 | ( ch << 2);
 	movf	(ADSample@ch),w
 	movwf	(??_ADSample+0)+0
@@ -6559,14 +6553,14 @@ nop ;#
 psect	text23
 	line	239
 	
-l6274:	
+l6266:	
 ;ADC.c: 239: GODONE = 1;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bsf	(249/8),(249)&7	;volatile
 	line	240
 	
-l6276:	
+l6268:	
 ;ADC.c: 240: volatile unsigned char i = 0;
 	clrf	(ADSample@i)	;volatile
 	line	241
@@ -6585,7 +6579,7 @@ u3591:
 u3590:
 	line	244
 	
-l6278:	
+l6270:	
 ;ADC.c: 244: return 0;
 	movlw	low(0)
 	goto	l642
@@ -6601,7 +6595,7 @@ u3601:
 u3600:
 	line	246
 	
-l6282:	
+l6274:	
 ;ADC.c: 245: }
 ;ADC.c: 246: return 1;
 	movlw	low(01h)
@@ -6677,14 +6671,14 @@ interrupt_function:
 psect	text24
 	line	10
 	
-i1l6188:	
+i1l6180:	
 ;even.c: 10: TMR2IF = 0;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(97/8),(97)&7	;volatile
 	line	11
 	
-i1l6190:	
+i1l6182:	
 ;even.c: 11: cnt2ms++;
 	incf	(_cnt2ms),f
 	line	12
@@ -6692,7 +6686,7 @@ i1l6190:
 	incf	(_cnt10ms),f
 	line	13
 	
-i1l6192:	
+i1l6184:	
 ;even.c: 13: if(cnt2ms>=10)
 	movlw	low(0Ah)
 	subwf	(_cnt2ms),w
@@ -6700,27 +6694,27 @@ i1l6192:
 	goto	u356_21
 	goto	u356_20
 u356_21:
-	goto	i1l6200
+	goto	i1l6192
 u356_20:
 	line	15
 	
-i1l6194:	
+i1l6186:	
 ;even.c: 14: {
 ;even.c: 15: LEDScan();
 	fcall	_LEDScan
 	line	16
 	
-i1l6196:	
+i1l6188:	
 ;even.c: 16: cnt2ms=0;
 	clrf	(_cnt2ms)
 	line	17
 	
-i1l6198:	
+i1l6190:	
 ;even.c: 17: time2ms=1;
 	bsf	(_time2ms/8),(_time2ms)&7
 	line	19
 	
-i1l6200:	
+i1l6192:	
 ;even.c: 18: }
 ;even.c: 19: if(cnt10ms>=50)
 	movlw	low(032h)
@@ -6733,13 +6727,13 @@ u357_21:
 u357_20:
 	line	21
 	
-i1l6202:	
+i1l6194:	
 ;even.c: 20: {
 ;even.c: 21: cnt10ms=0;
 	clrf	(_cnt10ms)
 	line	22
 	
-i1l6204:	
+i1l6196:	
 ;even.c: 22: time10ms=1;
 	bsf	(_time10ms/8),(_time10ms)&7
 	line	24
@@ -6805,7 +6799,7 @@ _LEDScan:
 ; Regs used in _LEDScan: [wreg-fsr0h+status,2+status,0]
 	line	21
 	
-i1l6102:	
+i1l6094:	
 ;LED.c: 19: static unsigned char LEDScanIndex=0;
 ;LED.c: 21: TRISB5=1,WPUB5=0;
 	bsf	status, 5	;RP0=1, select bank1
@@ -6838,7 +6832,7 @@ nop ;#
 psect	text25
 	line	28
 ;LED.c: 28: switch(LEDScanIndex)
-	goto	i1l6138
+	goto	i1l6130
 	line	30
 ;LED.c: 29: {
 ;LED.c: 30: case 0:
@@ -6854,7 +6848,7 @@ u330_21:
 u330_20:
 	line	33
 	
-i1l6104:	
+i1l6096:	
 ;LED.c: 32: {
 ;LED.c: 33: TRISB4=0,WPUB4=0;RB4=0 ;
 	bsf	status, 5	;RP0=1, select bank1
@@ -6876,7 +6870,7 @@ u331_21:
 u331_20:
 	line	37
 	
-i1l6106:	
+i1l6098:	
 ;LED.c: 36: {
 ;LED.c: 37: TRISB3=0,WPUB3=0;RB3=0 ;
 	bsf	status, 5	;RP0=1, select bank1
@@ -6898,7 +6892,7 @@ u332_21:
 u332_20:
 	line	41
 	
-i1l6108:	
+i1l6100:	
 ;LED.c: 40: {
 ;LED.c: 41: TRISC3=0,WPUC3=0;RC3=0 ;
 	bsf	status, 5	;RP0=1, select bank1
@@ -6922,7 +6916,7 @@ u333_21:
 u333_20:
 	line	45
 	
-i1l6110:	
+i1l6102:	
 ;LED.c: 44: {
 ;LED.c: 45: TRISC2=0,WPUC2=0;RC2=0 ;
 	bsf	status, 5	;RP0=1, select bank1
@@ -6945,7 +6939,7 @@ i1l2986:
 	bsf	(53/8),(53)&7	;volatile
 	line	48
 ;LED.c: 48: break;
-	goto	i1l6140
+	goto	i1l6132
 	line	50
 ;LED.c: 50: case 1:
 	
@@ -6960,7 +6954,7 @@ u334_21:
 u334_20:
 	line	53
 	
-i1l6112:	
+i1l6104:	
 ;LED.c: 52: {
 ;LED.c: 53: TRISB5=0,WPUB5=0;RB5=0 ;
 	bsf	status, 5	;RP0=1, select bank1
@@ -6982,7 +6976,7 @@ u335_21:
 u335_20:
 	line	57
 	
-i1l6114:	
+i1l6106:	
 ;LED.c: 56: {
 ;LED.c: 57: TRISB3=0,WPUB3=0;RB3=0 ;
 	bsf	status, 5	;RP0=1, select bank1
@@ -7004,7 +6998,7 @@ u336_21:
 u336_20:
 	line	61
 	
-i1l6116:	
+i1l6108:	
 ;LED.c: 60: {
 ;LED.c: 61: TRISC3=0,WPUC3=0;RC3=0 ;
 	bsf	status, 5	;RP0=1, select bank1
@@ -7028,7 +7022,7 @@ u337_21:
 u337_20:
 	line	65
 	
-i1l6118:	
+i1l6110:	
 ;LED.c: 64: {
 ;LED.c: 65: TRISC2=0,WPUC2=0;RC2=0 ;
 	bsf	status, 5	;RP0=1, select bank1
@@ -7051,7 +7045,7 @@ i1l2992:
 	bsf	(52/8),(52)&7	;volatile
 	line	68
 ;LED.c: 68: break;
-	goto	i1l6140
+	goto	i1l6132
 	line	70
 ;LED.c: 70: case 2:
 	
@@ -7066,7 +7060,7 @@ u338_21:
 u338_20:
 	line	73
 	
-i1l6120:	
+i1l6112:	
 ;LED.c: 72: {
 ;LED.c: 73: TRISB5=0,WPUB5=0;RB5=0 ;
 	bsf	status, 5	;RP0=1, select bank1
@@ -7088,7 +7082,7 @@ u339_21:
 u339_20:
 	line	77
 	
-i1l6122:	
+i1l6114:	
 ;LED.c: 76: {
 ;LED.c: 77: TRISB4=0,WPUB4=0;RB4=0 ;
 	bsf	status, 5	;RP0=1, select bank1
@@ -7110,7 +7104,7 @@ u340_21:
 u340_20:
 	line	81
 	
-i1l6124:	
+i1l6116:	
 ;LED.c: 80: {
 ;LED.c: 81: TRISC3=0,WPUC3=0;RC3=0 ;
 	bsf	status, 5	;RP0=1, select bank1
@@ -7134,7 +7128,7 @@ u341_21:
 u341_20:
 	line	85
 	
-i1l6126:	
+i1l6118:	
 ;LED.c: 84: {
 ;LED.c: 85: TRISC2=0,WPUC2=0;RC2=0 ;
 	bsf	status, 5	;RP0=1, select bank1
@@ -7157,7 +7151,7 @@ i1l2997:
 	bsf	(51/8),(51)&7	;volatile
 	line	88
 ;LED.c: 88: break;
-	goto	i1l6140
+	goto	i1l6132
 	line	90
 ;LED.c: 90: case 3:
 	
@@ -7172,7 +7166,7 @@ u342_21:
 u342_20:
 	line	93
 	
-i1l6128:	
+i1l6120:	
 ;LED.c: 92: {
 ;LED.c: 93: TRISB5=0,WPUB5=0;RB5=0 ;
 	bsf	status, 5	;RP0=1, select bank1
@@ -7194,7 +7188,7 @@ u343_21:
 u343_20:
 	line	97
 	
-i1l6130:	
+i1l6122:	
 ;LED.c: 96: {
 ;LED.c: 97: TRISB4=0,WPUB4=0;RB4=0 ;
 	bsf	status, 5	;RP0=1, select bank1
@@ -7216,7 +7210,7 @@ u344_21:
 u344_20:
 	line	101
 	
-i1l6132:	
+i1l6124:	
 ;LED.c: 100: {
 ;LED.c: 101: TRISB3=0,WPUB3=0;RB3=0 ;
 	bsf	status, 5	;RP0=1, select bank1
@@ -7239,7 +7233,7 @@ i1l3001:
 	bsf	(59/8),(59)&7	;volatile
 	line	104
 ;LED.c: 104: break;
-	goto	i1l6140
+	goto	i1l6132
 	line	106
 ;LED.c: 106: case 4:
 	
@@ -7254,7 +7248,7 @@ u345_21:
 u345_20:
 	line	109
 	
-i1l6134:	
+i1l6126:	
 ;LED.c: 108: {
 ;LED.c: 109: TRISB5=0,WPUB5=0;RB5=0 ;
 	bsf	status, 5	;RP0=1, select bank1
@@ -7276,7 +7270,7 @@ u346_21:
 u346_20:
 	line	113
 	
-i1l6136:	
+i1l6128:	
 ;LED.c: 112: {
 ;LED.c: 113: TRISB3=0,WPUB3=0;RB3=0 ;
 	bsf	status, 5	;RP0=1, select bank1
@@ -7299,10 +7293,10 @@ i1l3004:
 	bsf	(58/8),(58)&7	;volatile
 	line	116
 ;LED.c: 116: }
-	goto	i1l6140
+	goto	i1l6132
 	line	28
 	
-i1l6138:	
+i1l6130:	
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movf	(LEDScan@LEDScanIndex),w
@@ -7319,16 +7313,16 @@ i1l6138:
 	movlw	5
 	subwf	fsr,w
 skipnc
-goto i1l6140
-movlw high(i1S6996)
+goto i1l6132
+movlw high(i1S6980)
 movwf pclath
-	movlw low(i1S6996)
+	movlw low(i1S6980)
 	addwf fsr,w
 	movwf pc
 psect	swtext3,local,class=CONST,delta=2
 global __pswtext3
 __pswtext3:
-i1S6996:
+i1S6980:
 	ljmp	i1l2982
 	ljmp	i1l2988
 	ljmp	i1l2993
@@ -7338,12 +7332,12 @@ psect	text25
 
 	line	117
 	
-i1l6140:	
+i1l6132:	
 ;LED.c: 117: LEDScanIndex++;
 	incf	(LEDScan@LEDScanIndex),f
 	line	118
 	
-i1l6142:	
+i1l6134:	
 ;LED.c: 118: if(LEDScanIndex>=5)
 	movlw	low(05h)
 	subwf	(LEDScan@LEDScanIndex),w
@@ -7355,7 +7349,7 @@ u347_21:
 u347_20:
 	line	120
 	
-i1l6144:	
+i1l6136:	
 ;LED.c: 119: {
 ;LED.c: 120: LEDScanIndex=0;
 	clrf	(LEDScan@LEDScanIndex)

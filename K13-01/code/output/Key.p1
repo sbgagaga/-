@@ -1,18 +1,18 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"33 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.h
+"32 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.h
 [v _IovFlag `b ~T0 @X0 0 e ]
-"32
+"31
 [v _WorkFlag `b ~T0 @X0 0 e ]
-"28
+"27
 [v _WorkMin `uc ~T0 @X0 0 e ]
-"35
+"34
 [v _USBFlag `b ~T0 @X0 0 e ]
 "13
 [s S1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 ]
 [n S1 . LockStart LockFail LockEnd UnlockStart UnlockFail UnlockEnd LockFlag reservation ]
-"36
+"35
 [v _LockSta `S1 ~T0 @X0 0 e ]
-"31
+"30
 [v _OnOffFlag `b ~T0 @X0 0 e ]
 "24
 [v _LockNumb `uc ~T0 @X0 0 e ]
@@ -856,22 +856,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;K13-01.h: 21: unsigned char reservation:2;
 [; ;K13-01.h: 22: }TYPE_UNION_LockSta;
 [; ;K13-01.h: 24: extern unsigned char LockNumb;
-[; ;K13-01.h: 27: extern unsigned char BatPercent;
-[; ;K13-01.h: 28: extern unsigned char WorkMin;
-[; ;K13-01.h: 30: extern bit SystemONFlag;
-[; ;K13-01.h: 31: extern bit OnOffFlag;
-[; ;K13-01.h: 32: extern bit WorkFlag;
-[; ;K13-01.h: 33: extern bit IovFlag;
-[; ;K13-01.h: 34: extern bit LowBatFlag;
-[; ;K13-01.h: 35: extern bit USBFlag;
-[; ;K13-01.h: 36: extern TYPE_UNION_LockSta LockSta;
-[; ;K13-01.h: 37: extern unsigned char BatAddTime;
-[; ;K13-01.h: 38: extern unsigned char BatDecTime;
-[; ;K13-01.h: 40: void SystemSleep();
-[; ;K13-01.h: 41: void Apply();
-[; ;K13-01.h: 42: void SystemInit();
-[; ;K13-01.h: 43: void GPIOInit();
-[; ;K13-01.h: 44: void TimerInit();
+[; ;K13-01.h: 26: extern unsigned char BatPercent;
+[; ;K13-01.h: 27: extern unsigned char WorkMin;
+[; ;K13-01.h: 29: extern bit SystemONFlag;
+[; ;K13-01.h: 30: extern bit OnOffFlag;
+[; ;K13-01.h: 31: extern bit WorkFlag;
+[; ;K13-01.h: 32: extern bit IovFlag;
+[; ;K13-01.h: 33: extern bit LowBatFlag;
+[; ;K13-01.h: 34: extern bit USBFlag;
+[; ;K13-01.h: 35: extern TYPE_UNION_LockSta LockSta;
+[; ;K13-01.h: 36: extern unsigned char BatAddTime;
+[; ;K13-01.h: 37: extern unsigned char BatDecTime;
+[; ;K13-01.h: 39: void SystemSleep();
+[; ;K13-01.h: 40: void Apply();
+[; ;K13-01.h: 41: void SystemInit();
+[; ;K13-01.h: 42: void GPIOInit();
+[; ;K13-01.h: 43: void TimerInit();
 [; ;Key.h: 6: extern bit KeyLongFlag;
 [; ;Key.h: 8: void KeyScan();
 "3 C:\Users\Administrator\Desktop\project\K13-01\code\Key.c
@@ -1015,6 +1015,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Key.c: 45: LockSta.LockStart=1;
 "45
 [e = . _LockSta 0 -> -> 1 `i `uc ]
+[; ;Key.c: 46: LockSta.UnlockEnd=0;
+"46
+[e = . _LockSta 5 -> -> 0 `i `uc ]
 "47
 }
 [; ;Key.c: 47: }
@@ -1028,202 +1031,205 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Key.c: 50: LockSta.UnlockStart=1;
 "50
 [e = . _LockSta 3 -> -> 1 `i `uc ]
+[; ;Key.c: 51: LockSta.LockEnd=0;
 "51
+[e = . _LockSta 2 -> -> 0 `i `uc ]
+"52
 }
 [e :U 13 ]
-[; ;Key.c: 51: }
-[; ;Key.c: 52: OnOffFlag=0;
-"52
-[e = _OnOffFlag -> -> 0 `i `b ]
+[; ;Key.c: 52: }
+[; ;Key.c: 53: OnOffFlag=0;
 "53
-}
-[e :U 11 ]
+[e = _OnOffFlag -> -> 0 `i `b ]
 "54
 }
-[; ;Key.c: 53: }
-[; ;Key.c: 54: }
-[e $U 14  ]
+[e :U 11 ]
 "55
-[e :U 10 ]
-[; ;Key.c: 55: else if(KeyPress&&KeyCnt>=250&&KeyInBuf==KeyPress&&!LockSta.LockEnd&&!LockSta.UnlockEnd)
-[e $ ! && && && && _KeyPress >= _KeyCnt -> -> 250 `i `ui == _KeyInBuf _KeyPress ! != -> . _LockSta 2 `i -> -> -> 0 `i `uc `i ! != -> . _LockSta 5 `i -> -> -> 0 `i `uc `i 15  ]
-[; ;Key.c: 56: {
+}
+[; ;Key.c: 54: }
+[; ;Key.c: 55: }
+[e $U 14  ]
 "56
-{
-[; ;Key.c: 57: KeyCnt++;
+[e :U 10 ]
+[; ;Key.c: 56: else if(KeyPress&&KeyCnt>=250&&KeyInBuf==KeyPress&&!LockSta.LockEnd&&!LockSta.UnlockEnd)
+[e $ ! && && && && _KeyPress >= _KeyCnt -> -> 250 `i `ui == _KeyInBuf _KeyPress ! != -> . _LockSta 2 `i -> -> -> 0 `i `uc `i ! != -> . _LockSta 5 `i -> -> -> 0 `i `uc `i 15  ]
+[; ;Key.c: 57: {
 "57
-[e ++ _KeyCnt -> -> 1 `i `ui ]
-[; ;Key.c: 58: if(KeyCnt>=1750)
+{
+[; ;Key.c: 58: KeyCnt++;
 "58
-[e $ ! >= _KeyCnt -> -> 1750 `i `ui 16  ]
-[; ;Key.c: 59: {
+[e ++ _KeyCnt -> -> 1 `i `ui ]
+[; ;Key.c: 59: if(KeyCnt>=1750)
 "59
-{
-[; ;Key.c: 60: KeyCnt=1750;
+[e $ ! >= _KeyCnt -> -> 1750 `i `ui 16  ]
+[; ;Key.c: 60: {
 "60
-[e = _KeyCnt -> -> 1750 `i `ui ]
-[; ;Key.c: 61: LockSta.LockFlag=!LockSta.LockFlag;
+{
+[; ;Key.c: 61: KeyCnt=1750;
 "61
-[e = . _LockSta 6 -> -> ! != -> . _LockSta 6 `i -> -> -> 0 `i `uc `i `i `uc ]
-[; ;Key.c: 62: if(LockSta.LockFlag)
+[e = _KeyCnt -> -> 1750 `i `ui ]
+[; ;Key.c: 62: LockSta.LockFlag=!LockSta.LockFlag;
 "62
-[e $ ! != -> . _LockSta 6 `i -> -> -> 0 `i `uc `i 17  ]
-[; ;Key.c: 63: {
+[e = . _LockSta 6 -> -> ! != -> . _LockSta 6 `i -> -> -> 0 `i `uc `i `i `uc ]
+[; ;Key.c: 63: if(LockSta.LockFlag)
 "63
-{
-[; ;Key.c: 64: LockSta.LockStart=0;
+[e $ ! != -> . _LockSta 6 `i -> -> -> 0 `i `uc `i 17  ]
+[; ;Key.c: 64: {
 "64
-[e = . _LockSta 0 -> -> 0 `i `uc ]
-[; ;Key.c: 65: LockSta.LockEnd=1;
-"65
-[e = . _LockSta 2 -> -> 1 `i `uc ]
-[; ;Key.c: 66: WorkFlag=0;
-"66
-[e = _WorkFlag -> -> 0 `i `b ]
-"67
-}
-[; ;Key.c: 67: }
-[e $U 18  ]
-"68
-[e :U 17 ]
-[; ;Key.c: 68: else
-[; ;Key.c: 69: {
-"69
 {
-[; ;Key.c: 70: LockSta.UnlockStart=0;
-"70
-[e = . _LockSta 3 -> -> 0 `i `uc ]
-[; ;Key.c: 71: LockSta.UnlockEnd=1;
-"71
-[e = . _LockSta 5 -> -> 1 `i `uc ]
-[; ;Key.c: 72: WorkFlag=1;
-"72
-[e = _WorkFlag -> -> 1 `i `b ]
-"73
+[; ;Key.c: 65: LockSta.LockStart=0;
+"65
+[e = . _LockSta 0 -> -> 0 `i `uc ]
+[; ;Key.c: 66: LockSta.LockEnd=1;
+"66
+[e = . _LockSta 2 -> -> 1 `i `uc ]
+[; ;Key.c: 67: WorkFlag=0;
+"67
+[e = _WorkFlag -> -> 0 `i `b ]
+"68
 }
-[e :U 18 ]
+[; ;Key.c: 68: }
+[e $U 18  ]
+"69
+[e :U 17 ]
+[; ;Key.c: 69: else
+[; ;Key.c: 70: {
+"70
+{
+[; ;Key.c: 71: LockSta.UnlockStart=0;
+"71
+[e = . _LockSta 3 -> -> 0 `i `uc ]
+[; ;Key.c: 72: LockSta.UnlockEnd=1;
+"72
+[e = . _LockSta 5 -> -> 1 `i `uc ]
+[; ;Key.c: 73: WorkFlag=1;
+"73
+[e = _WorkFlag -> -> 1 `i `b ]
 "74
 }
-[e :U 16 ]
+[e :U 18 ]
 "75
 }
-[; ;Key.c: 73: }
+[e :U 16 ]
+"76
+}
 [; ;Key.c: 74: }
 [; ;Key.c: 75: }
+[; ;Key.c: 76: }
 [e $U 19  ]
-"76
-[e :U 15 ]
-[; ;Key.c: 76: else if(!KeyPress||KeyInBuf!=KeyPress)
-[e $ ! || ! _KeyPress != _KeyInBuf _KeyPress 20  ]
-[; ;Key.c: 77: {
 "77
-{
-[; ;Key.c: 78: KeyCnt=0;
+[e :U 15 ]
+[; ;Key.c: 77: else if(!KeyPress||KeyInBuf!=KeyPress)
+[e $ ! || ! _KeyPress != _KeyInBuf _KeyPress 20  ]
+[; ;Key.c: 78: {
 "78
-[e = _KeyCnt -> -> 0 `i `ui ]
-[; ;Key.c: 79: LockSta.UnlockEnd=0;
-"79
-[e = . _LockSta 5 -> -> 0 `i `uc ]
-[; ;Key.c: 80: if((LockSta.LockFlag&&WorkFlag)||LockSta.UnlockStart)
-"80
-[e $ ! || && != -> . _LockSta 6 `i -> -> -> 0 `i `uc `i _WorkFlag != -> . _LockSta 3 `i -> -> -> 0 `i `uc `i 21  ]
-[; ;Key.c: 81: {
-"81
 {
-[; ;Key.c: 82: LockSta.UnlockStart=0;
+[; ;Key.c: 79: KeyCnt=0;
+"79
+[e = _KeyCnt -> -> 0 `i `ui ]
+[; ;Key.c: 80: LockSta.UnlockEnd=0;
+"80
+[e = . _LockSta 5 -> -> 0 `i `uc ]
+[; ;Key.c: 81: if((LockSta.LockFlag&&WorkFlag)||LockSta.UnlockStart)
+"81
+[e $ ! || && != -> . _LockSta 6 `i -> -> -> 0 `i `uc `i _WorkFlag != -> . _LockSta 3 `i -> -> -> 0 `i `uc `i 21  ]
+[; ;Key.c: 82: {
 "82
-[e = . _LockSta 3 -> -> 0 `i `uc ]
-[; ;Key.c: 83: LockSta.UnlockFail=1;
+{
+[; ;Key.c: 83: LockSta.UnlockStart=0;
 "83
-[e = . _LockSta 4 -> -> 1 `i `uc ]
-[; ;Key.c: 84: WorkFlag=0;
+[e = . _LockSta 3 -> -> 0 `i `uc ]
+[; ;Key.c: 84: LockSta.UnlockFail=1;
 "84
-[e = _WorkFlag -> -> 0 `i `b ]
+[e = . _LockSta 4 -> -> 1 `i `uc ]
+[; ;Key.c: 85: WorkFlag=0;
 "85
+[e = _WorkFlag -> -> 0 `i `b ]
+"86
 }
 [e :U 21 ]
-[; ;Key.c: 85: }
-[; ;Key.c: 86: if(LockSta.LockStart)
-"86
-[e $ ! != -> . _LockSta 0 `i -> -> -> 0 `i `uc `i 22  ]
-[; ;Key.c: 87: {
+[; ;Key.c: 86: }
+[; ;Key.c: 87: if(LockSta.LockStart)
 "87
-{
-[; ;Key.c: 88: LockSta.LockStart=0;
+[e $ ! != -> . _LockSta 0 `i -> -> -> 0 `i `uc `i 22  ]
+[; ;Key.c: 88: {
 "88
-[e = . _LockSta 0 -> -> 0 `i `uc ]
+{
+[; ;Key.c: 89: LockSta.LockStart=0;
 "89
-}
-[e :U 22 ]
+[e = . _LockSta 0 -> -> 0 `i `uc ]
 "90
 }
-[e :U 20 ]
+[e :U 22 ]
 "91
+}
+[e :U 20 ]
+"92
 [e :U 19 ]
 [e :U 14 ]
 [e :U 9 ]
-[; ;Key.c: 89: }
 [; ;Key.c: 90: }
-[; ;Key.c: 91: KeyInBuf=KeyPress;
+[; ;Key.c: 91: }
+[; ;Key.c: 92: KeyInBuf=KeyPress;
 [e = _KeyInBuf _KeyPress ]
-[; ;Key.c: 93: if(!RA7)
-"93
-[e $ ! ! _RA7 23  ]
-[; ;Key.c: 94: {
+[; ;Key.c: 94: if(!RA7)
 "94
-{
-[; ;Key.c: 95: USBLink=1;
+[e $ ! ! _RA7 23  ]
+[; ;Key.c: 95: {
 "95
-[e = _USBLink -> -> 1 `i `b ]
-"96
-}
-[; ;Key.c: 96: }
-[e $U 24  ]
-"97
-[e :U 23 ]
-[; ;Key.c: 97: else
-[; ;Key.c: 98: {
-"98
 {
-[; ;Key.c: 99: USBLink=0;
+[; ;Key.c: 96: USBLink=1;
+"96
+[e = _USBLink -> -> 1 `i `b ]
+"97
+}
+[; ;Key.c: 97: }
+[e $U 24  ]
+"98
+[e :U 23 ]
+[; ;Key.c: 98: else
+[; ;Key.c: 99: {
 "99
-[e = _USBLink -> -> 0 `i `b ]
+{
+[; ;Key.c: 100: USBLink=0;
 "100
+[e = _USBLink -> -> 0 `i `b ]
+"101
 }
 [e :U 24 ]
-[; ;Key.c: 100: }
-[; ;Key.c: 102: if(USBLink&&!IovFlag)
-"102
-[e $ ! && _USBLink ! _IovFlag 25  ]
-[; ;Key.c: 103: {
+[; ;Key.c: 101: }
+[; ;Key.c: 103: if(USBLink&&!IovFlag)
 "103
-{
-[; ;Key.c: 104: USBFlag=1;
+[e $ ! && _USBLink ! _IovFlag 25  ]
+[; ;Key.c: 104: {
 "104
-[e = _USBFlag -> -> 1 `i `b ]
-[; ;Key.c: 105: LockSta.LockFlag=0;
-"105
-[e = . _LockSta 6 -> -> 0 `i `uc ]
-"106
-}
-[; ;Key.c: 106: }
-[e $U 26  ]
-"107
-[e :U 25 ]
-[; ;Key.c: 107: else if(!USBLink)
-[e $ ! ! _USBLink 27  ]
-[; ;Key.c: 108: {
-"108
 {
-[; ;Key.c: 109: USBFlag=0;
+[; ;Key.c: 105: USBFlag=1;
+"105
+[e = _USBFlag -> -> 1 `i `b ]
+[; ;Key.c: 106: LockSta.LockFlag=0;
+"106
+[e = . _LockSta 6 -> -> 0 `i `uc ]
+"107
+}
+[; ;Key.c: 107: }
+[e $U 26  ]
+"108
+[e :U 25 ]
+[; ;Key.c: 108: else if(!USBLink)
+[e $ ! ! _USBLink 27  ]
+[; ;Key.c: 109: {
 "109
-[e = _USBFlag -> -> 0 `i `b ]
+{
+[; ;Key.c: 110: USBFlag=0;
 "110
+[e = _USBFlag -> -> 0 `i `b ]
+"111
 }
 [e :U 27 ]
-"111
+"112
 [e :U 26 ]
-[; ;Key.c: 110: }
 [; ;Key.c: 111: }
+[; ;Key.c: 112: }
 [e :UE 2 ]
 }

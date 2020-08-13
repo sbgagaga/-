@@ -4,7 +4,7 @@ Linker command line:
 
 --edf=E:\SCMCU_IDE_V2.00.08_Beta9\data\dat\en_msgs.txt -cs -h+K13-01.sym \
   --cmf=K13-01.cmf -z -QSC8P1712C \
-  -oC:\Users\ADMINI~1\AppData\Local\Temp\s8sc.2 -MK13-01.map -E1 -ver=XC8 \
+  -oC:\Users\ADMINI~1\AppData\Local\Temp\sc6s.2 -MK13-01.map -E1 -ver=XC8 \
   -ASTACK=0E2h-0efh -pstack=STACK -ACODE=00h-07FFh -ASTRCODE=00h-07FFh \
   -ASTRING=00h-0FFhx8 -ACONST=00h-0FFhx8 -AENTRY=00h-0FFhx8 \
   -ACOMMON=070h-07Fh -ABANK0=020h-06Fh -ABANK1=0A0h-0EFh \
@@ -27,7 +27,7 @@ startup.obj     end_init                              C        C        1       
 K13-01.obj      cinit                                 D        D       17        8       0
                 intentry                              4        4        8        8       0
                 swtext3                             7C1      7C1        5      F82       0
-                text25                              2E0      2E0       9B        8       0
+                text25                              2E2      2E2       9B        8       0
                 text24                              6FF      6FF       1B        8       0
                 text23                              733      733       19        8       0
                 text22                              524      524       48        8       0
@@ -41,15 +41,15 @@ K13-01.obj      cinit                                 D        D       17       
                 text16                              4D7      4D7       4D        8       0
                 text15                              6E4      6E4       1B        8       0
                 text14                              6C8      6C8       1C        8       0
-                text13                              407      407       6D        8       0
+                text13                              409      409       6D        8       0
                 text12                              795      795        E      EC4       0
-                text11                              37B      37B       8C        8       0
+                text11                              37D      37D       8C        8       0
                 text10                              7A3      7A3        D      EC4       0
-                text9                               13A      13A       D5        8       0
+                text9                               13A      13A       D7        8       0
                 text8                               71A      71A       19        8       0
-                text7                               474      474       63        8       0
+                text7                               476      476       61        8       0
                 text6                               64F      64F       2A        8       0
-                text5                               20F      20F       D1        8       0
+                text5                               211      211       D1        8       0
                 text4                               6A1      6A1       27        8       0
                 text3                               679      679       28        8       0
                 text2                               787      787        E      EC4       0
@@ -76,7 +76,7 @@ TOTAL           Name                               Link     Load   Length     Sp
                 cinit                                 D        D       17         0
                 intentry                              4        4        8         0
                 reset_vec                             0        0        1         0
-                text25                              2E0      2E0       9B         0
+                text25                              2E2      2E2       9B         0
                 text24                              6FF      6FF       1B         0
                 text23                              733      733       19         0
                 text22                              524      524       48         0
@@ -88,15 +88,15 @@ TOTAL           Name                               Link     Load   Length     Sp
                 text16                              4D7      4D7       4D         0
                 text15                              6E4      6E4       1B         0
                 text14                              6C8      6C8       1C         0
-                text13                              407      407       6D         0
+                text13                              409      409       6D         0
                 text12                              795      795        E         0
-                text11                              37B      37B       8C         0
+                text11                              37D      37D       8C         0
                 text10                              7A3      7A3        D         0
-                text9                               13A      13A       D5         0
+                text9                               13A      13A       D7         0
                 text8                               71A      71A       19         0
-                text7                               474      474       63         0
+                text7                               476      476       61         0
                 text6                               64F      64F       2A         0
-                text5                               20F      20F       D1         0
+                text5                               211      211       D1         0
                 text4                               6A1      6A1       27         0
                 text3                               679      679       28         0
                 text2                               787      787        E         0
@@ -216,25 +216,25 @@ LockPro@LedSwitchFlag    bitbssCOMMON 381
 LockPro@Ledcnt           bssBANK0     032
 LockPro@LockSwitchCnt    bssBANK0     033
 LockPro@SwitchCnt        bssBANK0     034
-PL10                     text11       3F8
+PL10                     text11       3FA
 PL12                     text18       5D7
-PL14                     text25       359
-PL16                     text25       361
-PL18                     text5        2CF
-PL2                      text11       3E3
-PL20                     text25       369
-PL22                     text25       36F
-PL24                     text25       375
-PL26                     text9        209
-PL28                     text5        2DA
-PL30                     text7        4D1
-PL32                     text13       46E
-PL34                     text18       5E4
-PL36                     text17       774
-PL38                     text20       135
+PL14                     text25       35B
+PL16                     text25       363
+PL18                     text5        2D1
+PL2                      text11       3E5
+PL20                     text25       36B
+PL22                     text25       371
+PL24                     text25       377
+PL26                     text5        2DC
+PL28                     text7        4D1
+PL30                     text13       470
+PL32                     text9        20B
+PL34                     text17       774
+PL36                     text20       135
+PL38                     text4        6C3
 PL4                      text20       10E
-PL40                     text4        6C3
-PL6                      text13       462
+PL40                     text18       5E4
+PL6                      text13       464
 PL8                      text20       124
 Sec1sPro@ActualPercent   bssBANK0     040
 Sec1sPro@PercentErr      cstackBANK0  052
@@ -280,14 +280,14 @@ _KeyInBuf                bitbssCOMMON 386
 _KeyPress                bitbssCOMMON 385
 _KeyScan                 text9        13A
 _LEDArrMap               bssBANK0     020
-_LEDScan                 text25       2E0
+_LEDScan                 text25       2E2
 _LEDSeg1                 strings      752
 _LEDSeg2                 dataBANK1    0A0
 _LedIndex                bssBANK1     0D9
 _LockNumb                bssBANK0     03C
 _LockPro                 text16       4D7
 _LockSta                 bssBANK0     02B
-_Motor                   text7        474
+_Motor                   text7        476
 _NumbArr                 dataBANK1    0C9
 _OSCCON                  (abs)        08F
 _OffHideNumbArr          dataBANK1    0B0
@@ -297,7 +297,6 @@ _PORTA                   (abs)        005
 _PORTB                   (abs)        006
 _PORTC                   (abs)        007
 _PR2                     (abs)        092
-_RA3                     (abs)        02B
 _RA5                     (abs)        02D
 _RA6                     (abs)        02E
 _RA7                     (abs)        02F
@@ -308,7 +307,7 @@ _RBPU                    (abs)        40F
 _RC2                     (abs)        03A
 _RC3                     (abs)        03B
 _Sec1sCnt                bssBANK0     03B
-_Sec1sPro                text5        20F
+_Sec1sPro                text5        211
 _SystemInit              text1        7B0
 _SystemONFlag            bitbssCOMMON 38D
 _T2CON                   (abs)        012
@@ -329,7 +328,7 @@ _TimeAddCnt              bssBANK1     0D3
 _TimeDecCnt              bssBANK1     0D5
 _TimerInit               text2        787
 _USBFlag                 bitbssCOMMON 38B
-_USBLedPro               text13       407
+_USBLedPro               text13       409
 _USBLink                 bitbssCOMMON 384
 _VarPowerUpCount         bssBANK0     03D
 _WDTCON                  (abs)        105
@@ -347,7 +346,7 @@ _WPUC2                   (abs)        C7A
 _WPUC3                   (abs)        C7B
 _WorkCnt                 bssBANK1     0D7
 _WorkFlag                bitbssCOMMON 38A
-_WorkLedPro              text11       37B
+_WorkLedPro              text11       37D
 _WorkMin                 bssCOMMON    07A
 __Habs1                  abs1         000
 __Hbank0                 bank0        000
@@ -471,25 +470,25 @@ ___wmul                  text8        71A
 ___wmul@multiplicand     cstackCOMMON 077
 ___wmul@multiplier       cstackCOMMON 075
 ___wmul@product          cstackBANK0  04D
-__end_ofPL10             text11       407
+__end_ofPL10             text11       409
 __end_ofPL12             text18       5E4
-__end_ofPL14             text25       361
-__end_ofPL16             text25       369
-__end_ofPL18             text5        2DA
-__end_ofPL2              text11       3F8
-__end_ofPL20             text25       36F
-__end_ofPL22             text25       375
-__end_ofPL24             text25       37B
-__end_ofPL26             text9        20F
-__end_ofPL28             text5        2E0
-__end_ofPL30             text7        4D7
-__end_ofPL32             text13       474
-__end_ofPL34             text18       5E9
-__end_ofPL36             text17       778
-__end_ofPL38             text20       13A
+__end_ofPL14             text25       363
+__end_ofPL16             text25       36B
+__end_ofPL18             text5        2DC
+__end_ofPL2              text11       3FA
+__end_ofPL20             text25       371
+__end_ofPL22             text25       377
+__end_ofPL24             text25       37D
+__end_ofPL26             text5        2E2
+__end_ofPL28             text7        4D7
+__end_ofPL30             text13       476
+__end_ofPL32             text9        211
+__end_ofPL34             text17       778
+__end_ofPL36             text20       13A
+__end_ofPL38             text4        6C8
 __end_ofPL4              text20       124
-__end_ofPL40             text4        6C8
-__end_ofPL6              text13       46E
+__end_ofPL40             text18       5E9
+__end_ofPL6              text13       470
 __end_ofPL8              text20       135
 __end_of_ADCPro          text19       5AE
 __end_of_ADCRead         text20       10E
@@ -500,16 +499,16 @@ __end_of_DisplayPro      text10       7B0
 __end_of_ErrPro          text17       774
 __end_of_GPIOInit        text3        6A1
 __end_of_Isr_Timer       text24       71A
-__end_of_KeyScan         text9        209
-__end_of_LEDScan         text25       359
+__end_of_KeyScan         text9        20B
+__end_of_LEDScan         text25       35B
 __end_of_LEDSeg1         strings      762
 __end_of_LockPro         text16       524
 __end_of_Motor           text7        4D1
-__end_of_Sec1sPro        text5        2CF
+__end_of_Sec1sPro        text5        2D1
 __end_of_SystemInit      text1        7B9
 __end_of_TimerInit       text2        795
-__end_of_USBLedPro       text13       462
-__end_of_WorkLedPro      text11       3E3
+__end_of_USBLedPro       text13       464
+__end_of_WorkLedPro      text11       3E5
 __end_of___bmul          text12       7A3
 __end_of___lbdiv         text15       6FF
 __end_of___lbmod         text14       6E4
@@ -538,9 +537,9 @@ __pswtext2               swtext2      7CA
 __pswtext3               swtext3      7C1
 __ptext1                 text1        7B0
 __ptext10                text10       7A3
-__ptext11                text11       37B
+__ptext11                text11       37D
 __ptext12                text12       795
-__ptext13                text13       407
+__ptext13                text13       409
 __ptext14                text14       6C8
 __ptext15                text15       6E4
 __ptext16                text16       4D7
@@ -553,12 +552,12 @@ __ptext21                text21       61C
 __ptext22                text22       524
 __ptext23                text23       733
 __ptext24                text24       6FF
-__ptext25                text25       2E0
+__ptext25                text25       2E2
 __ptext3                 text3        679
 __ptext4                 text4        6A1
-__ptext5                 text5        20F
+__ptext5                 text5        211
 __ptext6                 text6        64F
-__ptext7                 text7        474
+__ptext7                 text7        476
 __ptext8                 text8        71A
 __ptext9                 text9        13A
 __size_of_ADCPro         (abs)        000
@@ -1471,9 +1470,9 @@ E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\Umul32.c
 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\Umul32.c estimated size: 52
 
 C:\Users\Administrator\Desktop\project\K13-01\code\Key.c
-		_KeyScan       		CODE           	013A	0000	208
+		_KeyScan       		CODE           	013A	0000	210
 
-C:\Users\Administrator\Desktop\project\K13-01\code\Key.c estimated size: 208
+C:\Users\Administrator\Desktop\project\K13-01\code\Key.c estimated size: 210
 
 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lbdiv.c
 		___lbdiv       		CODE           	06E4	0000	28
@@ -1481,7 +1480,7 @@ E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lbdiv.c
 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lbdiv.c estimated size: 28
 
 C:\Users\Administrator\Desktop\project\K13-01\code\ADC.c
-		_Sec1sPro      		CODE           	020F	0000	193
+		_Sec1sPro      		CODE           	0211	0000	193
 		_ADCRead       		CODE           	0024	0000	235
 		_ADSample      		CODE           	0733	0000	26
 		_ADCPro        		CODE           	056C	0000	67
@@ -1497,34 +1496,34 @@ C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.c
 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.c estimated size: 101
 
 C:\Users\Administrator\Desktop\project\K13-01\code\Motor.c
-		_Motor         		CODE           	0474	0000	94
+		_Motor         		CODE           	0476	0000	92
 
-C:\Users\Administrator\Desktop\project\K13-01\code\Motor.c estimated size: 94
+C:\Users\Administrator\Desktop\project\K13-01\code\Motor.c estimated size: 92
 
 shared
 		PL12           		CODE           	05D7	0000	14
 		PL8            		CODE           	0124	0000	18
-		PL22           		CODE           	036F	0000	7
-		PL32           		CODE           	046E	0000	7
-		PL14           		CODE           	0359	0000	9
-		PL24           		CODE           	0375	0000	7
+		PL22           		CODE           	0371	0000	7
+		PL32           		CODE           	020B	0000	7
+		PL14           		CODE           	035B	0000	9
+		PL24           		CODE           	0377	0000	7
 		__stringtab    		STRING         	074C	0000	7
-		PL34           		CODE           	05E4	0000	6
-		PL16           		CODE           	0361	0000	9
-		PL26           		CODE           	0209	0000	7
-		PL36           		CODE           	0774	0000	5
-		PL18           		CODE           	02CF	0000	12
-		PL28           		CODE           	02DA	0000	7
-		PL38           		CODE           	0135	0000	6
+		PL34           		CODE           	0774	0000	5
+		PL16           		CODE           	0363	0000	9
+		PL26           		CODE           	02DC	0000	7
+		PL36           		CODE           	0135	0000	6
+		PL18           		CODE           	02D1	0000	12
+		PL28           		CODE           	04D1	0000	7
+		PL38           		CODE           	06C3	0000	6
 		__initialization		CODE           	000D	0000	22
-		PL2            		CODE           	03E3	0000	22
-		PL10           		CODE           	03F8	0000	16
+		PL2            		CODE           	03E5	0000	22
+		PL10           		CODE           	03FA	0000	16
 		PL4            		CODE           	010E	0000	23
-		PL20           		CODE           	0369	0000	7
+		PL20           		CODE           	036B	0000	7
 		_LEDSeg1       		STRING         	0752	0000	17
-		PL30           		CODE           	04D1	0000	7
-		PL6            		CODE           	0462	0000	13
-		PL40           		CODE           	06C3	0000	6
+		PL30           		CODE           	0470	0000	7
+		PL6            		CODE           	0464	0000	13
+		PL40           		CODE           	05E4	0000	6
 
 shared estimated size: 254
 
@@ -1535,12 +1534,12 @@ E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\Umul16.c estimated size: 26
 
 C:\Users\Administrator\Desktop\project\K13-01\code\LED.c
 		_LockPro       		CODE           	04D7	0000	78
-		_WorkLedPro    		CODE           	037B	0000	105
-		_LEDScan       		CODE           	02E0	0000	122
+		_WorkLedPro    		CODE           	037D	0000	105
+		_LEDScan       		CODE           	02E2	0000	122
 		_ErrPro        		CODE           	0762	0000	19
 		_DisplayPro    		CODE           	07A3	0000	14
 		_DisplayIcon   		CODE           	05AE	0000	42
-		_USBLedPro     		CODE           	0407	0000	92
+		_USBLedPro     		CODE           	0409	0000	92
 
 C:\Users\Administrator\Desktop\project\K13-01\code\LED.c estimated size: 472
 

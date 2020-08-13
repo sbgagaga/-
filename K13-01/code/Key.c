@@ -43,11 +43,12 @@ void KeyScan()
 			if(!LockSta.LockFlag)
 			{
 				LockSta.LockStart=1;
-				
+				LockSta.UnlockEnd=0;
 			}
 			else
 			{
 				LockSta.UnlockStart=1;
+				LockSta.LockEnd=0;
 			}
 			OnOffFlag=0;
 		}

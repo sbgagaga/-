@@ -445,7 +445,6 @@ unsigned char reservation:2;
 
 extern unsigned char LockNumb;
 
-
 extern unsigned char BatPercent;
 extern unsigned char WorkMin;
 
@@ -477,13 +476,13 @@ void Motor()
 {
 if(!WorkFlag)
 {
-RA3=0;
+
 WorkCnt=0;
 TimeDecCnt=0;
 }
 else if(WorkFlag&&!LockSta.LockFlag)
 {
-RA3=1;
+
 TimeDecCnt++;
 if(TimeDecCnt>=BatDecTime*100)
 {

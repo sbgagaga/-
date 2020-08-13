@@ -1,21 +1,21 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "8 C:\Users\Administrator\Desktop\project\K13-01\code\ADC.h
 [v _ADCRead `(v ~T0 @X0 0 ef2`uc`*ui ]
-"30 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.h
+"29 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.h
 [v _SystemONFlag `b ~T0 @X0 0 e ]
-"27
+"26
 [v _BatPercent `uc ~T0 @X0 0 e ]
-"34
-[v _LowBatFlag `b ~T0 @X0 0 e ]
 "33
-[v _IovFlag `b ~T0 @X0 0 e ]
-"35
-[v _USBFlag `b ~T0 @X0 0 e ]
-"37
-[v _BatAddTime `uc ~T0 @X0 0 e ]
+[v _LowBatFlag `b ~T0 @X0 0 e ]
 "32
+[v _IovFlag `b ~T0 @X0 0 e ]
+"34
+[v _USBFlag `b ~T0 @X0 0 e ]
+"36
+[v _BatAddTime `uc ~T0 @X0 0 e ]
+"31
 [v _WorkFlag `b ~T0 @X0 0 e ]
-"38
+"37
 [v _BatDecTime `uc ~T0 @X0 0 e ]
 "6 C:\Users\Administrator\Desktop\project\K13-01\code\ADC.h
 [v _ADSample `(uc ~T0 @X0 0 ef1`uc ]
@@ -857,22 +857,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;K13-01.h: 21: unsigned char reservation:2;
 [; ;K13-01.h: 22: }TYPE_UNION_LockSta;
 [; ;K13-01.h: 24: extern unsigned char LockNumb;
-[; ;K13-01.h: 27: extern unsigned char BatPercent;
-[; ;K13-01.h: 28: extern unsigned char WorkMin;
-[; ;K13-01.h: 30: extern bit SystemONFlag;
-[; ;K13-01.h: 31: extern bit OnOffFlag;
-[; ;K13-01.h: 32: extern bit WorkFlag;
-[; ;K13-01.h: 33: extern bit IovFlag;
-[; ;K13-01.h: 34: extern bit LowBatFlag;
-[; ;K13-01.h: 35: extern bit USBFlag;
-[; ;K13-01.h: 36: extern TYPE_UNION_LockSta LockSta;
-[; ;K13-01.h: 37: extern unsigned char BatAddTime;
-[; ;K13-01.h: 38: extern unsigned char BatDecTime;
-[; ;K13-01.h: 40: void SystemSleep();
-[; ;K13-01.h: 41: void Apply();
-[; ;K13-01.h: 42: void SystemInit();
-[; ;K13-01.h: 43: void GPIOInit();
-[; ;K13-01.h: 44: void TimerInit();
+[; ;K13-01.h: 26: extern unsigned char BatPercent;
+[; ;K13-01.h: 27: extern unsigned char WorkMin;
+[; ;K13-01.h: 29: extern bit SystemONFlag;
+[; ;K13-01.h: 30: extern bit OnOffFlag;
+[; ;K13-01.h: 31: extern bit WorkFlag;
+[; ;K13-01.h: 32: extern bit IovFlag;
+[; ;K13-01.h: 33: extern bit LowBatFlag;
+[; ;K13-01.h: 34: extern bit USBFlag;
+[; ;K13-01.h: 35: extern TYPE_UNION_LockSta LockSta;
+[; ;K13-01.h: 36: extern unsigned char BatAddTime;
+[; ;K13-01.h: 37: extern unsigned char BatDecTime;
+[; ;K13-01.h: 39: void SystemSleep();
+[; ;K13-01.h: 40: void Apply();
+[; ;K13-01.h: 41: void SystemInit();
+[; ;K13-01.h: 42: void GPIOInit();
+[; ;K13-01.h: 43: void TimerInit();
 [; ;ADC.h: 6: unsigned char ADSample(unsigned char);
 [; ;ADC.h: 7: void ADCPro();
 [; ;ADC.h: 8: void ADCRead(unsigned char,unsigned int *);

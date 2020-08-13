@@ -443,7 +443,6 @@ unsigned char reservation:2;
 
 extern unsigned char LockNumb;
 
-
 extern unsigned char BatPercent;
 extern unsigned char WorkMin;
 
@@ -512,11 +511,12 @@ LockNumb=2;
 if(!LockSta.LockFlag)
 {
 LockSta.LockStart=1;
-
+LockSta.UnlockEnd=0;
 }
 else
 {
 LockSta.UnlockStart=1;
+LockSta.LockEnd=0;
 }
 OnOffFlag=0;
 }
