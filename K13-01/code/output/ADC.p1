@@ -1,0 +1,1678 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"8 C:\Users\Administrator\Desktop\project\K13-01\code\ADC.h
+[v _ADCRead `(v ~T0 @X0 0 ef2`uc`*ui ]
+"30 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.h
+[v _SystemONFlag `b ~T0 @X0 0 e ]
+"27
+[v _BatPercent `uc ~T0 @X0 0 e ]
+"34
+[v _LowBatFlag `b ~T0 @X0 0 e ]
+"33
+[v _IovFlag `b ~T0 @X0 0 e ]
+"35
+[v _USBFlag `b ~T0 @X0 0 e ]
+"37
+[v _BatAddTime `uc ~T0 @X0 0 e ]
+"32
+[v _WorkFlag `b ~T0 @X0 0 e ]
+"38
+[v _BatDecTime `uc ~T0 @X0 0 e ]
+"6 C:\Users\Administrator\Desktop\project\K13-01\code\ADC.h
+[v _ADSample `(uc ~T0 @X0 0 ef1`uc ]
+[; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
+[; ;htc.h: 28: extern double __fpnormalize(double);
+[; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
+"11 E:\SCMCU_IDE_V2.00.08_Beta9\data\include\SC8P1713C.h
+[v _INDF `Vuc ~T0 @X0 1 e@0 ]
+[; ;SC8P1713C.h: 11: volatile unsigned char INDF @ 0x000;
+"12
+[v _TMR0 `Vuc ~T0 @X0 1 e@1 ]
+[; ;SC8P1713C.h: 12: volatile unsigned char TMR0 @ 0x001;
+"13
+[v _PCL `Vuc ~T0 @X0 1 e@2 ]
+[; ;SC8P1713C.h: 13: volatile unsigned char PCL @ 0x002;
+"14
+[v _STATUS `Vuc ~T0 @X0 1 e@3 ]
+[; ;SC8P1713C.h: 14: volatile unsigned char STATUS @ 0x003;
+"15
+[v _FLAGS `Vuc ~T0 @X0 1 e@3 ]
+[; ;SC8P1713C.h: 15: volatile unsigned char FLAGS @ 0x003;
+"16
+[v _FSR `Vuc ~T0 @X0 1 e@4 ]
+[; ;SC8P1713C.h: 16: volatile unsigned char FSR @ 0x004;
+"17
+[v _PORTA `Vuc ~T0 @X0 1 e@5 ]
+[; ;SC8P1713C.h: 17: volatile unsigned char PORTA @ 0x005;
+"18
+[v _PORTB `Vuc ~T0 @X0 1 e@6 ]
+[; ;SC8P1713C.h: 18: volatile unsigned char PORTB @ 0x006;
+"19
+[v _PORTC `Vuc ~T0 @X0 1 e@7 ]
+[; ;SC8P1713C.h: 19: volatile unsigned char PORTC @ 0x007;
+"22
+[v _PORTE `Vuc ~T0 @X0 1 e@9 ]
+[; ;SC8P1713C.h: 22: volatile unsigned char PORTE @ 0x009;
+"23
+[v _PCLATH `Vuc ~T0 @X0 1 e@10 ]
+[; ;SC8P1713C.h: 23: volatile unsigned char PCLATH @ 0x00A;
+"24
+[v _INTCON `Vuc ~T0 @X0 1 e@11 ]
+[; ;SC8P1713C.h: 24: volatile unsigned char INTCON @ 0x00B;
+"25
+[v _PIR1 `Vuc ~T0 @X0 1 e@12 ]
+[; ;SC8P1713C.h: 25: volatile unsigned char PIR1 @ 0x00C;
+"26
+[v _PIR2 `Vuc ~T0 @X0 1 e@13 ]
+[; ;SC8P1713C.h: 26: volatile unsigned char PIR2 @ 0x00D;
+"27
+[v _TMR1L `Vuc ~T0 @X0 1 e@14 ]
+[; ;SC8P1713C.h: 27: volatile unsigned char TMR1L @ 0x00E;
+"28
+[v _TMR1H `Vuc ~T0 @X0 1 e@15 ]
+[; ;SC8P1713C.h: 28: volatile unsigned char TMR1H @ 0x00F;
+"29
+[v _T1CON `Vuc ~T0 @X0 1 e@16 ]
+[; ;SC8P1713C.h: 29: volatile unsigned char T1CON @ 0x010;
+"30
+[v _TMR2 `Vuc ~T0 @X0 1 e@17 ]
+[; ;SC8P1713C.h: 30: volatile unsigned char TMR2 @ 0x011;
+"31
+[v _T2CON `Vuc ~T0 @X0 1 e@18 ]
+[; ;SC8P1713C.h: 31: volatile unsigned char T2CON @ 0x012;
+"34
+[v _CCPR1L `Vuc ~T0 @X0 1 e@21 ]
+[; ;SC8P1713C.h: 34: volatile unsigned char CCPR1L @ 0x015;
+"35
+[v _CCPR1H `Vuc ~T0 @X0 1 e@22 ]
+[; ;SC8P1713C.h: 35: volatile unsigned char CCPR1H @ 0x016;
+"36
+[v _CCP1CON `Vuc ~T0 @X0 1 e@23 ]
+[; ;SC8P1713C.h: 36: volatile unsigned char CCP1CON @ 0x017;
+"38
+[v _COMPCON `Vuc ~T0 @X0 1 e@24 ]
+[; ;SC8P1713C.h: 38: volatile unsigned char COMPCON @ 0x018;
+"39
+[v _COMPCON1 `Vuc ~T0 @X0 1 e@25 ]
+[; ;SC8P1713C.h: 39: volatile unsigned char COMPCON1 @ 0x019;
+"42
+[v _CCPR2L `Vuc ~T0 @X0 1 e@27 ]
+[; ;SC8P1713C.h: 42: volatile unsigned char CCPR2L @ 0x01B;
+"43
+[v _CCPR2H `Vuc ~T0 @X0 1 e@28 ]
+[; ;SC8P1713C.h: 43: volatile unsigned char CCPR2H @ 0x01C;
+"44
+[v _CCP2CON `Vuc ~T0 @X0 1 e@29 ]
+[; ;SC8P1713C.h: 44: volatile unsigned char CCP2CON @ 0x01D;
+"45
+[v _ADRESH `Vuc ~T0 @X0 1 e@30 ]
+[; ;SC8P1713C.h: 45: volatile unsigned char ADRESH @ 0x01E;
+"46
+[v _ADCON0 `Vuc ~T0 @X0 1 e@31 ]
+[; ;SC8P1713C.h: 46: volatile unsigned char ADCON0 @ 0x01F;
+"49
+[v _OPTION_REG `Vuc ~T0 @X0 1 e@129 ]
+[; ;SC8P1713C.h: 49: volatile unsigned char OPTION_REG @ 0x081;
+"50
+[v _TRISA `Vuc ~T0 @X0 1 e@133 ]
+[; ;SC8P1713C.h: 50: volatile unsigned char TRISA @ 0x085;
+"51
+[v _TRISB `Vuc ~T0 @X0 1 e@134 ]
+[; ;SC8P1713C.h: 51: volatile unsigned char TRISB @ 0x086;
+"52
+[v _TRISC `Vuc ~T0 @X0 1 e@135 ]
+[; ;SC8P1713C.h: 52: volatile unsigned char TRISC @ 0x087;
+"53
+[v _TRISE `Vuc ~T0 @X0 1 e@137 ]
+[; ;SC8P1713C.h: 53: volatile unsigned char TRISE @ 0x089;
+"54
+[v _PIE1 `Vuc ~T0 @X0 1 e@140 ]
+[; ;SC8P1713C.h: 54: volatile unsigned char PIE1 @ 0x08C;
+"55
+[v _PIE2 `Vuc ~T0 @X0 1 e@141 ]
+[; ;SC8P1713C.h: 55: volatile unsigned char PIE2 @ 0x08D;
+"57
+[v _OSCCON `Vuc ~T0 @X0 1 e@143 ]
+[; ;SC8P1713C.h: 57: volatile unsigned char OSCCON @ 0x08F;
+"58
+[v _OSCTUNE `Vuc ~T0 @X0 1 e@144 ]
+[; ;SC8P1713C.h: 58: volatile unsigned char OSCTUNE @ 0x090;
+"60
+[v _PR2 `Vuc ~T0 @X0 1 e@146 ]
+[; ;SC8P1713C.h: 60: volatile unsigned char PR2 @ 0x092;
+"63
+[v _WPUB `Vuc ~T0 @X0 1 e@149 ]
+[; ;SC8P1713C.h: 63: volatile unsigned char WPUB @ 0x095;
+"64
+[v _IOCB `Vuc ~T0 @X0 1 e@150 ]
+[; ;SC8P1713C.h: 64: volatile unsigned char IOCB @ 0x096;
+"71
+[v _ADRESL `Vuc ~T0 @X0 1 e@158 ]
+[; ;SC8P1713C.h: 71: volatile unsigned char ADRESL @ 0x09E;
+"72
+[v _ADCON1 `Vuc ~T0 @X0 1 e@159 ]
+[; ;SC8P1713C.h: 72: volatile unsigned char ADCON1 @ 0x09F;
+"76
+[v _WDTCON `Vuc ~T0 @X0 1 e@261 ]
+[; ;SC8P1713C.h: 76: volatile unsigned char WDTCON @ 0x105;
+"88
+[v _TABLE_SPH `Vuc ~T0 @X0 1 e@272 ]
+[; ;SC8P1713C.h: 88: volatile unsigned char TABLE_SPH @ 0x110;
+"89
+[v _TABLE_SPL `Vuc ~T0 @X0 1 e@273 ]
+[; ;SC8P1713C.h: 89: volatile unsigned char TABLE_SPL @ 0x111;
+"90
+[v _TABLE_DATAH `Vuc ~T0 @X0 1 e@274 ]
+[; ;SC8P1713C.h: 90: volatile unsigned char TABLE_DATAH @ 0x112;
+"91
+[v _KEYCON0 `Vuc ~T0 @X0 1 e@275 ]
+[; ;SC8P1713C.h: 91: volatile unsigned char KEYCON0 @ 0x113;
+"92
+[v _KEYCON1 `Vuc ~T0 @X0 1 e@276 ]
+[; ;SC8P1713C.h: 92: volatile unsigned char KEYCON1 @ 0x114;
+"93
+[v _KEYDATAL `Vuc ~T0 @X0 1 e@277 ]
+[; ;SC8P1713C.h: 93: volatile unsigned char KEYDATAL @ 0x115;
+"94
+[v _KEYDATAH `Vuc ~T0 @X0 1 e@278 ]
+[; ;SC8P1713C.h: 94: volatile unsigned char KEYDATAH @ 0x116;
+"99
+[v _WPUE `Vuc ~T0 @X0 1 e@282 ]
+[; ;SC8P1713C.h: 99: volatile unsigned char WPUE @ 0x11A;
+"100
+[v _OPA0CON `Vuc ~T0 @X0 1 e@284 ]
+[; ;SC8P1713C.h: 100: volatile unsigned char OPA0CON @ 0x11C;
+"101
+[v _OPA0ADJ `Vuc ~T0 @X0 1 e@285 ]
+[; ;SC8P1713C.h: 101: volatile unsigned char OPA0ADJ @ 0x11D;
+"105
+[v _ANSEL `Vuc ~T0 @X0 1 e@392 ]
+[; ;SC8P1713C.h: 105: volatile unsigned char ANSEL @ 0x188;
+"106
+[v _ANSELH `Vuc ~T0 @X0 1 e@393 ]
+[; ;SC8P1713C.h: 106: volatile unsigned char ANSELH @ 0x189;
+"110
+[v _WPUA `Vuc ~T0 @X0 1 e@398 ]
+[; ;SC8P1713C.h: 110: volatile unsigned char WPUA @ 0x18E;
+"111
+[v _WPUC `Vuc ~T0 @X0 1 e@399 ]
+[; ;SC8P1713C.h: 111: volatile unsigned char WPUC @ 0x18F;
+"117
+[v _LCDCON0 `Vuc ~T0 @X0 1 e@400 ]
+[; ;SC8P1713C.h: 117: volatile unsigned char LCDCON0 @ 0x190;
+"118
+[v _LCDCON1 `Vuc ~T0 @X0 1 e@401 ]
+[; ;SC8P1713C.h: 118: volatile unsigned char LCDCON1 @ 0x191;
+"124
+[v _COMEN `Vuc ~T0 @X0 1 e@407 ]
+[; ;SC8P1713C.h: 124: volatile unsigned char COMEN @ 0x197;
+"128
+[v _CARRY `Vb ~T0 @X0 1 e@24 ]
+[; ;SC8P1713C.h: 128: volatile bit CARRY @ ((unsigned)&STATUS*8)+0;
+"129
+[v _DC `Vb ~T0 @X0 1 e@25 ]
+[; ;SC8P1713C.h: 129: volatile bit DC @ ((unsigned)&STATUS*8)+1;
+"130
+[v _ZERO `Vb ~T0 @X0 1 e@26 ]
+[; ;SC8P1713C.h: 130: volatile bit ZERO @ ((unsigned)&STATUS*8)+2;
+"131
+[v _PD `Vb ~T0 @X0 1 e@27 ]
+[; ;SC8P1713C.h: 131: volatile bit PD @ ((unsigned)&STATUS*8)+3;
+"132
+[v _TO `Vb ~T0 @X0 1 e@28 ]
+[; ;SC8P1713C.h: 132: volatile bit TO @ ((unsigned)&STATUS*8)+4;
+"133
+[v _IRP `Vb ~T0 @X0 1 e@31 ]
+[; ;SC8P1713C.h: 133: volatile bit IRP @ ((unsigned)&STATUS*8)+7;
+"136
+[v _RA0 `Vb ~T0 @X0 1 e@40 ]
+[; ;SC8P1713C.h: 136: volatile bit RA0 @ ((unsigned)&PORTA*8)+0;
+"137
+[v _RA1 `Vb ~T0 @X0 1 e@41 ]
+[; ;SC8P1713C.h: 137: volatile bit RA1 @ ((unsigned)&PORTA*8)+1;
+"138
+[v _RA2 `Vb ~T0 @X0 1 e@42 ]
+[; ;SC8P1713C.h: 138: volatile bit RA2 @ ((unsigned)&PORTA*8)+2;
+"139
+[v _RA3 `Vb ~T0 @X0 1 e@43 ]
+[; ;SC8P1713C.h: 139: volatile bit RA3 @ ((unsigned)&PORTA*8)+3;
+"140
+[v _RA4 `Vb ~T0 @X0 1 e@44 ]
+[; ;SC8P1713C.h: 140: volatile bit RA4 @ ((unsigned)&PORTA*8)+4;
+"141
+[v _RA5 `Vb ~T0 @X0 1 e@45 ]
+[; ;SC8P1713C.h: 141: volatile bit RA5 @ ((unsigned)&PORTA*8)+5;
+"142
+[v _RA6 `Vb ~T0 @X0 1 e@46 ]
+[; ;SC8P1713C.h: 142: volatile bit RA6 @ ((unsigned)&PORTA*8)+6;
+"143
+[v _RA7 `Vb ~T0 @X0 1 e@47 ]
+[; ;SC8P1713C.h: 143: volatile bit RA7 @ ((unsigned)&PORTA*8)+7;
+"146
+[v _RB0 `Vb ~T0 @X0 1 e@48 ]
+[; ;SC8P1713C.h: 146: volatile bit RB0 @ ((unsigned)&PORTB*8)+0;
+"147
+[v _RB1 `Vb ~T0 @X0 1 e@49 ]
+[; ;SC8P1713C.h: 147: volatile bit RB1 @ ((unsigned)&PORTB*8)+1;
+"148
+[v _RB2 `Vb ~T0 @X0 1 e@50 ]
+[; ;SC8P1713C.h: 148: volatile bit RB2 @ ((unsigned)&PORTB*8)+2;
+"149
+[v _RB3 `Vb ~T0 @X0 1 e@51 ]
+[; ;SC8P1713C.h: 149: volatile bit RB3 @ ((unsigned)&PORTB*8)+3;
+"150
+[v _RB4 `Vb ~T0 @X0 1 e@52 ]
+[; ;SC8P1713C.h: 150: volatile bit RB4 @ ((unsigned)&PORTB*8)+4;
+"151
+[v _RB5 `Vb ~T0 @X0 1 e@53 ]
+[; ;SC8P1713C.h: 151: volatile bit RB5 @ ((unsigned)&PORTB*8)+5;
+"152
+[v _RB6 `Vb ~T0 @X0 1 e@54 ]
+[; ;SC8P1713C.h: 152: volatile bit RB6 @ ((unsigned)&PORTB*8)+6;
+"153
+[v _RB7 `Vb ~T0 @X0 1 e@55 ]
+[; ;SC8P1713C.h: 153: volatile bit RB7 @ ((unsigned)&PORTB*8)+7;
+"156
+[v _RC0 `Vb ~T0 @X0 1 e@56 ]
+[; ;SC8P1713C.h: 156: volatile bit RC0 @ ((unsigned)&PORTC*8)+0;
+"157
+[v _RC1 `Vb ~T0 @X0 1 e@57 ]
+[; ;SC8P1713C.h: 157: volatile bit RC1 @ ((unsigned)&PORTC*8)+1;
+"158
+[v _RC2 `Vb ~T0 @X0 1 e@58 ]
+[; ;SC8P1713C.h: 158: volatile bit RC2 @ ((unsigned)&PORTC*8)+2;
+"159
+[v _RC3 `Vb ~T0 @X0 1 e@59 ]
+[; ;SC8P1713C.h: 159: volatile bit RC3 @ ((unsigned)&PORTC*8)+3;
+"160
+[v _RC4 `Vb ~T0 @X0 1 e@60 ]
+[; ;SC8P1713C.h: 160: volatile bit RC4 @ ((unsigned)&PORTC*8)+4;
+"161
+[v _RC5 `Vb ~T0 @X0 1 e@61 ]
+[; ;SC8P1713C.h: 161: volatile bit RC5 @ ((unsigned)&PORTC*8)+5;
+"162
+[v _RC6 `Vb ~T0 @X0 1 e@62 ]
+[; ;SC8P1713C.h: 162: volatile bit RC6 @ ((unsigned)&PORTC*8)+6;
+"163
+[v _RC7 `Vb ~T0 @X0 1 e@63 ]
+[; ;SC8P1713C.h: 163: volatile bit RC7 @ ((unsigned)&PORTC*8)+7;
+"166
+[v _RE0 `Vb ~T0 @X0 1 e@72 ]
+[; ;SC8P1713C.h: 166: volatile bit RE0 @ ((unsigned)&PORTE*8)+0;
+"167
+[v _RE1 `Vb ~T0 @X0 1 e@73 ]
+[; ;SC8P1713C.h: 167: volatile bit RE1 @ ((unsigned)&PORTE*8)+1;
+"168
+[v _RE2 `Vb ~T0 @X0 1 e@74 ]
+[; ;SC8P1713C.h: 168: volatile bit RE2 @ ((unsigned)&PORTE*8)+2;
+"169
+[v _RE3 `Vb ~T0 @X0 1 e@75 ]
+[; ;SC8P1713C.h: 169: volatile bit RE3 @ ((unsigned)&PORTE*8)+3;
+"172
+[v _RBIF `Vb ~T0 @X0 1 e@88 ]
+[; ;SC8P1713C.h: 172: volatile bit RBIF @ ((unsigned)&INTCON*8)+0;
+"174
+[v _RABIF `Vb ~T0 @X0 1 e@88 ]
+[; ;SC8P1713C.h: 174: volatile bit RABIF @ ((unsigned)&INTCON*8)+0;
+"175
+[v _INTF `Vb ~T0 @X0 1 e@89 ]
+[; ;SC8P1713C.h: 175: volatile bit INTF @ ((unsigned)&INTCON*8)+1;
+"176
+[v _T0IF `Vb ~T0 @X0 1 e@90 ]
+[; ;SC8P1713C.h: 176: volatile bit T0IF @ ((unsigned)&INTCON*8)+2;
+"177
+[v _RBIE `Vb ~T0 @X0 1 e@91 ]
+[; ;SC8P1713C.h: 177: volatile bit RBIE @ ((unsigned)&INTCON*8)+3;
+"179
+[v _RABIE `Vb ~T0 @X0 1 e@91 ]
+[; ;SC8P1713C.h: 179: volatile bit RABIE @ ((unsigned)&INTCON*8)+3;
+"180
+[v _INTE `Vb ~T0 @X0 1 e@92 ]
+[; ;SC8P1713C.h: 180: volatile bit INTE @ ((unsigned)&INTCON*8)+4;
+"181
+[v _T0IE `Vb ~T0 @X0 1 e@93 ]
+[; ;SC8P1713C.h: 181: volatile bit T0IE @ ((unsigned)&INTCON*8)+5;
+"182
+[v _PEIE `Vb ~T0 @X0 1 e@94 ]
+[; ;SC8P1713C.h: 182: volatile bit PEIE @ ((unsigned)&INTCON*8)+6;
+"183
+[v _GIE `Vb ~T0 @X0 1 e@95 ]
+[; ;SC8P1713C.h: 183: volatile bit GIE @ ((unsigned)&INTCON*8)+7;
+"186
+[v _TMR1IF `Vb ~T0 @X0 1 e@96 ]
+[; ;SC8P1713C.h: 186: volatile bit TMR1IF @ ((unsigned)&PIR1*8)+0;
+"187
+[v _TMR2IF `Vb ~T0 @X0 1 e@97 ]
+[; ;SC8P1713C.h: 187: volatile bit TMR2IF @ ((unsigned)&PIR1*8)+1;
+"188
+[v _CCP1IF `Vb ~T0 @X0 1 e@98 ]
+[; ;SC8P1713C.h: 188: volatile bit CCP1IF @ ((unsigned)&PIR1*8)+2;
+"189
+[v _SSPIF `Vb ~T0 @X0 1 e@99 ]
+[; ;SC8P1713C.h: 189: volatile bit SSPIF @ ((unsigned)&PIR1*8)+3;
+"190
+[v _TXIF `Vb ~T0 @X0 1 e@100 ]
+[; ;SC8P1713C.h: 190: volatile bit TXIF @ ((unsigned)&PIR1*8)+4;
+"191
+[v _RCIF `Vb ~T0 @X0 1 e@101 ]
+[; ;SC8P1713C.h: 191: volatile bit RCIF @ ((unsigned)&PIR1*8)+5;
+"192
+[v _ADIF `Vb ~T0 @X0 1 e@102 ]
+[; ;SC8P1713C.h: 192: volatile bit ADIF @ ((unsigned)&PIR1*8)+6;
+"195
+[v _CCP2IF `Vb ~T0 @X0 1 e@104 ]
+[; ;SC8P1713C.h: 195: volatile bit CCP2IF @ ((unsigned)&PIR2*8)+0;
+"196
+[v _BCLIF `Vb ~T0 @X0 1 e@107 ]
+[; ;SC8P1713C.h: 196: volatile bit BCLIF @ ((unsigned)&PIR2*8)+3;
+"197
+[v _EEIF `Vb ~T0 @X0 1 e@108 ]
+[; ;SC8P1713C.h: 197: volatile bit EEIF @ ((unsigned)&PIR2*8)+4;
+"198
+[v _C1IF `Vb ~T0 @X0 1 e@109 ]
+[; ;SC8P1713C.h: 198: volatile bit C1IF @ ((unsigned)&PIR2*8)+5;
+"199
+[v _C2IF `Vb ~T0 @X0 1 e@110 ]
+[; ;SC8P1713C.h: 199: volatile bit C2IF @ ((unsigned)&PIR2*8)+6;
+"202
+[v _TMR1ON `Vb ~T0 @X0 1 e@128 ]
+[; ;SC8P1713C.h: 202: volatile bit TMR1ON @ ((unsigned)&T1CON*8)+0;
+"203
+[v _TMR1CS `Vb ~T0 @X0 1 e@129 ]
+[; ;SC8P1713C.h: 203: volatile bit TMR1CS @ ((unsigned)&T1CON*8)+1;
+"204
+[v _T1SYNC `Vb ~T0 @X0 1 e@130 ]
+[; ;SC8P1713C.h: 204: volatile bit T1SYNC @ ((unsigned)&T1CON*8)+2;
+"205
+[v _T1OSCEN `Vb ~T0 @X0 1 e@131 ]
+[; ;SC8P1713C.h: 205: volatile bit T1OSCEN @ ((unsigned)&T1CON*8)+3;
+"206
+[v _T1CKPS0 `Vb ~T0 @X0 1 e@132 ]
+[; ;SC8P1713C.h: 206: volatile bit T1CKPS0 @ ((unsigned)&T1CON*8)+4;
+"207
+[v _T1CKPS1 `Vb ~T0 @X0 1 e@133 ]
+[; ;SC8P1713C.h: 207: volatile bit T1CKPS1 @ ((unsigned)&T1CON*8)+5;
+"208
+[v _TMR1GE `Vb ~T0 @X0 1 e@134 ]
+[; ;SC8P1713C.h: 208: volatile bit TMR1GE @ ((unsigned)&T1CON*8)+6;
+"209
+[v _T1GINV `Vb ~T0 @X0 1 e@135 ]
+[; ;SC8P1713C.h: 209: volatile bit T1GINV @ ((unsigned)&T1CON*8)+7;
+"212
+[v _T2CKPS0 `Vb ~T0 @X0 1 e@144 ]
+[; ;SC8P1713C.h: 212: volatile bit T2CKPS0 @ ((unsigned)&T2CON*8)+0;
+"213
+[v _T2CKPS1 `Vb ~T0 @X0 1 e@145 ]
+[; ;SC8P1713C.h: 213: volatile bit T2CKPS1 @ ((unsigned)&T2CON*8)+1;
+"214
+[v _TMR2ON `Vb ~T0 @X0 1 e@146 ]
+[; ;SC8P1713C.h: 214: volatile bit TMR2ON @ ((unsigned)&T2CON*8)+2;
+"215
+[v _TOUTPS0 `Vb ~T0 @X0 1 e@147 ]
+[; ;SC8P1713C.h: 215: volatile bit TOUTPS0 @ ((unsigned)&T2CON*8)+3;
+"216
+[v _TOUTPS1 `Vb ~T0 @X0 1 e@148 ]
+[; ;SC8P1713C.h: 216: volatile bit TOUTPS1 @ ((unsigned)&T2CON*8)+4;
+"217
+[v _TOUTPS2 `Vb ~T0 @X0 1 e@149 ]
+[; ;SC8P1713C.h: 217: volatile bit TOUTPS2 @ ((unsigned)&T2CON*8)+5;
+"218
+[v _TOUTPS3 `Vb ~T0 @X0 1 e@150 ]
+[; ;SC8P1713C.h: 218: volatile bit TOUTPS3 @ ((unsigned)&T2CON*8)+6;
+"222
+[v _CCP1M0 `Vb ~T0 @X0 1 e@184 ]
+[; ;SC8P1713C.h: 222: volatile bit CCP1M0 @ ((unsigned)&CCP1CON*8)+0;
+"223
+[v _CCP1M1 `Vb ~T0 @X0 1 e@185 ]
+[; ;SC8P1713C.h: 223: volatile bit CCP1M1 @ ((unsigned)&CCP1CON*8)+1;
+"224
+[v _CCP1M2 `Vb ~T0 @X0 1 e@186 ]
+[; ;SC8P1713C.h: 224: volatile bit CCP1M2 @ ((unsigned)&CCP1CON*8)+2;
+"225
+[v _CCP1M3 `Vb ~T0 @X0 1 e@187 ]
+[; ;SC8P1713C.h: 225: volatile bit CCP1M3 @ ((unsigned)&CCP1CON*8)+3;
+"226
+[v _DC1B0 `Vb ~T0 @X0 1 e@188 ]
+[; ;SC8P1713C.h: 226: volatile bit DC1B0 @ ((unsigned)&CCP1CON*8)+4;
+"227
+[v _DC1B1 `Vb ~T0 @X0 1 e@189 ]
+[; ;SC8P1713C.h: 227: volatile bit DC1B1 @ ((unsigned)&CCP1CON*8)+5;
+"228
+[v _P1M0 `Vb ~T0 @X0 1 e@190 ]
+[; ;SC8P1713C.h: 228: volatile bit P1M0 @ ((unsigned)&CCP1CON*8)+6;
+"229
+[v _P1M1 `Vb ~T0 @X0 1 e@191 ]
+[; ;SC8P1713C.h: 229: volatile bit P1M1 @ ((unsigned)&CCP1CON*8)+7;
+"232
+[v _CCP2M0 `Vb ~T0 @X0 1 e@232 ]
+[; ;SC8P1713C.h: 232: volatile bit CCP2M0 @ ((unsigned)&CCP2CON*8)+0;
+"233
+[v _CCP2M1 `Vb ~T0 @X0 1 e@233 ]
+[; ;SC8P1713C.h: 233: volatile bit CCP2M1 @ ((unsigned)&CCP2CON*8)+1;
+"234
+[v _CCP2M2 `Vb ~T0 @X0 1 e@234 ]
+[; ;SC8P1713C.h: 234: volatile bit CCP2M2 @ ((unsigned)&CCP2CON*8)+2;
+"235
+[v _CCP2M3 `Vb ~T0 @X0 1 e@235 ]
+[; ;SC8P1713C.h: 235: volatile bit CCP2M3 @ ((unsigned)&CCP2CON*8)+3;
+"236
+[v _DC2B0 `Vb ~T0 @X0 1 e@236 ]
+[; ;SC8P1713C.h: 236: volatile bit DC2B0 @ ((unsigned)&CCP2CON*8)+4;
+"237
+[v _DC2B1 `Vb ~T0 @X0 1 e@237 ]
+[; ;SC8P1713C.h: 237: volatile bit DC2B1 @ ((unsigned)&CCP2CON*8)+5;
+"238
+[v _CCP2IN0 `Vb ~T0 @X0 1 e@238 ]
+[; ;SC8P1713C.h: 238: volatile bit CCP2IN0 @ ((unsigned)&CCP2CON*8)+6;
+"239
+[v _CCP2IN1 `Vb ~T0 @X0 1 e@239 ]
+[; ;SC8P1713C.h: 239: volatile bit CCP2IN1 @ ((unsigned)&CCP2CON*8)+7;
+"242
+[v _ADON `Vb ~T0 @X0 1 e@248 ]
+[; ;SC8P1713C.h: 242: volatile bit ADON @ ((unsigned)&ADCON0*8)+0;
+"243
+[v _GODONE `Vb ~T0 @X0 1 e@249 ]
+[; ;SC8P1713C.h: 243: volatile bit GODONE @ ((unsigned)&ADCON0*8)+1;
+"244
+[v _CHS0 `Vb ~T0 @X0 1 e@250 ]
+[; ;SC8P1713C.h: 244: volatile bit CHS0 @ ((unsigned)&ADCON0*8)+2;
+"245
+[v _CHS1 `Vb ~T0 @X0 1 e@251 ]
+[; ;SC8P1713C.h: 245: volatile bit CHS1 @ ((unsigned)&ADCON0*8)+3;
+"246
+[v _CHS2 `Vb ~T0 @X0 1 e@252 ]
+[; ;SC8P1713C.h: 246: volatile bit CHS2 @ ((unsigned)&ADCON0*8)+4;
+"247
+[v _CHS3 `Vb ~T0 @X0 1 e@253 ]
+[; ;SC8P1713C.h: 247: volatile bit CHS3 @ ((unsigned)&ADCON0*8)+5;
+"248
+[v _ADCS0 `Vb ~T0 @X0 1 e@254 ]
+[; ;SC8P1713C.h: 248: volatile bit ADCS0 @ ((unsigned)&ADCON0*8)+6;
+"249
+[v _ADCS1 `Vb ~T0 @X0 1 e@255 ]
+[; ;SC8P1713C.h: 249: volatile bit ADCS1 @ ((unsigned)&ADCON0*8)+7;
+"252
+[v _PS0 `Vb ~T0 @X0 1 e@1032 ]
+[; ;SC8P1713C.h: 252: volatile bit PS0 @ ((unsigned)&OPTION_REG*8)+0;
+"253
+[v _PS1 `Vb ~T0 @X0 1 e@1033 ]
+[; ;SC8P1713C.h: 253: volatile bit PS1 @ ((unsigned)&OPTION_REG*8)+1;
+"254
+[v _PS2 `Vb ~T0 @X0 1 e@1034 ]
+[; ;SC8P1713C.h: 254: volatile bit PS2 @ ((unsigned)&OPTION_REG*8)+2;
+"255
+[v _PSA `Vb ~T0 @X0 1 e@1035 ]
+[; ;SC8P1713C.h: 255: volatile bit PSA @ ((unsigned)&OPTION_REG*8)+3;
+"256
+[v _T0SE `Vb ~T0 @X0 1 e@1036 ]
+[; ;SC8P1713C.h: 256: volatile bit T0SE @ ((unsigned)&OPTION_REG*8)+4;
+"257
+[v _T0CS `Vb ~T0 @X0 1 e@1037 ]
+[; ;SC8P1713C.h: 257: volatile bit T0CS @ ((unsigned)&OPTION_REG*8)+5;
+"258
+[v _INTEDG `Vb ~T0 @X0 1 e@1038 ]
+[; ;SC8P1713C.h: 258: volatile bit INTEDG @ ((unsigned)&OPTION_REG*8)+6;
+"259
+[v _RBPU `Vb ~T0 @X0 1 e@1039 ]
+[; ;SC8P1713C.h: 259: volatile bit RBPU @ ((unsigned)&OPTION_REG*8)+7;
+"261
+[v _RABPU `Vb ~T0 @X0 1 e@1039 ]
+[; ;SC8P1713C.h: 261: volatile bit RABPU @ ((unsigned)&OPTION_REG*8)+7;
+"264
+[v _TRISA0 `Vb ~T0 @X0 1 e@1064 ]
+[; ;SC8P1713C.h: 264: volatile bit TRISA0 @ ((unsigned)&TRISA*8)+0;
+"265
+[v _TRISA1 `Vb ~T0 @X0 1 e@1065 ]
+[; ;SC8P1713C.h: 265: volatile bit TRISA1 @ ((unsigned)&TRISA*8)+1;
+"266
+[v _TRISA2 `Vb ~T0 @X0 1 e@1066 ]
+[; ;SC8P1713C.h: 266: volatile bit TRISA2 @ ((unsigned)&TRISA*8)+2;
+"267
+[v _TRISA3 `Vb ~T0 @X0 1 e@1067 ]
+[; ;SC8P1713C.h: 267: volatile bit TRISA3 @ ((unsigned)&TRISA*8)+3;
+"268
+[v _TRISA4 `Vb ~T0 @X0 1 e@1068 ]
+[; ;SC8P1713C.h: 268: volatile bit TRISA4 @ ((unsigned)&TRISA*8)+4;
+"269
+[v _TRISA5 `Vb ~T0 @X0 1 e@1069 ]
+[; ;SC8P1713C.h: 269: volatile bit TRISA5 @ ((unsigned)&TRISA*8)+5;
+"270
+[v _TRISA6 `Vb ~T0 @X0 1 e@1070 ]
+[; ;SC8P1713C.h: 270: volatile bit TRISA6 @ ((unsigned)&TRISA*8)+6;
+"271
+[v _TRISA7 `Vb ~T0 @X0 1 e@1071 ]
+[; ;SC8P1713C.h: 271: volatile bit TRISA7 @ ((unsigned)&TRISA*8)+7;
+"274
+[v _TRISB0 `Vb ~T0 @X0 1 e@1072 ]
+[; ;SC8P1713C.h: 274: volatile bit TRISB0 @ ((unsigned)&TRISB*8)+0;
+"275
+[v _TRISB1 `Vb ~T0 @X0 1 e@1073 ]
+[; ;SC8P1713C.h: 275: volatile bit TRISB1 @ ((unsigned)&TRISB*8)+1;
+"276
+[v _TRISB2 `Vb ~T0 @X0 1 e@1074 ]
+[; ;SC8P1713C.h: 276: volatile bit TRISB2 @ ((unsigned)&TRISB*8)+2;
+"277
+[v _TRISB3 `Vb ~T0 @X0 1 e@1075 ]
+[; ;SC8P1713C.h: 277: volatile bit TRISB3 @ ((unsigned)&TRISB*8)+3;
+"278
+[v _TRISB4 `Vb ~T0 @X0 1 e@1076 ]
+[; ;SC8P1713C.h: 278: volatile bit TRISB4 @ ((unsigned)&TRISB*8)+4;
+"279
+[v _TRISB5 `Vb ~T0 @X0 1 e@1077 ]
+[; ;SC8P1713C.h: 279: volatile bit TRISB5 @ ((unsigned)&TRISB*8)+5;
+"280
+[v _TRISB6 `Vb ~T0 @X0 1 e@1078 ]
+[; ;SC8P1713C.h: 280: volatile bit TRISB6 @ ((unsigned)&TRISB*8)+6;
+"281
+[v _TRISB7 `Vb ~T0 @X0 1 e@1079 ]
+[; ;SC8P1713C.h: 281: volatile bit TRISB7 @ ((unsigned)&TRISB*8)+7;
+"284
+[v _TRISC0 `Vb ~T0 @X0 1 e@1080 ]
+[; ;SC8P1713C.h: 284: volatile bit TRISC0 @ ((unsigned)&TRISC*8)+0;
+"285
+[v _TRISC1 `Vb ~T0 @X0 1 e@1081 ]
+[; ;SC8P1713C.h: 285: volatile bit TRISC1 @ ((unsigned)&TRISC*8)+1;
+"286
+[v _TRISC2 `Vb ~T0 @X0 1 e@1082 ]
+[; ;SC8P1713C.h: 286: volatile bit TRISC2 @ ((unsigned)&TRISC*8)+2;
+"287
+[v _TRISC3 `Vb ~T0 @X0 1 e@1083 ]
+[; ;SC8P1713C.h: 287: volatile bit TRISC3 @ ((unsigned)&TRISC*8)+3;
+"288
+[v _TRISC4 `Vb ~T0 @X0 1 e@1084 ]
+[; ;SC8P1713C.h: 288: volatile bit TRISC4 @ ((unsigned)&TRISC*8)+4;
+"289
+[v _TRISC5 `Vb ~T0 @X0 1 e@1085 ]
+[; ;SC8P1713C.h: 289: volatile bit TRISC5 @ ((unsigned)&TRISC*8)+5;
+"290
+[v _TRISC6 `Vb ~T0 @X0 1 e@1086 ]
+[; ;SC8P1713C.h: 290: volatile bit TRISC6 @ ((unsigned)&TRISC*8)+6;
+"291
+[v _TRISC7 `Vb ~T0 @X0 1 e@1087 ]
+[; ;SC8P1713C.h: 291: volatile bit TRISC7 @ ((unsigned)&TRISC*8)+7;
+"295
+[v _TRISE0 `Vb ~T0 @X0 1 e@1096 ]
+[; ;SC8P1713C.h: 295: volatile bit TRISE0 @ ((unsigned)&TRISE*8)+0;
+"296
+[v _TRISE1 `Vb ~T0 @X0 1 e@1097 ]
+[; ;SC8P1713C.h: 296: volatile bit TRISE1 @ ((unsigned)&TRISE*8)+1;
+"297
+[v _TRISE2 `Vb ~T0 @X0 1 e@1098 ]
+[; ;SC8P1713C.h: 297: volatile bit TRISE2 @ ((unsigned)&TRISE*8)+2;
+"298
+[v _TRISE3 `Vb ~T0 @X0 1 e@1099 ]
+[; ;SC8P1713C.h: 298: volatile bit TRISE3 @ ((unsigned)&TRISE*8)+3;
+"301
+[v _TMR1IE `Vb ~T0 @X0 1 e@1120 ]
+[; ;SC8P1713C.h: 301: volatile bit TMR1IE @ ((unsigned)&PIE1*8)+0;
+"302
+[v _TMR2IE `Vb ~T0 @X0 1 e@1121 ]
+[; ;SC8P1713C.h: 302: volatile bit TMR2IE @ ((unsigned)&PIE1*8)+1;
+"303
+[v _CCP1IE `Vb ~T0 @X0 1 e@1122 ]
+[; ;SC8P1713C.h: 303: volatile bit CCP1IE @ ((unsigned)&PIE1*8)+2;
+"304
+[v _SSPIE `Vb ~T0 @X0 1 e@1123 ]
+[; ;SC8P1713C.h: 304: volatile bit SSPIE @ ((unsigned)&PIE1*8)+3;
+"305
+[v _TXIE `Vb ~T0 @X0 1 e@1124 ]
+[; ;SC8P1713C.h: 305: volatile bit TXIE @ ((unsigned)&PIE1*8)+4;
+"306
+[v _RCIE `Vb ~T0 @X0 1 e@1125 ]
+[; ;SC8P1713C.h: 306: volatile bit RCIE @ ((unsigned)&PIE1*8)+5;
+"307
+[v _ADIE `Vb ~T0 @X0 1 e@1126 ]
+[; ;SC8P1713C.h: 307: volatile bit ADIE @ ((unsigned)&PIE1*8)+6;
+"310
+[v _CCP2IE `Vb ~T0 @X0 1 e@1128 ]
+[; ;SC8P1713C.h: 310: volatile bit CCP2IE @ ((unsigned)&PIE2*8)+0;
+"311
+[v _BCLIE `Vb ~T0 @X0 1 e@1131 ]
+[; ;SC8P1713C.h: 311: volatile bit BCLIE @ ((unsigned)&PIE2*8)+3;
+"312
+[v _EEIE `Vb ~T0 @X0 1 e@1132 ]
+[; ;SC8P1713C.h: 312: volatile bit EEIE @ ((unsigned)&PIE2*8)+4;
+"313
+[v _C1IE `Vb ~T0 @X0 1 e@1133 ]
+[; ;SC8P1713C.h: 313: volatile bit C1IE @ ((unsigned)&PIE2*8)+5;
+"314
+[v _C2IE `Vb ~T0 @X0 1 e@1134 ]
+[; ;SC8P1713C.h: 314: volatile bit C2IE @ ((unsigned)&PIE2*8)+6;
+"318
+[v _SCS `Vb ~T0 @X0 1 e@1144 ]
+[; ;SC8P1713C.h: 318: volatile bit SCS @ ((unsigned)&OSCCON*8)+0;
+"319
+[v _IRCF0 `Vb ~T0 @X0 1 e@1148 ]
+[; ;SC8P1713C.h: 319: volatile bit IRCF0 @ ((unsigned)&OSCCON*8)+4;
+"320
+[v _IRCF1 `Vb ~T0 @X0 1 e@1149 ]
+[; ;SC8P1713C.h: 320: volatile bit IRCF1 @ ((unsigned)&OSCCON*8)+5;
+"321
+[v _IRCF2 `Vb ~T0 @X0 1 e@1150 ]
+[; ;SC8P1713C.h: 321: volatile bit IRCF2 @ ((unsigned)&OSCCON*8)+6;
+"324
+[v _TUN0 `Vb ~T0 @X0 1 e@1152 ]
+[; ;SC8P1713C.h: 324: volatile bit TUN0 @ ((unsigned)&OSCTUNE*8)+0;
+"325
+[v _TUN1 `Vb ~T0 @X0 1 e@1153 ]
+[; ;SC8P1713C.h: 325: volatile bit TUN1 @ ((unsigned)&OSCTUNE*8)+1;
+"326
+[v _TUN2 `Vb ~T0 @X0 1 e@1154 ]
+[; ;SC8P1713C.h: 326: volatile bit TUN2 @ ((unsigned)&OSCTUNE*8)+2;
+"327
+[v _TUN3 `Vb ~T0 @X0 1 e@1155 ]
+[; ;SC8P1713C.h: 327: volatile bit TUN3 @ ((unsigned)&OSCTUNE*8)+3;
+"328
+[v _TUN4 `Vb ~T0 @X0 1 e@1156 ]
+[; ;SC8P1713C.h: 328: volatile bit TUN4 @ ((unsigned)&OSCTUNE*8)+4;
+"331
+[v _WPUA0 `Vb ~T0 @X0 1 e@3184 ]
+[; ;SC8P1713C.h: 331: volatile bit WPUA0 @ ((unsigned)&WPUA*8)+0;
+"332
+[v _WPUA1 `Vb ~T0 @X0 1 e@3185 ]
+[; ;SC8P1713C.h: 332: volatile bit WPUA1 @ ((unsigned)&WPUA*8)+1;
+"333
+[v _WPUA2 `Vb ~T0 @X0 1 e@3186 ]
+[; ;SC8P1713C.h: 333: volatile bit WPUA2 @ ((unsigned)&WPUA*8)+2;
+"334
+[v _WPUA3 `Vb ~T0 @X0 1 e@3187 ]
+[; ;SC8P1713C.h: 334: volatile bit WPUA3 @ ((unsigned)&WPUA*8)+3;
+"335
+[v _WPUA4 `Vb ~T0 @X0 1 e@3188 ]
+[; ;SC8P1713C.h: 335: volatile bit WPUA4 @ ((unsigned)&WPUA*8)+4;
+"336
+[v _WPUA5 `Vb ~T0 @X0 1 e@3189 ]
+[; ;SC8P1713C.h: 336: volatile bit WPUA5 @ ((unsigned)&WPUA*8)+5;
+"337
+[v _WPUA6 `Vb ~T0 @X0 1 e@3190 ]
+[; ;SC8P1713C.h: 337: volatile bit WPUA6 @ ((unsigned)&WPUA*8)+6;
+"338
+[v _WPUA7 `Vb ~T0 @X0 1 e@3191 ]
+[; ;SC8P1713C.h: 338: volatile bit WPUA7 @ ((unsigned)&WPUA*8)+7;
+"341
+[v _WPUB0 `Vb ~T0 @X0 1 e@1192 ]
+[; ;SC8P1713C.h: 341: volatile bit WPUB0 @ ((unsigned)&WPUB*8)+0;
+"342
+[v _WPUB1 `Vb ~T0 @X0 1 e@1193 ]
+[; ;SC8P1713C.h: 342: volatile bit WPUB1 @ ((unsigned)&WPUB*8)+1;
+"343
+[v _WPUB2 `Vb ~T0 @X0 1 e@1194 ]
+[; ;SC8P1713C.h: 343: volatile bit WPUB2 @ ((unsigned)&WPUB*8)+2;
+"344
+[v _WPUB3 `Vb ~T0 @X0 1 e@1195 ]
+[; ;SC8P1713C.h: 344: volatile bit WPUB3 @ ((unsigned)&WPUB*8)+3;
+"345
+[v _WPUB4 `Vb ~T0 @X0 1 e@1196 ]
+[; ;SC8P1713C.h: 345: volatile bit WPUB4 @ ((unsigned)&WPUB*8)+4;
+"346
+[v _WPUB5 `Vb ~T0 @X0 1 e@1197 ]
+[; ;SC8P1713C.h: 346: volatile bit WPUB5 @ ((unsigned)&WPUB*8)+5;
+"347
+[v _WPUB6 `Vb ~T0 @X0 1 e@1198 ]
+[; ;SC8P1713C.h: 347: volatile bit WPUB6 @ ((unsigned)&WPUB*8)+6;
+"348
+[v _WPUB7 `Vb ~T0 @X0 1 e@1199 ]
+[; ;SC8P1713C.h: 348: volatile bit WPUB7 @ ((unsigned)&WPUB*8)+7;
+"351
+[v _WPUC0 `Vb ~T0 @X0 1 e@3192 ]
+[; ;SC8P1713C.h: 351: volatile bit WPUC0 @ ((unsigned)&WPUC*8)+0;
+"352
+[v _WPUC1 `Vb ~T0 @X0 1 e@3193 ]
+[; ;SC8P1713C.h: 352: volatile bit WPUC1 @ ((unsigned)&WPUC*8)+1;
+"353
+[v _WPUC2 `Vb ~T0 @X0 1 e@3194 ]
+[; ;SC8P1713C.h: 353: volatile bit WPUC2 @ ((unsigned)&WPUC*8)+2;
+"354
+[v _WPUC3 `Vb ~T0 @X0 1 e@3195 ]
+[; ;SC8P1713C.h: 354: volatile bit WPUC3 @ ((unsigned)&WPUC*8)+3;
+"355
+[v _WPUC4 `Vb ~T0 @X0 1 e@3196 ]
+[; ;SC8P1713C.h: 355: volatile bit WPUC4 @ ((unsigned)&WPUC*8)+4;
+"356
+[v _WPUC5 `Vb ~T0 @X0 1 e@3197 ]
+[; ;SC8P1713C.h: 356: volatile bit WPUC5 @ ((unsigned)&WPUC*8)+5;
+"357
+[v _WPUC6 `Vb ~T0 @X0 1 e@3198 ]
+[; ;SC8P1713C.h: 357: volatile bit WPUC6 @ ((unsigned)&WPUC*8)+6;
+"360
+[v _WPUE0 `Vb ~T0 @X0 1 e@2256 ]
+[; ;SC8P1713C.h: 360: volatile bit WPUE0 @ ((unsigned)&WPUE*8)+0;
+"361
+[v _WPUE1 `Vb ~T0 @X0 1 e@2257 ]
+[; ;SC8P1713C.h: 361: volatile bit WPUE1 @ ((unsigned)&WPUE*8)+1;
+"362
+[v _WPUE2 `Vb ~T0 @X0 1 e@2258 ]
+[; ;SC8P1713C.h: 362: volatile bit WPUE2 @ ((unsigned)&WPUE*8)+2;
+"363
+[v _WPUE3 `Vb ~T0 @X0 1 e@2259 ]
+[; ;SC8P1713C.h: 363: volatile bit WPUE3 @ ((unsigned)&WPUE*8)+3;
+"366
+[v _IOCB0 `Vb ~T0 @X0 1 e@1200 ]
+[; ;SC8P1713C.h: 366: volatile bit IOCB0 @ ((unsigned)&IOCB*8)+0;
+"367
+[v _IOCB1 `Vb ~T0 @X0 1 e@1201 ]
+[; ;SC8P1713C.h: 367: volatile bit IOCB1 @ ((unsigned)&IOCB*8)+1;
+"368
+[v _IOCB2 `Vb ~T0 @X0 1 e@1202 ]
+[; ;SC8P1713C.h: 368: volatile bit IOCB2 @ ((unsigned)&IOCB*8)+2;
+"369
+[v _IOCB3 `Vb ~T0 @X0 1 e@1203 ]
+[; ;SC8P1713C.h: 369: volatile bit IOCB3 @ ((unsigned)&IOCB*8)+3;
+"370
+[v _IOCB4 `Vb ~T0 @X0 1 e@1204 ]
+[; ;SC8P1713C.h: 370: volatile bit IOCB4 @ ((unsigned)&IOCB*8)+4;
+"371
+[v _IOCB5 `Vb ~T0 @X0 1 e@1205 ]
+[; ;SC8P1713C.h: 371: volatile bit IOCB5 @ ((unsigned)&IOCB*8)+5;
+"372
+[v _IOCB6 `Vb ~T0 @X0 1 e@1206 ]
+[; ;SC8P1713C.h: 372: volatile bit IOCB6 @ ((unsigned)&IOCB*8)+6;
+"373
+[v _IOCB7 `Vb ~T0 @X0 1 e@1207 ]
+[; ;SC8P1713C.h: 373: volatile bit IOCB7 @ ((unsigned)&IOCB*8)+7;
+"389
+[v _ADFM `Vb ~T0 @X0 1 e@1279 ]
+[; ;SC8P1713C.h: 389: volatile bit ADFM @ ((unsigned)&ADCON1*8)+7;
+"392
+[v _WDTPS0 `Vb ~T0 @X0 1 e@2089 ]
+[; ;SC8P1713C.h: 392: volatile bit WDTPS0 @ ((unsigned)&WDTCON*8)+1;
+"393
+[v _WDTPS1 `Vb ~T0 @X0 1 e@2090 ]
+[; ;SC8P1713C.h: 393: volatile bit WDTPS1 @ ((unsigned)&WDTCON*8)+2;
+"394
+[v _WDTPS2 `Vb ~T0 @X0 1 e@2091 ]
+[; ;SC8P1713C.h: 394: volatile bit WDTPS2 @ ((unsigned)&WDTCON*8)+3;
+"395
+[v _WDTPS3 `Vb ~T0 @X0 1 e@2092 ]
+[; ;SC8P1713C.h: 395: volatile bit WDTPS3 @ ((unsigned)&WDTCON*8)+4;
+"400
+[v _ANS0 `Vb ~T0 @X0 1 e@3136 ]
+[; ;SC8P1713C.h: 400: volatile bit ANS0 @ ((unsigned)&ANSEL*8)+0;
+"401
+[v _ANS1 `Vb ~T0 @X0 1 e@3137 ]
+[; ;SC8P1713C.h: 401: volatile bit ANS1 @ ((unsigned)&ANSEL*8)+1;
+"402
+[v _ANS2 `Vb ~T0 @X0 1 e@3138 ]
+[; ;SC8P1713C.h: 402: volatile bit ANS2 @ ((unsigned)&ANSEL*8)+2;
+"403
+[v _ANS3 `Vb ~T0 @X0 1 e@3139 ]
+[; ;SC8P1713C.h: 403: volatile bit ANS3 @ ((unsigned)&ANSEL*8)+3;
+"404
+[v _ANS4 `Vb ~T0 @X0 1 e@3140 ]
+[; ;SC8P1713C.h: 404: volatile bit ANS4 @ ((unsigned)&ANSEL*8)+4;
+"405
+[v _ANS5 `Vb ~T0 @X0 1 e@3141 ]
+[; ;SC8P1713C.h: 405: volatile bit ANS5 @ ((unsigned)&ANSEL*8)+5;
+"406
+[v _ANS6 `Vb ~T0 @X0 1 e@3142 ]
+[; ;SC8P1713C.h: 406: volatile bit ANS6 @ ((unsigned)&ANSEL*8)+6;
+"407
+[v _ANS7 `Vb ~T0 @X0 1 e@3143 ]
+[; ;SC8P1713C.h: 407: volatile bit ANS7 @ ((unsigned)&ANSEL*8)+7;
+"410
+[v _ANS8 `Vb ~T0 @X0 1 e@3144 ]
+[; ;SC8P1713C.h: 410: volatile bit ANS8 @ ((unsigned)&ANSELH*8)+0;
+"411
+[v _ANS9 `Vb ~T0 @X0 1 e@3145 ]
+[; ;SC8P1713C.h: 411: volatile bit ANS9 @ ((unsigned)&ANSELH*8)+1;
+"412
+[v _ANS10 `Vb ~T0 @X0 1 e@3146 ]
+[; ;SC8P1713C.h: 412: volatile bit ANS10 @ ((unsigned)&ANSELH*8)+2;
+"413
+[v _ANS11 `Vb ~T0 @X0 1 e@3147 ]
+[; ;SC8P1713C.h: 413: volatile bit ANS11 @ ((unsigned)&ANSELH*8)+3;
+"414
+[v _ANS12 `Vb ~T0 @X0 1 e@3148 ]
+[; ;SC8P1713C.h: 414: volatile bit ANS12 @ ((unsigned)&ANSELH*8)+4;
+"415
+[v _ANS13 `Vb ~T0 @X0 1 e@3149 ]
+[; ;SC8P1713C.h: 415: volatile bit ANS13 @ ((unsigned)&ANSELH*8)+5;
+[; ;sc.h: 28: extern void __nop(void);
+[; ;sc.h: 76: extern unsigned int flash_read(unsigned short addr);
+[; ;sc.h: 150: extern __nonreentrant void _delay(unsigned long);
+[; ;sc.h: 184: extern unsigned char __resetbits;
+[; ;sc.h: 185: extern __bit __powerdown;
+[; ;sc.h: 186: extern __bit __timeout;
+[; ;even.h: 6: extern bit time2ms;
+[; ;even.h: 7: extern bit time10ms;
+[; ;even.h: 9: void interrupt Isr_Timer();
+[; ;LED.h: 13: void DisplayPro();
+[; ;LED.h: 14: void WorkLedPro();
+[; ;LED.h: 15: void USBLedPro();
+[; ;LED.h: 16: void LEDScan();
+[; ;LED.h: 17: void DisplayIcon(unsigned int);
+[; ;LED.h: 18: void LockPro();
+[; ;LED.h: 19: void ErrPro();
+[; ;Key.h: 6: extern bit KeyLongFlag;
+[; ;Key.h: 8: void KeyScan();
+[; ;Motor.h: 6: void Motor();
+[; ;K13-01.h: 12: typedef struct
+[; ;K13-01.h: 13: {
+[; ;K13-01.h: 14: unsigned char LockStart:1;
+[; ;K13-01.h: 15: unsigned char LockFail:1;
+[; ;K13-01.h: 16: unsigned char LockEnd:1;
+[; ;K13-01.h: 17: unsigned char UnlockStart:1;
+[; ;K13-01.h: 18: unsigned char UnlockFail:1;
+[; ;K13-01.h: 19: unsigned char UnlockEnd:1;
+[; ;K13-01.h: 20: unsigned char LockFlag:1;
+[; ;K13-01.h: 21: unsigned char reservation:2;
+[; ;K13-01.h: 22: }TYPE_UNION_LockSta;
+[; ;K13-01.h: 24: extern unsigned char LockNumb;
+[; ;K13-01.h: 27: extern unsigned char BatPercent;
+[; ;K13-01.h: 28: extern unsigned char WorkMin;
+[; ;K13-01.h: 30: extern bit SystemONFlag;
+[; ;K13-01.h: 31: extern bit OnOffFlag;
+[; ;K13-01.h: 32: extern bit WorkFlag;
+[; ;K13-01.h: 33: extern bit IovFlag;
+[; ;K13-01.h: 34: extern bit LowBatFlag;
+[; ;K13-01.h: 35: extern bit USBFlag;
+[; ;K13-01.h: 36: extern TYPE_UNION_LockSta LockSta;
+[; ;K13-01.h: 37: extern unsigned char BatAddTime;
+[; ;K13-01.h: 38: extern unsigned char BatDecTime;
+[; ;K13-01.h: 40: void SystemSleep();
+[; ;K13-01.h: 41: void Apply();
+[; ;K13-01.h: 42: void SystemInit();
+[; ;K13-01.h: 43: void GPIOInit();
+[; ;K13-01.h: 44: void TimerInit();
+[; ;ADC.h: 6: unsigned char ADSample(unsigned char);
+[; ;ADC.h: 7: void ADCPro();
+[; ;ADC.h: 8: void ADCRead(unsigned char,unsigned int *);
+[; ;ADC.h: 9: void Sec1sPro();
+"3 C:\Users\Administrator\Desktop\project\K13-01\code\ADC.c
+[v _ADCState `uc ~T0 @X0 1 e ]
+[i _ADCState
+-> -> 0 `i `uc
+]
+[; ;ADC.c: 3: unsigned char ADCState=0;
+"4
+[v _ADCVal `ui ~T0 @X0 -> 3 `i e ]
+[i _ADCVal
+:U ..
+-> -> 0 `i `ui
+..
+]
+[; ;ADC.c: 4: unsigned int ADCVal[3]={0};
+"5
+[v _ADCMax `ui ~T0 @X0 1 e ]
+[i _ADCMax
+-> -> 0 `i `ui
+]
+[v _ADCMin `ui ~T0 @X0 1 e ]
+[i _ADCMin
+-> -> 0 `i `ui
+]
+[; ;ADC.c: 5: unsigned int ADCMax=0,ADCMin=0;
+"6
+[v _ADsum `ul ~T0 @X0 1 e ]
+[i _ADsum
+-> -> -> 0 `i `l `ul
+]
+[; ;ADC.c: 6: unsigned long ADsum=0;
+"7
+[v _ADcnt `uc ~T0 @X0 1 e ]
+[i _ADcnt
+-> -> 0 `i `uc
+]
+[; ;ADC.c: 7: unsigned char ADcnt=0;
+"9
+[v _CurrentCnt `uc ~T0 @X0 1 e ]
+[i _CurrentCnt
+-> -> 0 `i `uc
+]
+[; ;ADC.c: 9: unsigned char CurrentCnt=0;
+"11
+[v _ADCPro `(v ~T0 @X0 1 ef ]
+"12
+{
+[; ;ADC.c: 11: void ADCPro()
+[; ;ADC.c: 12: {
+[e :U _ADCPro ]
+[f ]
+[; ;ADC.c: 13: switch (ADCState)
+"13
+[e $U 4  ]
+[; ;ADC.c: 14: {
+"14
+{
+[; ;ADC.c: 15: case 0:
+"15
+[e :U 5 ]
+[; ;ADC.c: 16: ADCRead(0b00001111,ADCVal);
+"16
+[e ( _ADCRead (2 , -> -> 15 `i `uc &U _ADCVal ]
+[; ;ADC.c: 17: break;
+"17
+[e $U 3  ]
+[; ;ADC.c: 19: case 1:
+"19
+[e :U 6 ]
+[; ;ADC.c: 20: ADCRead(0b00000010,ADCVal+1);
+"20
+[e ( _ADCRead (2 , -> -> 2 `i `uc + &U _ADCVal * -> -> 1 `i `x -> -> # *U &U _ADCVal `i `x ]
+[; ;ADC.c: 21: break;
+"21
+[e $U 3  ]
+[; ;ADC.c: 23: case 2:
+"23
+[e :U 7 ]
+[; ;ADC.c: 24: ADCRead(0b00000001,ADCVal+2);
+"24
+[e ( _ADCRead (2 , -> -> 1 `i `uc + &U _ADCVal * -> -> 2 `i `x -> -> # *U &U _ADCVal `i `x ]
+[; ;ADC.c: 25: break;
+"25
+[e $U 3  ]
+"26
+}
+[; ;ADC.c: 26: }
+[e $U 3  ]
+"13
+[e :U 4 ]
+[e [\ _ADCState , $ -> -> 0 `i `uc 5
+ , $ -> -> 1 `i `uc 6
+ , $ -> -> 2 `i `uc 7
+ 3 ]
+"26
+[e :U 3 ]
+[; ;ADC.c: 27: if(SystemONFlag==0)
+"27
+[e $ ! == -> _SystemONFlag `i -> 0 `i 8  ]
+[; ;ADC.c: 28: {
+"28
+{
+[; ;ADC.c: 29: if(ADCVal[2]<267)
+"29
+[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 267 `i `ui 9  ]
+[; ;ADC.c: 30: {
+"30
+{
+[; ;ADC.c: 31: BatPercent=0;
+"31
+[e = _BatPercent -> -> 0 `i `uc ]
+"32
+}
+[; ;ADC.c: 32: }
+[e $U 10  ]
+"33
+[e :U 9 ]
+[; ;ADC.c: 33: else if(ADCVal[2]>350)
+[e $ ! > *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 350 `i `ui 11  ]
+[; ;ADC.c: 34: {
+"34
+{
+[; ;ADC.c: 35: BatPercent=99;
+"35
+[e = _BatPercent -> -> 99 `i `uc ]
+"36
+}
+[; ;ADC.c: 36: }
+[e $U 12  ]
+"37
+[e :U 11 ]
+[; ;ADC.c: 37: else
+[; ;ADC.c: 38: {
+"38
+{
+[; ;ADC.c: 39: BatPercent=ADCVal[2]-250;
+"39
+[e = _BatPercent -> - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 250 `i `ui `uc ]
+"40
+}
+[e :U 12 ]
+[e :U 10 ]
+"41
+}
+[e :U 8 ]
+[; ;ADC.c: 40: }
+[; ;ADC.c: 41: }
+[; ;ADC.c: 42: if(ADCVal[2]<250)
+"42
+[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 250 `i `ui 13  ]
+[; ;ADC.c: 43: {
+"43
+{
+[; ;ADC.c: 44: LowBatFlag=1;
+"44
+[e = _LowBatFlag -> -> 1 `i `b ]
+"45
+}
+[; ;ADC.c: 45: }
+[e $U 14  ]
+"46
+[e :U 13 ]
+[; ;ADC.c: 46: else
+[; ;ADC.c: 47: {
+"47
+{
+[; ;ADC.c: 48: LowBatFlag=0;
+"48
+[e = _LowBatFlag -> -> 0 `i `b ]
+"49
+}
+[e :U 14 ]
+[; ;ADC.c: 49: }
+[; ;ADC.c: 50: if(ADCVal[1]>58)
+"50
+[e $ ! > *U + &U _ADCVal * -> -> -> 1 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 58 `i `ui 15  ]
+[; ;ADC.c: 51: {
+"51
+{
+[; ;ADC.c: 52: CurrentCnt++;
+"52
+[e ++ _CurrentCnt -> -> 1 `i `uc ]
+[; ;ADC.c: 53: if(CurrentCnt>=200)
+"53
+[e $ ! >= -> _CurrentCnt `i -> 200 `i 16  ]
+[; ;ADC.c: 54: {
+"54
+{
+[; ;ADC.c: 55: CurrentCnt=200;
+"55
+[e = _CurrentCnt -> -> 200 `i `uc ]
+[; ;ADC.c: 56: IovFlag=1;
+"56
+[e = _IovFlag -> -> 1 `i `b ]
+"57
+}
+[e :U 16 ]
+"58
+}
+[; ;ADC.c: 57: }
+[; ;ADC.c: 58: }
+[e $U 17  ]
+"59
+[e :U 15 ]
+[; ;ADC.c: 59: else
+[; ;ADC.c: 60: {
+"60
+{
+[; ;ADC.c: 61: CurrentCnt=0;
+"61
+[e = _CurrentCnt -> -> 0 `i `uc ]
+[; ;ADC.c: 62: IovFlag=0;
+"62
+[e = _IovFlag -> -> 0 `i `b ]
+"63
+}
+[e :U 17 ]
+[; ;ADC.c: 63: }
+[; ;ADC.c: 64: }
+"64
+[e :UE 2 ]
+}
+"66
+[v _Sec1sPro `(v ~T0 @X0 1 ef ]
+"67
+{
+[; ;ADC.c: 66: void Sec1sPro()
+[; ;ADC.c: 67: {
+[e :U _Sec1sPro ]
+[f ]
+"68
+[v F547 `uc ~T0 @X0 1 s ActualPercent ]
+[i F547
+-> -> 0 `i `uc
+]
+"69
+[v _PercentErr `uc ~T0 @X0 1 a ]
+[; ;ADC.c: 68: static unsigned char ActualPercent=0;
+[; ;ADC.c: 69: unsigned char PercentErr=0;
+[e = _PercentErr -> -> 0 `i `uc ]
+"70
+[v _TempPercent `ui ~T0 @X0 1 a ]
+[; ;ADC.c: 70: unsigned int TempPercent=0;
+[e = _TempPercent -> -> 0 `i `ui ]
+[; ;ADC.c: 73: if(USBFlag)
+"73
+[e $ ! _USBFlag 19  ]
+[; ;ADC.c: 74: {
+"74
+{
+[; ;ADC.c: 75: if(ADCVal[2]<275)
+"75
+[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 275 `i `ui 20  ]
+[; ;ADC.c: 76: {
+"76
+{
+[; ;ADC.c: 77: TempPercent=0;
+"77
+[e = _TempPercent -> -> 0 `i `ui ]
+"78
+}
+[; ;ADC.c: 78: }
+[e $U 21  ]
+"79
+[e :U 20 ]
+[; ;ADC.c: 79: else if(ADCVal[2]>350)
+[e $ ! > *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 350 `i `ui 22  ]
+[; ;ADC.c: 80: {
+"80
+{
+[; ;ADC.c: 81: TempPercent=99;
+"81
+[e = _TempPercent -> -> 99 `i `ui ]
+"82
+}
+[; ;ADC.c: 82: }
+[e $U 23  ]
+"83
+[e :U 22 ]
+[; ;ADC.c: 83: else
+[; ;ADC.c: 84: {
+"84
+{
+[; ;ADC.c: 85: TempPercent=ADCVal[2]-275;
+"85
+[e = _TempPercent - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 275 `i `ui ]
+[; ;ADC.c: 86: TempPercent=TempPercent*4/3;
+"86
+[e = _TempPercent / * _TempPercent -> -> 4 `i `ui -> -> 3 `i `ui ]
+"87
+}
+[e :U 23 ]
+[e :U 21 ]
+[; ;ADC.c: 87: }
+[; ;ADC.c: 88: if(ActualPercent>TempPercent)
+"88
+[e $ ! > -> F547 `ui _TempPercent 24  ]
+[; ;ADC.c: 89: {
+"89
+{
+[; ;ADC.c: 90: if(ActualPercent)
+"90
+[e $ ! != -> F547 `i -> -> -> 0 `i `uc `i 25  ]
+[; ;ADC.c: 91: {
+"91
+{
+[; ;ADC.c: 92: ActualPercent--;
+"92
+[e -- F547 -> -> 1 `i `uc ]
+"93
+}
+[e :U 25 ]
+"94
+}
+[; ;ADC.c: 93: }
+[; ;ADC.c: 94: }
+[e $U 26  ]
+"95
+[e :U 24 ]
+[; ;ADC.c: 95: else if(ActualPercent<TempPercent)
+[e $ ! < -> F547 `ui _TempPercent 27  ]
+[; ;ADC.c: 96: {
+"96
+{
+[; ;ADC.c: 97: if(ActualPercent<99)
+"97
+[e $ ! < -> F547 `i -> 99 `i 28  ]
+[; ;ADC.c: 98: {
+"98
+{
+[; ;ADC.c: 99: ActualPercent++;
+"99
+[e ++ F547 -> -> 1 `i `uc ]
+"100
+}
+[e :U 28 ]
+"101
+}
+[e :U 27 ]
+"102
+[e :U 26 ]
+[; ;ADC.c: 100: }
+[; ;ADC.c: 101: }
+[; ;ADC.c: 102: if(ActualPercent>BatPercent)
+[e $ ! > -> F547 `i -> _BatPercent `i 29  ]
+[; ;ADC.c: 103: {
+"103
+{
+[; ;ADC.c: 104: PercentErr=ActualPercent-BatPercent;
+"104
+[e = _PercentErr -> - -> F547 `i -> _BatPercent `i `uc ]
+[; ;ADC.c: 105: if(PercentErr<5)
+"105
+[e $ ! < -> _PercentErr `i -> 5 `i 30  ]
+[; ;ADC.c: 106: {
+"106
+{
+[; ;ADC.c: 107: BatAddTime=90-15*PercentErr;
+"107
+[e = _BatAddTime -> - -> 90 `i * -> 15 `i -> _PercentErr `i `uc ]
+"108
+}
+[; ;ADC.c: 108: }
+[e $U 31  ]
+"109
+[e :U 30 ]
+[; ;ADC.c: 109: else
+[; ;ADC.c: 110: {
+"110
+{
+[; ;ADC.c: 111: BatAddTime=15;
+"111
+[e = _BatAddTime -> -> 15 `i `uc ]
+"112
+}
+[e :U 31 ]
+"113
+}
+[; ;ADC.c: 112: }
+[; ;ADC.c: 113: }
+[e $U 32  ]
+"114
+[e :U 29 ]
+[; ;ADC.c: 114: else
+[; ;ADC.c: 115: {
+"115
+{
+[; ;ADC.c: 116: BatAddTime=240;
+"116
+[e = _BatAddTime -> -> 240 `i `uc ]
+"117
+}
+[e :U 32 ]
+"118
+}
+[e :U 19 ]
+[; ;ADC.c: 117: }
+[; ;ADC.c: 118: }
+[; ;ADC.c: 121: if(WorkFlag)
+"121
+[e $ ! _WorkFlag 33  ]
+[; ;ADC.c: 122: {
+"122
+{
+[; ;ADC.c: 123: if(ADCVal[2]<267)
+"123
+[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 267 `i `ui 34  ]
+[; ;ADC.c: 124: {
+"124
+{
+[; ;ADC.c: 125: TempPercent=0;
+"125
+[e = _TempPercent -> -> 0 `i `ui ]
+"126
+}
+[; ;ADC.c: 126: }
+[e $U 35  ]
+"127
+[e :U 34 ]
+[; ;ADC.c: 127: else if(ADCVal[2]>333)
+[e $ ! > *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 333 `i `ui 36  ]
+[; ;ADC.c: 128: {
+"128
+{
+[; ;ADC.c: 129: TempPercent=99;
+"129
+[e = _TempPercent -> -> 99 `i `ui ]
+"130
+}
+[; ;ADC.c: 130: }
+[e $U 37  ]
+"131
+[e :U 36 ]
+[; ;ADC.c: 131: else
+[; ;ADC.c: 132: {
+"132
+{
+[; ;ADC.c: 133: TempPercent=ADCVal[2]-267;
+"133
+[e = _TempPercent - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 267 `i `ui ]
+"134
+}
+[e :U 37 ]
+[e :U 35 ]
+[; ;ADC.c: 134: }
+[; ;ADC.c: 135: if(TempPercent>=33)
+"135
+[e $ ! >= _TempPercent -> -> 33 `i `ui 38  ]
+[; ;ADC.c: 136: {
+"136
+{
+[; ;ADC.c: 137: TempPercent=33+(ADCVal[2]-300)*2;
+"137
+[e = _TempPercent + -> -> 33 `i `ui * - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 300 `i `ui -> -> 2 `i `ui ]
+"138
+}
+[e :U 38 ]
+[; ;ADC.c: 138: }
+[; ;ADC.c: 139: if(ActualPercent>TempPercent)
+"139
+[e $ ! > -> F547 `ui _TempPercent 39  ]
+[; ;ADC.c: 140: {
+"140
+{
+[; ;ADC.c: 141: if(ActualPercent)
+"141
+[e $ ! != -> F547 `i -> -> -> 0 `i `uc `i 40  ]
+[; ;ADC.c: 142: {
+"142
+{
+[; ;ADC.c: 143: ActualPercent--;
+"143
+[e -- F547 -> -> 1 `i `uc ]
+"144
+}
+[e :U 40 ]
+"145
+}
+[; ;ADC.c: 144: }
+[; ;ADC.c: 145: }
+[e $U 41  ]
+"146
+[e :U 39 ]
+[; ;ADC.c: 146: else if(ActualPercent<TempPercent)
+[e $ ! < -> F547 `ui _TempPercent 42  ]
+[; ;ADC.c: 147: {
+"147
+{
+[; ;ADC.c: 148: if(ActualPercent<99)
+"148
+[e $ ! < -> F547 `i -> 99 `i 43  ]
+[; ;ADC.c: 149: {
+"149
+{
+[; ;ADC.c: 150: ActualPercent++;
+"150
+[e ++ F547 -> -> 1 `i `uc ]
+"151
+}
+[e :U 43 ]
+"152
+}
+[e :U 42 ]
+"153
+[e :U 41 ]
+[; ;ADC.c: 151: }
+[; ;ADC.c: 152: }
+[; ;ADC.c: 153: if(ActualPercent<BatPercent)
+[e $ ! < -> F547 `i -> _BatPercent `i 44  ]
+[; ;ADC.c: 154: {
+"154
+{
+[; ;ADC.c: 155: PercentErr=BatPercent-ActualPercent;
+"155
+[e = _PercentErr -> - -> _BatPercent `i -> F547 `i `uc ]
+[; ;ADC.c: 156: if(PercentErr<5&&ActualPercent)
+"156
+[e $ ! && < -> _PercentErr `i -> 5 `i != -> F547 `i -> -> -> 0 `i `uc `i 45  ]
+[; ;ADC.c: 157: {
+"157
+{
+[; ;ADC.c: 158: BatDecTime=75-15*PercentErr;
+"158
+[e = _BatDecTime -> - -> 75 `i * -> 15 `i -> _PercentErr `i `uc ]
+"159
+}
+[; ;ADC.c: 159: }
+[e $U 46  ]
+"160
+[e :U 45 ]
+[; ;ADC.c: 160: else
+[; ;ADC.c: 161: {
+"161
+{
+[; ;ADC.c: 162: BatDecTime=8;
+"162
+[e = _BatDecTime -> -> 8 `i `uc ]
+"163
+}
+[e :U 46 ]
+"164
+}
+[; ;ADC.c: 163: }
+[; ;ADC.c: 164: }
+[e $U 47  ]
+"165
+[e :U 44 ]
+[; ;ADC.c: 165: else
+[; ;ADC.c: 166: {
+"166
+{
+[; ;ADC.c: 167: BatDecTime=210;
+"167
+[e = _BatDecTime -> -> 210 `i `uc ]
+"168
+}
+[e :U 47 ]
+"169
+}
+[; ;ADC.c: 168: }
+[; ;ADC.c: 169: }
+[e $U 48  ]
+"170
+[e :U 33 ]
+[; ;ADC.c: 170: else
+[; ;ADC.c: 171: {
+"171
+{
+[; ;ADC.c: 172: BatDecTime=210;
+"172
+[e = _BatDecTime -> -> 210 `i `uc ]
+"173
+}
+[e :U 48 ]
+[; ;ADC.c: 173: }
+[; ;ADC.c: 174: }
+"174
+[e :UE 18 ]
+}
+"176
+[v _ADCRead `(v ~T0 @X0 1 ef2`uc`*ui ]
+"177
+{
+[; ;ADC.c: 176: void ADCRead(unsigned char ch,unsigned int *Val)
+[; ;ADC.c: 177: {
+[e :U _ADCRead ]
+"176
+[v _ch `uc ~T0 @X0 1 r1 ]
+[v _Val `*ui ~T0 @X0 1 r2 ]
+"177
+[f ]
+"178
+[v _ad_temp `ui ~T0 @X0 1 a ]
+[v _AD_H `ui ~T0 @X0 1 a ]
+[v _AD_L `ui ~T0 @X0 1 a ]
+[; ;ADC.c: 178: unsigned int ad_temp,AD_H,AD_L;
+[; ;ADC.c: 180: if(ADSample(ch))
+"180
+[e $ ! != -> ( _ADSample (1 _ch `i -> -> -> 0 `i `uc `i 50  ]
+[; ;ADC.c: 181: {
+"181
+{
+[; ;ADC.c: 182: AD_H=ADRESH;
+"182
+[e = _AD_H -> _ADRESH `ui ]
+[; ;ADC.c: 183: AD_L=ADRESL;
+"183
+[e = _AD_L -> _ADRESL `ui ]
+[; ;ADC.c: 184: ad_temp=(AD_H<<4)|(AD_L>>4);
+"184
+[e = _ad_temp | << _AD_H -> 4 `i >> _AD_L -> 4 `i ]
+[; ;ADC.c: 185: if(ad_temp>ADCMax)
+"185
+[e $ ! > _ad_temp _ADCMax 51  ]
+[; ;ADC.c: 186: {
+"186
+{
+[; ;ADC.c: 187: ADCMax=ad_temp;
+"187
+[e = _ADCMax _ad_temp ]
+"188
+}
+[e :U 51 ]
+[; ;ADC.c: 188: }
+[; ;ADC.c: 189: if(ad_temp<ADCMin)
+"189
+[e $ ! < _ad_temp _ADCMin 52  ]
+[; ;ADC.c: 190: {
+"190
+{
+[; ;ADC.c: 191: ADCMin=ad_temp;
+"191
+[e = _ADCMin _ad_temp ]
+"192
+}
+[e :U 52 ]
+[; ;ADC.c: 192: }
+[; ;ADC.c: 193: ADsum += ad_temp;
+"193
+[e =+ _ADsum -> _ad_temp `ul ]
+[; ;ADC.c: 194: ADcnt++;
+"194
+[e ++ _ADcnt -> -> 1 `i `uc ]
+[; ;ADC.c: 195: if(ADcnt >= 10)
+"195
+[e $ ! >= -> _ADcnt `i -> 10 `i 53  ]
+[; ;ADC.c: 196: {
+"196
+{
+[; ;ADC.c: 197: ADcnt = 0;
+"197
+[e = _ADcnt -> -> 0 `i `uc ]
+[; ;ADC.c: 198: ADsum= ADsum-ADCMax-ADCMin;
+"198
+[e = _ADsum - - _ADsum -> _ADCMax `ul -> _ADCMin `ul ]
+[; ;ADC.c: 199: ADsum = ADsum >> 3;
+"199
+[e = _ADsum >> _ADsum -> 3 `i ]
+[; ;ADC.c: 200: switch (ADCState)
+"200
+[e $U 55  ]
+[; ;ADC.c: 201: {
+"201
+{
+[; ;ADC.c: 202: case 0:
+"202
+[e :U 56 ]
+[; ;ADC.c: 203: *Val=ADsum;
+"203
+[e = *U _Val -> _ADsum `ui ]
+[; ;ADC.c: 204: break;
+"204
+[e $U 54  ]
+[; ;ADC.c: 206: case 1:
+"206
+[e :U 57 ]
+[; ;ADC.c: 207: *Val=ADsum*1000/(*(Val-1));
+"207
+[e = *U _Val -> / * _ADsum -> -> -> 1000 `i `l `ul -> *U - _Val * -> -> 1 `i `x -> -> # *U _Val `i `x `ul `ui ]
+[; ;ADC.c: 208: break;
+"208
+[e $U 54  ]
+[; ;ADC.c: 210: case 2:
+"210
+[e :U 58 ]
+[; ;ADC.c: 211: *Val=ADsum*100/(*(Val-2));
+"211
+[e = *U _Val -> / * _ADsum -> -> -> 100 `i `l `ul -> *U - _Val * -> -> 2 `i `x -> -> # *U _Val `i `x `ul `ui ]
+[; ;ADC.c: 212: break;
+"212
+[e $U 54  ]
+"213
+}
+[; ;ADC.c: 213: }
+[e $U 54  ]
+"200
+[e :U 55 ]
+[e [\ _ADCState , $ -> -> 0 `i `uc 56
+ , $ -> -> 1 `i `uc 57
+ , $ -> -> 2 `i `uc 58
+ 54 ]
+"213
+[e :U 54 ]
+[; ;ADC.c: 214: ADCMax=0;
+"214
+[e = _ADCMax -> -> 0 `i `ui ]
+[; ;ADC.c: 215: ADCMin=0xFFFF;
+"215
+[e = _ADCMin -> 65535 `ui ]
+[; ;ADC.c: 216: ADsum = 0;
+"216
+[e = _ADsum -> -> -> 0 `i `l `ul ]
+[; ;ADC.c: 217: ADCState++;
+"217
+[e ++ _ADCState -> -> 1 `i `uc ]
+[; ;ADC.c: 218: if(ADCState>=3)
+"218
+[e $ ! >= -> _ADCState `i -> 3 `i 59  ]
+[; ;ADC.c: 219: {
+"219
+{
+[; ;ADC.c: 220: ADCState=0;
+"220
+[e = _ADCState -> -> 0 `i `uc ]
+"221
+}
+[e :U 59 ]
+"222
+}
+[e :U 53 ]
+"223
+}
+[e :U 50 ]
+[; ;ADC.c: 221: }
+[; ;ADC.c: 222: }
+[; ;ADC.c: 223: }
+[; ;ADC.c: 224: }
+"224
+[e :UE 49 ]
+}
+"233
+[v _ADSample `(uc ~T0 @X0 1 ef1`uc ]
+"234
+{
+[; ;ADC.c: 233: unsigned char ADSample(unsigned char ch)
+[; ;ADC.c: 234: {
+[e :U _ADSample ]
+"233
+[v _ch `uc ~T0 @X0 1 r1 ]
+"234
+[f ]
+[; ;ADC.c: 235: ADCON1 = 0x00;
+"235
+[e = _ADCON1 -> -> 0 `i `uc ]
+[; ;ADC.c: 236: ADCON0 = 0X41 | ( ch << 2);
+"236
+[e = _ADCON0 -> | -> 65 `i << -> _ch `i -> 2 `i `uc ]
+[; ;ADC.c: 237: asm("nop");
+"237
+[; <" nop ;# ">
+[; ;ADC.c: 238: asm("nop");
+"238
+[; <" nop ;# ">
+[; ;ADC.c: 239: GODONE = 1;
+"239
+[e = _GODONE -> -> 1 `i `b ]
+"240
+[v _i `Vuc ~T0 @X0 1 a ]
+[; ;ADC.c: 240: volatile unsigned char i = 0;
+[e = _i -> -> 0 `i `uc ]
+[; ;ADC.c: 241: while(GODONE)
+"241
+[e $U 61  ]
+[e :U 62 ]
+[; ;ADC.c: 242: {
+"242
+{
+[; ;ADC.c: 243: if(0 == (--i))
+"243
+[e $ ! == -> 0 `i -> =- _i -> -> 1 `i `uc `i 64  ]
+[; ;ADC.c: 244: return 0;
+"244
+[e ) -> -> 0 `i `uc ]
+[e $UE 60  ]
+[e :U 64 ]
+"245
+}
+[e :U 61 ]
+"241
+[e $ _GODONE 62  ]
+[e :U 63 ]
+[; ;ADC.c: 245: }
+[; ;ADC.c: 246: return 1;
+"246
+[e ) -> -> 1 `i `uc ]
+[e $UE 60  ]
+[; ;ADC.c: 247: }
+"247
+[e :UE 60 ]
+}

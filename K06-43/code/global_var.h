@@ -26,7 +26,7 @@
 
 #define BeepAlarmUpdate(n,m) alarm_beep_cnt=##n,speed_beep=##m
 #define		Pin_Vin_CFG(x,y)		TRISB3=x,WPUB3=y
-#define		Pin_BAT_CFG(x,y)		TRISB2=x,WPUB2=y
+#define		Pin_BAT_CFG(x,y)		TRISA1=x,WPUA1=y
 #define		Pin_IOV_CFG(x,y)		TRISB1=x,WPUB1=y
 #define		Pin_KEY_CFG(x,y)		TRISB6=x,WPUB6=y
 #define		Pin_USB_CFG(x,y)		TRISB7=x,WPUB7=y

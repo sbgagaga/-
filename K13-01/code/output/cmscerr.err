@@ -1,0 +1,10 @@
+Warning[1090]:	C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.c	µÚ17ÐÐ	variable "_LowBatFlag" is not used
+
+Memory Summary:
+    Program space        used   7CCh (  1996) of   800h words   ( 97.5%)
+    Data space           used    9Ah (   154) of    A0h bytes   ( 96.2%)
+    EEPROM space         None available
+    Data stack space     used     0h (     0) of     Eh bytes   (  0.0%)
+    Configuration bits   used     0h (     0) of     2h words   (  0.0%)
+    ID Location space    used     0h (     0) of     4h bytes   (  0.0%)
+

@@ -1,0 +1,485 @@
+[p PRO_MODE GLOBOPT AUTOSTATIC PIC14 PICREGULAR PICMID SPACEOPT ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip SC8P1712C ]
+[d frameptr 6 ]
+"11 C:\Users\Administrator\Desktop\project\K13-01\code\ADC.c
+[v _ADCPro ADCPro `(v  1 e 1 0 ]
+"66
+[v _Sec1sPro Sec1sPro `(v  1 e 1 0 ]
+"176
+[v _ADCRead ADCRead `(v  1 e 1 0 ]
+"233
+[v _ADSample ADSample `(uc  1 e 1 0 ]
+"8 C:\Users\Administrator\Desktop\project\K13-01\code\even.c
+[v _Isr_Timer Isr_Timer `II(v  1 e 1 0 ]
+"24 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.c
+[v _Apply Apply `(v  1 e 1 0 ]
+"113
+[v _SystemInit SystemInit `(v  1 e 1 0 ]
+"122
+[v _GPIOInit GPIOInit `(v  1 e 1 0 ]
+"153
+[v _TimerInit TimerInit `(v  1 e 1 0 ]
+"9 C:\Users\Administrator\Desktop\project\K13-01\code\Key.c
+[v _KeyScan KeyScan `(v  1 e 1 0 ]
+"17 C:\Users\Administrator\Desktop\project\K13-01\code\LED.c
+[v _LEDScan LEDScan `(v  1 e 1 0 ]
+"124
+[v _DisplayIcon DisplayIcon `(v  1 e 1 0 ]
+"144
+[v _DisplayPro DisplayPro `(v  1 e 1 0 ]
+"154
+[v _USBLedPro USBLedPro `(v  1 e 1 0 ]
+"192
+[v _WorkLedPro WorkLedPro `(v  1 e 1 0 ]
+"255
+[v _LockPro LockPro `(v  1 e 1 0 ]
+"314
+[v _ErrPro ErrPro `(v  1 e 1 0 ]
+"3 C:\Users\Administrator\Desktop\project\K13-01\code\main.c
+[v _main main `(v  1 e 1 0 ]
+"7 C:\Users\Administrator\Desktop\project\K13-01\code\Motor.c
+[v _Motor Motor `(v  1 e 1 0 ]
+"62 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"4 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lbdiv.c
+[v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
+"4 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lbmod.c
+[v ___lbmod __lbmod `(uc  1 e 1 0 ]
+"6 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"6 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"15 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"15 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"4 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+"3 C:\Users\Administrator\Desktop\project\K13-01\code\ADC.c
+[v _ADCState ADCState `uc  1 e 1 0 ]
+"4
+[v _ADCVal ADCVal `[3]ui  1 e 6 0 ]
+"5
+[v _ADCMax ADCMax `ui  1 e 2 0 ]
+[v _ADCMin ADCMin `ui  1 e 2 0 ]
+"6
+[v _ADsum ADsum `ul  1 e 4 0 ]
+"7
+[v _ADcnt ADcnt `uc  1 e 1 0 ]
+"9
+[v _CurrentCnt CurrentCnt `uc  1 e 1 0 ]
+"3 C:\Users\Administrator\Desktop\project\K13-01\code\even.c
+[v _cnt2ms cnt2ms `uc  1 e 1 0 ]
+"4
+[v _cnt10ms cnt10ms `uc  1 e 1 0 ]
+"5
+[v _time2ms time2ms `b  1 e 0 0 ]
+"6
+[v _time10ms time10ms `b  1 e 0 0 ]
+"3 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.c
+[v _SystemONFlag SystemONFlag `b  1 e 0 0 ]
+"4
+[v _VarPowerUpCount VarPowerUpCount `uc  1 e 1 0 ]
+"6
+[v _BatPercent BatPercent `uc  1 e 1 0 ]
+"8
+[v _WorkMin WorkMin `uc  1 e 1 0 ]
+"10
+[v _LockNumb LockNumb `uc  1 e 1 0 ]
+[s S609 . 2 `uc 1 LockStart 1 0 :1:0 
+`uc 1 LockFail 1 0 :1:1 
+`uc 1 LockEnd 1 0 :1:2 
+`uc 1 UnlockStart 1 0 :1:3 
+`uc 1 UnlockFail 1 0 :1:4 
+`uc 1 UnlockEnd 1 0 :1:5 
+`uc 1 LockFlag 1 0 :1:6 
+`uc 1 reservation 1 1 :2:0 
+]
+"12
+[v _LockSta LockSta `S609  1 e 2 0 ]
+"14
+[v _OnOffFlag OnOffFlag `b  1 e 0 0 ]
+"15
+[v _WorkFlag WorkFlag `b  1 e 0 0 ]
+"16
+[v _IovFlag IovFlag `b  1 e 0 0 ]
+"18
+[v _USBFlag USBFlag `b  1 e 0 0 ]
+"20
+[v _Sec1sCnt Sec1sCnt `uc  1 e 1 0 ]
+"21
+[v _BatAddTime BatAddTime `uc  1 e 1 0 ]
+"22
+[v _BatDecTime BatDecTime `uc  1 e 1 0 ]
+"3 C:\Users\Administrator\Desktop\project\K13-01\code\Key.c
+[v _KeyInBuf KeyInBuf `b  1 e 0 0 ]
+"4
+[v _KeyPress KeyPress `b  1 e 0 0 ]
+"5
+[v _KeyCnt KeyCnt `ui  1 e 2 0 ]
+"7
+[v _USBLink USBLink `b  1 e 0 0 ]
+"3 C:\Users\Administrator\Desktop\project\K13-01\code\LED.c
+[v _NumbArr NumbArr `[10]uc  1 e 10 0 ]
+"4
+[v _HideNumbArr HideNumbArr `[11]uc  1 e 11 0 ]
+"5
+[v _OffHideNumbArr OffHideNumbArr `[7]ui  1 e 14 0 ]
+"12
+[v _LEDSeg1 LEDSeg1 `DC[16]uc  1 e 16 0 ]
+"13
+[v _LEDSeg2 LEDSeg2 `[16]uc  1 e 16 0 ]
+"14
+[v _LedIndex LedIndex `ui  1 e 2 0 ]
+"15
+[v _LEDArrMap LEDArrMap `[5]uc  1 e 5 0 ]
+"3 C:\Users\Administrator\Desktop\project\K13-01\code\Motor.c
+[v _WorkCnt WorkCnt `ui  1 e 2 0 ]
+"4
+[v _TimeDecCnt TimeDecCnt `ui  1 e 2 0 ]
+"5
+[v _TimeAddCnt TimeAddCnt `ui  1 e 2 0 ]
+"17 E:\SCMCU_IDE_V2.00.08_Beta9\data\include\SC8P1713C.h
+[v _PORTA PORTA `VEuc  1 e 1 @5 ]
+"18
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"19
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+"24
+[v _INTCON INTCON `VEuc  1 e 1 @11 ]
+"31
+[v _T2CON T2CON `VEuc  1 e 1 @18 ]
+"45
+[v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
+"46
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @31 ]
+"50
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+"51
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"52
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"54
+[v _PIE1 PIE1 `VEuc  1 e 1 @140 ]
+"57
+[v _OSCCON OSCCON `VEuc  1 e 1 @143 ]
+"60
+[v _PR2 PR2 `VEuc  1 e 1 @146 ]
+"63
+[v _WPUB WPUB `VEuc  1 e 1 @149 ]
+"71
+[v _ADRESL ADRESL `VEuc  1 e 1 @158 ]
+"72
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @159 ]
+"76
+[v _WDTCON WDTCON `VEuc  1 e 1 @261 ]
+"110
+[v _WPUA WPUA `VEuc  1 e 1 @398 ]
+"111
+[v _WPUC WPUC `VEuc  1 e 1 @399 ]
+"139
+[v _RA3 RA3 `VEb  1 e 0 @43 ]
+"141
+[v _RA5 RA5 `VEb  1 e 0 @45 ]
+"142
+[v _RA6 RA6 `VEb  1 e 0 @46 ]
+"143
+[v _RA7 RA7 `VEb  1 e 0 @47 ]
+"149
+[v _RB3 RB3 `VEb  1 e 0 @51 ]
+"150
+[v _RB4 RB4 `VEb  1 e 0 @52 ]
+"151
+[v _RB5 RB5 `VEb  1 e 0 @53 ]
+"158
+[v _RC2 RC2 `VEb  1 e 0 @58 ]
+"159
+[v _RC3 RC3 `VEb  1 e 0 @59 ]
+"187
+[v _TMR2IF TMR2IF `VEb  1 e 0 @97 ]
+"243
+[v _GODONE GODONE `VEb  1 e 0 @249 ]
+"259
+[v _RBPU RBPU `VEb  1 e 0 @1039 ]
+"265
+[v _TRISA1 TRISA1 `VEb  1 e 0 @1065 ]
+"266
+[v _TRISA2 TRISA2 `VEb  1 e 0 @1066 ]
+"270
+[v _TRISA6 TRISA6 `VEb  1 e 0 @1070 ]
+"271
+[v _TRISA7 TRISA7 `VEb  1 e 0 @1071 ]
+"277
+[v _TRISB3 TRISB3 `VEb  1 e 0 @1075 ]
+"278
+[v _TRISB4 TRISB4 `VEb  1 e 0 @1076 ]
+"279
+[v _TRISB5 TRISB5 `VEb  1 e 0 @1077 ]
+"286
+[v _TRISC2 TRISC2 `VEb  1 e 0 @1082 ]
+"287
+[v _TRISC3 TRISC3 `VEb  1 e 0 @1083 ]
+"332
+[v _WPUA1 WPUA1 `VEb  1 e 0 @3185 ]
+"333
+[v _WPUA2 WPUA2 `VEb  1 e 0 @3186 ]
+"337
+[v _WPUA6 WPUA6 `VEb  1 e 0 @3190 ]
+"338
+[v _WPUA7 WPUA7 `VEb  1 e 0 @3191 ]
+"344
+[v _WPUB3 WPUB3 `VEb  1 e 0 @1195 ]
+"345
+[v _WPUB4 WPUB4 `VEb  1 e 0 @1196 ]
+"346
+[v _WPUB5 WPUB5 `VEb  1 e 0 @1197 ]
+"353
+[v _WPUC2 WPUC2 `VEb  1 e 0 @3194 ]
+"354
+[v _WPUC3 WPUC3 `VEb  1 e 0 @3195 ]
+"401
+[v _ANS1 ANS1 `VEb  1 e 0 @3137 ]
+"402
+[v _ANS2 ANS2 `VEb  1 e 0 @3138 ]
+"3 C:\Users\Administrator\Desktop\project\K13-01\code\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"11
+} 0
+"113 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.c
+[v _SystemInit SystemInit `(v  1 e 1 0 ]
+{
+"120
+} 0
+"153
+[v _TimerInit TimerInit `(v  1 e 1 0 ]
+{
+"169
+} 0
+"122
+[v _GPIOInit GPIOInit `(v  1 e 1 0 ]
+{
+"151
+} 0
+"24
+[v _Apply Apply `(v  1 e 1 0 ]
+{
+"63
+} 0
+"66 C:\Users\Administrator\Desktop\project\K13-01\code\ADC.c
+[v _Sec1sPro Sec1sPro `(v  1 e 1 0 ]
+{
+"70
+[v Sec1sPro@TempPercent TempPercent `ui  1 a 2 6 ]
+"69
+[v Sec1sPro@PercentErr PercentErr `uc  1 a 1 5 ]
+"68
+[v Sec1sPro@ActualPercent ActualPercent `uc  1 s 1 ActualPercent ]
+"174
+} 0
+"6 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwdiv@quotient quotient `ui  1 a 2 1 ]
+"12
+[v ___lwdiv@counter counter `uc  1 a 1 0 ]
+"6
+[v ___lwdiv@divisor divisor `ui  1 p 2 3 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 5 ]
+"31
+} 0
+"7 C:\Users\Administrator\Desktop\project\K13-01\code\Motor.c
+[v _Motor Motor `(v  1 e 1 0 ]
+{
+"62
+} 0
+"15 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 0 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 3 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 5 ]
+"53
+} 0
+"9 C:\Users\Administrator\Desktop\project\K13-01\code\Key.c
+[v _KeyScan KeyScan `(v  1 e 1 0 ]
+{
+"111
+} 0
+"144 C:\Users\Administrator\Desktop\project\K13-01\code\LED.c
+[v _DisplayPro DisplayPro `(v  1 e 1 0 ]
+{
+"152
+} 0
+"192
+[v _WorkLedPro WorkLedPro `(v  1 e 1 0 ]
+{
+"194
+[v WorkLedPro@LedSwitchCnt LedSwitchCnt `uc  1 s 1 LedSwitchCnt ]
+"195
+[v WorkLedPro@LedSwitchFlag LedSwitchFlag `b  1 s 0 LedSwitchFlag ]
+"196
+[v WorkLedPro@index index `uc  1 s 1 index ]
+"197
+[v WorkLedPro@cnt cnt `uc  1 s 1 cnt ]
+"198
+[v WorkLedPro@dir dir `b  1 s 0 dir ]
+"253
+} 0
+"4 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+{
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v ___bmul@product product `uc  1 a 1 4 ]
+"4
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 3 ]
+"6
+[v ___bmul@multiplier multiplier `uc  1 a 1 5 ]
+"51
+} 0
+"154 C:\Users\Administrator\Desktop\project\K13-01\code\LED.c
+[v _USBLedPro USBLedPro `(v  1 e 1 0 ]
+{
+"156
+[v USBLedPro@index index `uc  1 s 1 index ]
+"157
+[v USBLedPro@cnt cnt `uc  1 s 1 cnt ]
+"190
+} 0
+"4 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lbmod.c
+[v ___lbmod __lbmod `(uc  1 e 1 0 ]
+{
+[v ___lbmod@dividend dividend `uc  1 a 1 wreg ]
+"6
+[v ___lbmod@rem rem `uc  1 a 1 7 ]
+"7
+[v ___lbmod@counter counter `uc  1 a 1 6 ]
+"4
+[v ___lbmod@dividend dividend `uc  1 a 1 wreg ]
+[v ___lbmod@divisor divisor `uc  1 p 1 3 ]
+"9
+[v ___lbmod@dividend dividend `uc  1 a 1 5 ]
+"18
+} 0
+"4 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lbdiv.c
+[v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
+{
+[v ___lbdiv@dividend dividend `uc  1 a 1 wreg ]
+"6
+[v ___lbdiv@quotient quotient `uc  1 a 1 6 ]
+"7
+[v ___lbdiv@counter counter `uc  1 a 1 5 ]
+"4
+[v ___lbdiv@dividend dividend `uc  1 a 1 wreg ]
+[v ___lbdiv@divisor divisor `uc  1 p 1 3 ]
+"9
+[v ___lbdiv@dividend dividend `uc  1 a 1 4 ]
+"26
+} 0
+"255 C:\Users\Administrator\Desktop\project\K13-01\code\LED.c
+[v _LockPro LockPro `(v  1 e 1 0 ]
+{
+"257
+[v LockPro@SwitchCnt SwitchCnt `uc  1 s 1 SwitchCnt ]
+[v LockPro@LockSwitchCnt LockSwitchCnt `uc  1 s 1 LockSwitchCnt ]
+"258
+[v LockPro@Ledcnt Ledcnt `uc  1 s 1 Ledcnt ]
+"259
+[v LockPro@LedSwitchFlag LedSwitchFlag `b  1 s 0 LedSwitchFlag ]
+"312
+} 0
+"314
+[v _ErrPro ErrPro `(v  1 e 1 0 ]
+{
+"316
+[v ErrPro@SwitchCnt SwitchCnt `uc  1 s 1 SwitchCnt ]
+"317
+[v ErrPro@LedSwitchFlag LedSwitchFlag `b  1 s 0 LedSwitchFlag ]
+"336
+} 0
+"124
+[v _DisplayIcon DisplayIcon `(v  1 e 1 0 ]
+{
+"127
+[v DisplayIcon@Mask Mask `ui  1 a 2 0 ]
+"126
+[v DisplayIcon@i i `uc  1 a 1 2 ]
+"124
+[v DisplayIcon@index index `ui  1 p 2 3 ]
+"142
+} 0
+"11 C:\Users\Administrator\Desktop\project\K13-01\code\ADC.c
+[v _ADCPro ADCPro `(v  1 e 1 0 ]
+{
+"64
+} 0
+"176
+[v _ADCRead ADCRead `(v  1 e 1 0 ]
+{
+[v ADCRead@ch ch `uc  1 a 1 wreg ]
+"178
+[v ADCRead@ad_temp ad_temp `ui  1 a 2 5 ]
+[v ADCRead@AD_L AD_L `ui  1 a 2 3 ]
+[v ADCRead@AD_H AD_H `ui  1 a 2 1 ]
+"176
+[v ADCRead@ch ch `uc  1 a 1 wreg ]
+[v ADCRead@Val Val `*.4ui  1 p 1 21 ]
+"180
+[v ADCRead@ch ch `uc  1 a 1 0 ]
+"224
+} 0
+"15 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+{
+"17
+[v ___lmul@product product `ul  1 a 4 3 ]
+"15
+[v ___lmul@multiplier multiplier `ul  1 p 4 0 ]
+[v ___lmul@multiplicand multiplicand `ul  1 p 4 4 ]
+"129
+} 0
+"6 E:\SCMCU_IDE_V2.00.08_Beta9\data\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"11
+[v ___lldiv@quotient quotient `ul  1 a 4 16 ]
+"12
+[v ___lldiv@counter counter `uc  1 a 1 20 ]
+"6
+[v ___lldiv@divisor divisor `ul  1 p 4 8 ]
+[v ___lldiv@dividend dividend `ul  1 p 4 12 ]
+"31
+} 0
+"233 C:\Users\Administrator\Desktop\project\K13-01\code\ADC.c
+[v _ADSample ADSample `(uc  1 e 1 0 ]
+{
+[v ADSample@ch ch `uc  1 a 1 wreg ]
+"240
+[v ADSample@i i `VEuc  1 a 1 5 ]
+"233
+[v ADSample@ch ch `uc  1 a 1 wreg ]
+"235
+[v ADSample@ch ch `uc  1 a 1 4 ]
+"247
+} 0
+"8 C:\Users\Administrator\Desktop\project\K13-01\code\even.c
+[v _Isr_Timer Isr_Timer `II(v  1 e 1 0 ]
+{
+"24
+} 0
+"17 C:\Users\Administrator\Desktop\project\K13-01\code\LED.c
+[v _LEDScan LEDScan `(v  1 e 1 0 ]
+{
+"19
+[v LEDScan@LEDScanIndex LEDScanIndex `uc  1 s 1 LEDScanIndex ]
+"122
+} 0
