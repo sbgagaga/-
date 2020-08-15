@@ -427,6 +427,7 @@ void Sec1sPro();
 
 # 6 "C:\Users\Administrator\Desktop\project\K13-01\code\Key.h"
 extern bit KeyLongFlag;
+extern bit KeyPress;
 
 void KeyScan();
 
@@ -486,8 +487,8 @@ bit LowBatFlag=0;
 bit USBFlag=0;
 
 unsigned char Sec1sCnt=0;
-unsigned char BatAddTime=0;
-unsigned char BatDecTime=0;
+unsigned char BatAddTime=240;
+unsigned char BatDecTime=210;
 
 void Apply()
 {
@@ -519,6 +520,8 @@ ADCPro();
 Motor();
 DisplayPro();
 
+SystemSleep();
+
 }
 Sec1sCnt++;
 if(Sec1sCnt>=100)
@@ -526,14 +529,13 @@ if(Sec1sCnt>=100)
 Sec1sCnt=0;
 Sec1sPro();
 }
-
 }
 }
 
 void SystemSleep()
 {
 static unsigned char SleepCnt=0;
-if(WorkFlag||OnOffFlag||LowBatFlag||USBFlag||IovFlag)
+if(WorkFlag||OnOffFlag||LowBatFlag||USBFlag||IovFlag||KeyPress||LockSta.LockStart)
 {
 SleepCnt=0;
 }
@@ -552,6 +554,7 @@ ADCON0 = 0;
 
 TRISA =0X00;
 TRISB =0X00;
+TRISC =0x00;
 WPUA = 0xFF;
 WPUB = 0xFF;
 WPUC = 0xFF;
@@ -562,8 +565,8 @@ RA1=1;
 RA2=1;
 RA0=1;
 RA5 =0;
-TRISA6=1,WPUA6=1;
-TRISA7=1,WPUA7=1;
+TRISB6=1,WPUB6=1;
+TRISB7=1,WPUB7=1;
 
 WDTCON=0x00;
 RBIE=1;
@@ -610,8 +613,8 @@ PORTC = 0;
 
 RA5 =1;
 RBPU=0;
-TRISA6=1,WPUA6=1;
-TRISA7=1,WPUA7=1;
+TRISB6=1,WPUB6=1;
+TRISB7=1,WPUB7=1;
 
 TRISA1=1,WPUA1=0; ANS1=1;
 TRISA2=1,WPUA2=0; ANS2=1;
@@ -621,7 +624,7 @@ TRISA2=1,WPUA2=0; ANS2=1;
 void TimerInit()
 {
 
-# 164
+# 166
 OSCCON=0X61;
 INTCON=0B11000000;
 PIE1=0B00000010;

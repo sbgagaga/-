@@ -847,7 +847,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ADC.h: 8: void ADCRead(unsigned char,unsigned int *);
 [; ;ADC.h: 9: void Sec1sPro();
 [; ;Key.h: 6: extern bit KeyLongFlag;
-[; ;Key.h: 8: void KeyScan();
+[; ;Key.h: 7: extern bit KeyPress;
+[; ;Key.h: 9: void KeyScan();
 [; ;Motor.h: 6: void Motor();
 [; ;K13-01.h: 12: typedef struct
 [; ;K13-01.h: 13: {
@@ -1002,8 +1003,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _LEDScan ]
 [f ]
 "19
-[v F547 `uc ~T0 @X0 1 s LEDScanIndex ]
-[i F547
+[v F548 `uc ~T0 @X0 1 s LEDScanIndex ]
+[i F548
 -> -> 0 `i `uc
 ]
 [; ;LED.c: 19: static unsigned char LEDScanIndex=0;
@@ -1323,7 +1324,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 3  ]
 "28
 [e :U 4 ]
-[e [\ F547 , $ -> -> 0 `i `uc 5
+[e [\ F548 , $ -> -> 0 `i `uc 5
  , $ -> -> 1 `i `uc 10
  , $ -> -> 2 `i `uc 15
  , $ -> -> 3 `i `uc 20
@@ -1333,16 +1334,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 3 ]
 [; ;LED.c: 117: LEDScanIndex++;
 "117
-[e ++ F547 -> -> 1 `i `uc ]
+[e ++ F548 -> -> 1 `i `uc ]
 [; ;LED.c: 118: if(LEDScanIndex>=5)
 "118
-[e $ ! >= -> F547 `i -> 5 `i 27  ]
+[e $ ! >= -> F548 `i -> 5 `i 27  ]
 [; ;LED.c: 119: {
 "119
 {
 [; ;LED.c: 120: LEDScanIndex=0;
 "120
-[e = F547 -> -> 0 `i `uc ]
+[e = F548 -> -> 0 `i `uc ]
 "121
 }
 [e :U 27 ]
@@ -1461,13 +1462,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _USBLedPro ]
 [f ]
 "156
-[v F551 `uc ~T0 @X0 1 s index ]
-[i F551
+[v F552 `uc ~T0 @X0 1 s index ]
+[i F552
 -> -> 0 `i `uc
 ]
 "157
-[v F552 `uc ~T0 @X0 1 s cnt ]
-[i F552
+[v F553 `uc ~T0 @X0 1 s cnt ]
+[i F553
 -> -> 0 `i `uc
 ]
 [; ;LED.c: 156: static unsigned char index=0;
@@ -1480,28 +1481,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;LED.c: 161: cnt++;
 "161
-[e ++ F552 -> -> 1 `i `uc ]
+[e ++ F553 -> -> 1 `i `uc ]
 [; ;LED.c: 162: if(cnt>=40)
 "162
-[e $ ! >= -> F552 `i -> 40 `i 37  ]
+[e $ ! >= -> F553 `i -> 40 `i 37  ]
 [; ;LED.c: 163: {
 "163
 {
 [; ;LED.c: 164: cnt=0;
 "164
-[e = F552 -> -> 0 `i `uc ]
+[e = F553 -> -> 0 `i `uc ]
 [; ;LED.c: 165: index++;
 "165
-[e ++ F551 -> -> 1 `i `uc ]
+[e ++ F552 -> -> 1 `i `uc ]
 [; ;LED.c: 166: if(index>=11)
 "166
-[e $ ! >= -> F551 `i -> 11 `i 38  ]
+[e $ ! >= -> F552 `i -> 11 `i 38  ]
 [; ;LED.c: 167: {
 "167
 {
 [; ;LED.c: 168: index=0;
 "168
-[e = F551 -> -> 0 `i `uc ]
+[e = F552 -> -> 0 `i `uc ]
 "169
 }
 [e :U 38 ]
@@ -1521,10 +1522,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _LedIndex -> *U + &U _NumbArr * -> -> / -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui ]
 [; ;LED.c: 174: LedIndex|=((unsigned int)NumbArr[BatPercent%10]&~HideNumbArr[index])<<7;
 "174
-[e =| _LedIndex << & -> *U + &U _NumbArr * -> -> % -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui -> ~ -> *U + &U _HideNumbArr * -> F551 `ux -> -> # *U &U _HideNumbArr `ui `ux `i `ui -> 7 `i ]
+[e =| _LedIndex << & -> *U + &U _NumbArr * -> -> % -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui -> ~ -> *U + &U _HideNumbArr * -> F552 `ux -> -> # *U &U _HideNumbArr `ui `ux `i `ui -> 7 `i ]
 [; ;LED.c: 175: LedIndex&=~HideNumbArr[index];
 "175
-[e =& _LedIndex -> ~ -> *U + &U _HideNumbArr * -> F551 `ux -> -> # *U &U _HideNumbArr `ui `ux `i `ui ]
+[e =& _LedIndex -> ~ -> *U + &U _HideNumbArr * -> F552 `ux -> -> # *U &U _HideNumbArr `ui `ux `i `ui ]
 "176
 }
 [; ;LED.c: 176: }
@@ -1537,7 +1538,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;LED.c: 179: index=0;
 "179
-[e = F551 -> -> 0 `i `uc ]
+[e = F552 -> -> 0 `i `uc ]
 [; ;LED.c: 180: LedIndex=NumbArr[BatPercent/10];
 "180
 [e = _LedIndex -> *U + &U _NumbArr * -> -> / -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui ]
@@ -1560,10 +1561,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;LED.c: 187: index=0;
 "187
-[e = F551 -> -> 0 `i `uc ]
+[e = F552 -> -> 0 `i `uc ]
 [; ;LED.c: 188: cnt=0;
 "188
-[e = F552 -> -> 0 `i `uc ]
+[e = F553 -> -> 0 `i `uc ]
 "189
 }
 [e :U 41 ]
@@ -1581,28 +1582,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _WorkLedPro ]
 [f ]
 "194
-[v F554 `uc ~T0 @X0 1 s LedSwitchCnt ]
-[i F554
+[v F555 `uc ~T0 @X0 1 s LedSwitchCnt ]
+[i F555
 -> -> 0 `i `uc
 ]
 "195
-[v F555 `b ~T0 @X0 1 s LedSwitchFlag ]
-[i F555
+[v F556 `b ~T0 @X0 1 s LedSwitchFlag ]
+[i F556
 -> 0 `i
 ]
 "196
-[v F556 `uc ~T0 @X0 1 s index ]
-[i F556
--> -> 0 `i `uc
-]
-"197
-[v F557 `uc ~T0 @X0 1 s cnt ]
+[v F557 `uc ~T0 @X0 1 s index ]
 [i F557
 -> -> 0 `i `uc
 ]
-"198
-[v F558 `b ~T0 @X0 1 s dir ]
+"197
+[v F558 `uc ~T0 @X0 1 s cnt ]
 [i F558
+-> -> 0 `i `uc
+]
+"198
+[v F559 `b ~T0 @X0 1 s dir ]
+[i F559
 -> 0 `i
 ]
 [; ;LED.c: 194: static char LedSwitchCnt=0;
@@ -1624,19 +1625,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;LED.c: 203: LedSwitchCnt++;
 "203
-[e ++ F554 -> -> 1 `i `uc ]
+[e ++ F555 -> -> 1 `i `uc ]
 [; ;LED.c: 204: if(LedSwitchCnt>=40)
 "204
-[e $ ! >= -> F554 `i -> 40 `i 45  ]
+[e $ ! >= -> F555 `i -> 40 `i 45  ]
 [; ;LED.c: 205: {
 "205
 {
 [; ;LED.c: 206: LedSwitchCnt=0;
 "206
-[e = F554 -> -> 0 `i `uc ]
+[e = F555 -> -> 0 `i `uc ]
 [; ;LED.c: 207: LedSwitchFlag=!LedSwitchFlag;
 "207
-[e = F555 ! F555 ]
+[e = F556 ! F556 ]
 "208
 }
 [e :U 45 ]
@@ -1653,23 +1654,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;LED.c: 212: LedSwitchCnt=0;
 "212
-[e = F554 -> -> 0 `i `uc ]
+[e = F555 -> -> 0 `i `uc ]
 [; ;LED.c: 213: LedSwitchFlag=1;
 "213
-[e = F555 -> -> 1 `i `b ]
+[e = F556 -> -> 1 `i `b ]
 "214
 }
 [e :U 46 ]
 [; ;LED.c: 214: }
 [; ;LED.c: 215: if(LedSwitchFlag)
 "215
-[e $ ! F555 47  ]
+[e $ ! F556 47  ]
 [; ;LED.c: 216: {
 "216
 {
-[; ;LED.c: 217: LedIndex|=NumbArr[BatPercent/10];
+[; ;LED.c: 217: LedIndex=NumbArr[BatPercent/10];
 "217
-[e =| _LedIndex -> *U + &U _NumbArr * -> -> / -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui ]
+[e = _LedIndex -> *U + &U _NumbArr * -> -> / -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui ]
 [; ;LED.c: 218: LedIndex|=(unsigned int)NumbArr[BatPercent%10]<<7;
 "218
 [e =| _LedIndex << -> *U + &U _NumbArr * -> -> % -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui -> 7 `i ]
@@ -1690,28 +1691,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;LED.c: 223: cnt++;
 "223
-[e ++ F557 -> -> 1 `i `uc ]
+[e ++ F558 -> -> 1 `i `uc ]
 [; ;LED.c: 224: if(cnt>=40)
 "224
-[e $ ! >= -> F557 `i -> 40 `i 50  ]
+[e $ ! >= -> F558 `i -> 40 `i 50  ]
 [; ;LED.c: 225: {
 "225
 {
 [; ;LED.c: 226: cnt=0;
 "226
-[e = F557 -> -> 0 `i `uc ]
+[e = F558 -> -> 0 `i `uc ]
 [; ;LED.c: 227: index++;
 "227
-[e ++ F556 -> -> 1 `i `uc ]
+[e ++ F557 -> -> 1 `i `uc ]
 [; ;LED.c: 228: if(index>=7)
 "228
-[e $ ! >= -> F556 `i -> 7 `i 51  ]
+[e $ ! >= -> F557 `i -> 7 `i 51  ]
 [; ;LED.c: 229: {
 "229
 {
 [; ;LED.c: 230: if(dir)
 "230
-[e $ ! F558 52  ]
+[e $ ! F559 52  ]
 [; ;LED.c: 231: {
 "231
 {
@@ -1730,10 +1731,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LED.c: 235: }
 [; ;LED.c: 236: dir=!dir;
 "236
-[e = F558 ! F558 ]
+[e = F559 ! F559 ]
 [; ;LED.c: 237: index=0;
 "237
-[e = F556 -> -> 0 `i `uc ]
+[e = F557 -> -> 0 `i `uc ]
 "238
 }
 [e :U 51 ]
@@ -1744,7 +1745,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LED.c: 239: }
 [; ;LED.c: 240: if(!dir)
 "240
-[e $ ! ! F558 53  ]
+[e $ ! ! F559 53  ]
 [; ;LED.c: 241: {
 "241
 {
@@ -1756,7 +1757,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =| _LedIndex << -> *U + &U _NumbArr * -> -> % -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui -> 7 `i ]
 [; ;LED.c: 244: LedIndex&=~OffHideNumbArr[index];
 "244
-[e =& _LedIndex ~ *U + &U _OffHideNumbArr * -> F556 `ux -> -> # *U &U _OffHideNumbArr `ui `ux ]
+[e =& _LedIndex ~ *U + &U _OffHideNumbArr * -> F557 `ux -> -> # *U &U _OffHideNumbArr `ui `ux ]
 "245
 }
 [; ;LED.c: 245: }
@@ -1775,7 +1776,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =| _LedIndex << -> *U + &U _NumbArr * -> -> % -> _WorkMin `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui -> 7 `i ]
 [; ;LED.c: 250: LedIndex&=~OffHideNumbArr[6-index];
 "250
-[e =& _LedIndex ~ *U + &U _OffHideNumbArr * -> -> - -> 6 `i -> F556 `i `ui `ux -> -> # *U &U _OffHideNumbArr `ui `ux ]
+[e =& _LedIndex ~ *U + &U _OffHideNumbArr * -> -> - -> 6 `i -> F557 `i `ui `ux -> -> # *U &U _OffHideNumbArr `ui `ux ]
 "251
 }
 [e :U 54 ]
@@ -1798,22 +1799,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _LockPro ]
 [f ]
 "257
-[v F562 `uc ~T0 @X0 1 s SwitchCnt ]
-[i F562
--> -> 0 `i `uc
-]
-[v F563 `uc ~T0 @X0 1 s LockSwitchCnt ]
+[v F563 `uc ~T0 @X0 1 s SwitchCnt ]
 [i F563
 -> -> 0 `i `uc
 ]
-"258
-[v F564 `uc ~T0 @X0 1 s Ledcnt ]
+[v F564 `uc ~T0 @X0 1 s LockSwitchCnt ]
 [i F564
 -> -> 0 `i `uc
 ]
-"259
-[v F565 `b ~T0 @X0 1 s LedSwitchFlag ]
+"258
+[v F565 `uc ~T0 @X0 1 s Ledcnt ]
 [i F565
+-> -> 0 `i `uc
+]
+"259
+[v F566 `b ~T0 @X0 1 s LedSwitchFlag ]
+[i F566
 -> 0 `i
 ]
 [; ;LED.c: 257: static unsigned char SwitchCnt=0,LockSwitchCnt=0;
@@ -1833,16 +1834,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;LED.c: 264: SwitchCnt++;
 "264
-[e ++ F562 -> -> 1 `i `uc ]
+[e ++ F563 -> -> 1 `i `uc ]
 [; ;LED.c: 265: if(SwitchCnt>=100)
 "265
-[e $ ! >= -> F562 `i -> 100 `i 58  ]
+[e $ ! >= -> F563 `i -> 100 `i 58  ]
 [; ;LED.c: 266: {
 "266
 {
 [; ;LED.c: 267: SwitchCnt=0;
 "267
-[e = F562 -> -> 0 `i `uc ]
+[e = F563 -> -> 0 `i `uc ]
 [; ;LED.c: 268: if(LockNumb>0)
 "268
 [e $ ! > -> _LockNumb `i -> 0 `i 59  ]
@@ -1891,7 +1892,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;LED.c: 282: SwitchCnt=0;
 "282
-[e = F562 -> -> 0 `i `uc ]
+[e = F563 -> -> 0 `i `uc ]
 "283
 }
 [e :U 61 ]
@@ -1904,31 +1905,31 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;LED.c: 286: LockSwitchCnt++;
 "286
-[e ++ F563 -> -> 1 `i `uc ]
+[e ++ F564 -> -> 1 `i `uc ]
 [; ;LED.c: 287: if(LockSwitchCnt>=35)
 "287
-[e $ ! >= -> F563 `i -> 35 `i 63  ]
+[e $ ! >= -> F564 `i -> 35 `i 63  ]
 [; ;LED.c: 288: {
 "288
 {
 [; ;LED.c: 289: LockSwitchCnt=0;
 "289
-[e = F563 -> -> 0 `i `uc ]
+[e = F564 -> -> 0 `i `uc ]
 [; ;LED.c: 290: LedSwitchFlag=!LedSwitchFlag;
 "290
-[e = F565 ! F565 ]
+[e = F566 ! F566 ]
 [; ;LED.c: 291: if(!LedSwitchFlag)
 "291
-[e $ ! ! F565 64  ]
+[e $ ! ! F566 64  ]
 [; ;LED.c: 292: {
 "292
 {
 [; ;LED.c: 293: Ledcnt++;
 "293
-[e ++ F564 -> -> 1 `i `uc ]
+[e ++ F565 -> -> 1 `i `uc ]
 [; ;LED.c: 294: if(Ledcnt>=4)
 "294
-[e $ ! >= -> F564 `i -> 4 `i 65  ]
+[e $ ! >= -> F565 `i -> 4 `i 65  ]
 [; ;LED.c: 295: {
 "295
 {
@@ -1952,7 +1953,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LED.c: 300: }
 [; ;LED.c: 301: if(LedSwitchFlag)
 "301
-[e $ ! F565 66  ]
+[e $ ! F566 66  ]
 [; ;LED.c: 302: {
 "302
 {
@@ -1975,10 +1976,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;LED.c: 308: Ledcnt=0;
 "308
-[e = F564 -> -> 0 `i `uc ]
+[e = F565 -> -> 0 `i `uc ]
 [; ;LED.c: 309: LockSwitchCnt=0;
 "309
-[e = F563 -> -> 0 `i `uc ]
+[e = F564 -> -> 0 `i `uc ]
 "310
 }
 [e :U 67 ]
@@ -2000,13 +2001,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _ErrPro ]
 [f ]
 "316
-[v F567 `uc ~T0 @X0 1 s SwitchCnt ]
-[i F567
+[v F568 `uc ~T0 @X0 1 s SwitchCnt ]
+[i F568
 -> -> 0 `i `uc
 ]
 "317
-[v F568 `b ~T0 @X0 1 s LedSwitchFlag ]
-[i F568
+[v F569 `b ~T0 @X0 1 s LedSwitchFlag ]
+[i F569
 -> 0 `i
 ]
 [; ;LED.c: 316: static unsigned char SwitchCnt=0;
@@ -2019,26 +2020,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;LED.c: 320: SwitchCnt++;
 "320
-[e ++ F567 -> -> 1 `i `uc ]
+[e ++ F568 -> -> 1 `i `uc ]
 [; ;LED.c: 321: if(SwitchCnt>=35)
 "321
-[e $ ! >= -> F567 `i -> 35 `i 70  ]
+[e $ ! >= -> F568 `i -> 35 `i 70  ]
 [; ;LED.c: 322: {
 "322
 {
 [; ;LED.c: 323: SwitchCnt=0;
 "323
-[e = F567 -> -> 0 `i `uc ]
+[e = F568 -> -> 0 `i `uc ]
 [; ;LED.c: 324: LedSwitchFlag=!LedSwitchFlag;
 "324
-[e = F568 ! F568 ]
+[e = F569 ! F569 ]
 "326
 }
 [e :U 70 ]
 [; ;LED.c: 326: }
 [; ;LED.c: 327: if(LedSwitchFlag)
 "327
-[e $ ! F568 71  ]
+[e $ ! F569 71  ]
 [; ;LED.c: 328: {
 "328
 {
@@ -2061,7 +2062,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;LED.c: 334: SwitchCnt=0;
 "334
-[e = F567 -> -> 0 `i `uc ]
+[e = F568 -> -> 0 `i `uc ]
 "335
 }
 [e :U 72 ]

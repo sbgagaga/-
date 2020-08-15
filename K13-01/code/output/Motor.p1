@@ -844,7 +844,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ADC.h: 8: void ADCRead(unsigned char,unsigned int *);
 [; ;ADC.h: 9: void Sec1sPro();
 [; ;Key.h: 6: extern bit KeyLongFlag;
-[; ;Key.h: 8: void KeyScan();
+[; ;Key.h: 7: extern bit KeyPress;
+[; ;Key.h: 9: void KeyScan();
 [; ;K13-01.h: 12: typedef struct
 [; ;K13-01.h: 13: {
 [; ;K13-01.h: 14: unsigned char LockStart:1;
@@ -906,6 +907,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Motor.c: 10: {
 "10
 {
+[; ;Motor.c: 11: RA3=0;
+"11
+[e = _RA3 -> -> 0 `i `b ]
 [; ;Motor.c: 12: WorkCnt=0;
 "12
 [e = _WorkCnt -> -> 0 `i `ui ]
@@ -923,6 +927,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Motor.c: 16: {
 "16
 {
+[; ;Motor.c: 17: RA3=1;
+"17
+[e = _RA3 -> -> 1 `i `b ]
 [; ;Motor.c: 18: TimeDecCnt++;
 "18
 [e ++ _TimeDecCnt -> -> 1 `i `ui ]
@@ -1021,9 +1028,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 11 ]
 [; ;Motor.c: 46: }
 [; ;Motor.c: 47: }
-[; ;Motor.c: 48: if(BatPercent<=250)
+[; ;Motor.c: 48: if(BatPercent<=125)
 "48
-[e $ ! <= -> _BatPercent `i -> 250 `i 13  ]
+[e $ ! <= -> _BatPercent `i -> 125 `i 13  ]
 [; ;Motor.c: 49: {
 "49
 {

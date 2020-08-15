@@ -4,6 +4,7 @@
 #include "K13-01.h"
 
 extern bit KeyLongFlag;
+extern bit KeyPress;
 
 void KeyScan();
 

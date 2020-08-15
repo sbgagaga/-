@@ -421,6 +421,7 @@ void Sec1sPro();
 
 # 6 "C:\Users\Administrator\Desktop\project\K13-01\code\Key.h"
 extern bit KeyLongFlag;
+extern bit KeyPress;
 
 void KeyScan();
 

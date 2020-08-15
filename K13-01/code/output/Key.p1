@@ -1,12 +1,14 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "32 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.h
 [v _IovFlag `b ~T0 @X0 0 e ]
+"33
+[v _LowBatFlag `b ~T0 @X0 0 e ]
+"34
+[v _USBFlag `b ~T0 @X0 0 e ]
 "31
 [v _WorkFlag `b ~T0 @X0 0 e ]
 "27
 [v _WorkMin `uc ~T0 @X0 0 e ]
-"34
-[v _USBFlag `b ~T0 @X0 0 e ]
 "13
 [s S1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 ]
 [n S1 . LockStart LockFail LockEnd UnlockStart UnlockFail UnlockEnd LockFlag reservation ]
@@ -873,7 +875,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;K13-01.h: 42: void GPIOInit();
 [; ;K13-01.h: 43: void TimerInit();
 [; ;Key.h: 6: extern bit KeyLongFlag;
-[; ;Key.h: 8: void KeyScan();
+[; ;Key.h: 7: extern bit KeyPress;
+[; ;Key.h: 9: void KeyScan();
 "3 C:\Users\Administrator\Desktop\project\K13-01\code\Key.c
 [v _KeyInBuf `b ~T0 @X0 1 e ]
 [i _KeyInBuf
@@ -906,9 +909,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Key.c: 10: {
 [e :U _KeyScan ]
 [f ]
-[; ;Key.c: 11: if(!RA6)
+[; ;Key.c: 11: if(!RB6)
 "11
-[e $ ! ! _RA6 3  ]
+[e $ ! ! _RB6 3  ]
 [; ;Key.c: 12: {
 "12
 {
@@ -932,9 +935,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 4 ]
 [; ;Key.c: 18: }
-[; ;Key.c: 20: if(KeyPress&&KeyCnt<10&&KeyInBuf==KeyPress&&!IovFlag)
+[; ;Key.c: 20: if(KeyPress&&KeyCnt<10&&KeyInBuf==KeyPress&&!IovFlag&&(!LowBatFlag||USBFlag))
 "20
-[e $ ! && && && _KeyPress < _KeyCnt -> -> 10 `i `ui == _KeyInBuf _KeyPress ! _IovFlag 5  ]
+[e $ ! && && && && _KeyPress < _KeyCnt -> -> 10 `i `ui == _KeyInBuf _KeyPress ! _IovFlag || ! _LowBatFlag _USBFlag 5  ]
 [; ;Key.c: 21: {
 "21
 {
@@ -950,9 +953,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Key.c: 25: WorkFlag=~WorkFlag;
 "25
 [e = _WorkFlag -> ~ -> _WorkFlag `ui `b ]
-[; ;Key.c: 26: if(!WorkFlag&&WorkMin&&!USBFlag&&!LockSta.LockFlag)
+[; ;Key.c: 26: if(!WorkFlag&&WorkMin!=0&&!USBFlag&&!LockSta.LockFlag)
 "26
-[e $ ! && && && ! _WorkFlag != -> _WorkMin `i -> -> -> 0 `i `uc `i ! _USBFlag ! != -> . _LockSta 6 `i -> -> -> 0 `i `uc `i 7  ]
+[e $ ! && && && ! _WorkFlag != -> _WorkMin `i -> 0 `i ! _USBFlag ! != -> . _LockSta 6 `i -> -> -> 0 `i `uc `i 7  ]
 [; ;Key.c: 27: {
 "27
 {
@@ -1172,9 +1175,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Key.c: 91: }
 [; ;Key.c: 92: KeyInBuf=KeyPress;
 [e = _KeyInBuf _KeyPress ]
-[; ;Key.c: 94: if(!RA7)
+[; ;Key.c: 94: if(!RB7)
 "94
-[e $ ! ! _RA7 23  ]
+[e $ ! ! _RB7 23  ]
 [; ;Key.c: 95: {
 "95
 {

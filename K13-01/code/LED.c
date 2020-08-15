@@ -214,7 +214,7 @@ void WorkLedPro()
         }
         if(LedSwitchFlag)
         {
-            LedIndex|=NumbArr[BatPercent/10];
+            LedIndex=NumbArr[BatPercent/10];
             LedIndex|=(uint16)NumbArr[BatPercent%10]<<7;
         }
     }

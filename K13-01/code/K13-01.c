@@ -18,8 +18,8 @@ bit LowBatFlag=0;
 bit USBFlag=0;
 
 uint8 Sec1sCnt=0;
-uint8 BatAddTime=0;
-uint8 BatDecTime=0;
+uint8 BatAddTime=240;
+uint8 BatDecTime=210;
 
 void Apply()
 {
@@ -50,7 +50,9 @@ void Apply()
             ADCPro();
             Motor();
             DisplayPro();
-            //SystemSleep();
+            #ifndef DEBUGFlag
+            SystemSleep();
+            #endif
         }
         Sec1sCnt++;
         if(Sec1sCnt>=100)
@@ -58,14 +60,13 @@ void Apply()
             Sec1sCnt=0;
             Sec1sPro();
         }
-        
     }
 }
 
 void SystemSleep()
 {
     static uint8 SleepCnt=0;
-    if(WorkFlag||OnOffFlag||LowBatFlag||USBFlag||IovFlag)
+    if(WorkFlag||OnOffFlag||LowBatFlag||USBFlag||IovFlag||KeyPress||LockSta.LockStart)
     {
         SleepCnt=0;
     }
@@ -84,6 +85,7 @@ void SystemSleep()
 
             TRISA =0X00;
 	        TRISB =0X00;
+            TRISC =0x00;
             WPUA = 0xFF;
             WPUB = 0xFF;
             WPUC = 0xFF;

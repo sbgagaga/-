@@ -3,9 +3,18 @@
 
 #include "K13-01.h"
 
+//#define DEBUGFlag
+
 #define PIN_EN RA5
-#define PIN_KEY	RA6
-#define PIN_USB	RA7
+
+#ifdef DEBUGFlag
+#define PIN_KEY	RA6//
+#define PIN_USB	RA7//
+#else
+#define PIN_KEY	RB6//
+#define PIN_USB	RB7//
+#endif
+
 #define PIN_M RA3
 #define PIN_BAT RA1
 #define PIN_IOV RA2
@@ -22,8 +31,14 @@
 //#define		Pin_Vin_CFG(x,y)		TRISC1=x,WPUC1=y
 #define		Pin_BAT_CFG(x,y)		TRISA1=x,WPUA1=y
 #define		Pin_IOV_CFG(x,y)		TRISA2=x,WPUA2=y
-#define		Pin_KEY_CFG(x,y)		TRISA6=x,WPUA6=y
-#define		Pin_USB_CFG(x,y)		TRISA7=x,WPUA7=y
+
+#ifdef DEBUGFlag
+#define		Pin_KEY_CFG(x,y)		TRISA6=x,WPUA6=y//
+#define		Pin_USB_CFG(x,y)		TRISA7=x,WPUA7=y//
+#else
+#define		Pin_KEY_CFG(x,y)		TRISB6=x,WPUB6=y//
+#define		Pin_USB_CFG(x,y)		TRISB7=x,WPUB7=y//
+#endif
 
 #define		Pin_LED1_CFG(x,y)		TRISB5=x,WPUB5=y
 #define		Pin_LED2_CFG(x,y)		TRISB4=x,WPUB4=y
@@ -59,6 +74,7 @@
 #define int16	int
 #define uint32 	unsigned long
 
+#ifdef DEBUGFlag
 #define BAT_2V6	217
 #define BAT_2V8	233
 #define BAT_3V0	250
@@ -70,8 +86,26 @@
 #define BAT_4V0	333
 #define BAT_4V1	342
 #define BAT_4V2 350
+#else
+#define BAT_2V6	109
+#define BAT_2V8	117
+#define BAT_3V0	125
+#define BAT_3V2	134
+#define BAT_3V3	138
+#define BAT_3V4	142
+#define BAT_3V6	150
+#define BAT_3V8	159
+#define BAT_4V0	167
+#define BAT_4V1	171
+#define BAT_4V2 175
+#endif
 
+#ifdef DEBUGFlag
 #define	VOLTAGE04V	38	//0.045V
 #define	VOLTAGE07V	58	//0.07V
+#else
+#define	VOLTAGE04V	19	//0.045V
+#define	VOLTAGE07V	29	//0.07V
+#endif
 
 #endif

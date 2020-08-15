@@ -427,6 +427,7 @@ void Sec1sPro();
 
 # 6 "C:\Users\Administrator\Desktop\project\K13-01\code\Key.h"
 extern bit KeyLongFlag;
+extern bit KeyPress;
 
 void KeyScan();
 
@@ -476,13 +477,13 @@ void Motor()
 {
 if(!WorkFlag)
 {
-
+RA3=0;
 WorkCnt=0;
 TimeDecCnt=0;
 }
 else if(WorkFlag&&!LockSta.LockFlag)
 {
-
+RA3=1;
 TimeDecCnt++;
 if(TimeDecCnt>=BatDecTime*100)
 {
@@ -513,7 +514,7 @@ if(BatPercent<99)
 BatPercent++;
 }
 }
-if(BatPercent<=250)
+if(BatPercent<=125)
 {
 RA5 =0;
 }

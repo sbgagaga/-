@@ -17,13 +17,13 @@ void KeyScan()
 		KeyPress=0;
 	}
 	/*°´¼üÅÐ¶Ï*/
-	if(KeyPress&&KeyCnt<10&&KeyInBuf==KeyPress&&!IovFlag)
+	if(KeyPress&&KeyCnt<10&&KeyInBuf==KeyPress&&!IovFlag&&(!LowBatFlag||USBFlag))
 	{
 		KeyCnt++;
 		if(KeyCnt>=10)
 		{
 			WorkFlag=~WorkFlag; 
-			if(!WorkFlag&&WorkMin&&!USBFlag&&!LockSta.LockFlag)
+			if(!WorkFlag&&WorkMin!=0&&!USBFlag&&!LockSta.LockFlag)
 			{
 				OnOffFlag=1;
 			}

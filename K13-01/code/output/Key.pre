@@ -464,6 +464,7 @@ void TimerInit();
 
 # 6 "C:\Users\Administrator\Desktop\project\K13-01\code\Key.h"
 extern bit KeyLongFlag;
+extern bit KeyPress;
 
 void KeyScan();
 
@@ -476,7 +477,7 @@ bit USBLink=0;
 
 void KeyScan()
 {
-if(!RA6)
+if(!RB6)
 {
 KeyPress=1;
 }
@@ -485,13 +486,13 @@ else
 KeyPress=0;
 }
 
-if(KeyPress&&KeyCnt<10&&KeyInBuf==KeyPress&&!IovFlag)
+if(KeyPress&&KeyCnt<10&&KeyInBuf==KeyPress&&!IovFlag&&(!LowBatFlag||USBFlag))
 {
 KeyCnt++;
 if(KeyCnt>=10)
 {
 WorkFlag=~WorkFlag;
-if(!WorkFlag&&WorkMin&&!USBFlag&&!LockSta.LockFlag)
+if(!WorkFlag&&WorkMin!=0&&!USBFlag&&!LockSta.LockFlag)
 {
 OnOffFlag=1;
 }
@@ -559,7 +560,7 @@ LockSta.LockStart=0;
 }
 KeyInBuf=KeyPress;
 
-if(!RA7)
+if(!RB7)
 {
 USBLink=1;
 }

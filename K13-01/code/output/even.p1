@@ -826,7 +826,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ADC.h: 8: void ADCRead(unsigned char,unsigned int *);
 [; ;ADC.h: 9: void Sec1sPro();
 [; ;Key.h: 6: extern bit KeyLongFlag;
-[; ;Key.h: 8: void KeyScan();
+[; ;Key.h: 7: extern bit KeyPress;
+[; ;Key.h: 9: void KeyScan();
 [; ;Motor.h: 6: void Motor();
 [; ;K13-01.h: 12: typedef struct
 [; ;K13-01.h: 13: {
@@ -884,9 +885,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;even.c: 6: bit time10ms=0;
 [v $root$_Isr_Timer `(v ~T0 @X0 0 e ]
-[v F539 `(v ~T0 @X0 1 tf ]
+[v F540 `(v ~T0 @X0 1 tf ]
 "8
-[v _Isr_Timer `IF539 ~T0 @X0 1 e ]
+[v _Isr_Timer `IF540 ~T0 @X0 1 e ]
 "9
 {
 [; ;even.c: 8: void interrupt Isr_Timer()

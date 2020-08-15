@@ -2,7 +2,6 @@
 
 uint8 ADCState=0;
 uint16 ADCVal[3]={0};//bg¡¢current¡¢Vbat
-uint16 ADCMax=0,ADCMin=0;
 uint32 ADsum=0;
 uint8 ADcnt=0;
 
@@ -182,21 +181,12 @@ void ADCRead(uint8 ch,uint16 *Val)
         AD_H=ADRESH;
         AD_L=ADRESL;
 		ad_temp=(AD_H<<4)|(AD_L>>4);  //12Î»ad
-        if(ad_temp>ADCMax)
-        {
-            ADCMax=ad_temp;
-        }
-        if(ad_temp<ADCMin)
-        {
-            ADCMin=ad_temp;
-        }
 		ADsum += ad_temp;
 		ADcnt++;
 		if(ADcnt >= 10)
 		{
             ADcnt = 0;	
-            ADsum=  ADsum-ADCMax-ADCMin;
-			ADsum = ADsum >> 3;
+			ADsum /=10;
             switch (ADCState)
             {
                 case 0:
@@ -211,8 +201,6 @@ void ADCRead(uint8 ch,uint16 *Val)
                 *Val=ADsum*100/(*(Val-2));//µç³ØµçÑ¹
                 break;
             }
-            ADCMax=0;
-            ADCMin=0xFFFF;
 			ADsum = 0;
             ADCState++;
             if(ADCState>=3)

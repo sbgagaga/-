@@ -421,6 +421,7 @@ void ErrPro();
 
 # 6 "C:\Users\Administrator\Desktop\project\K13-01\code\Key.h"
 extern bit KeyLongFlag;
+extern bit KeyPress;
 
 void KeyScan();
 
@@ -470,7 +471,6 @@ void Sec1sPro();
 # 3 "C:\Users\Administrator\Desktop\project\K13-01\code\ADC.c"
 unsigned char ADCState=0;
 unsigned int ADCVal[3]={0};
-unsigned int ADCMax=0,ADCMin=0;
 unsigned long ADsum=0;
 unsigned char ADcnt=0;
 
@@ -494,20 +494,20 @@ break;
 }
 if(SystemONFlag==0)
 {
-if(ADCVal[2]<267)
+if(ADCVal[2]<134)
 {
 BatPercent=0;
 }
-else if(ADCVal[2]>350)
+else if(ADCVal[2]>175)
 {
 BatPercent=99;
 }
 else
 {
-BatPercent=ADCVal[2]-250;
+BatPercent=ADCVal[2]-125;
 }
 }
-if(ADCVal[2]<250)
+if(ADCVal[2]<125)
 {
 LowBatFlag=1;
 }
@@ -515,7 +515,7 @@ else
 {
 LowBatFlag=0;
 }
-if(ADCVal[1]>58)
+if(ADCVal[1]>29)
 {
 CurrentCnt++;
 if(CurrentCnt>=200)
@@ -540,17 +540,17 @@ unsigned int TempPercent=0;
 
 if(USBFlag)
 {
-if(ADCVal[2]<275)
+if(ADCVal[2]<138)
 {
 TempPercent=0;
 }
-else if(ADCVal[2]>350)
+else if(ADCVal[2]>175)
 {
 TempPercent=99;
 }
 else
 {
-TempPercent=ADCVal[2]-275;
+TempPercent=ADCVal[2]-138;
 TempPercent=TempPercent*4/3;
 }
 if(ActualPercent>TempPercent)
@@ -588,21 +588,21 @@ BatAddTime=240;
 
 if(WorkFlag)
 {
-if(ADCVal[2]<267)
+if(ADCVal[2]<134)
 {
 TempPercent=0;
 }
-else if(ADCVal[2]>333)
+else if(ADCVal[2]>167)
 {
 TempPercent=99;
 }
 else
 {
-TempPercent=ADCVal[2]-267;
+TempPercent=ADCVal[2]-134;
 }
 if(TempPercent>=33)
 {
-TempPercent=33+(ADCVal[2]-300)*2;
+TempPercent=33+(ADCVal[2]-150)*2;
 }
 if(ActualPercent>TempPercent)
 {
@@ -650,21 +650,12 @@ if(ADSample(ch))
 AD_H=ADRESH;
 AD_L=ADRESL;
 ad_temp=(AD_H<<4)|(AD_L>>4);
-if(ad_temp>ADCMax)
-{
-ADCMax=ad_temp;
-}
-if(ad_temp<ADCMin)
-{
-ADCMin=ad_temp;
-}
 ADsum += ad_temp;
 ADcnt++;
 if(ADcnt >= 10)
 {
 ADcnt = 0;
-ADsum= ADsum-ADCMax-ADCMin;
-ADsum = ADsum >> 3;
+ADsum /=10;
 switch (ADCState)
 {
 case 0:
@@ -679,8 +670,6 @@ case 2:
 *Val=ADsum*100/(*(Val-2));
 break;
 }
-ADCMax=0;
-ADCMin=0xFFFF;
 ADsum = 0;
 ADCState++;
 if(ADCState>=3)
@@ -691,7 +680,7 @@ ADCState=0;
 }
 }
 
-# 233
+# 221
 unsigned char ADSample(unsigned char ch)
 {
 ADCON1 = 0x00;

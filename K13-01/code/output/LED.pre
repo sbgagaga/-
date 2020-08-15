@@ -418,6 +418,7 @@ void Sec1sPro();
 
 # 6 "C:\Users\Administrator\Desktop\project\K13-01\code\Key.h"
 extern bit KeyLongFlag;
+extern bit KeyPress;
 
 void KeyScan();
 
@@ -678,7 +679,7 @@ LedSwitchFlag=1;
 }
 if(LedSwitchFlag)
 {
-LedIndex|=NumbArr[BatPercent/10];
+LedIndex=NumbArr[BatPercent/10];
 LedIndex|=(unsigned int)NumbArr[BatPercent%10]<<7;
 }
 }
