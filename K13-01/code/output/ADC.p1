@@ -11,11 +11,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _IovFlag `b ~T0 @X0 0 e ]
 "34
 [v _USBFlag `b ~T0 @X0 0 e ]
-"36
+"37
 [v _BatAddTime `uc ~T0 @X0 0 e ]
 "31
 [v _WorkFlag `b ~T0 @X0 0 e ]
-"37
+"38
 [v _BatDecTime `uc ~T0 @X0 0 e ]
 "6 C:\Users\Administrator\Desktop\project\K13-01\code\ADC.h
 [v _ADSample `(uc ~T0 @X0 0 ef1`uc ]
@@ -866,14 +866,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;K13-01.h: 32: extern bit IovFlag;
 [; ;K13-01.h: 33: extern bit LowBatFlag;
 [; ;K13-01.h: 34: extern bit USBFlag;
-[; ;K13-01.h: 35: extern TYPE_UNION_LockSta LockSta;
-[; ;K13-01.h: 36: extern unsigned char BatAddTime;
-[; ;K13-01.h: 37: extern unsigned char BatDecTime;
-[; ;K13-01.h: 39: void SystemSleep();
-[; ;K13-01.h: 40: void Apply();
-[; ;K13-01.h: 41: void SystemInit();
-[; ;K13-01.h: 42: void GPIOInit();
-[; ;K13-01.h: 43: void TimerInit();
+[; ;K13-01.h: 35: extern bit LEDWorkFlag;
+[; ;K13-01.h: 36: extern TYPE_UNION_LockSta LockSta;
+[; ;K13-01.h: 37: extern unsigned char BatAddTime;
+[; ;K13-01.h: 38: extern unsigned char BatDecTime;
+[; ;K13-01.h: 40: void SystemSleep();
+[; ;K13-01.h: 41: void Apply();
+[; ;K13-01.h: 42: void SystemInit();
+[; ;K13-01.h: 43: void GPIOInit();
+[; ;K13-01.h: 44: void TimerInit();
 [; ;ADC.h: 6: unsigned char ADSample(unsigned char);
 [; ;ADC.h: 7: void ADCPro();
 [; ;ADC.h: 8: void ADCRead(unsigned char,unsigned int *);
@@ -969,9 +970,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ADC.c: 27: {
 "27
 {
-[; ;ADC.c: 28: if(ADCVal[2]<134)
+[; ;ADC.c: 28: if(ADCVal[2]<267)
 "28
-[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 134 `i `ui 9  ]
+[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 267 `i `ui 9  ]
 [; ;ADC.c: 29: {
 "29
 {
@@ -984,8 +985,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 10  ]
 "32
 [e :U 9 ]
-[; ;ADC.c: 32: else if(ADCVal[2]>175)
-[e $ ! > *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 175 `i `ui 11  ]
+[; ;ADC.c: 32: else if(ADCVal[2]>350)
+[e $ ! > *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 350 `i `ui 11  ]
 [; ;ADC.c: 33: {
 "33
 {
@@ -1002,9 +1003,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ADC.c: 37: {
 "37
 {
-[; ;ADC.c: 38: BatPercent=ADCVal[2]-125;
+[; ;ADC.c: 38: BatPercent=ADCVal[2]-250;
 "38
-[e = _BatPercent -> - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 125 `i `ui `uc ]
+[e = _BatPercent -> - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 250 `i `ui `uc ]
 "39
 }
 [e :U 12 ]
@@ -1014,9 +1015,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 8 ]
 [; ;ADC.c: 39: }
 [; ;ADC.c: 40: }
-[; ;ADC.c: 41: if(ADCVal[2]<125)
+[; ;ADC.c: 41: if(ADCVal[2]<250)
 "41
-[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 125 `i `ui 13  ]
+[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 250 `i `ui 13  ]
 [; ;ADC.c: 42: {
 "42
 {
@@ -1040,9 +1041,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 14 ]
 [; ;ADC.c: 48: }
-[; ;ADC.c: 49: if(ADCVal[1]>29)
+[; ;ADC.c: 49: if(ADCVal[1]>58)
 "49
-[e $ ! > *U + &U _ADCVal * -> -> -> 1 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 29 `i `ui 15  ]
+[e $ ! > *U + &U _ADCVal * -> -> -> 1 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 58 `i `ui 15  ]
 [; ;ADC.c: 50: {
 "50
 {
@@ -1098,8 +1099,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _Sec1sPro ]
 [f ]
 "67
-[v F546 `uc ~T0 @X0 1 s ActualPercent ]
-[i F546
+[v F547 `uc ~T0 @X0 1 s ActualPercent ]
+[i F547
 -> -> 0 `i `uc
 ]
 "68
@@ -1117,9 +1118,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ADC.c: 73: {
 "73
 {
-[; ;ADC.c: 74: if(ADCVal[2]<138)
+[; ;ADC.c: 74: if(ADCVal[2]<275)
 "74
-[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 138 `i `ui 20  ]
+[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 275 `i `ui 20  ]
 [; ;ADC.c: 75: {
 "75
 {
@@ -1132,8 +1133,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 21  ]
 "78
 [e :U 20 ]
-[; ;ADC.c: 78: else if(ADCVal[2]>175)
-[e $ ! > *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 175 `i `ui 22  ]
+[; ;ADC.c: 78: else if(ADCVal[2]>350)
+[e $ ! > *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 350 `i `ui 22  ]
 [; ;ADC.c: 79: {
 "79
 {
@@ -1150,9 +1151,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ADC.c: 83: {
 "83
 {
-[; ;ADC.c: 84: TempPercent=ADCVal[2]-138;
+[; ;ADC.c: 84: TempPercent=ADCVal[2]-275;
 "84
-[e = _TempPercent - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 138 `i `ui ]
+[e = _TempPercent - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 275 `i `ui ]
 [; ;ADC.c: 85: TempPercent=TempPercent*4/3;
 "85
 [e = _TempPercent / * _TempPercent -> -> 4 `i `ui -> -> 3 `i `ui ]
@@ -1163,19 +1164,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ADC.c: 86: }
 [; ;ADC.c: 87: if(ActualPercent>TempPercent)
 "87
-[e $ ! > -> F546 `ui _TempPercent 24  ]
+[e $ ! > -> F547 `ui _TempPercent 24  ]
 [; ;ADC.c: 88: {
 "88
 {
 [; ;ADC.c: 89: if(ActualPercent)
 "89
-[e $ ! != -> F546 `i -> -> -> 0 `i `uc `i 25  ]
+[e $ ! != -> F547 `i -> -> -> 0 `i `uc `i 25  ]
 [; ;ADC.c: 90: {
 "90
 {
 [; ;ADC.c: 91: ActualPercent--;
 "91
-[e -- F546 -> -> 1 `i `uc ]
+[e -- F547 -> -> 1 `i `uc ]
 "92
 }
 [e :U 25 ]
@@ -1187,19 +1188,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 "94
 [e :U 24 ]
 [; ;ADC.c: 94: else if(ActualPercent<TempPercent)
-[e $ ! < -> F546 `ui _TempPercent 27  ]
+[e $ ! < -> F547 `ui _TempPercent 27  ]
 [; ;ADC.c: 95: {
 "95
 {
 [; ;ADC.c: 96: if(ActualPercent<99)
 "96
-[e $ ! < -> F546 `i -> 99 `i 28  ]
+[e $ ! < -> F547 `i -> 99 `i 28  ]
 [; ;ADC.c: 97: {
 "97
 {
 [; ;ADC.c: 98: ActualPercent++;
 "98
-[e ++ F546 -> -> 1 `i `uc ]
+[e ++ F547 -> -> 1 `i `uc ]
 "99
 }
 [e :U 28 ]
@@ -1211,13 +1212,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ADC.c: 99: }
 [; ;ADC.c: 100: }
 [; ;ADC.c: 101: if(ActualPercent>BatPercent)
-[e $ ! > -> F546 `i -> _BatPercent `i 29  ]
+[e $ ! > -> F547 `i -> _BatPercent `i 29  ]
 [; ;ADC.c: 102: {
 "102
 {
 [; ;ADC.c: 103: PercentErr=ActualPercent-BatPercent;
 "103
-[e = _PercentErr -> - -> F546 `i -> _BatPercent `i `uc ]
+[e = _PercentErr -> - -> F547 `i -> _BatPercent `i `uc ]
 [; ;ADC.c: 104: if(PercentErr<5)
 "104
 [e $ ! < -> _PercentErr `i -> 5 `i 30  ]
@@ -1271,9 +1272,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ADC.c: 121: {
 "121
 {
-[; ;ADC.c: 122: if(ADCVal[2]<134)
+[; ;ADC.c: 122: if(ADCVal[2]<267)
 "122
-[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 134 `i `ui 34  ]
+[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 267 `i `ui 34  ]
 [; ;ADC.c: 123: {
 "123
 {
@@ -1286,8 +1287,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 35  ]
 "126
 [e :U 34 ]
-[; ;ADC.c: 126: else if(ADCVal[2]>167)
-[e $ ! > *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 167 `i `ui 36  ]
+[; ;ADC.c: 126: else if(ADCVal[2]>333)
+[e $ ! > *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 333 `i `ui 36  ]
 [; ;ADC.c: 127: {
 "127
 {
@@ -1304,9 +1305,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ADC.c: 131: {
 "131
 {
-[; ;ADC.c: 132: TempPercent=ADCVal[2]-134;
+[; ;ADC.c: 132: TempPercent=ADCVal[2]-267;
 "132
-[e = _TempPercent - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 134 `i `ui ]
+[e = _TempPercent - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 267 `i `ui ]
 "133
 }
 [e :U 37 ]
@@ -1318,28 +1319,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ADC.c: 135: {
 "135
 {
-[; ;ADC.c: 136: TempPercent=33+(ADCVal[2]-150)*2;
+[; ;ADC.c: 136: TempPercent=33+(ADCVal[2]-300)*2;
 "136
-[e = _TempPercent + -> -> 33 `i `ui * - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 150 `i `ui -> -> 2 `i `ui ]
+[e = _TempPercent + -> -> 33 `i `ui * - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 300 `i `ui -> -> 2 `i `ui ]
 "137
 }
 [e :U 38 ]
 [; ;ADC.c: 137: }
 [; ;ADC.c: 138: if(ActualPercent>TempPercent)
 "138
-[e $ ! > -> F546 `ui _TempPercent 39  ]
+[e $ ! > -> F547 `ui _TempPercent 39  ]
 [; ;ADC.c: 139: {
 "139
 {
 [; ;ADC.c: 140: if(ActualPercent)
 "140
-[e $ ! != -> F546 `i -> -> -> 0 `i `uc `i 40  ]
+[e $ ! != -> F547 `i -> -> -> 0 `i `uc `i 40  ]
 [; ;ADC.c: 141: {
 "141
 {
 [; ;ADC.c: 142: ActualPercent--;
 "142
-[e -- F546 -> -> 1 `i `uc ]
+[e -- F547 -> -> 1 `i `uc ]
 "143
 }
 [e :U 40 ]
@@ -1351,19 +1352,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 "145
 [e :U 39 ]
 [; ;ADC.c: 145: else if(ActualPercent<TempPercent)
-[e $ ! < -> F546 `ui _TempPercent 42  ]
+[e $ ! < -> F547 `ui _TempPercent 42  ]
 [; ;ADC.c: 146: {
 "146
 {
 [; ;ADC.c: 147: if(ActualPercent<99)
 "147
-[e $ ! < -> F546 `i -> 99 `i 43  ]
+[e $ ! < -> F547 `i -> 99 `i 43  ]
 [; ;ADC.c: 148: {
 "148
 {
 [; ;ADC.c: 149: ActualPercent++;
 "149
-[e ++ F546 -> -> 1 `i `uc ]
+[e ++ F547 -> -> 1 `i `uc ]
 "150
 }
 [e :U 43 ]
@@ -1375,16 +1376,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ADC.c: 150: }
 [; ;ADC.c: 151: }
 [; ;ADC.c: 152: if(ActualPercent<BatPercent)
-[e $ ! < -> F546 `i -> _BatPercent `i 44  ]
+[e $ ! < -> F547 `i -> _BatPercent `i 44  ]
 [; ;ADC.c: 153: {
 "153
 {
 [; ;ADC.c: 154: PercentErr=BatPercent-ActualPercent;
 "154
-[e = _PercentErr -> - -> _BatPercent `i -> F546 `i `uc ]
+[e = _PercentErr -> - -> _BatPercent `i -> F547 `i `uc ]
 [; ;ADC.c: 155: if(PercentErr<5&&ActualPercent)
 "155
-[e $ ! && < -> _PercentErr `i -> 5 `i != -> F546 `i -> -> -> 0 `i `uc `i 45  ]
+[e $ ! && < -> _PercentErr `i -> 5 `i != -> F547 `i -> -> -> 0 `i `uc `i 45  ]
 [; ;ADC.c: 156: {
 "156
 {

@@ -3,7 +3,7 @@
 
 #include "K13-01.h"
 
-//#define DEBUGFlag
+#define DEBUGFlag
 
 #define PIN_EN RA5
 

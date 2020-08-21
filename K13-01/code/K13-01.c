@@ -16,6 +16,7 @@ bit WorkFlag=0;
 bit IovFlag=0;
 bit LowBatFlag=0;
 bit USBFlag=0;
+bit LEDWorkFlag=0;
 
 uint8 Sec1sCnt=0;
 uint8 BatAddTime=240;
@@ -49,9 +50,9 @@ void Apply()
         {
             ADCPro();
             Motor();
-            DisplayPro();
+            DisplayPro(); 
             #ifndef DEBUGFlag
-            SystemSleep();
+            SystemSleep(); 
             #endif
         }
         Sec1sCnt++;
@@ -65,7 +66,7 @@ void Apply()
 
 void SystemSleep()
 {
-    static uint8 SleepCnt=0;
+    static uint16 SleepCnt=0;
     if(WorkFlag||OnOffFlag||LowBatFlag||USBFlag||IovFlag||KeyPress||LockSta.LockStart)
     {
         SleepCnt=0;
@@ -73,8 +74,9 @@ void SystemSleep()
     else
     {
         SleepCnt++;
-        if(SleepCnt>=200)
+        if(SleepCnt>=1000)
         {
+            LEDWorkFlag=0;
             SleepCnt=0;
             asm("clrwdt");
             INTCON=0;

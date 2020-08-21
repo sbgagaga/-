@@ -12,7 +12,7 @@ uint16 OffHideNumbArr[7]={0,0x12,0x5B,0X7F,0x97F,0x2DFF,0x3FFF};
 const uint8 LEDSeg1[16]={1,2,2,3,0,3,4,0,1,1,2,0,3,4,0,1};
 uint8 LEDSeg2[16]={0,1,0,1,1,0,0,2,3,2,3,3,2,2,4,4};
 uint16 LedIndex=0;
-uint8 LEDArrMap[5]={0};
+uint8 LEDArrMap[5]={0xff,0xff,0xEf,0xff,0xff};
 
 void LEDScan()
 {
@@ -196,12 +196,12 @@ void WorkLedPro()
     static int8 index=0;
     static uint8 cnt=0;
     static bit dir=0;
-    if(WorkFlag&&!LockSta.LockStart&&!OnOffFlag&&!LockSta.LockFlag)
+    if(LEDWorkFlag&&!OnOffFlag&&!LockSta.LockFlag&&!LockSta.LockStart&&(!USBFlag||WorkFlag))
     {
-        if(BatPercent<=10)
+        if(BatPercent<=10&&WorkFlag)
         {
             LedSwitchCnt++;
-            if(LedSwitchCnt>=40)
+            if(LedSwitchCnt>=80)
             {
                 LedSwitchCnt=0;
                 LedSwitchFlag=!LedSwitchFlag;
@@ -272,35 +272,30 @@ void LockPro()
             }
             LedIndex=NumbArr[0];
             LedIndex|=(uint16)NumbArr[LockNumb+1]<<7;
-            if(LockSta.UnlockStart)
-            {
-                LedIndex|=iconLock;
-            }
         }
         else
         {
             SwitchCnt=0;
         }
-        if(LockSta.LockEnd||LockSta.UnlockFail)
+        if(LockSta.LockEnd||LockSta.UnlockFail||LockSta.UnlockStart)
         {
             LockSwitchCnt++;
             if(LockSwitchCnt>=35)
             {
                 LockSwitchCnt=0;
                 LedSwitchFlag=!LedSwitchFlag;
-                if(!LedSwitchFlag)
+                if(!LedSwitchFlag&&LockSta.UnlockFail)
                 {
                     Ledcnt++;
-                    if(Ledcnt>=4)
+                    if(Ledcnt>=3)
                     {
-                        LockSta.LockEnd=0;
                         LockSta.UnlockFail=0;
                     }
                 }
             }
             if(LedSwitchFlag)
             {
-                LedIndex=iconLock;
+                LedIndex|=iconLock;
             }
         }
         else

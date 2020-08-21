@@ -17,13 +17,17 @@ void KeyScan()
 		KeyPress=0;
 	}
 	/*按键判断*/
-	if(KeyPress&&KeyCnt<10&&KeyInBuf==KeyPress&&!IovFlag&&(!LowBatFlag||USBFlag))
+	if(KeyPress&&KeyCnt<10&&KeyInBuf==KeyPress&&(!LowBatFlag||USBFlag)&&!LockSta.LockFlag)//非低电压、非锁定、充电
 	{
 		KeyCnt++;
 		if(KeyCnt>=10)
 		{
 			WorkFlag=~WorkFlag; 
-			if(!WorkFlag&&WorkMin!=0&&!USBFlag&&!LockSta.LockFlag)
+			if(WorkFlag)
+			{
+				LEDWorkFlag=1;
+			}
+			if(!WorkFlag&&WorkMin!=0&&!USBFlag)
 			{
 				OnOffFlag=1;
 			}
@@ -34,11 +38,12 @@ void KeyScan()
 			}
 		}
 	}
-	else if(KeyPress&&KeyCnt>=10&&KeyCnt<250&&KeyInBuf==KeyPress&&!USBFlag)
+	else if(KeyPress&&(KeyCnt>=10||LockSta.LockFlag)&&KeyCnt<250&&KeyInBuf==KeyPress&&!USBFlag)
 	{
 		KeyCnt++;
-		if(KeyCnt>=250)
+		if(KeyCnt>=250||(LockSta.LockFlag&&KeyCnt>=10))
 		{
+			KeyCnt=250;
 			LockNumb=2;
 			if(!LockSta.LockFlag)
 			{
@@ -65,12 +70,14 @@ void KeyScan()
 				LockSta.LockStart=0;
 				LockSta.LockEnd=1;
 				WorkFlag=0;
+				LEDWorkFlag=0;
 			}
 			else
 			{
 				LockSta.UnlockStart=0;
 				LockSta.UnlockEnd=1;
 				WorkFlag=1;
+				LEDWorkFlag=1;
 			}
 		}
 	}
@@ -78,11 +85,15 @@ void KeyScan()
 	{
 		KeyCnt=0;
 		LockSta.UnlockEnd=0;
-		if((LockSta.LockFlag&&WorkFlag)||LockSta.UnlockStart)
+		if(LockSta.LockEnd)
+		{
+			LockSta.LockEnd=0;
+			LockSta.UnlockFail=1;
+		}
+		if(LockSta.UnlockStart)
 		{
 			LockSta.UnlockStart=0;
 			LockSta.UnlockFail=1;
-			WorkFlag=0;
 		}
 		if(LockSta.LockStart)
 		{

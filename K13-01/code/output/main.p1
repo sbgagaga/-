@@ -1,8 +1,8 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
-"41 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.h
+"42 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.h
 [v _SystemInit `(v ~T0 @X0 0 ef ]
-"40
+"41
 [v _Apply `(v ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
@@ -855,14 +855,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;K13-01.h: 32: extern bit IovFlag;
 [; ;K13-01.h: 33: extern bit LowBatFlag;
 [; ;K13-01.h: 34: extern bit USBFlag;
-[; ;K13-01.h: 35: extern TYPE_UNION_LockSta LockSta;
-[; ;K13-01.h: 36: extern unsigned char BatAddTime;
-[; ;K13-01.h: 37: extern unsigned char BatDecTime;
-[; ;K13-01.h: 39: void SystemSleep();
-[; ;K13-01.h: 40: void Apply();
-[; ;K13-01.h: 41: void SystemInit();
-[; ;K13-01.h: 42: void GPIOInit();
-[; ;K13-01.h: 43: void TimerInit();
+[; ;K13-01.h: 35: extern bit LEDWorkFlag;
+[; ;K13-01.h: 36: extern TYPE_UNION_LockSta LockSta;
+[; ;K13-01.h: 37: extern unsigned char BatAddTime;
+[; ;K13-01.h: 38: extern unsigned char BatDecTime;
+[; ;K13-01.h: 40: void SystemSleep();
+[; ;K13-01.h: 41: void Apply();
+[; ;K13-01.h: 42: void SystemInit();
+[; ;K13-01.h: 43: void GPIOInit();
+[; ;K13-01.h: 44: void TimerInit();
 [v $root$_main `(v ~T0 @X0 0 e ]
 "3 C:\Users\Administrator\Desktop\project\K13-01\code\main.c
 [v _main `(v ~T0 @X0 1 ef ]

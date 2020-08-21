@@ -15,7 +15,7 @@ typedef struct
     uint8 LockFail:1;
     uint8 LockEnd:1;
     uint8 UnlockStart:1;
-    uint8 UnlockFail:1;
+    uint8 UnlockFail:1;//锁定结束和解锁失败的延迟用
     uint8 UnlockEnd:1;
     uint8 LockFlag:1;
     uint8 reservation:2;
@@ -32,6 +32,7 @@ extern bit WorkFlag;
 extern bit IovFlag;
 extern bit LowBatFlag;
 extern bit USBFlag;
+extern bit LEDWorkFlag;
 extern TYPE_UNION_LockSta LockSta;
 extern uint8 BatAddTime;
 extern uint8 BatDecTime;

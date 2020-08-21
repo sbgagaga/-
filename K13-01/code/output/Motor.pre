@@ -455,6 +455,7 @@ extern bit WorkFlag;
 extern bit IovFlag;
 extern bit LowBatFlag;
 extern bit USBFlag;
+extern bit LEDWorkFlag;
 extern TYPE_UNION_LockSta LockSta;
 extern unsigned char BatAddTime;
 extern unsigned char BatDecTime;
@@ -514,7 +515,7 @@ if(BatPercent<99)
 BatPercent++;
 }
 }
-if(BatPercent<=125)
+if(BatPercent<=250)
 {
 RA5 =0;
 }

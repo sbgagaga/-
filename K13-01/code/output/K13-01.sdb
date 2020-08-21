@@ -13,15 +13,13 @@
 [v _ADSample ADSample `(uc  1 e 1 0 ]
 "8 C:\Users\Administrator\Desktop\project\K13-01\code\even.c
 [v _Isr_Timer Isr_Timer `II(v  1 e 1 0 ]
-"24 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.c
+"25 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.c
 [v _Apply Apply `(v  1 e 1 0 ]
-"66
-[v _SystemSleep SystemSleep `(v  1 e 1 0 ]
-"115
+"117
 [v _SystemInit SystemInit `(v  1 e 1 0 ]
-"124
+"126
 [v _GPIOInit GPIOInit `(v  1 e 1 0 ]
-"155
+"157
 [v _TimerInit TimerInit `(v  1 e 1 0 ]
 "9 C:\Users\Administrator\Desktop\project\K13-01\code\Key.c
 [v _KeyScan KeyScan `(v  1 e 1 0 ]
@@ -37,7 +35,7 @@
 [v _WorkLedPro WorkLedPro `(v  1 e 1 0 ]
 "255
 [v _LockPro LockPro `(v  1 e 1 0 ]
-"314
+"309
 [v _ErrPro ErrPro `(v  1 e 1 0 ]
 "3 C:\Users\Administrator\Desktop\project\K13-01\code\main.c
 [v _main main `(v  1 e 1 0 ]
@@ -110,11 +108,13 @@
 [v _LowBatFlag LowBatFlag `b  1 e 0 0 ]
 "18
 [v _USBFlag USBFlag `b  1 e 0 0 ]
-"20
-[v _Sec1sCnt Sec1sCnt `uc  1 e 1 0 ]
+"19
+[v _LEDWorkFlag LEDWorkFlag `b  1 e 0 0 ]
 "21
-[v _BatAddTime BatAddTime `uc  1 e 1 0 ]
+[v _Sec1sCnt Sec1sCnt `uc  1 e 1 0 ]
 "22
+[v _BatAddTime BatAddTime `uc  1 e 1 0 ]
+"23
 [v _BatDecTime BatDecTime `uc  1 e 1 0 ]
 "3 C:\Users\Administrator\Desktop\project\K13-01\code\Key.c
 [v _KeyInBuf KeyInBuf `b  1 e 0 0 ]
@@ -152,8 +152,6 @@
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
 "24
 [v _INTCON INTCON `VEuc  1 e 1 @11 ]
-"25
-[v _PIR1 PIR1 `VEuc  1 e 1 @12 ]
 "31
 [v _T2CON T2CON `VEuc  1 e 1 @18 ]
 "45
@@ -168,16 +166,12 @@
 [v _TRISC TRISC `VEuc  1 e 1 @135 ]
 "54
 [v _PIE1 PIE1 `VEuc  1 e 1 @140 ]
-"55
-[v _PIE2 PIE2 `VEuc  1 e 1 @141 ]
 "57
 [v _OSCCON OSCCON `VEuc  1 e 1 @143 ]
 "60
 [v _PR2 PR2 `VEuc  1 e 1 @146 ]
 "63
 [v _WPUB WPUB `VEuc  1 e 1 @149 ]
-"64
-[v _IOCB IOCB `VEuc  1 e 1 @150 ]
 "71
 [v _ADRESL ADRESL `VEuc  1 e 1 @158 ]
 "72
@@ -188,34 +182,24 @@
 [v _WPUA WPUA `VEuc  1 e 1 @398 ]
 "111
 [v _WPUC WPUC `VEuc  1 e 1 @399 ]
-"136
-[v _RA0 RA0 `VEb  1 e 0 @40 ]
-"137
-[v _RA1 RA1 `VEb  1 e 0 @41 ]
-"138
-[v _RA2 RA2 `VEb  1 e 0 @42 ]
 "139
 [v _RA3 RA3 `VEb  1 e 0 @43 ]
 "141
 [v _RA5 RA5 `VEb  1 e 0 @45 ]
+"142
+[v _RA6 RA6 `VEb  1 e 0 @46 ]
+"143
+[v _RA7 RA7 `VEb  1 e 0 @47 ]
 "149
 [v _RB3 RB3 `VEb  1 e 0 @51 ]
 "150
 [v _RB4 RB4 `VEb  1 e 0 @52 ]
 "151
 [v _RB5 RB5 `VEb  1 e 0 @53 ]
-"152
-[v _RB6 RB6 `VEb  1 e 0 @54 ]
-"153
-[v _RB7 RB7 `VEb  1 e 0 @55 ]
 "158
 [v _RC2 RC2 `VEb  1 e 0 @58 ]
 "159
 [v _RC3 RC3 `VEb  1 e 0 @59 ]
-"172
-[v _RBIF RBIF `VEb  1 e 0 @88 ]
-"177
-[v _RBIE RBIE `VEb  1 e 0 @91 ]
 "187
 [v _TMR2IF TMR2IF `VEb  1 e 0 @97 ]
 "243
@@ -226,16 +210,16 @@
 [v _TRISA1 TRISA1 `VEb  1 e 0 @1065 ]
 "266
 [v _TRISA2 TRISA2 `VEb  1 e 0 @1066 ]
+"270
+[v _TRISA6 TRISA6 `VEb  1 e 0 @1070 ]
+"271
+[v _TRISA7 TRISA7 `VEb  1 e 0 @1071 ]
 "277
 [v _TRISB3 TRISB3 `VEb  1 e 0 @1075 ]
 "278
 [v _TRISB4 TRISB4 `VEb  1 e 0 @1076 ]
 "279
 [v _TRISB5 TRISB5 `VEb  1 e 0 @1077 ]
-"280
-[v _TRISB6 TRISB6 `VEb  1 e 0 @1078 ]
-"281
-[v _TRISB7 TRISB7 `VEb  1 e 0 @1079 ]
 "286
 [v _TRISC2 TRISC2 `VEb  1 e 0 @1082 ]
 "287
@@ -244,16 +228,16 @@
 [v _WPUA1 WPUA1 `VEb  1 e 0 @3185 ]
 "333
 [v _WPUA2 WPUA2 `VEb  1 e 0 @3186 ]
+"337
+[v _WPUA6 WPUA6 `VEb  1 e 0 @3190 ]
+"338
+[v _WPUA7 WPUA7 `VEb  1 e 0 @3191 ]
 "344
 [v _WPUB3 WPUB3 `VEb  1 e 0 @1195 ]
 "345
 [v _WPUB4 WPUB4 `VEb  1 e 0 @1196 ]
 "346
 [v _WPUB5 WPUB5 `VEb  1 e 0 @1197 ]
-"347
-[v _WPUB6 WPUB6 `VEb  1 e 0 @1198 ]
-"348
-[v _WPUB7 WPUB7 `VEb  1 e 0 @1199 ]
 "353
 [v _WPUC2 WPUC2 `VEb  1 e 0 @3194 ]
 "354
@@ -267,32 +251,25 @@
 {
 "11
 } 0
-"24 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.c
-[v _Apply Apply `(v  1 e 1 0 ]
-{
-"64
-} 0
-"66
-[v _SystemSleep SystemSleep `(v  1 e 1 0 ]
-{
-"68
-[v SystemSleep@SleepCnt SleepCnt `uc  1 s 1 SleepCnt ]
-"113
-} 0
-"115
+"117 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.c
 [v _SystemInit SystemInit `(v  1 e 1 0 ]
 {
-"122
+"124
 } 0
-"155
+"157
 [v _TimerInit TimerInit `(v  1 e 1 0 ]
 {
-"171
+"173
 } 0
-"124
+"126
 [v _GPIOInit GPIOInit `(v  1 e 1 0 ]
 {
-"153
+"155
+} 0
+"25
+[v _Apply Apply `(v  1 e 1 0 ]
+{
+"65
 } 0
 "65 C:\Users\Administrator\Desktop\project\K13-01\code\ADC.c
 [v _Sec1sPro Sec1sPro `(v  1 e 1 0 ]
@@ -335,7 +312,7 @@
 "9 C:\Users\Administrator\Desktop\project\K13-01\code\Key.c
 [v _KeyScan KeyScan `(v  1 e 1 0 ]
 {
-"112
+"123
 } 0
 "144 C:\Users\Administrator\Desktop\project\K13-01\code\LED.c
 [v _DisplayPro DisplayPro `(v  1 e 1 0 ]
@@ -419,16 +396,16 @@
 [v LockPro@Ledcnt Ledcnt `uc  1 s 1 Ledcnt ]
 "259
 [v LockPro@LedSwitchFlag LedSwitchFlag `b  1 s 0 LedSwitchFlag ]
-"312
+"307
 } 0
-"314
+"309
 [v _ErrPro ErrPro `(v  1 e 1 0 ]
 {
-"316
+"311
 [v ErrPro@SwitchCnt SwitchCnt `uc  1 s 1 SwitchCnt ]
-"317
+"312
 [v ErrPro@LedSwitchFlag LedSwitchFlag `b  1 s 0 LedSwitchFlag ]
-"336
+"331
 } 0
 "124
 [v _DisplayIcon DisplayIcon `(v  1 e 1 0 ]
