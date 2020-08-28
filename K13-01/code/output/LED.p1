@@ -7,26 +7,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _LockPro `(v ~T0 @X0 0 ef ]
 "19
 [v _ErrPro `(v ~T0 @X0 0 ef ]
-"34 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.h
+"35 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.h
 [v _USBFlag `b ~T0 @X0 0 e ]
-"31
+"32
 [v _WorkFlag `b ~T0 @X0 0 e ]
-"30
+"31
 [v _OnOffFlag `b ~T0 @X0 0 e ]
 "26
 [v _BatPercent `uc ~T0 @X0 0 e ]
-"35
+"36
 [v _LEDWorkFlag `b ~T0 @X0 0 e ]
 "13
 [s S1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 ]
 [n S1 . LockStart LockFail LockEnd UnlockStart UnlockFail UnlockEnd LockFlag reservation ]
-"36
+"37
 [v _LockSta `S1 ~T0 @X0 0 e ]
 "27
 [v _WorkMin `uc ~T0 @X0 0 e ]
 "24
 [v _LockNumb `uc ~T0 @X0 0 e ]
-"32
+"29
+[v _LedIovFlag `b ~T0 @X0 0 e ]
+"33
 [v _IovFlag `b ~T0 @X0 0 e ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
@@ -866,21 +868,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;K13-01.h: 24: extern unsigned char LockNumb;
 [; ;K13-01.h: 26: extern unsigned char BatPercent;
 [; ;K13-01.h: 27: extern unsigned char WorkMin;
-[; ;K13-01.h: 29: extern bit SystemONFlag;
-[; ;K13-01.h: 30: extern bit OnOffFlag;
-[; ;K13-01.h: 31: extern bit WorkFlag;
-[; ;K13-01.h: 32: extern bit IovFlag;
-[; ;K13-01.h: 33: extern bit LowBatFlag;
-[; ;K13-01.h: 34: extern bit USBFlag;
-[; ;K13-01.h: 35: extern bit LEDWorkFlag;
-[; ;K13-01.h: 36: extern TYPE_UNION_LockSta LockSta;
-[; ;K13-01.h: 37: extern unsigned char BatAddTime;
-[; ;K13-01.h: 38: extern unsigned char BatDecTime;
-[; ;K13-01.h: 40: void SystemSleep();
-[; ;K13-01.h: 41: void Apply();
-[; ;K13-01.h: 42: void SystemInit();
-[; ;K13-01.h: 43: void GPIOInit();
-[; ;K13-01.h: 44: void TimerInit();
+[; ;K13-01.h: 29: extern bit LedIovFlag;
+[; ;K13-01.h: 30: extern bit SystemONFlag;
+[; ;K13-01.h: 31: extern bit OnOffFlag;
+[; ;K13-01.h: 32: extern bit WorkFlag;
+[; ;K13-01.h: 33: extern bit IovFlag;
+[; ;K13-01.h: 34: extern bit LowBatFlag;
+[; ;K13-01.h: 35: extern bit USBFlag;
+[; ;K13-01.h: 36: extern bit LEDWorkFlag;
+[; ;K13-01.h: 37: extern TYPE_UNION_LockSta LockSta;
+[; ;K13-01.h: 38: extern unsigned char BatAddTime;
+[; ;K13-01.h: 39: extern unsigned char BatDecTime;
+[; ;K13-01.h: 41: void SystemSleep();
+[; ;K13-01.h: 42: void Apply();
+[; ;K13-01.h: 43: void SystemInit();
+[; ;K13-01.h: 44: void GPIOInit();
+[; ;K13-01.h: 45: void TimerInit();
 [; ;LED.h: 13: void DisplayPro();
 [; ;LED.h: 14: void WorkLedPro();
 [; ;LED.h: 15: void USBLedPro();
@@ -905,8 +908,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [; ;LED.c: 3: unsigned char NumbArr[10]={0x77,0x24,0x5D,0X6D,0X2E,0X6B,0X7B,0X25,0X7F,0X2F};
-"4
-[v _HideNumbArr `uc ~T0 @X0 -> 11 `i e ]
+"5
+[v _HideNumbArr `uc ~T0 @X0 -> 7 `i e ]
 [i _HideNumbArr
 :U ..
 -> -> 0 `i `uc
@@ -915,15 +918,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 120 `i `uc
 -> -> 126 `i `uc
 -> -> 127 `i `uc
--> -> 63 `i `uc
--> -> 15 `i `uc
--> -> 7 `i `uc
--> -> 1 `i `uc
--> -> 0 `i `uc
+-> -> 127 `i `uc
 ..
 ]
-[; ;LED.c: 4: unsigned char HideNumbArr[11]={0,0x40,0x70,0x78,0x7E,0x7F,0x3F,0X0F,0x07,0X01,0};
-"5
+[; ;LED.c: 5: unsigned char HideNumbArr[7]={0,0x40,0x70,0x78,0x7E,0x7F,0x7F};
+"6
 [v _OffHideNumbArr `ui ~T0 @X0 -> 7 `i e ]
 [i _OffHideNumbArr
 :U ..
@@ -936,8 +935,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 16383 `i `ui
 ..
 ]
-[; ;LED.c: 5: unsigned int OffHideNumbArr[7]={0,0x12,0x5B,0X7F,0x97F,0x2DFF,0x3FFF};
-"12
+[; ;LED.c: 6: unsigned int OffHideNumbArr[7]={0,0x12,0x5B,0X7F,0x97F,0x2DFF,0x3FFF};
+"13
 [v _LEDSeg1 `Cuc ~T0 @X0 -> 16 `i e ]
 [i _LEDSeg1
 :U ..
@@ -959,8 +958,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 1 `i `uc
 ..
 ]
-[; ;LED.c: 12: const unsigned char LEDSeg1[16]={1,2,2,3,0,3,4,0,1,1,2,0,3,4,0,1};
-"13
+[; ;LED.c: 13: const unsigned char LEDSeg1[16]={1,2,2,3,0,3,4,0,1,1,2,0,3,4,0,1};
+"14
 [v _LEDSeg2 `uc ~T0 @X0 -> 16 `i e ]
 [i _LEDSeg2
 :U ..
@@ -982,14 +981,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 4 `i `uc
 ..
 ]
-[; ;LED.c: 13: unsigned char LEDSeg2[16]={0,1,0,1,1,0,0,2,3,2,3,3,2,2,4,4};
-"14
+[; ;LED.c: 14: unsigned char LEDSeg2[16]={0,1,0,1,1,0,0,2,3,2,3,3,2,2,4,4};
+"15
 [v _LedIndex `ui ~T0 @X0 1 e ]
 [i _LedIndex
 -> -> 0 `i `ui
 ]
-[; ;LED.c: 14: unsigned int LedIndex=0;
-"15
+[; ;LED.c: 15: unsigned int LedIndex=0;
+"16
 [v _LEDArrMap `uc ~T0 @X0 -> 5 `i e ]
 [i _LEDArrMap
 :U ..
@@ -1000,539 +999,536 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 255 `i `uc
 ..
 ]
-[; ;LED.c: 15: unsigned char LEDArrMap[5]={0xff,0xff,0xEf,0xff,0xff};
-"17
-[v _LEDScan `(v ~T0 @X0 1 ef ]
+[; ;LED.c: 16: unsigned char LEDArrMap[5]={0xff,0xff,0xEf,0xff,0xff};
 "18
+[v _LEDScan `(v ~T0 @X0 1 ef ]
+"19
 {
-[; ;LED.c: 17: void LEDScan()
-[; ;LED.c: 18: {
+[; ;LED.c: 18: void LEDScan()
+[; ;LED.c: 19: {
 [e :U _LEDScan ]
 [f ]
-"19
-[v F549 `uc ~T0 @X0 1 s LEDScanIndex ]
-[i F549
+"20
+[v F550 `uc ~T0 @X0 1 s LEDScanIndex ]
+[i F550
 -> -> 0 `i `uc
 ]
-[; ;LED.c: 19: static unsigned char LEDScanIndex=0;
-[; ;LED.c: 21: TRISB5=1,WPUB5=0;
-"21
-[e ; -> = _TRISB5 -> -> 1 `i `b `i -> = _WPUB5 -> -> 0 `i `b `i ]
-[; ;LED.c: 22: TRISB4=1,WPUB4=0;
+[; ;LED.c: 20: static unsigned char LEDScanIndex=0;
+[; ;LED.c: 22: TRISB5=1,WPUB5=0;
 "22
-[e ; -> = _TRISB4 -> -> 1 `i `b `i -> = _WPUB4 -> -> 0 `i `b `i ]
-[; ;LED.c: 23: TRISB3=1,WPUB3=0;
+[e ; -> = _TRISB5 -> -> 1 `i `b `i -> = _WPUB5 -> -> 0 `i `b `i ]
+[; ;LED.c: 23: TRISB4=1,WPUB4=0;
 "23
-[e ; -> = _TRISB3 -> -> 1 `i `b `i -> = _WPUB3 -> -> 0 `i `b `i ]
-[; ;LED.c: 24: TRISC3=1,WPUC3=0;
+[e ; -> = _TRISB4 -> -> 1 `i `b `i -> = _WPUB4 -> -> 0 `i `b `i ]
+[; ;LED.c: 24: TRISB3=1,WPUB3=0;
 "24
-[e ; -> = _TRISC3 -> -> 1 `i `b `i -> = _WPUC3 -> -> 0 `i `b `i ]
-[; ;LED.c: 25: TRISC2=1,WPUC2=0;
+[e ; -> = _TRISB3 -> -> 1 `i `b `i -> = _WPUB3 -> -> 0 `i `b `i ]
+[; ;LED.c: 25: TRISC3=1,WPUC3=0;
 "25
-[e ; -> = _TRISC2 -> -> 1 `i `b `i -> = _WPUC2 -> -> 0 `i `b `i ]
-[; ;LED.c: 26: asm("nop"); asm("nop");
+[e ; -> = _TRISC3 -> -> 1 `i `b `i -> = _WPUC3 -> -> 0 `i `b `i ]
+[; ;LED.c: 26: TRISC2=1,WPUC2=0;
 "26
+[e ; -> = _TRISC2 -> -> 1 `i `b `i -> = _WPUC2 -> -> 0 `i `b `i ]
+[; ;LED.c: 27: asm("nop"); asm("nop");
+"27
 [; <" nop ;# ">
 [; <" nop ;# ">
-[; ;LED.c: 28: switch(LEDScanIndex)
-"28
-[e $U 4  ]
-[; ;LED.c: 29: {
+[; ;LED.c: 29: switch(LEDScanIndex)
 "29
-{
-[; ;LED.c: 30: case 0:
+[e $U 4  ]
+[; ;LED.c: 30: {
 "30
-[e :U 5 ]
-[; ;LED.c: 31: if(LEDArrMap[0]&0x02)
-"31
-[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 0 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 2 `i -> 0 `i 6  ]
-[; ;LED.c: 32: {
-"32
 {
-[; ;LED.c: 33: TRISB4=0,WPUB4=0;RB4=0 ;
+[; ;LED.c: 31: case 0:
+"31
+[e :U 5 ]
+[; ;LED.c: 32: if(LEDArrMap[0]&0x02)
+"32
+[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 0 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 2 `i -> 0 `i 6  ]
+[; ;LED.c: 33: {
 "33
+{
+[; ;LED.c: 34: TRISB4=0,WPUB4=0;RB4=0 ;
+"34
 [e ; -> = _TRISB4 -> -> 0 `i `b `i -> = _WPUB4 -> -> 0 `i `b `i ]
 [e = _RB4 -> -> 0 `i `b ]
-"34
+"35
 }
 [e :U 6 ]
-[; ;LED.c: 34: }
-[; ;LED.c: 35: if(LEDArrMap[0]&0x04)
-"35
-[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 0 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 4 `i -> 0 `i 7  ]
-[; ;LED.c: 36: {
+[; ;LED.c: 35: }
+[; ;LED.c: 36: if(LEDArrMap[0]&0x04)
 "36
-{
-[; ;LED.c: 37: TRISB3=0,WPUB3=0;RB3=0 ;
+[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 0 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 4 `i -> 0 `i 7  ]
+[; ;LED.c: 37: {
 "37
+{
+[; ;LED.c: 38: TRISB3=0,WPUB3=0;RB3=0 ;
+"38
 [e ; -> = _TRISB3 -> -> 0 `i `b `i -> = _WPUB3 -> -> 0 `i `b `i ]
 [e = _RB3 -> -> 0 `i `b ]
-"38
+"39
 }
 [e :U 7 ]
-[; ;LED.c: 38: }
-[; ;LED.c: 39: if(LEDArrMap[0]&0x08)
-"39
-[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 0 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 8 `i -> 0 `i 8  ]
-[; ;LED.c: 40: {
+[; ;LED.c: 39: }
+[; ;LED.c: 40: if(LEDArrMap[0]&0x08)
 "40
-{
-[; ;LED.c: 41: TRISC3=0,WPUC3=0;RC3=0 ;
+[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 0 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 8 `i -> 0 `i 8  ]
+[; ;LED.c: 41: {
 "41
+{
+[; ;LED.c: 42: TRISC3=0,WPUC3=0;RC3=0 ;
+"42
 [e ; -> = _TRISC3 -> -> 0 `i `b `i -> = _WPUC3 -> -> 0 `i `b `i ]
 [e = _RC3 -> -> 0 `i `b ]
-"42
+"43
 }
 [e :U 8 ]
-[; ;LED.c: 42: }
-[; ;LED.c: 43: if(LEDArrMap[0]&0x10)
-"43
-[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 0 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 16 `i -> 0 `i 9  ]
-[; ;LED.c: 44: {
+[; ;LED.c: 43: }
+[; ;LED.c: 44: if(LEDArrMap[0]&0x10)
 "44
-{
-[; ;LED.c: 45: TRISC2=0,WPUC2=0;RC2=0 ;
+[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 0 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 16 `i -> 0 `i 9  ]
+[; ;LED.c: 45: {
 "45
+{
+[; ;LED.c: 46: TRISC2=0,WPUC2=0;RC2=0 ;
+"46
 [e ; -> = _TRISC2 -> -> 0 `i `b `i -> = _WPUC2 -> -> 0 `i `b `i ]
 [e = _RC2 -> -> 0 `i `b ]
-"46
+"47
 }
 [e :U 9 ]
-[; ;LED.c: 46: }
-[; ;LED.c: 47: TRISB5=0,WPUB5=0;RB5=1 ;
-"47
+[; ;LED.c: 47: }
+[; ;LED.c: 48: TRISB5=0,WPUB5=0;RB5=1 ;
+"48
 [e ; -> = _TRISB5 -> -> 0 `i `b `i -> = _WPUB5 -> -> 0 `i `b `i ]
 [e = _RB5 -> -> 1 `i `b ]
-[; ;LED.c: 48: break;
-"48
+[; ;LED.c: 49: break;
+"49
 [e $U 3  ]
-[; ;LED.c: 50: case 1:
-"50
-[e :U 10 ]
-[; ;LED.c: 51: if(LEDArrMap[1]&0x01)
+[; ;LED.c: 51: case 1:
 "51
-[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 1 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 1 `i -> 0 `i 11  ]
-[; ;LED.c: 52: {
+[e :U 10 ]
+[; ;LED.c: 52: if(LEDArrMap[1]&0x01)
 "52
-{
-[; ;LED.c: 53: TRISB5=0,WPUB5=0;RB5=0 ;
+[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 1 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 1 `i -> 0 `i 11  ]
+[; ;LED.c: 53: {
 "53
+{
+[; ;LED.c: 54: TRISB5=0,WPUB5=0;RB5=0 ;
+"54
 [e ; -> = _TRISB5 -> -> 0 `i `b `i -> = _WPUB5 -> -> 0 `i `b `i ]
 [e = _RB5 -> -> 0 `i `b ]
-"54
+"55
 }
 [e :U 11 ]
-[; ;LED.c: 54: }
-[; ;LED.c: 55: if(LEDArrMap[1]&0x04)
-"55
-[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 1 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 4 `i -> 0 `i 12  ]
-[; ;LED.c: 56: {
+[; ;LED.c: 55: }
+[; ;LED.c: 56: if(LEDArrMap[1]&0x04)
 "56
-{
-[; ;LED.c: 57: TRISB3=0,WPUB3=0;RB3=0 ;
+[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 1 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 4 `i -> 0 `i 12  ]
+[; ;LED.c: 57: {
 "57
+{
+[; ;LED.c: 58: TRISB3=0,WPUB3=0;RB3=0 ;
+"58
 [e ; -> = _TRISB3 -> -> 0 `i `b `i -> = _WPUB3 -> -> 0 `i `b `i ]
 [e = _RB3 -> -> 0 `i `b ]
-"58
+"59
 }
 [e :U 12 ]
-[; ;LED.c: 58: }
-[; ;LED.c: 59: if(LEDArrMap[1]&0x08)
-"59
-[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 1 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 8 `i -> 0 `i 13  ]
-[; ;LED.c: 60: {
+[; ;LED.c: 59: }
+[; ;LED.c: 60: if(LEDArrMap[1]&0x08)
 "60
-{
-[; ;LED.c: 61: TRISC3=0,WPUC3=0;RC3=0 ;
+[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 1 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 8 `i -> 0 `i 13  ]
+[; ;LED.c: 61: {
 "61
+{
+[; ;LED.c: 62: TRISC3=0,WPUC3=0;RC3=0 ;
+"62
 [e ; -> = _TRISC3 -> -> 0 `i `b `i -> = _WPUC3 -> -> 0 `i `b `i ]
 [e = _RC3 -> -> 0 `i `b ]
-"62
+"63
 }
 [e :U 13 ]
-[; ;LED.c: 62: }
-[; ;LED.c: 63: if(LEDArrMap[1]&0x10)
-"63
-[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 1 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 16 `i -> 0 `i 14  ]
-[; ;LED.c: 64: {
+[; ;LED.c: 63: }
+[; ;LED.c: 64: if(LEDArrMap[1]&0x10)
 "64
-{
-[; ;LED.c: 65: TRISC2=0,WPUC2=0;RC2=0 ;
+[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 1 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 16 `i -> 0 `i 14  ]
+[; ;LED.c: 65: {
 "65
+{
+[; ;LED.c: 66: TRISC2=0,WPUC2=0;RC2=0 ;
+"66
 [e ; -> = _TRISC2 -> -> 0 `i `b `i -> = _WPUC2 -> -> 0 `i `b `i ]
 [e = _RC2 -> -> 0 `i `b ]
-"66
+"67
 }
 [e :U 14 ]
-[; ;LED.c: 66: }
-[; ;LED.c: 67: TRISB4=0,WPUB4=0; RB4=1 ;
-"67
+[; ;LED.c: 67: }
+[; ;LED.c: 68: TRISB4=0,WPUB4=0; RB4=1 ;
+"68
 [e ; -> = _TRISB4 -> -> 0 `i `b `i -> = _WPUB4 -> -> 0 `i `b `i ]
 [e = _RB4 -> -> 1 `i `b ]
-[; ;LED.c: 68: break;
-"68
+[; ;LED.c: 69: break;
+"69
 [e $U 3  ]
-[; ;LED.c: 70: case 2:
-"70
-[e :U 15 ]
-[; ;LED.c: 71: if(LEDArrMap[2]&0x01)
+[; ;LED.c: 71: case 2:
 "71
-[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 2 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 1 `i -> 0 `i 16  ]
-[; ;LED.c: 72: {
+[e :U 15 ]
+[; ;LED.c: 72: if(LEDArrMap[2]&0x01)
 "72
-{
-[; ;LED.c: 73: TRISB5=0,WPUB5=0;RB5=0 ;
+[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 2 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 1 `i -> 0 `i 16  ]
+[; ;LED.c: 73: {
 "73
+{
+[; ;LED.c: 74: TRISB5=0,WPUB5=0;RB5=0 ;
+"74
 [e ; -> = _TRISB5 -> -> 0 `i `b `i -> = _WPUB5 -> -> 0 `i `b `i ]
 [e = _RB5 -> -> 0 `i `b ]
-"74
+"75
 }
 [e :U 16 ]
-[; ;LED.c: 74: }
-[; ;LED.c: 75: if(LEDArrMap[2]&0x02)
-"75
-[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 2 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 2 `i -> 0 `i 17  ]
-[; ;LED.c: 76: {
+[; ;LED.c: 75: }
+[; ;LED.c: 76: if(LEDArrMap[2]&0x02)
 "76
-{
-[; ;LED.c: 77: TRISB4=0,WPUB4=0;RB4=0 ;
+[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 2 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 2 `i -> 0 `i 17  ]
+[; ;LED.c: 77: {
 "77
+{
+[; ;LED.c: 78: TRISB4=0,WPUB4=0;RB4=0 ;
+"78
 [e ; -> = _TRISB4 -> -> 0 `i `b `i -> = _WPUB4 -> -> 0 `i `b `i ]
 [e = _RB4 -> -> 0 `i `b ]
-"78
+"79
 }
 [e :U 17 ]
-[; ;LED.c: 78: }
-[; ;LED.c: 79: if(LEDArrMap[2]&0x08)
-"79
-[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 2 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 8 `i -> 0 `i 18  ]
-[; ;LED.c: 80: {
+[; ;LED.c: 79: }
+[; ;LED.c: 80: if(LEDArrMap[2]&0x08)
 "80
-{
-[; ;LED.c: 81: TRISC3=0,WPUC3=0;RC3=0 ;
+[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 2 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 8 `i -> 0 `i 18  ]
+[; ;LED.c: 81: {
 "81
+{
+[; ;LED.c: 82: TRISC3=0,WPUC3=0;RC3=0 ;
+"82
 [e ; -> = _TRISC3 -> -> 0 `i `b `i -> = _WPUC3 -> -> 0 `i `b `i ]
 [e = _RC3 -> -> 0 `i `b ]
-"82
+"83
 }
 [e :U 18 ]
-[; ;LED.c: 82: }
-[; ;LED.c: 83: if(LEDArrMap[2]&0x10)
-"83
-[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 2 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 16 `i -> 0 `i 19  ]
-[; ;LED.c: 84: {
+[; ;LED.c: 83: }
+[; ;LED.c: 84: if(LEDArrMap[2]&0x10)
 "84
-{
-[; ;LED.c: 85: TRISC2=0,WPUC2=0;RC2=0 ;
+[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 2 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 16 `i -> 0 `i 19  ]
+[; ;LED.c: 85: {
 "85
+{
+[; ;LED.c: 86: TRISC2=0,WPUC2=0;RC2=0 ;
+"86
 [e ; -> = _TRISC2 -> -> 0 `i `b `i -> = _WPUC2 -> -> 0 `i `b `i ]
 [e = _RC2 -> -> 0 `i `b ]
-"86
+"87
 }
 [e :U 19 ]
-[; ;LED.c: 86: }
-[; ;LED.c: 87: TRISB3=0,WPUB3=0;RB3=1 ;
-"87
+[; ;LED.c: 87: }
+[; ;LED.c: 88: TRISB3=0,WPUB3=0;RB3=1 ;
+"88
 [e ; -> = _TRISB3 -> -> 0 `i `b `i -> = _WPUB3 -> -> 0 `i `b `i ]
 [e = _RB3 -> -> 1 `i `b ]
-[; ;LED.c: 88: break;
-"88
+[; ;LED.c: 89: break;
+"89
 [e $U 3  ]
-[; ;LED.c: 90: case 3:
-"90
-[e :U 20 ]
-[; ;LED.c: 91: if(LEDArrMap[3]&0x01)
+[; ;LED.c: 91: case 3:
 "91
-[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 3 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 1 `i -> 0 `i 21  ]
-[; ;LED.c: 92: {
+[e :U 20 ]
+[; ;LED.c: 92: if(LEDArrMap[3]&0x01)
 "92
-{
-[; ;LED.c: 93: TRISB5=0,WPUB5=0;RB5=0 ;
+[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 3 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 1 `i -> 0 `i 21  ]
+[; ;LED.c: 93: {
 "93
+{
+[; ;LED.c: 94: TRISB5=0,WPUB5=0;RB5=0 ;
+"94
 [e ; -> = _TRISB5 -> -> 0 `i `b `i -> = _WPUB5 -> -> 0 `i `b `i ]
 [e = _RB5 -> -> 0 `i `b ]
-"94
+"95
 }
 [e :U 21 ]
-[; ;LED.c: 94: }
-[; ;LED.c: 95: if(LEDArrMap[3]&0x02)
-"95
-[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 3 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 2 `i -> 0 `i 22  ]
-[; ;LED.c: 96: {
+[; ;LED.c: 95: }
+[; ;LED.c: 96: if(LEDArrMap[3]&0x02)
 "96
-{
-[; ;LED.c: 97: TRISB4=0,WPUB4=0;RB4=0 ;
+[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 3 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 2 `i -> 0 `i 22  ]
+[; ;LED.c: 97: {
 "97
+{
+[; ;LED.c: 98: TRISB4=0,WPUB4=0;RB4=0 ;
+"98
 [e ; -> = _TRISB4 -> -> 0 `i `b `i -> = _WPUB4 -> -> 0 `i `b `i ]
 [e = _RB4 -> -> 0 `i `b ]
-"98
+"99
 }
 [e :U 22 ]
-[; ;LED.c: 98: }
-[; ;LED.c: 99: if(LEDArrMap[3]&0x04)
-"99
-[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 3 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 4 `i -> 0 `i 23  ]
-[; ;LED.c: 100: {
+[; ;LED.c: 99: }
+[; ;LED.c: 100: if(LEDArrMap[3]&0x04)
 "100
-{
-[; ;LED.c: 101: TRISB3=0,WPUB3=0;RB3=0 ;
+[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 3 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 4 `i -> 0 `i 23  ]
+[; ;LED.c: 101: {
 "101
+{
+[; ;LED.c: 102: TRISB3=0,WPUB3=0;RB3=0 ;
+"102
 [e ; -> = _TRISB3 -> -> 0 `i `b `i -> = _WPUB3 -> -> 0 `i `b `i ]
 [e = _RB3 -> -> 0 `i `b ]
-"102
+"103
 }
 [e :U 23 ]
-[; ;LED.c: 102: }
-[; ;LED.c: 103: TRISC3=0,WPUC3=0;RC3=1 ;
-"103
+[; ;LED.c: 103: }
+[; ;LED.c: 104: TRISC3=0,WPUC3=0;RC3=1 ;
+"104
 [e ; -> = _TRISC3 -> -> 0 `i `b `i -> = _WPUC3 -> -> 0 `i `b `i ]
 [e = _RC3 -> -> 1 `i `b ]
-[; ;LED.c: 104: break;
-"104
+[; ;LED.c: 105: break;
+"105
 [e $U 3  ]
-[; ;LED.c: 106: case 4:
-"106
-[e :U 24 ]
-[; ;LED.c: 107: if(LEDArrMap[4]&0x01)
+[; ;LED.c: 107: case 4:
 "107
-[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 4 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 1 `i -> 0 `i 25  ]
-[; ;LED.c: 108: {
+[e :U 24 ]
+[; ;LED.c: 108: if(LEDArrMap[4]&0x01)
 "108
-{
-[; ;LED.c: 109: TRISB5=0,WPUB5=0;RB5=0 ;
+[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 4 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 1 `i -> 0 `i 25  ]
+[; ;LED.c: 109: {
 "109
+{
+[; ;LED.c: 110: TRISB5=0,WPUB5=0;RB5=0 ;
+"110
 [e ; -> = _TRISB5 -> -> 0 `i `b `i -> = _WPUB5 -> -> 0 `i `b `i ]
 [e = _RB5 -> -> 0 `i `b ]
-"110
+"111
 }
 [e :U 25 ]
-[; ;LED.c: 110: }
-[; ;LED.c: 111: if(LEDArrMap[4]&0x04)
-"111
-[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 4 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 4 `i -> 0 `i 26  ]
-[; ;LED.c: 112: {
+[; ;LED.c: 111: }
+[; ;LED.c: 112: if(LEDArrMap[4]&0x04)
 "112
-{
-[; ;LED.c: 113: TRISB3=0,WPUB3=0;RB3=0 ;
+[e $ ! != & -> *U + &U _LEDArrMap * -> -> -> 4 `i `ui `ux -> -> # *U &U _LEDArrMap `ui `ux `i -> 4 `i -> 0 `i 26  ]
+[; ;LED.c: 113: {
 "113
+{
+[; ;LED.c: 114: TRISB3=0,WPUB3=0;RB3=0 ;
+"114
 [e ; -> = _TRISB3 -> -> 0 `i `b `i -> = _WPUB3 -> -> 0 `i `b `i ]
 [e = _RB3 -> -> 0 `i `b ]
-"114
+"115
 }
 [e :U 26 ]
-[; ;LED.c: 114: }
-[; ;LED.c: 115: TRISC2=0,WPUC2=0;RC2=1 ;
-"115
+[; ;LED.c: 115: }
+[; ;LED.c: 116: TRISC2=0,WPUC2=0;RC2=1 ;
+"116
 [e ; -> = _TRISC2 -> -> 0 `i `b `i -> = _WPUC2 -> -> 0 `i `b `i ]
 [e = _RC2 -> -> 1 `i `b ]
-"116
+"117
 }
-[; ;LED.c: 116: }
+[; ;LED.c: 117: }
 [e $U 3  ]
-"28
+"29
 [e :U 4 ]
-[e [\ F549 , $ -> -> 0 `i `uc 5
+[e [\ F550 , $ -> -> 0 `i `uc 5
  , $ -> -> 1 `i `uc 10
  , $ -> -> 2 `i `uc 15
  , $ -> -> 3 `i `uc 20
  , $ -> -> 4 `i `uc 24
  3 ]
-"116
-[e :U 3 ]
-[; ;LED.c: 117: LEDScanIndex++;
 "117
-[e ++ F549 -> -> 1 `i `uc ]
-[; ;LED.c: 118: if(LEDScanIndex>=5)
+[e :U 3 ]
+[; ;LED.c: 118: LEDScanIndex++;
 "118
-[e $ ! >= -> F549 `i -> 5 `i 27  ]
-[; ;LED.c: 119: {
+[e ++ F550 -> -> 1 `i `uc ]
+[; ;LED.c: 119: if(LEDScanIndex>=5)
 "119
-{
-[; ;LED.c: 120: LEDScanIndex=0;
+[e $ ! >= -> F550 `i -> 5 `i 27  ]
+[; ;LED.c: 120: {
 "120
-[e = F549 -> -> 0 `i `uc ]
+{
+[; ;LED.c: 121: LEDScanIndex=0;
 "121
+[e = F550 -> -> 0 `i `uc ]
+"122
 }
 [e :U 27 ]
-[; ;LED.c: 121: }
 [; ;LED.c: 122: }
-"122
+[; ;LED.c: 123: }
+"123
 [e :UE 2 ]
 }
-"124
+"125
 [v _DisplayIcon `(v ~T0 @X0 1 ef1`ui ]
-"125
-{
-[; ;LED.c: 124: void DisplayIcon(unsigned int index)
-[; ;LED.c: 125: {
-[e :U _DisplayIcon ]
-"124
-[v _index `ui ~T0 @X0 1 r1 ]
-"125
-[f ]
 "126
-[v _i `uc ~T0 @X0 1 a ]
-[; ;LED.c: 126: unsigned char i=0;
-[e = _i -> -> 0 `i `uc ]
+{
+[; ;LED.c: 125: void DisplayIcon(unsigned int index)
+[; ;LED.c: 126: {
+[e :U _DisplayIcon ]
+"125
+[v _index `ui ~T0 @X0 1 r1 ]
+"126
+[f ]
 "127
+[v _i `uc ~T0 @X0 1 a ]
+[; ;LED.c: 127: unsigned char i=0;
+[e = _i -> -> 0 `i `uc ]
+"128
 [v _Mask `ui ~T0 @X0 1 a ]
-[; ;LED.c: 127: unsigned int Mask=0x01;
+[; ;LED.c: 128: unsigned int Mask=0x01;
 [e = _Mask -> -> 1 `i `ui ]
-[; ;LED.c: 129: for(i=0;i<16;i++)
-"129
+[; ;LED.c: 130: for(i=0;i<16;i++)
+"130
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 16 `i 29  ]
 [e $U 30  ]
-"130
-[e :U 29 ]
-[; ;LED.c: 130: {
-{
-[; ;LED.c: 131: if(index&Mask)
 "131
-[e $ ! != & _index _Mask -> -> 0 `i `ui 32  ]
-[; ;LED.c: 132: {
+[e :U 29 ]
+[; ;LED.c: 131: {
+{
+[; ;LED.c: 132: if(index&Mask)
 "132
-{
-[; ;LED.c: 133: LEDArrMap[LEDSeg1[i]]|=(1<<LEDSeg2[i]);
+[e $ ! != & _index _Mask -> -> 0 `i `ui 32  ]
+[; ;LED.c: 133: {
 "133
-[e =| *U + &U _LEDArrMap * -> *U + &U _LEDSeg1 * -> _i `ux -> -> # *U &U _LEDSeg1 `ui `ux `ux -> -> # *U &U _LEDArrMap `ui `ux -> << -> 1 `i *U + &U _LEDSeg2 * -> _i `ux -> -> # *U &U _LEDSeg2 `ui `ux `uc ]
-"134
-}
-[; ;LED.c: 134: }
-[e $U 33  ]
-"135
-[e :U 32 ]
-[; ;LED.c: 135: else
-[; ;LED.c: 136: {
-"136
 {
-[; ;LED.c: 137: LEDArrMap[LEDSeg1[i]]&=~(1<<LEDSeg2[i]);
+[; ;LED.c: 134: LEDArrMap[LEDSeg1[i]]|=(1<<LEDSeg2[i]);
+"134
+[e =| *U + &U _LEDArrMap * -> *U + &U _LEDSeg1 * -> _i `ux -> -> # *U &U _LEDSeg1 `ui `ux `ux -> -> # *U &U _LEDArrMap `ui `ux -> << -> 1 `i *U + &U _LEDSeg2 * -> _i `ux -> -> # *U &U _LEDSeg2 `ui `ux `uc ]
+"135
+}
+[; ;LED.c: 135: }
+[e $U 33  ]
+"136
+[e :U 32 ]
+[; ;LED.c: 136: else
+[; ;LED.c: 137: {
 "137
-[e =& *U + &U _LEDArrMap * -> *U + &U _LEDSeg1 * -> _i `ux -> -> # *U &U _LEDSeg1 `ui `ux `ux -> -> # *U &U _LEDArrMap `ui `ux -> ~ << -> 1 `i *U + &U _LEDSeg2 * -> _i `ux -> -> # *U &U _LEDSeg2 `ui `ux `uc ]
+{
+[; ;LED.c: 138: LEDArrMap[LEDSeg1[i]]&=~(1<<LEDSeg2[i]);
 "138
+[e =& *U + &U _LEDArrMap * -> *U + &U _LEDSeg1 * -> _i `ux -> -> # *U &U _LEDSeg1 `ui `ux `ux -> -> # *U &U _LEDArrMap `ui `ux -> ~ << -> 1 `i *U + &U _LEDSeg2 * -> _i `ux -> -> # *U &U _LEDSeg2 `ui `ux `uc ]
+"139
 }
 [e :U 33 ]
-[; ;LED.c: 138: }
-[; ;LED.c: 140: Mask<<=1;
-"140
-[e =<< _Mask -> 1 `i ]
+[; ;LED.c: 139: }
+[; ;LED.c: 141: Mask<<=1;
 "141
+[e =<< _Mask -> 1 `i ]
+"142
 }
-"129
+"130
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 16 `i 29  ]
 [e :U 30 ]
-"141
-}
-[; ;LED.c: 141: }
-[; ;LED.c: 142: }
 "142
+}
+[; ;LED.c: 142: }
+[; ;LED.c: 143: }
+"143
 [e :UE 28 ]
 }
-"144
-[v _DisplayPro `(v ~T0 @X0 1 ef ]
 "145
+[v _DisplayPro `(v ~T0 @X0 1 ef ]
+"146
 {
-[; ;LED.c: 144: void DisplayPro()
-[; ;LED.c: 145: {
+[; ;LED.c: 145: void DisplayPro()
+[; ;LED.c: 146: {
 [e :U _DisplayPro ]
 [f ]
-[; ;LED.c: 146: LedIndex=0;
-"146
-[e = _LedIndex -> -> 0 `i `ui ]
-[; ;LED.c: 147: WorkLedPro();
+[; ;LED.c: 147: LedIndex=0;
 "147
-[e ( _WorkLedPro ..  ]
-[; ;LED.c: 148: USBLedPro();
+[e = _LedIndex -> -> 0 `i `ui ]
+[; ;LED.c: 148: WorkLedPro();
 "148
-[e ( _USBLedPro ..  ]
-[; ;LED.c: 149: LockPro();
+[e ( _WorkLedPro ..  ]
+[; ;LED.c: 149: USBLedPro();
 "149
-[e ( _LockPro ..  ]
-[; ;LED.c: 150: ErrPro();
+[e ( _USBLedPro ..  ]
+[; ;LED.c: 150: LockPro();
 "150
-[e ( _ErrPro ..  ]
-[; ;LED.c: 151: DisplayIcon(LedIndex);
+[e ( _LockPro ..  ]
+[; ;LED.c: 151: ErrPro();
 "151
-[e ( _DisplayIcon (1 _LedIndex ]
-[; ;LED.c: 152: }
+[e ( _ErrPro ..  ]
+[; ;LED.c: 152: DisplayIcon(LedIndex);
 "152
+[e ( _DisplayIcon (1 _LedIndex ]
+[; ;LED.c: 153: }
+"153
 [e :UE 34 ]
 }
-"154
-[v _USBLedPro `(v ~T0 @X0 1 ef ]
 "155
+[v _USBLedPro `(v ~T0 @X0 1 ef ]
+"156
 {
-[; ;LED.c: 154: void USBLedPro()
-[; ;LED.c: 155: {
+[; ;LED.c: 155: void USBLedPro()
+[; ;LED.c: 156: {
 [e :U _USBLedPro ]
 [f ]
-"156
-[v F553 `uc ~T0 @X0 1 s index ]
-[i F553
--> -> 0 `i `uc
-]
 "157
-[v F554 `uc ~T0 @X0 1 s cnt ]
+[v F554 `uc ~T0 @X0 1 s index ]
 [i F554
 -> -> 0 `i `uc
 ]
-[; ;LED.c: 156: static unsigned char index=0;
-[; ;LED.c: 157: static unsigned char cnt=0;
-[; ;LED.c: 159: if(USBFlag&&!WorkFlag&&!OnOffFlag)
-"159
-[e $ ! && && _USBFlag ! _WorkFlag ! _OnOffFlag 36  ]
-[; ;LED.c: 160: {
+"158
+[v F555 `uc ~T0 @X0 1 s cnt ]
+[i F555
+-> -> 0 `i `uc
+]
+[; ;LED.c: 157: static unsigned char index=0;
+[; ;LED.c: 158: static unsigned char cnt=0;
+[; ;LED.c: 160: if(USBFlag&&!WorkFlag&&!OnOffFlag)
 "160
-{
-[; ;LED.c: 161: cnt++;
+[e $ ! && && _USBFlag ! _WorkFlag ! _OnOffFlag 36  ]
+[; ;LED.c: 161: {
 "161
-[e ++ F554 -> -> 1 `i `uc ]
-[; ;LED.c: 162: if(cnt>=40)
+{
+[; ;LED.c: 162: cnt++;
 "162
-[e $ ! >= -> F554 `i -> 40 `i 37  ]
-[; ;LED.c: 163: {
+[e ++ F555 -> -> 1 `i `uc ]
+[; ;LED.c: 163: if(cnt>=40)
 "163
-{
-[; ;LED.c: 164: cnt=0;
+[e $ ! >= -> F555 `i -> 40 `i 37  ]
+[; ;LED.c: 164: {
 "164
-[e = F554 -> -> 0 `i `uc ]
-[; ;LED.c: 165: index++;
-"165
-[e ++ F553 -> -> 1 `i `uc ]
-[; ;LED.c: 166: if(index>=11)
-"166
-[e $ ! >= -> F553 `i -> 11 `i 38  ]
-[; ;LED.c: 167: {
-"167
 {
-[; ;LED.c: 168: index=0;
+[; ;LED.c: 165: cnt=0;
+"165
+[e = F555 -> -> 0 `i `uc ]
+[; ;LED.c: 166: index++;
+"166
+[e ++ F554 -> -> 1 `i `uc ]
+[; ;LED.c: 167: if(index>=7)
+"167
+[e $ ! >= -> F554 `i -> 7 `i 38  ]
+[; ;LED.c: 168: {
 "168
-[e = F553 -> -> 0 `i `uc ]
+{
+[; ;LED.c: 169: index=0;
 "169
-}
-[e :U 38 ]
+[e = F554 -> -> 0 `i `uc ]
 "170
 }
-[e :U 37 ]
-[; ;LED.c: 169: }
-[; ;LED.c: 170: }
-[; ;LED.c: 171: if(BatPercent<99)
+[e :U 38 ]
 "171
-[e $ ! < -> _BatPercent `i -> 99 `i 39  ]
-[; ;LED.c: 172: {
+}
+[e :U 37 ]
+[; ;LED.c: 170: }
+[; ;LED.c: 171: }
+[; ;LED.c: 172: if(BatPercent<99)
 "172
-{
-[; ;LED.c: 173: LedIndex=NumbArr[BatPercent/10];
+[e $ ! < -> _BatPercent `i -> 99 `i 39  ]
+[; ;LED.c: 173: {
 "173
-[e = _LedIndex -> *U + &U _NumbArr * -> -> / -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui ]
-[; ;LED.c: 174: LedIndex|=((unsigned int)NumbArr[BatPercent%10]&~HideNumbArr[index])<<7;
+{
+[; ;LED.c: 174: LedIndex|=(NumbArr[BatPercent/10]|(unsigned int)NumbArr[BatPercent%10]<<7);
 "174
-[e =| _LedIndex << & -> *U + &U _NumbArr * -> -> % -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui -> ~ -> *U + &U _HideNumbArr * -> F553 `ux -> -> # *U &U _HideNumbArr `ui `ux `i `ui -> 7 `i ]
-[; ;LED.c: 175: LedIndex&=~HideNumbArr[index];
+[e =| _LedIndex | -> *U + &U _NumbArr * -> -> / -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui << -> *U + &U _NumbArr * -> -> % -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui -> 7 `i ]
+[; ;LED.c: 175: LedIndex&=(HideNumbArr[index]|(unsigned int)HideNumbArr[index]<<7);
 "175
-[e =& _LedIndex -> ~ -> *U + &U _HideNumbArr * -> F553 `ux -> -> # *U &U _HideNumbArr `ui `ux `i `ui ]
+[e =& _LedIndex | -> *U + &U _HideNumbArr * -> F554 `ux -> -> # *U &U _HideNumbArr `ui `ux `ui << -> *U + &U _HideNumbArr * -> F554 `ux -> -> # *U &U _HideNumbArr `ui `ux `ui -> 7 `i ]
 "176
 }
 [; ;LED.c: 176: }
@@ -1545,79 +1541,85 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;LED.c: 179: index=0;
 "179
-[e = F553 -> -> 0 `i `uc ]
-[; ;LED.c: 180: LedIndex=NumbArr[BatPercent/10];
+[e = F554 -> -> 0 `i `uc ]
+[; ;LED.c: 180: LedIndex|=NumbArr[BatPercent/10];
 "180
-[e = _LedIndex -> *U + &U _NumbArr * -> -> / -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui ]
+[e =| _LedIndex -> *U + &U _NumbArr * -> -> / -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui ]
 [; ;LED.c: 181: LedIndex|=NumbArr[BatPercent%10]<<7;
 "181
 [e =| _LedIndex -> << -> *U + &U _NumbArr * -> -> % -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `i -> 7 `i `ui ]
 "182
 }
 [e :U 40 ]
-"184
+"183
 }
 [; ;LED.c: 182: }
-[; ;LED.c: 184: }
+[; ;LED.c: 183: }
 [e $U 41  ]
-"185
+"184
 [e :U 36 ]
-[; ;LED.c: 185: else
-[; ;LED.c: 186: {
-"186
+[; ;LED.c: 184: else
+[; ;LED.c: 185: {
+"185
 {
-[; ;LED.c: 187: index=0;
-"187
-[e = F553 -> -> 0 `i `uc ]
-[; ;LED.c: 188: cnt=0;
-"188
+[; ;LED.c: 186: index=0;
+"186
 [e = F554 -> -> 0 `i `uc ]
-"189
+[; ;LED.c: 187: cnt=0;
+"187
+[e = F555 -> -> 0 `i `uc ]
+"188
 }
 [e :U 41 ]
+[; ;LED.c: 188: }
 [; ;LED.c: 189: }
-[; ;LED.c: 190: }
-"190
+"189
 [e :UE 35 ]
 }
-"192
+"191
 [v _WorkLedPro `(v ~T0 @X0 1 ef ]
-"193
+"192
 {
-[; ;LED.c: 192: void WorkLedPro()
-[; ;LED.c: 193: {
+[; ;LED.c: 191: void WorkLedPro()
+[; ;LED.c: 192: {
 [e :U _WorkLedPro ]
 [f ]
-"194
-[v F556 `uc ~T0 @X0 1 s LedSwitchCnt ]
-[i F556
--> -> 0 `i `uc
-]
-"195
-[v F557 `b ~T0 @X0 1 s LedSwitchFlag ]
-[i F557
--> 0 `i
-]
-"196
-[v F558 `uc ~T0 @X0 1 s index ]
+"193
+[v F558 `uc ~T0 @X0 1 s LedSwitchCnt ]
 [i F558
 -> -> 0 `i `uc
 ]
-"197
-[v F559 `uc ~T0 @X0 1 s cnt ]
+"194
+[v F559 `b ~T0 @X0 1 s LedSwitchFlag ]
 [i F559
--> -> 0 `i `uc
-]
-"198
-[v F560 `b ~T0 @X0 1 s dir ]
-[i F560
 -> 0 `i
 ]
-[; ;LED.c: 194: static char LedSwitchCnt=0;
-[; ;LED.c: 195: static bit LedSwitchFlag=0;
-[; ;LED.c: 196: static char index=0;
-[; ;LED.c: 197: static unsigned char cnt=0;
-[; ;LED.c: 198: static bit dir=0;
+"195
+[v F560 `uc ~T0 @X0 1 s index ]
+[i F560
+-> -> 0 `i `uc
+]
+"196
+[v F561 `uc ~T0 @X0 1 s cnt ]
+[i F561
+-> -> 0 `i `uc
+]
+"197
+[v F562 `b ~T0 @X0 1 s dir ]
+[i F562
+-> 0 `i
+]
+"198
+[v F563 `uc ~T0 @X0 1 s delaycnt ]
+[i F563
+-> -> 0 `i `uc
+]
+[; ;LED.c: 193: static char LedSwitchCnt=0;
+[; ;LED.c: 194: static bit LedSwitchFlag=0;
+[; ;LED.c: 195: static char index=0;
+[; ;LED.c: 196: static unsigned char cnt=0;
+[; ;LED.c: 197: static bit dir=0;
+[; ;LED.c: 198: static unsigned char delaycnt=0;
 [; ;LED.c: 199: if(LEDWorkFlag&&!OnOffFlag&&!LockSta.LockFlag&&!LockSta.LockStart&&(!USBFlag||WorkFlag))
 "199
 [e $ ! && && && && _LEDWorkFlag ! _OnOffFlag ! != -> . _LockSta 6 `i -> -> -> 0 `i `uc `i ! != -> . _LockSta 0 `i -> -> -> 0 `i `uc `i || ! _USBFlag _WorkFlag 43  ]
@@ -1632,19 +1634,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;LED.c: 203: LedSwitchCnt++;
 "203
-[e ++ F556 -> -> 1 `i `uc ]
+[e ++ F558 -> -> 1 `i `uc ]
 [; ;LED.c: 204: if(LedSwitchCnt>=80)
 "204
-[e $ ! >= -> F556 `i -> 80 `i 45  ]
+[e $ ! >= -> F558 `i -> 80 `i 45  ]
 [; ;LED.c: 205: {
 "205
 {
 [; ;LED.c: 206: LedSwitchCnt=0;
 "206
-[e = F556 -> -> 0 `i `uc ]
+[e = F558 -> -> 0 `i `uc ]
 [; ;LED.c: 207: LedSwitchFlag=!LedSwitchFlag;
 "207
-[e = F557 ! F557 ]
+[e = F559 ! F559 ]
 "208
 }
 [e :U 45 ]
@@ -1661,404 +1663,483 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;LED.c: 212: LedSwitchCnt=0;
 "212
-[e = F556 -> -> 0 `i `uc ]
+[e = F558 -> -> 0 `i `uc ]
 [; ;LED.c: 213: LedSwitchFlag=1;
 "213
-[e = F557 -> -> 1 `i `b ]
+[e = F559 -> -> 1 `i `b ]
 "214
 }
 [e :U 46 ]
 [; ;LED.c: 214: }
 [; ;LED.c: 215: if(LedSwitchFlag)
 "215
-[e $ ! F557 47  ]
+[e $ ! F559 47  ]
 [; ;LED.c: 216: {
 "216
 {
-[; ;LED.c: 217: LedIndex=NumbArr[BatPercent/10];
+[; ;LED.c: 217: LedIndex|=NumbArr[BatPercent/10];
 "217
-[e = _LedIndex -> *U + &U _NumbArr * -> -> / -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui ]
+[e =| _LedIndex -> *U + &U _NumbArr * -> -> / -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui ]
 [; ;LED.c: 218: LedIndex|=(unsigned int)NumbArr[BatPercent%10]<<7;
 "218
 [e =| _LedIndex << -> *U + &U _NumbArr * -> -> % -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui -> 7 `i ]
 "219
 }
 [e :U 47 ]
-"220
-}
 [; ;LED.c: 219: }
-[; ;LED.c: 220: }
-[e $U 48  ]
+[; ;LED.c: 220: cnt=0;
+"220
+[e = F561 -> -> 0 `i `uc ]
+[; ;LED.c: 221: index=0;
 "221
-[e :U 43 ]
-[; ;LED.c: 221: else if(OnOffFlag)
-[e $ ! _OnOffFlag 49  ]
-[; ;LED.c: 222: {
+[e = F560 -> -> 0 `i `uc ]
+[; ;LED.c: 222: dir=0;
 "222
-{
-[; ;LED.c: 223: cnt++;
+[e = F562 -> -> 0 `i `b ]
 "223
-[e ++ F559 -> -> 1 `i `uc ]
-[; ;LED.c: 224: if(cnt>=40)
+}
+[; ;LED.c: 223: }
+[e $U 48  ]
 "224
-[e $ ! >= -> F559 `i -> 40 `i 50  ]
+[e :U 43 ]
+[; ;LED.c: 224: else if(OnOffFlag)
+[e $ ! _OnOffFlag 49  ]
 [; ;LED.c: 225: {
 "225
 {
-[; ;LED.c: 226: cnt=0;
+[; ;LED.c: 226: cnt++;
 "226
-[e = F559 -> -> 0 `i `uc ]
-[; ;LED.c: 227: index++;
+[e ++ F561 -> -> 1 `i `uc ]
+[; ;LED.c: 227: if(cnt>=30)
 "227
-[e ++ F558 -> -> 1 `i `uc ]
-[; ;LED.c: 228: if(index>=7)
+[e $ ! >= -> F561 `i -> 30 `i 50  ]
+[; ;LED.c: 228: {
 "228
-[e $ ! >= -> F558 `i -> 7 `i 51  ]
-[; ;LED.c: 229: {
+{
+[; ;LED.c: 229: cnt=0;
 "229
-{
-[; ;LED.c: 230: if(dir)
+[e = F561 -> -> 0 `i `uc ]
+[; ;LED.c: 230: index++;
 "230
-[e $ ! F560 52  ]
-[; ;LED.c: 231: {
+[e ++ F560 -> -> 1 `i `uc ]
+[; ;LED.c: 231: if(index>=7)
 "231
-{
-[; ;LED.c: 232: OnOffFlag=0;
+[e $ ! >= -> F560 `i -> 7 `i 51  ]
+[; ;LED.c: 232: {
 "232
-[e = _OnOffFlag -> -> 0 `i `b ]
-[; ;LED.c: 233: WorkMin=0;
-"233
-[e = _WorkMin -> -> 0 `i `uc ]
-[; ;LED.c: 234: return;
-"234
-[e $UE 42  ]
-"235
-}
-[e :U 52 ]
-[; ;LED.c: 235: }
-[; ;LED.c: 236: dir=!dir;
-"236
-[e = F560 ! F560 ]
-[; ;LED.c: 237: index=0;
-"237
-[e = F558 -> -> 0 `i `uc ]
-"238
-}
-[e :U 51 ]
-"239
-}
-[e :U 50 ]
-[; ;LED.c: 238: }
-[; ;LED.c: 239: }
-[; ;LED.c: 240: if(!dir)
-"240
-[e $ ! ! F560 53  ]
-[; ;LED.c: 241: {
-"241
 {
-[; ;LED.c: 242: LedIndex=NumbArr[BatPercent/10];
+[; ;LED.c: 233: if(dir)
+"233
+[e $ ! F562 52  ]
+[; ;LED.c: 234: {
+"234
+{
+[; ;LED.c: 235: index=6;
+"235
+[e = F560 -> -> 6 `i `uc ]
+[; ;LED.c: 236: delaycnt++;
+"236
+[e ++ F563 -> -> 1 `i `uc ]
+[; ;LED.c: 237: if(delaycnt>=7)
+"237
+[e $ ! >= -> F563 `i -> 7 `i 53  ]
+[; ;LED.c: 238: {
+"238
+{
+[; ;LED.c: 239: index=0;
+"239
+[e = F560 -> -> 0 `i `uc ]
+[; ;LED.c: 240: delaycnt=0;
+"240
+[e = F563 -> -> 0 `i `uc ]
+[; ;LED.c: 241: OnOffFlag=0;
+"241
+[e = _OnOffFlag -> -> 0 `i `b ]
+[; ;LED.c: 242: WorkMin=0;
 "242
-[e = _LedIndex -> *U + &U _NumbArr * -> -> / -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui ]
-[; ;LED.c: 243: LedIndex|=(unsigned int)NumbArr[BatPercent%10]<<7;
+[e = _WorkMin -> -> 0 `i `uc ]
+[; ;LED.c: 243: dir=0;
 "243
-[e =| _LedIndex << -> *U + &U _NumbArr * -> -> % -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui -> 7 `i ]
-[; ;LED.c: 244: LedIndex&=~OffHideNumbArr[index];
+[e = F562 -> -> 0 `i `b ]
+[; ;LED.c: 244: return;
 "244
-[e =& _LedIndex ~ *U + &U _OffHideNumbArr * -> F558 `ux -> -> # *U &U _OffHideNumbArr `ui `ux ]
+[e $UE 42  ]
 "245
 }
-[; ;LED.c: 245: }
-[e $U 54  ]
-"246
 [e :U 53 ]
-[; ;LED.c: 246: else
-[; ;LED.c: 247: {
+"246
+}
+[; ;LED.c: 245: }
+[; ;LED.c: 246: }
+[e $U 54  ]
 "247
-{
-[; ;LED.c: 248: LedIndex=NumbArr[WorkMin/10];
+[e :U 52 ]
+[; ;LED.c: 247: else
+[; ;LED.c: 248: {
 "248
-[e = _LedIndex -> *U + &U _NumbArr * -> -> / -> _WorkMin `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui ]
-[; ;LED.c: 249: LedIndex|=(unsigned int)NumbArr[WorkMin%10]<<7;
+{
+[; ;LED.c: 249: dir=!dir;
 "249
-[e =| _LedIndex << -> *U + &U _NumbArr * -> -> % -> _WorkMin `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui -> 7 `i ]
-[; ;LED.c: 250: LedIndex&=~OffHideNumbArr[6-index];
+[e = F562 ! F562 ]
+[; ;LED.c: 250: index=0;
 "250
-[e =& _LedIndex ~ *U + &U _OffHideNumbArr * -> -> - -> 6 `i -> F558 `i `ui `ux -> -> # *U &U _OffHideNumbArr `ui `ux ]
+[e = F560 -> -> 0 `i `uc ]
 "251
 }
 [e :U 54 ]
-"252
-}
-[e :U 49 ]
 "253
-[e :U 48 ]
-[; ;LED.c: 251: }
-[; ;LED.c: 252: }
-[; ;LED.c: 253: }
-[e :UE 42 ]
 }
+[e :U 51 ]
+"254
+}
+[e :U 50 ]
+[; ;LED.c: 251: }
+[; ;LED.c: 253: }
+[; ;LED.c: 254: }
+[; ;LED.c: 255: if(!dir)
 "255
-[v _LockPro `(v ~T0 @X0 1 ef ]
+[e $ ! ! F562 55  ]
+[; ;LED.c: 256: {
 "256
 {
-[; ;LED.c: 255: void LockPro()
-[; ;LED.c: 256: {
-[e :U _LockPro ]
-[f ]
+[; ;LED.c: 257: LedIndex|=NumbArr[BatPercent/10];
 "257
-[v F564 `uc ~T0 @X0 1 s SwitchCnt ]
-[i F564
--> -> 0 `i `uc
-]
-[v F565 `uc ~T0 @X0 1 s LockSwitchCnt ]
-[i F565
--> -> 0 `i `uc
-]
+[e =| _LedIndex -> *U + &U _NumbArr * -> -> / -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui ]
+[; ;LED.c: 258: LedIndex|=(unsigned int)NumbArr[BatPercent%10]<<7;
 "258
-[v F566 `uc ~T0 @X0 1 s Ledcnt ]
-[i F566
--> -> 0 `i `uc
-]
+[e =| _LedIndex << -> *U + &U _NumbArr * -> -> % -> _BatPercent `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui -> 7 `i ]
+[; ;LED.c: 259: LedIndex&=~OffHideNumbArr[index];
 "259
-[v F567 `b ~T0 @X0 1 s LedSwitchFlag ]
-[i F567
--> 0 `i
-]
-[; ;LED.c: 257: static unsigned char SwitchCnt=0,LockSwitchCnt=0;
-[; ;LED.c: 258: static unsigned char Ledcnt=0;
-[; ;LED.c: 259: static bit LedSwitchFlag=0;
-[; ;LED.c: 260: if(!USBFlag)
+[e =& _LedIndex ~ *U + &U _OffHideNumbArr * -> F560 `ux -> -> # *U &U _OffHideNumbArr `ui `ux ]
 "260
-[e $ ! ! _USBFlag 56  ]
-[; ;LED.c: 261: {
+}
+[; ;LED.c: 260: }
+[e $U 56  ]
 "261
-{
-[; ;LED.c: 262: if(LockSta.LockStart||LockSta.UnlockStart)
+[e :U 55 ]
+[; ;LED.c: 261: else
+[; ;LED.c: 262: {
 "262
-[e $ ! || != -> . _LockSta 0 `i -> -> -> 0 `i `uc `i != -> . _LockSta 3 `i -> -> -> 0 `i `uc `i 57  ]
-[; ;LED.c: 263: {
+{
+[; ;LED.c: 263: LedIndex|=NumbArr[WorkMin/10];
 "263
-{
-[; ;LED.c: 264: SwitchCnt++;
+[e =| _LedIndex -> *U + &U _NumbArr * -> -> / -> _WorkMin `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui ]
+[; ;LED.c: 264: LedIndex|=(unsigned int)NumbArr[WorkMin%10]<<7;
 "264
-[e ++ F564 -> -> 1 `i `uc ]
-[; ;LED.c: 265: if(SwitchCnt>=100)
+[e =| _LedIndex << -> *U + &U _NumbArr * -> -> % -> _WorkMin `i -> 10 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui -> 7 `i ]
+[; ;LED.c: 265: LedIndex&=~OffHideNumbArr[6-index];
 "265
-[e $ ! >= -> F564 `i -> 100 `i 58  ]
-[; ;LED.c: 266: {
+[e =& _LedIndex ~ *U + &U _OffHideNumbArr * -> -> - -> 6 `i -> F560 `i `ui `ux -> -> # *U &U _OffHideNumbArr `ui `ux ]
 "266
-{
-[; ;LED.c: 267: SwitchCnt=0;
-"267
-[e = F564 -> -> 0 `i `uc ]
-[; ;LED.c: 268: if(LockNumb>0)
-"268
-[e $ ! > -> _LockNumb `i -> 0 `i 59  ]
-[; ;LED.c: 269: {
-"269
-{
-[; ;LED.c: 270: LockNumb--;
-"270
-[e -- _LockNumb -> -> 1 `i `uc ]
-"271
-}
-[e :U 59 ]
-"272
-}
-[e :U 58 ]
-[; ;LED.c: 271: }
-[; ;LED.c: 272: }
-[; ;LED.c: 273: LedIndex=NumbArr[0];
-"273
-[e = _LedIndex -> *U + &U _NumbArr * -> -> -> 0 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui ]
-[; ;LED.c: 274: LedIndex|=(unsigned int)NumbArr[LockNumb+1]<<7;
-"274
-[e =| _LedIndex << -> *U + &U _NumbArr * -> -> + -> _LockNumb `i -> 1 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui -> 7 `i ]
-"275
-}
-[; ;LED.c: 275: }
-[e $U 60  ]
-"276
-[e :U 57 ]
-[; ;LED.c: 276: else
-[; ;LED.c: 277: {
-"277
-{
-[; ;LED.c: 278: SwitchCnt=0;
-"278
-[e = F564 -> -> 0 `i `uc ]
-"279
-}
-[e :U 60 ]
-[; ;LED.c: 279: }
-[; ;LED.c: 280: if(LockSta.LockEnd||LockSta.UnlockFail||LockSta.UnlockStart)
-"280
-[e $ ! || || != -> . _LockSta 2 `i -> -> -> 0 `i `uc `i != -> . _LockSta 4 `i -> -> -> 0 `i `uc `i != -> . _LockSta 3 `i -> -> -> 0 `i `uc `i 61  ]
-[; ;LED.c: 281: {
-"281
-{
-[; ;LED.c: 282: LockSwitchCnt++;
-"282
-[e ++ F565 -> -> 1 `i `uc ]
-[; ;LED.c: 283: if(LockSwitchCnt>=35)
-"283
-[e $ ! >= -> F565 `i -> 35 `i 62  ]
-[; ;LED.c: 284: {
-"284
-{
-[; ;LED.c: 285: LockSwitchCnt=0;
-"285
-[e = F565 -> -> 0 `i `uc ]
-[; ;LED.c: 286: LedSwitchFlag=!LedSwitchFlag;
-"286
-[e = F567 ! F567 ]
-[; ;LED.c: 287: if(!LedSwitchFlag&&LockSta.UnlockFail)
-"287
-[e $ ! && ! F567 != -> . _LockSta 4 `i -> -> -> 0 `i `uc `i 63  ]
-[; ;LED.c: 288: {
-"288
-{
-[; ;LED.c: 289: Ledcnt++;
-"289
-[e ++ F566 -> -> 1 `i `uc ]
-[; ;LED.c: 290: if(Ledcnt>=3)
-"290
-[e $ ! >= -> F566 `i -> 3 `i 64  ]
-[; ;LED.c: 291: {
-"291
-{
-[; ;LED.c: 292: LockSta.UnlockFail=0;
-"292
-[e = . _LockSta 4 -> -> 0 `i `uc ]
-"293
-}
-[e :U 64 ]
-"294
-}
-[e :U 63 ]
-"295
-}
-[e :U 62 ]
-[; ;LED.c: 293: }
-[; ;LED.c: 294: }
-[; ;LED.c: 295: }
-[; ;LED.c: 296: if(LedSwitchFlag)
-"296
-[e $ ! F567 65  ]
-[; ;LED.c: 297: {
-"297
-{
-[; ;LED.c: 298: LedIndex|=0x8000;
-"298
-[e =| _LedIndex -> 32768 `ui ]
-"299
-}
-[e :U 65 ]
-"300
-}
-[; ;LED.c: 299: }
-[; ;LED.c: 300: }
-[e $U 66  ]
-"301
-[e :U 61 ]
-[; ;LED.c: 301: else
-[; ;LED.c: 302: {
-"302
-{
-[; ;LED.c: 303: Ledcnt=0;
-"303
-[e = F566 -> -> 0 `i `uc ]
-[; ;LED.c: 304: LockSwitchCnt=0;
-"304
-[e = F565 -> -> 0 `i `uc ]
-"305
-}
-[e :U 66 ]
-"306
 }
 [e :U 56 ]
-[; ;LED.c: 305: }
-[; ;LED.c: 306: }
-[; ;LED.c: 307: }
-"307
-[e :UE 55 ]
+"267
 }
-"309
-[v _ErrPro `(v ~T0 @X0 1 ef ]
-"310
+[e :U 49 ]
+"268
+[e :U 48 ]
+[; ;LED.c: 266: }
+[; ;LED.c: 267: }
+[; ;LED.c: 268: }
+[e :UE 42 ]
+}
+"270
+[v _LockPro `(v ~T0 @X0 1 ef ]
+"271
 {
-[; ;LED.c: 309: void ErrPro()
-[; ;LED.c: 310: {
-[e :U _ErrPro ]
+[; ;LED.c: 270: void LockPro()
+[; ;LED.c: 271: {
+[e :U _LockPro ]
 [f ]
-"311
-[v F569 `uc ~T0 @X0 1 s SwitchCnt ]
+"272
+[v F567 `uc ~T0 @X0 1 s SwitchCnt ]
+[i F567
+-> -> 0 `i `uc
+]
+[v F568 `uc ~T0 @X0 1 s LockSwitchCnt ]
+[i F568
+-> -> 0 `i `uc
+]
+"273
+[v F569 `uc ~T0 @X0 1 s Ledcnt ]
 [i F569
 -> -> 0 `i `uc
 ]
-"312
+"274
 [v F570 `b ~T0 @X0 1 s LedSwitchFlag ]
 [i F570
 -> 0 `i
 ]
-[; ;LED.c: 311: static unsigned char SwitchCnt=0;
-[; ;LED.c: 312: static bit LedSwitchFlag=0;
-[; ;LED.c: 313: if(IovFlag)
-"313
-[e $ ! _IovFlag 68  ]
-[; ;LED.c: 314: {
-"314
+[; ;LED.c: 272: static unsigned char SwitchCnt=0,LockSwitchCnt=0;
+[; ;LED.c: 273: static unsigned char Ledcnt=0;
+[; ;LED.c: 274: static bit LedSwitchFlag=0;
+[; ;LED.c: 275: if(!USBFlag)
+"275
+[e $ ! ! _USBFlag 58  ]
+[; ;LED.c: 276: {
+"276
 {
-[; ;LED.c: 315: SwitchCnt++;
-"315
+[; ;LED.c: 277: if(LockSta.LockStart||LockSta.UnlockStart)
+"277
+[e $ ! || != -> . _LockSta 0 `i -> -> -> 0 `i `uc `i != -> . _LockSta 3 `i -> -> -> 0 `i `uc `i 59  ]
+[; ;LED.c: 278: {
+"278
+{
+[; ;LED.c: 279: SwitchCnt++;
+"279
+[e ++ F567 -> -> 1 `i `uc ]
+[; ;LED.c: 280: if(SwitchCnt>=100)
+"280
+[e $ ! >= -> F567 `i -> 100 `i 60  ]
+[; ;LED.c: 281: {
+"281
+{
+[; ;LED.c: 282: SwitchCnt=0;
+"282
+[e = F567 -> -> 0 `i `uc ]
+[; ;LED.c: 283: if(LockNumb>0)
+"283
+[e $ ! > -> _LockNumb `i -> 0 `i 61  ]
+[; ;LED.c: 284: {
+"284
+{
+[; ;LED.c: 285: LockNumb--;
+"285
+[e -- _LockNumb -> -> 1 `i `uc ]
+"286
+}
+[e :U 61 ]
+"287
+}
+[e :U 60 ]
+[; ;LED.c: 286: }
+[; ;LED.c: 287: }
+[; ;LED.c: 288: LedIndex|=NumbArr[0];
+"288
+[e =| _LedIndex -> *U + &U _NumbArr * -> -> -> 0 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui ]
+[; ;LED.c: 289: LedIndex|=(unsigned int)NumbArr[LockNumb+1]<<7;
+"289
+[e =| _LedIndex << -> *U + &U _NumbArr * -> -> + -> _LockNumb `i -> 1 `i `ui `ux -> -> # *U &U _NumbArr `ui `ux `ui -> 7 `i ]
+"290
+}
+[; ;LED.c: 290: }
+[e $U 62  ]
+"291
+[e :U 59 ]
+[; ;LED.c: 291: else
+[; ;LED.c: 292: {
+"292
+{
+[; ;LED.c: 293: SwitchCnt=0;
+"293
+[e = F567 -> -> 0 `i `uc ]
+"294
+}
+[e :U 62 ]
+[; ;LED.c: 294: }
+[; ;LED.c: 295: if(LockSta.LockEnd||LockSta.UnlockFail||LockSta.UnlockStart)
+"295
+[e $ ! || || != -> . _LockSta 2 `i -> -> -> 0 `i `uc `i != -> . _LockSta 4 `i -> -> -> 0 `i `uc `i != -> . _LockSta 3 `i -> -> -> 0 `i `uc `i 63  ]
+[; ;LED.c: 296: {
+"296
+{
+[; ;LED.c: 297: LockSwitchCnt++;
+"297
+[e ++ F568 -> -> 1 `i `uc ]
+[; ;LED.c: 298: if(LockSwitchCnt>=35)
+"298
+[e $ ! >= -> F568 `i -> 35 `i 64  ]
+[; ;LED.c: 299: {
+"299
+{
+[; ;LED.c: 300: LockSwitchCnt=0;
+"300
+[e = F568 -> -> 0 `i `uc ]
+[; ;LED.c: 301: LedSwitchFlag=!LedSwitchFlag;
+"301
+[e = F570 ! F570 ]
+[; ;LED.c: 302: if(!LedSwitchFlag&&LockSta.UnlockFail)
+"302
+[e $ ! && ! F570 != -> . _LockSta 4 `i -> -> -> 0 `i `uc `i 65  ]
+[; ;LED.c: 303: {
+"303
+{
+[; ;LED.c: 304: Ledcnt++;
+"304
 [e ++ F569 -> -> 1 `i `uc ]
-[; ;LED.c: 316: if(SwitchCnt>=35)
+[; ;LED.c: 305: if(Ledcnt>=3)
+"305
+[e $ ! >= -> F569 `i -> 3 `i 66  ]
+[; ;LED.c: 306: {
+"306
+{
+[; ;LED.c: 307: LockSta.UnlockFail=0;
+"307
+[e = . _LockSta 4 -> -> 0 `i `uc ]
+"308
+}
+[e :U 66 ]
+"309
+}
+[e :U 65 ]
+"310
+}
+[e :U 64 ]
+[; ;LED.c: 308: }
+[; ;LED.c: 309: }
+[; ;LED.c: 310: }
+[; ;LED.c: 311: if(LedSwitchFlag)
+"311
+[e $ ! F570 67  ]
+[; ;LED.c: 312: {
+"312
+{
+[; ;LED.c: 313: LedIndex|=0x8000;
+"313
+[e =| _LedIndex -> 32768 `ui ]
+"314
+}
+[e :U 67 ]
+"315
+}
+[; ;LED.c: 314: }
+[; ;LED.c: 315: }
+[e $U 68  ]
 "316
-[e $ ! >= -> F569 `i -> 35 `i 69  ]
+[e :U 63 ]
+[; ;LED.c: 316: else
 [; ;LED.c: 317: {
 "317
 {
-[; ;LED.c: 318: SwitchCnt=0;
+[; ;LED.c: 318: Ledcnt=0;
 "318
 [e = F569 -> -> 0 `i `uc ]
-[; ;LED.c: 319: LedSwitchFlag=!LedSwitchFlag;
+[; ;LED.c: 319: LockSwitchCnt=0;
 "319
-[e = F570 ! F570 ]
+[e = F568 -> -> 0 `i `uc ]
+"320
+}
+[e :U 68 ]
 "321
 }
-[e :U 69 ]
+[e :U 58 ]
+[; ;LED.c: 320: }
 [; ;LED.c: 321: }
-[; ;LED.c: 322: if(LedSwitchFlag)
+[; ;LED.c: 322: }
 "322
-[e $ ! F570 70  ]
-[; ;LED.c: 323: {
-"323
-{
-[; ;LED.c: 324: LedIndex=0x4000;
+[e :UE 57 ]
+}
 "324
-[e = _LedIndex -> -> 16384 `i `ui ]
+[v _ErrPro `(v ~T0 @X0 1 ef ]
 "325
-}
-[e :U 70 ]
-"326
-}
-[; ;LED.c: 325: }
-[; ;LED.c: 326: }
-[e $U 71  ]
-"327
-[e :U 68 ]
-[; ;LED.c: 327: else
-[; ;LED.c: 328: {
-"328
 {
-[; ;LED.c: 329: SwitchCnt=0;
+[; ;LED.c: 324: void ErrPro()
+[; ;LED.c: 325: {
+[e :U _ErrPro ]
+[f ]
+"326
+[v F572 `uc ~T0 @X0 1 s cnt ]
+[i F572
+-> -> 0 `i `uc
+]
+"327
+[v F573 `uc ~T0 @X0 1 s SwitchCnt ]
+[i F573
+-> -> 0 `i `uc
+]
+"328
+[v F574 `b ~T0 @X0 1 s LedSwitchFlag ]
+[i F574
+-> 0 `i
+]
+[; ;LED.c: 326: static unsigned char cnt=0;
+[; ;LED.c: 327: static unsigned char SwitchCnt=0;
+[; ;LED.c: 328: static bit LedSwitchFlag=0;
+[; ;LED.c: 329: if(LedIovFlag)
 "329
-[e = F569 -> -> 0 `i `uc ]
+[e $ ! _LedIovFlag 70  ]
+[; ;LED.c: 330: {
 "330
+{
+[; ;LED.c: 331: SwitchCnt++;
+"331
+[e ++ F573 -> -> 1 `i `uc ]
+[; ;LED.c: 332: if(SwitchCnt>=35)
+"332
+[e $ ! >= -> F573 `i -> 35 `i 71  ]
+[; ;LED.c: 333: {
+"333
+{
+[; ;LED.c: 334: SwitchCnt=0;
+"334
+[e = F573 -> -> 0 `i `uc ]
+[; ;LED.c: 335: LedSwitchFlag=!LedSwitchFlag;
+"335
+[e = F574 ! F574 ]
+[; ;LED.c: 336: if(!IovFlag&&!LedSwitchFlag)
+"336
+[e $ ! && ! _IovFlag ! F574 72  ]
+[; ;LED.c: 337: {
+"337
+{
+[; ;LED.c: 338: cnt++;
+"338
+[e ++ F572 -> -> 1 `i `uc ]
+[; ;LED.c: 339: if(cnt>=3)
+"339
+[e $ ! >= -> F572 `i -> 3 `i 73  ]
+[; ;LED.c: 340: {
+"340
+{
+[; ;LED.c: 341: cnt=0;
+"341
+[e = F572 -> -> 0 `i `uc ]
+[; ;LED.c: 342: LedIovFlag=0;
+"342
+[e = _LedIovFlag -> -> 0 `i `b ]
+"343
+}
+[e :U 73 ]
+"344
+}
+[e :U 72 ]
+"345
 }
 [e :U 71 ]
-[; ;LED.c: 330: }
-[; ;LED.c: 331: }
-"331
-[e :UE 67 ]
+[; ;LED.c: 343: }
+[; ;LED.c: 344: }
+[; ;LED.c: 345: }
+[; ;LED.c: 346: if(LedSwitchFlag)
+"346
+[e $ ! F574 74  ]
+[; ;LED.c: 347: {
+"347
+{
+[; ;LED.c: 348: LedIndex|=0x4000;
+"348
+[e =| _LedIndex -> -> 16384 `i `ui ]
+"349
+}
+[e :U 74 ]
+"350
+}
+[; ;LED.c: 349: }
+[; ;LED.c: 350: }
+[e $U 75  ]
+"351
+[e :U 70 ]
+[; ;LED.c: 351: else
+[; ;LED.c: 352: {
+"352
+{
+[; ;LED.c: 353: SwitchCnt=0;
+"353
+[e = F573 -> -> 0 `i `uc ]
+"354
+}
+[e :U 75 ]
+[; ;LED.c: 354: }
+[; ;LED.c: 355: }
+"355
+[e :UE 69 ]
 }

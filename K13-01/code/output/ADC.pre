@@ -446,6 +446,7 @@ extern unsigned char LockNumb;
 extern unsigned char BatPercent;
 extern unsigned char WorkMin;
 
+extern bit LedIovFlag;
 extern bit SystemONFlag;
 extern bit OnOffFlag;
 extern bit WorkFlag;
@@ -495,20 +496,20 @@ break;
 }
 if(SystemONFlag==0)
 {
-if(ADCVal[2]<267)
+if(ADCVal[2]<134)
 {
 BatPercent=0;
 }
-else if(ADCVal[2]>350)
+else if(ADCVal[2]>175)
 {
 BatPercent=99;
 }
 else
 {
-BatPercent=ADCVal[2]-250;
+BatPercent=ADCVal[2]-125;
 }
 }
-if(ADCVal[2]<250)
+if(ADCVal[2]<125)
 {
 LowBatFlag=1;
 }
@@ -516,13 +517,16 @@ else
 {
 LowBatFlag=0;
 }
-if(ADCVal[1]>58)
+if(ADCVal[1]>29)
 {
 CurrentCnt++;
 if(CurrentCnt>=200)
 {
 CurrentCnt=200;
 IovFlag=1;
+LedIovFlag=1;
+WorkFlag=0;
+WorkMin=0;
 }
 }
 else
@@ -541,17 +545,17 @@ unsigned int TempPercent=0;
 
 if(USBFlag)
 {
-if(ADCVal[2]<275)
+if(ADCVal[2]<138)
 {
 TempPercent=0;
 }
-else if(ADCVal[2]>350)
+else if(ADCVal[2]>175)
 {
 TempPercent=99;
 }
 else
 {
-TempPercent=ADCVal[2]-275;
+TempPercent=ADCVal[2]-138;
 TempPercent=TempPercent*4/3;
 }
 if(ActualPercent>TempPercent)
@@ -589,21 +593,21 @@ BatAddTime=240;
 
 if(WorkFlag)
 {
-if(ADCVal[2]<267)
+if(ADCVal[2]<134)
 {
 TempPercent=0;
 }
-else if(ADCVal[2]>333)
+else if(ADCVal[2]>167)
 {
 TempPercent=99;
 }
 else
 {
-TempPercent=ADCVal[2]-267;
+TempPercent=ADCVal[2]-134;
 }
 if(TempPercent>=33)
 {
-TempPercent=33+(ADCVal[2]-300)*2;
+TempPercent=33+(ADCVal[2]-150)*2;
 }
 if(ActualPercent>TempPercent)
 {
@@ -681,7 +685,7 @@ ADCState=0;
 }
 }
 
-# 221
+# 224
 unsigned char ADSample(unsigned char ch)
 {
 ADCON1 = 0x00;

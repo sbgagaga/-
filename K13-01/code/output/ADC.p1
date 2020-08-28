@@ -1,21 +1,25 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "8 C:\Users\Administrator\Desktop\project\K13-01\code\ADC.h
 [v _ADCRead `(v ~T0 @X0 0 ef2`uc`*ui ]
-"29 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.h
+"30 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.h
 [v _SystemONFlag `b ~T0 @X0 0 e ]
 "26
 [v _BatPercent `uc ~T0 @X0 0 e ]
-"33
-[v _LowBatFlag `b ~T0 @X0 0 e ]
-"32
-[v _IovFlag `b ~T0 @X0 0 e ]
 "34
-[v _USBFlag `b ~T0 @X0 0 e ]
-"37
-[v _BatAddTime `uc ~T0 @X0 0 e ]
-"31
+[v _LowBatFlag `b ~T0 @X0 0 e ]
+"33
+[v _IovFlag `b ~T0 @X0 0 e ]
+"29
+[v _LedIovFlag `b ~T0 @X0 0 e ]
+"32
 [v _WorkFlag `b ~T0 @X0 0 e ]
+"27
+[v _WorkMin `uc ~T0 @X0 0 e ]
+"35
+[v _USBFlag `b ~T0 @X0 0 e ]
 "38
+[v _BatAddTime `uc ~T0 @X0 0 e ]
+"39
 [v _BatDecTime `uc ~T0 @X0 0 e ]
 "6 C:\Users\Administrator\Desktop\project\K13-01\code\ADC.h
 [v _ADSample `(uc ~T0 @X0 0 ef1`uc ]
@@ -860,21 +864,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;K13-01.h: 24: extern unsigned char LockNumb;
 [; ;K13-01.h: 26: extern unsigned char BatPercent;
 [; ;K13-01.h: 27: extern unsigned char WorkMin;
-[; ;K13-01.h: 29: extern bit SystemONFlag;
-[; ;K13-01.h: 30: extern bit OnOffFlag;
-[; ;K13-01.h: 31: extern bit WorkFlag;
-[; ;K13-01.h: 32: extern bit IovFlag;
-[; ;K13-01.h: 33: extern bit LowBatFlag;
-[; ;K13-01.h: 34: extern bit USBFlag;
-[; ;K13-01.h: 35: extern bit LEDWorkFlag;
-[; ;K13-01.h: 36: extern TYPE_UNION_LockSta LockSta;
-[; ;K13-01.h: 37: extern unsigned char BatAddTime;
-[; ;K13-01.h: 38: extern unsigned char BatDecTime;
-[; ;K13-01.h: 40: void SystemSleep();
-[; ;K13-01.h: 41: void Apply();
-[; ;K13-01.h: 42: void SystemInit();
-[; ;K13-01.h: 43: void GPIOInit();
-[; ;K13-01.h: 44: void TimerInit();
+[; ;K13-01.h: 29: extern bit LedIovFlag;
+[; ;K13-01.h: 30: extern bit SystemONFlag;
+[; ;K13-01.h: 31: extern bit OnOffFlag;
+[; ;K13-01.h: 32: extern bit WorkFlag;
+[; ;K13-01.h: 33: extern bit IovFlag;
+[; ;K13-01.h: 34: extern bit LowBatFlag;
+[; ;K13-01.h: 35: extern bit USBFlag;
+[; ;K13-01.h: 36: extern bit LEDWorkFlag;
+[; ;K13-01.h: 37: extern TYPE_UNION_LockSta LockSta;
+[; ;K13-01.h: 38: extern unsigned char BatAddTime;
+[; ;K13-01.h: 39: extern unsigned char BatDecTime;
+[; ;K13-01.h: 41: void SystemSleep();
+[; ;K13-01.h: 42: void Apply();
+[; ;K13-01.h: 43: void SystemInit();
+[; ;K13-01.h: 44: void GPIOInit();
+[; ;K13-01.h: 45: void TimerInit();
 [; ;ADC.h: 6: unsigned char ADSample(unsigned char);
 [; ;ADC.h: 7: void ADCPro();
 [; ;ADC.h: 8: void ADCRead(unsigned char,unsigned int *);
@@ -970,9 +975,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ADC.c: 27: {
 "27
 {
-[; ;ADC.c: 28: if(ADCVal[2]<267)
+[; ;ADC.c: 28: if(ADCVal[2]<134)
 "28
-[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 267 `i `ui 9  ]
+[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 134 `i `ui 9  ]
 [; ;ADC.c: 29: {
 "29
 {
@@ -985,8 +990,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 10  ]
 "32
 [e :U 9 ]
-[; ;ADC.c: 32: else if(ADCVal[2]>350)
-[e $ ! > *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 350 `i `ui 11  ]
+[; ;ADC.c: 32: else if(ADCVal[2]>175)
+[e $ ! > *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 175 `i `ui 11  ]
 [; ;ADC.c: 33: {
 "33
 {
@@ -1003,9 +1008,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ADC.c: 37: {
 "37
 {
-[; ;ADC.c: 38: BatPercent=ADCVal[2]-250;
+[; ;ADC.c: 38: BatPercent=ADCVal[2]-125;
 "38
-[e = _BatPercent -> - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 250 `i `ui `uc ]
+[e = _BatPercent -> - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 125 `i `ui `uc ]
 "39
 }
 [e :U 12 ]
@@ -1015,9 +1020,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 8 ]
 [; ;ADC.c: 39: }
 [; ;ADC.c: 40: }
-[; ;ADC.c: 41: if(ADCVal[2]<250)
+[; ;ADC.c: 41: if(ADCVal[2]<125)
 "41
-[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 250 `i `ui 13  ]
+[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 125 `i `ui 13  ]
 [; ;ADC.c: 42: {
 "42
 {
@@ -1041,9 +1046,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 14 ]
 [; ;ADC.c: 48: }
-[; ;ADC.c: 49: if(ADCVal[1]>58)
+[; ;ADC.c: 49: if(ADCVal[1]>29)
 "49
-[e $ ! > *U + &U _ADCVal * -> -> -> 1 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 58 `i `ui 15  ]
+[e $ ! > *U + &U _ADCVal * -> -> -> 1 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 29 `i `ui 15  ]
 [; ;ADC.c: 50: {
 "50
 {
@@ -1062,574 +1067,583 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ADC.c: 55: IovFlag=1;
 "55
 [e = _IovFlag -> -> 1 `i `b ]
+[; ;ADC.c: 56: LedIovFlag=1;
 "56
+[e = _LedIovFlag -> -> 1 `i `b ]
+[; ;ADC.c: 57: WorkFlag=0;
+"57
+[e = _WorkFlag -> -> 0 `i `b ]
+[; ;ADC.c: 58: WorkMin=0;
+"58
+[e = _WorkMin -> -> 0 `i `uc ]
+"59
 }
 [e :U 16 ]
-"57
-}
-[; ;ADC.c: 56: }
-[; ;ADC.c: 57: }
-[e $U 17  ]
-"58
-[e :U 15 ]
-[; ;ADC.c: 58: else
-[; ;ADC.c: 59: {
-"59
-{
-[; ;ADC.c: 60: CurrentCnt=0;
 "60
-[e = _CurrentCnt -> -> 0 `i `uc ]
-[; ;ADC.c: 61: IovFlag=0;
+}
+[; ;ADC.c: 59: }
+[; ;ADC.c: 60: }
+[e $U 17  ]
 "61
-[e = _IovFlag -> -> 0 `i `b ]
+[e :U 15 ]
+[; ;ADC.c: 61: else
+[; ;ADC.c: 62: {
 "62
+{
+[; ;ADC.c: 63: CurrentCnt=0;
+"63
+[e = _CurrentCnt -> -> 0 `i `uc ]
+[; ;ADC.c: 64: IovFlag=0;
+"64
+[e = _IovFlag -> -> 0 `i `b ]
+"65
 }
 [e :U 17 ]
-[; ;ADC.c: 62: }
-[; ;ADC.c: 63: }
-"63
+[; ;ADC.c: 65: }
+[; ;ADC.c: 66: }
+"66
 [e :UE 2 ]
 }
-"65
+"68
 [v _Sec1sPro `(v ~T0 @X0 1 ef ]
-"66
+"69
 {
-[; ;ADC.c: 65: void Sec1sPro()
-[; ;ADC.c: 66: {
+[; ;ADC.c: 68: void Sec1sPro()
+[; ;ADC.c: 69: {
 [e :U _Sec1sPro ]
 [f ]
-"67
-[v F547 `uc ~T0 @X0 1 s ActualPercent ]
-[i F547
+"70
+[v F548 `uc ~T0 @X0 1 s ActualPercent ]
+[i F548
 -> -> 0 `i `uc
 ]
-"68
+"71
 [v _PercentErr `uc ~T0 @X0 1 a ]
-[; ;ADC.c: 67: static unsigned char ActualPercent=0;
-[; ;ADC.c: 68: unsigned char PercentErr=0;
+[; ;ADC.c: 70: static unsigned char ActualPercent=0;
+[; ;ADC.c: 71: unsigned char PercentErr=0;
 [e = _PercentErr -> -> 0 `i `uc ]
-"69
-[v _TempPercent `ui ~T0 @X0 1 a ]
-[; ;ADC.c: 69: unsigned int TempPercent=0;
-[e = _TempPercent -> -> 0 `i `ui ]
-[; ;ADC.c: 72: if(USBFlag)
 "72
-[e $ ! _USBFlag 19  ]
-[; ;ADC.c: 73: {
-"73
-{
-[; ;ADC.c: 74: if(ADCVal[2]<275)
-"74
-[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 275 `i `ui 20  ]
-[; ;ADC.c: 75: {
-"75
-{
-[; ;ADC.c: 76: TempPercent=0;
-"76
+[v _TempPercent `ui ~T0 @X0 1 a ]
+[; ;ADC.c: 72: unsigned int TempPercent=0;
 [e = _TempPercent -> -> 0 `i `ui ]
+[; ;ADC.c: 75: if(USBFlag)
+"75
+[e $ ! _USBFlag 19  ]
+[; ;ADC.c: 76: {
+"76
+{
+[; ;ADC.c: 77: if(ADCVal[2]<138)
 "77
-}
-[; ;ADC.c: 77: }
-[e $U 21  ]
+[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 138 `i `ui 20  ]
+[; ;ADC.c: 78: {
 "78
-[e :U 20 ]
-[; ;ADC.c: 78: else if(ADCVal[2]>350)
-[e $ ! > *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 350 `i `ui 22  ]
-[; ;ADC.c: 79: {
+{
+[; ;ADC.c: 79: TempPercent=0;
 "79
-{
-[; ;ADC.c: 80: TempPercent=99;
+[e = _TempPercent -> -> 0 `i `ui ]
 "80
-[e = _TempPercent -> -> 99 `i `ui ]
-"81
 }
-[; ;ADC.c: 81: }
-[e $U 23  ]
+[; ;ADC.c: 80: }
+[e $U 21  ]
+"81
+[e :U 20 ]
+[; ;ADC.c: 81: else if(ADCVal[2]>175)
+[e $ ! > *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 175 `i `ui 22  ]
+[; ;ADC.c: 82: {
 "82
-[e :U 22 ]
-[; ;ADC.c: 82: else
-[; ;ADC.c: 83: {
-"83
 {
-[; ;ADC.c: 84: TempPercent=ADCVal[2]-275;
+[; ;ADC.c: 83: TempPercent=99;
+"83
+[e = _TempPercent -> -> 99 `i `ui ]
 "84
-[e = _TempPercent - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 275 `i `ui ]
-[; ;ADC.c: 85: TempPercent=TempPercent*4/3;
+}
+[; ;ADC.c: 84: }
+[e $U 23  ]
 "85
-[e = _TempPercent / * _TempPercent -> -> 4 `i `ui -> -> 3 `i `ui ]
+[e :U 22 ]
+[; ;ADC.c: 85: else
+[; ;ADC.c: 86: {
 "86
+{
+[; ;ADC.c: 87: TempPercent=ADCVal[2]-138;
+"87
+[e = _TempPercent - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 138 `i `ui ]
+[; ;ADC.c: 88: TempPercent=TempPercent*4/3;
+"88
+[e = _TempPercent / * _TempPercent -> -> 4 `i `ui -> -> 3 `i `ui ]
+"89
 }
 [e :U 23 ]
 [e :U 21 ]
-[; ;ADC.c: 86: }
-[; ;ADC.c: 87: if(ActualPercent>TempPercent)
-"87
-[e $ ! > -> F547 `ui _TempPercent 24  ]
-[; ;ADC.c: 88: {
-"88
-{
-[; ;ADC.c: 89: if(ActualPercent)
-"89
-[e $ ! != -> F547 `i -> -> -> 0 `i `uc `i 25  ]
-[; ;ADC.c: 90: {
+[; ;ADC.c: 89: }
+[; ;ADC.c: 90: if(ActualPercent>TempPercent)
 "90
-{
-[; ;ADC.c: 91: ActualPercent--;
+[e $ ! > -> F548 `ui _TempPercent 24  ]
+[; ;ADC.c: 91: {
 "91
-[e -- F547 -> -> 1 `i `uc ]
+{
+[; ;ADC.c: 92: if(ActualPercent)
 "92
+[e $ ! != -> F548 `i -> -> -> 0 `i `uc `i 25  ]
+[; ;ADC.c: 93: {
+"93
+{
+[; ;ADC.c: 94: ActualPercent--;
+"94
+[e -- F548 -> -> 1 `i `uc ]
+"95
 }
 [e :U 25 ]
-"93
-}
-[; ;ADC.c: 92: }
-[; ;ADC.c: 93: }
-[e $U 26  ]
-"94
-[e :U 24 ]
-[; ;ADC.c: 94: else if(ActualPercent<TempPercent)
-[e $ ! < -> F547 `ui _TempPercent 27  ]
-[; ;ADC.c: 95: {
-"95
-{
-[; ;ADC.c: 96: if(ActualPercent<99)
 "96
-[e $ ! < -> F547 `i -> 99 `i 28  ]
-[; ;ADC.c: 97: {
+}
+[; ;ADC.c: 95: }
+[; ;ADC.c: 96: }
+[e $U 26  ]
 "97
-{
-[; ;ADC.c: 98: ActualPercent++;
+[e :U 24 ]
+[; ;ADC.c: 97: else if(ActualPercent<TempPercent)
+[e $ ! < -> F548 `ui _TempPercent 27  ]
+[; ;ADC.c: 98: {
 "98
-[e ++ F547 -> -> 1 `i `uc ]
+{
+[; ;ADC.c: 99: if(ActualPercent<99)
 "99
+[e $ ! < -> F548 `i -> 99 `i 28  ]
+[; ;ADC.c: 100: {
+"100
+{
+[; ;ADC.c: 101: ActualPercent++;
+"101
+[e ++ F548 -> -> 1 `i `uc ]
+"102
 }
 [e :U 28 ]
-"100
+"103
 }
 [e :U 27 ]
-"101
-[e :U 26 ]
-[; ;ADC.c: 99: }
-[; ;ADC.c: 100: }
-[; ;ADC.c: 101: if(ActualPercent>BatPercent)
-[e $ ! > -> F547 `i -> _BatPercent `i 29  ]
-[; ;ADC.c: 102: {
-"102
-{
-[; ;ADC.c: 103: PercentErr=ActualPercent-BatPercent;
-"103
-[e = _PercentErr -> - -> F547 `i -> _BatPercent `i `uc ]
-[; ;ADC.c: 104: if(PercentErr<5)
 "104
-[e $ ! < -> _PercentErr `i -> 5 `i 30  ]
+[e :U 26 ]
+[; ;ADC.c: 102: }
+[; ;ADC.c: 103: }
+[; ;ADC.c: 104: if(ActualPercent>BatPercent)
+[e $ ! > -> F548 `i -> _BatPercent `i 29  ]
 [; ;ADC.c: 105: {
 "105
 {
-[; ;ADC.c: 106: BatAddTime=90-15*PercentErr;
+[; ;ADC.c: 106: PercentErr=ActualPercent-BatPercent;
 "106
-[e = _BatAddTime -> - -> 90 `i * -> 15 `i -> _PercentErr `i `uc ]
+[e = _PercentErr -> - -> F548 `i -> _BatPercent `i `uc ]
+[; ;ADC.c: 107: if(PercentErr<5)
 "107
-}
-[; ;ADC.c: 107: }
-[e $U 31  ]
+[e $ ! < -> _PercentErr `i -> 5 `i 30  ]
+[; ;ADC.c: 108: {
 "108
-[e :U 30 ]
-[; ;ADC.c: 108: else
-[; ;ADC.c: 109: {
-"109
 {
-[; ;ADC.c: 110: BatAddTime=15;
+[; ;ADC.c: 109: BatAddTime=90-15*PercentErr;
+"109
+[e = _BatAddTime -> - -> 90 `i * -> 15 `i -> _PercentErr `i `uc ]
 "110
-[e = _BatAddTime -> -> 15 `i `uc ]
+}
+[; ;ADC.c: 110: }
+[e $U 31  ]
 "111
+[e :U 30 ]
+[; ;ADC.c: 111: else
+[; ;ADC.c: 112: {
+"112
+{
+[; ;ADC.c: 113: BatAddTime=15;
+"113
+[e = _BatAddTime -> -> 15 `i `uc ]
+"114
 }
 [e :U 31 ]
-"112
-}
-[; ;ADC.c: 111: }
-[; ;ADC.c: 112: }
-[e $U 32  ]
-"113
-[e :U 29 ]
-[; ;ADC.c: 113: else
-[; ;ADC.c: 114: {
-"114
-{
-[; ;ADC.c: 115: BatAddTime=240;
 "115
-[e = _BatAddTime -> -> 240 `i `uc ]
+}
+[; ;ADC.c: 114: }
+[; ;ADC.c: 115: }
+[e $U 32  ]
 "116
+[e :U 29 ]
+[; ;ADC.c: 116: else
+[; ;ADC.c: 117: {
+"117
+{
+[; ;ADC.c: 118: BatAddTime=240;
+"118
+[e = _BatAddTime -> -> 240 `i `uc ]
+"119
 }
 [e :U 32 ]
-"117
+"120
 }
 [e :U 19 ]
-[; ;ADC.c: 116: }
-[; ;ADC.c: 117: }
-[; ;ADC.c: 120: if(WorkFlag)
-"120
-[e $ ! _WorkFlag 33  ]
-[; ;ADC.c: 121: {
-"121
-{
-[; ;ADC.c: 122: if(ADCVal[2]<267)
-"122
-[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 267 `i `ui 34  ]
-[; ;ADC.c: 123: {
+[; ;ADC.c: 119: }
+[; ;ADC.c: 120: }
+[; ;ADC.c: 123: if(WorkFlag)
 "123
-{
-[; ;ADC.c: 124: TempPercent=0;
+[e $ ! _WorkFlag 33  ]
+[; ;ADC.c: 124: {
 "124
-[e = _TempPercent -> -> 0 `i `ui ]
+{
+[; ;ADC.c: 125: if(ADCVal[2]<134)
 "125
-}
-[; ;ADC.c: 125: }
-[e $U 35  ]
+[e $ ! < *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 134 `i `ui 34  ]
+[; ;ADC.c: 126: {
 "126
-[e :U 34 ]
-[; ;ADC.c: 126: else if(ADCVal[2]>333)
-[e $ ! > *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 333 `i `ui 36  ]
-[; ;ADC.c: 127: {
+{
+[; ;ADC.c: 127: TempPercent=0;
 "127
-{
-[; ;ADC.c: 128: TempPercent=99;
+[e = _TempPercent -> -> 0 `i `ui ]
 "128
-[e = _TempPercent -> -> 99 `i `ui ]
-"129
 }
-[; ;ADC.c: 129: }
-[e $U 37  ]
+[; ;ADC.c: 128: }
+[e $U 35  ]
+"129
+[e :U 34 ]
+[; ;ADC.c: 129: else if(ADCVal[2]>167)
+[e $ ! > *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 167 `i `ui 36  ]
+[; ;ADC.c: 130: {
 "130
-[e :U 36 ]
-[; ;ADC.c: 130: else
-[; ;ADC.c: 131: {
-"131
 {
-[; ;ADC.c: 132: TempPercent=ADCVal[2]-267;
+[; ;ADC.c: 131: TempPercent=99;
+"131
+[e = _TempPercent -> -> 99 `i `ui ]
 "132
-[e = _TempPercent - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 267 `i `ui ]
+}
+[; ;ADC.c: 132: }
+[e $U 37  ]
 "133
+[e :U 36 ]
+[; ;ADC.c: 133: else
+[; ;ADC.c: 134: {
+"134
+{
+[; ;ADC.c: 135: TempPercent=ADCVal[2]-134;
+"135
+[e = _TempPercent - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 134 `i `ui ]
+"136
 }
 [e :U 37 ]
 [e :U 35 ]
-[; ;ADC.c: 133: }
-[; ;ADC.c: 134: if(TempPercent>=33)
-"134
-[e $ ! >= _TempPercent -> -> 33 `i `ui 38  ]
-[; ;ADC.c: 135: {
-"135
-{
-[; ;ADC.c: 136: TempPercent=33+(ADCVal[2]-300)*2;
-"136
-[e = _TempPercent + -> -> 33 `i `ui * - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 300 `i `ui -> -> 2 `i `ui ]
+[; ;ADC.c: 136: }
+[; ;ADC.c: 137: if(TempPercent>=33)
 "137
+[e $ ! >= _TempPercent -> -> 33 `i `ui 38  ]
+[; ;ADC.c: 138: {
+"138
+{
+[; ;ADC.c: 139: TempPercent=33+(ADCVal[2]-150)*2;
+"139
+[e = _TempPercent + -> -> 33 `i `ui * - *U + &U _ADCVal * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADCVal `ui `ux -> -> 150 `i `ui -> -> 2 `i `ui ]
+"140
 }
 [e :U 38 ]
-[; ;ADC.c: 137: }
-[; ;ADC.c: 138: if(ActualPercent>TempPercent)
-"138
-[e $ ! > -> F547 `ui _TempPercent 39  ]
-[; ;ADC.c: 139: {
-"139
-{
-[; ;ADC.c: 140: if(ActualPercent)
-"140
-[e $ ! != -> F547 `i -> -> -> 0 `i `uc `i 40  ]
-[; ;ADC.c: 141: {
+[; ;ADC.c: 140: }
+[; ;ADC.c: 141: if(ActualPercent>TempPercent)
 "141
-{
-[; ;ADC.c: 142: ActualPercent--;
+[e $ ! > -> F548 `ui _TempPercent 39  ]
+[; ;ADC.c: 142: {
 "142
-[e -- F547 -> -> 1 `i `uc ]
+{
+[; ;ADC.c: 143: if(ActualPercent)
 "143
+[e $ ! != -> F548 `i -> -> -> 0 `i `uc `i 40  ]
+[; ;ADC.c: 144: {
+"144
+{
+[; ;ADC.c: 145: ActualPercent--;
+"145
+[e -- F548 -> -> 1 `i `uc ]
+"146
 }
 [e :U 40 ]
-"144
-}
-[; ;ADC.c: 143: }
-[; ;ADC.c: 144: }
-[e $U 41  ]
-"145
-[e :U 39 ]
-[; ;ADC.c: 145: else if(ActualPercent<TempPercent)
-[e $ ! < -> F547 `ui _TempPercent 42  ]
-[; ;ADC.c: 146: {
-"146
-{
-[; ;ADC.c: 147: if(ActualPercent<99)
 "147
-[e $ ! < -> F547 `i -> 99 `i 43  ]
-[; ;ADC.c: 148: {
+}
+[; ;ADC.c: 146: }
+[; ;ADC.c: 147: }
+[e $U 41  ]
 "148
-{
-[; ;ADC.c: 149: ActualPercent++;
+[e :U 39 ]
+[; ;ADC.c: 148: else if(ActualPercent<TempPercent)
+[e $ ! < -> F548 `ui _TempPercent 42  ]
+[; ;ADC.c: 149: {
 "149
-[e ++ F547 -> -> 1 `i `uc ]
+{
+[; ;ADC.c: 150: if(ActualPercent<99)
 "150
+[e $ ! < -> F548 `i -> 99 `i 43  ]
+[; ;ADC.c: 151: {
+"151
+{
+[; ;ADC.c: 152: ActualPercent++;
+"152
+[e ++ F548 -> -> 1 `i `uc ]
+"153
 }
 [e :U 43 ]
-"151
+"154
 }
 [e :U 42 ]
-"152
-[e :U 41 ]
-[; ;ADC.c: 150: }
-[; ;ADC.c: 151: }
-[; ;ADC.c: 152: if(ActualPercent<BatPercent)
-[e $ ! < -> F547 `i -> _BatPercent `i 44  ]
-[; ;ADC.c: 153: {
-"153
-{
-[; ;ADC.c: 154: PercentErr=BatPercent-ActualPercent;
-"154
-[e = _PercentErr -> - -> _BatPercent `i -> F547 `i `uc ]
-[; ;ADC.c: 155: if(PercentErr<5&&ActualPercent)
 "155
-[e $ ! && < -> _PercentErr `i -> 5 `i != -> F547 `i -> -> -> 0 `i `uc `i 45  ]
+[e :U 41 ]
+[; ;ADC.c: 153: }
+[; ;ADC.c: 154: }
+[; ;ADC.c: 155: if(ActualPercent<BatPercent)
+[e $ ! < -> F548 `i -> _BatPercent `i 44  ]
 [; ;ADC.c: 156: {
 "156
 {
-[; ;ADC.c: 157: BatDecTime=75-15*PercentErr;
+[; ;ADC.c: 157: PercentErr=BatPercent-ActualPercent;
 "157
-[e = _BatDecTime -> - -> 75 `i * -> 15 `i -> _PercentErr `i `uc ]
+[e = _PercentErr -> - -> _BatPercent `i -> F548 `i `uc ]
+[; ;ADC.c: 158: if(PercentErr<5&&ActualPercent)
 "158
-}
-[; ;ADC.c: 158: }
-[e $U 46  ]
+[e $ ! && < -> _PercentErr `i -> 5 `i != -> F548 `i -> -> -> 0 `i `uc `i 45  ]
+[; ;ADC.c: 159: {
 "159
-[e :U 45 ]
-[; ;ADC.c: 159: else
-[; ;ADC.c: 160: {
-"160
 {
-[; ;ADC.c: 161: BatDecTime=8;
+[; ;ADC.c: 160: BatDecTime=75-15*PercentErr;
+"160
+[e = _BatDecTime -> - -> 75 `i * -> 15 `i -> _PercentErr `i `uc ]
 "161
-[e = _BatDecTime -> -> 8 `i `uc ]
+}
+[; ;ADC.c: 161: }
+[e $U 46  ]
 "162
+[e :U 45 ]
+[; ;ADC.c: 162: else
+[; ;ADC.c: 163: {
+"163
+{
+[; ;ADC.c: 164: BatDecTime=8;
+"164
+[e = _BatDecTime -> -> 8 `i `uc ]
+"165
 }
 [e :U 46 ]
-"163
-}
-[; ;ADC.c: 162: }
-[; ;ADC.c: 163: }
-[e $U 47  ]
-"164
-[e :U 44 ]
-[; ;ADC.c: 164: else
-[; ;ADC.c: 165: {
-"165
-{
-[; ;ADC.c: 166: BatDecTime=210;
 "166
-[e = _BatDecTime -> -> 210 `i `uc ]
+}
+[; ;ADC.c: 165: }
+[; ;ADC.c: 166: }
+[e $U 47  ]
 "167
+[e :U 44 ]
+[; ;ADC.c: 167: else
+[; ;ADC.c: 168: {
+"168
+{
+[; ;ADC.c: 169: BatDecTime=210;
+"169
+[e = _BatDecTime -> -> 210 `i `uc ]
+"170
 }
 [e :U 47 ]
-"168
-}
-[; ;ADC.c: 167: }
-[; ;ADC.c: 168: }
-[e $U 48  ]
-"169
-[e :U 33 ]
-[; ;ADC.c: 169: else
-[; ;ADC.c: 170: {
-"170
-{
-[; ;ADC.c: 171: BatDecTime=210;
 "171
-[e = _BatDecTime -> -> 210 `i `uc ]
+}
+[; ;ADC.c: 170: }
+[; ;ADC.c: 171: }
+[e $U 48  ]
 "172
+[e :U 33 ]
+[; ;ADC.c: 172: else
+[; ;ADC.c: 173: {
+"173
+{
+[; ;ADC.c: 174: BatDecTime=210;
+"174
+[e = _BatDecTime -> -> 210 `i `uc ]
+"175
 }
 [e :U 48 ]
-[; ;ADC.c: 172: }
-[; ;ADC.c: 173: }
-"173
+[; ;ADC.c: 175: }
+[; ;ADC.c: 176: }
+"176
 [e :UE 18 ]
 }
-"175
+"178
 [v _ADCRead `(v ~T0 @X0 1 ef2`uc`*ui ]
-"176
+"179
 {
-[; ;ADC.c: 175: void ADCRead(unsigned char ch,unsigned int *Val)
-[; ;ADC.c: 176: {
+[; ;ADC.c: 178: void ADCRead(unsigned char ch,unsigned int *Val)
+[; ;ADC.c: 179: {
 [e :U _ADCRead ]
-"175
+"178
 [v _ch `uc ~T0 @X0 1 r1 ]
 [v _Val `*ui ~T0 @X0 1 r2 ]
-"176
+"179
 [f ]
-"177
+"180
 [v _ad_temp `ui ~T0 @X0 1 a ]
 [v _AD_H `ui ~T0 @X0 1 a ]
 [v _AD_L `ui ~T0 @X0 1 a ]
-[; ;ADC.c: 177: unsigned int ad_temp,AD_H,AD_L;
-[; ;ADC.c: 179: if(ADSample(ch))
-"179
-[e $ ! != -> ( _ADSample (1 _ch `i -> -> -> 0 `i `uc `i 50  ]
-[; ;ADC.c: 180: {
-"180
-{
-[; ;ADC.c: 181: AD_H=ADRESH;
-"181
-[e = _AD_H -> _ADRESH `ui ]
-[; ;ADC.c: 182: AD_L=ADRESL;
+[; ;ADC.c: 180: unsigned int ad_temp,AD_H,AD_L;
+[; ;ADC.c: 182: if(ADSample(ch))
 "182
-[e = _AD_L -> _ADRESL `ui ]
-[; ;ADC.c: 183: ad_temp=(AD_H<<4)|(AD_L>>4);
+[e $ ! != -> ( _ADSample (1 _ch `i -> -> -> 0 `i `uc `i 50  ]
+[; ;ADC.c: 183: {
 "183
-[e = _ad_temp | << _AD_H -> 4 `i >> _AD_L -> 4 `i ]
-[; ;ADC.c: 184: ADsum += ad_temp;
+{
+[; ;ADC.c: 184: AD_H=ADRESH;
 "184
-[e =+ _ADsum -> _ad_temp `ul ]
-[; ;ADC.c: 185: ADcnt++;
+[e = _AD_H -> _ADRESH `ui ]
+[; ;ADC.c: 185: AD_L=ADRESL;
 "185
-[e ++ _ADcnt -> -> 1 `i `uc ]
-[; ;ADC.c: 186: if(ADcnt >= 10)
+[e = _AD_L -> _ADRESL `ui ]
+[; ;ADC.c: 186: ad_temp=(AD_H<<4)|(AD_L>>4);
 "186
-[e $ ! >= -> _ADcnt `i -> 10 `i 51  ]
-[; ;ADC.c: 187: {
+[e = _ad_temp | << _AD_H -> 4 `i >> _AD_L -> 4 `i ]
+[; ;ADC.c: 187: ADsum += ad_temp;
 "187
-{
-[; ;ADC.c: 188: ADcnt = 0;
+[e =+ _ADsum -> _ad_temp `ul ]
+[; ;ADC.c: 188: ADcnt++;
 "188
-[e = _ADcnt -> -> 0 `i `uc ]
-[; ;ADC.c: 189: ADsum /=10;
+[e ++ _ADcnt -> -> 1 `i `uc ]
+[; ;ADC.c: 189: if(ADcnt >= 10)
 "189
-[e =/ _ADsum -> -> 10 `uc `ul ]
-[; ;ADC.c: 190: switch (ADCState)
+[e $ ! >= -> _ADcnt `i -> 10 `i 51  ]
+[; ;ADC.c: 190: {
 "190
-[e $U 53  ]
-[; ;ADC.c: 191: {
-"191
 {
-[; ;ADC.c: 192: case 0:
+[; ;ADC.c: 191: ADcnt = 0;
+"191
+[e = _ADcnt -> -> 0 `i `uc ]
+[; ;ADC.c: 192: ADsum /=10;
 "192
-[e :U 54 ]
-[; ;ADC.c: 193: *Val=ADsum;
+[e =/ _ADsum -> -> 10 `uc `ul ]
+[; ;ADC.c: 193: switch (ADCState)
 "193
-[e = *U _Val -> _ADsum `ui ]
-[; ;ADC.c: 194: break;
+[e $U 53  ]
+[; ;ADC.c: 194: {
 "194
-[e $U 52  ]
-[; ;ADC.c: 196: case 1:
+{
+[; ;ADC.c: 195: case 0:
+"195
+[e :U 54 ]
+[; ;ADC.c: 196: *Val=ADsum;
 "196
-[e :U 55 ]
-[; ;ADC.c: 197: *Val=ADsum*1000/(*(Val-1));
+[e = *U _Val -> _ADsum `ui ]
+[; ;ADC.c: 197: break;
 "197
-[e = *U _Val -> / * _ADsum -> -> -> 1000 `i `l `ul -> *U - _Val * -> -> 1 `i `x -> -> # *U _Val `i `x `ul `ui ]
-[; ;ADC.c: 198: break;
-"198
 [e $U 52  ]
-[; ;ADC.c: 200: case 2:
+[; ;ADC.c: 199: case 1:
+"199
+[e :U 55 ]
+[; ;ADC.c: 200: *Val=ADsum*1000/(*(Val-1));
 "200
-[e :U 56 ]
-[; ;ADC.c: 201: *Val=ADsum*100/(*(Val-2));
+[e = *U _Val -> / * _ADsum -> -> -> 1000 `i `l `ul -> *U - _Val * -> -> 1 `i `x -> -> # *U _Val `i `x `ul `ui ]
+[; ;ADC.c: 201: break;
 "201
-[e = *U _Val -> / * _ADsum -> -> -> 100 `i `l `ul -> *U - _Val * -> -> 2 `i `x -> -> # *U _Val `i `x `ul `ui ]
-[; ;ADC.c: 202: break;
-"202
 [e $U 52  ]
+[; ;ADC.c: 203: case 2:
 "203
-}
-[; ;ADC.c: 203: }
+[e :U 56 ]
+[; ;ADC.c: 204: *Val=ADsum*100/(*(Val-2));
+"204
+[e = *U _Val -> / * _ADsum -> -> -> 100 `i `l `ul -> *U - _Val * -> -> 2 `i `x -> -> # *U _Val `i `x `ul `ui ]
+[; ;ADC.c: 205: break;
+"205
 [e $U 52  ]
-"190
+"206
+}
+[; ;ADC.c: 206: }
+[e $U 52  ]
+"193
 [e :U 53 ]
 [e [\ _ADCState , $ -> -> 0 `i `uc 54
  , $ -> -> 1 `i `uc 55
  , $ -> -> 2 `i `uc 56
  52 ]
-"203
-[e :U 52 ]
-[; ;ADC.c: 204: ADsum = 0;
-"204
-[e = _ADsum -> -> -> 0 `i `l `ul ]
-[; ;ADC.c: 205: ADCState++;
-"205
-[e ++ _ADCState -> -> 1 `i `uc ]
-[; ;ADC.c: 206: if(ADCState>=3)
 "206
-[e $ ! >= -> _ADCState `i -> 3 `i 57  ]
-[; ;ADC.c: 207: {
+[e :U 52 ]
+[; ;ADC.c: 207: ADsum = 0;
 "207
-{
-[; ;ADC.c: 208: ADCState=0;
+[e = _ADsum -> -> -> 0 `i `l `ul ]
+[; ;ADC.c: 208: ADCState++;
 "208
-[e = _ADCState -> -> 0 `i `uc ]
+[e ++ _ADCState -> -> 1 `i `uc ]
+[; ;ADC.c: 209: if(ADCState>=3)
 "209
+[e $ ! >= -> _ADCState `i -> 3 `i 57  ]
+[; ;ADC.c: 210: {
+"210
+{
+[; ;ADC.c: 211: ADCState=0;
+"211
+[e = _ADCState -> -> 0 `i `uc ]
+"212
 }
 [e :U 57 ]
-"210
+"213
 }
 [e :U 51 ]
-"211
+"214
 }
 [e :U 50 ]
-[; ;ADC.c: 209: }
-[; ;ADC.c: 210: }
-[; ;ADC.c: 211: }
 [; ;ADC.c: 212: }
-"212
+[; ;ADC.c: 213: }
+[; ;ADC.c: 214: }
+[; ;ADC.c: 215: }
+"215
 [e :UE 49 ]
 }
-"221
-[v _ADSample `(uc ~T0 @X0 1 ef1`uc ]
-"222
-{
-[; ;ADC.c: 221: unsigned char ADSample(unsigned char ch)
-[; ;ADC.c: 222: {
-[e :U _ADSample ]
-"221
-[v _ch `uc ~T0 @X0 1 r1 ]
-"222
-[f ]
-[; ;ADC.c: 223: ADCON1 = 0x00;
-"223
-[e = _ADCON1 -> -> 0 `i `uc ]
-[; ;ADC.c: 224: ADCON0 = 0X41 | ( ch << 2);
 "224
-[e = _ADCON0 -> | -> 65 `i << -> _ch `i -> 2 `i `uc ]
-[; ;ADC.c: 225: asm("nop");
+[v _ADSample `(uc ~T0 @X0 1 ef1`uc ]
 "225
-[; <" nop ;# ">
-[; ;ADC.c: 226: asm("nop");
+{
+[; ;ADC.c: 224: unsigned char ADSample(unsigned char ch)
+[; ;ADC.c: 225: {
+[e :U _ADSample ]
+"224
+[v _ch `uc ~T0 @X0 1 r1 ]
+"225
+[f ]
+[; ;ADC.c: 226: ADCON1 = 0x00;
 "226
-[; <" nop ;# ">
-[; ;ADC.c: 227: GODONE = 1;
+[e = _ADCON1 -> -> 0 `i `uc ]
+[; ;ADC.c: 227: ADCON0 = 0X41 | ( ch << 2);
 "227
-[e = _GODONE -> -> 1 `i `b ]
+[e = _ADCON0 -> | -> 65 `i << -> _ch `i -> 2 `i `uc ]
+[; ;ADC.c: 228: asm("nop");
 "228
-[v _i `Vuc ~T0 @X0 1 a ]
-[; ;ADC.c: 228: volatile unsigned char i = 0;
-[e = _i -> -> 0 `i `uc ]
-[; ;ADC.c: 229: while(GODONE)
+[; <" nop ;# ">
+[; ;ADC.c: 229: asm("nop");
 "229
+[; <" nop ;# ">
+[; ;ADC.c: 230: GODONE = 1;
+"230
+[e = _GODONE -> -> 1 `i `b ]
+"231
+[v _i `Vuc ~T0 @X0 1 a ]
+[; ;ADC.c: 231: volatile unsigned char i = 0;
+[e = _i -> -> 0 `i `uc ]
+[; ;ADC.c: 232: while(GODONE)
+"232
 [e $U 59  ]
 [e :U 60 ]
-[; ;ADC.c: 230: {
-"230
+[; ;ADC.c: 233: {
+"233
 {
-[; ;ADC.c: 231: if(0 == (--i))
-"231
+[; ;ADC.c: 234: if(0 == (--i))
+"234
 [e $ ! == -> 0 `i -> =- _i -> -> 1 `i `uc `i 62  ]
-[; ;ADC.c: 232: return 0;
-"232
+[; ;ADC.c: 235: return 0;
+"235
 [e ) -> -> 0 `i `uc ]
 [e $UE 58  ]
 [e :U 62 ]
-"233
+"236
 }
 [e :U 59 ]
-"229
+"232
 [e $ _GODONE 60  ]
 [e :U 61 ]
-[; ;ADC.c: 233: }
-[; ;ADC.c: 234: return 1;
-"234
+[; ;ADC.c: 236: }
+[; ;ADC.c: 237: return 1;
+"237
 [e ) -> -> 1 `i `uc ]
 [e $UE 58  ]
-[; ;ADC.c: 235: }
-"235
+[; ;ADC.c: 238: }
+"238
 [e :UE 58 ]
 }

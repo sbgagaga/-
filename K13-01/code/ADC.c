@@ -49,10 +49,13 @@ void ADCPro()
     if(ADCVal[1]>VOLTAGE07V)
     {
         CurrentCnt++;
-        if(CurrentCnt>=200)
+        if(CurrentCnt>=150)
         {
-            CurrentCnt=200;
+            CurrentCnt=150;
             IovFlag=1;
+            LedIovFlag=1;
+            WorkFlag=0;
+            WorkMin=0;
         }
     }
     else

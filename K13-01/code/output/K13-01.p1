@@ -14,15 +14,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _Motor `(v ~T0 @X0 0 ef ]
 "13 C:\Users\Administrator\Desktop\project\K13-01\code\LED.h
 [v _DisplayPro `(v ~T0 @X0 0 ef ]
+"41 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.h
+[v _SystemSleep `(v ~T0 @X0 0 ef ]
 "9 C:\Users\Administrator\Desktop\project\K13-01\code\ADC.h
 [v _Sec1sPro `(v ~T0 @X0 0 ef ]
 "7 C:\Users\Administrator\Desktop\project\K13-01\code\Key.h
 [v _KeyPress `b ~T0 @X0 0 e ]
-"42 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.h
+"43 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.h
 [v _SystemInit `(v ~T0 @X0 0 ef ]
-"43
-[v _GPIOInit `(v ~T0 @X0 0 ef ]
 "44
+[v _GPIOInit `(v ~T0 @X0 0 ef ]
+"45
 [v _TimerInit `(v ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
@@ -869,21 +871,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;K13-01.h: 24: extern unsigned char LockNumb;
 [; ;K13-01.h: 26: extern unsigned char BatPercent;
 [; ;K13-01.h: 27: extern unsigned char WorkMin;
-[; ;K13-01.h: 29: extern bit SystemONFlag;
-[; ;K13-01.h: 30: extern bit OnOffFlag;
-[; ;K13-01.h: 31: extern bit WorkFlag;
-[; ;K13-01.h: 32: extern bit IovFlag;
-[; ;K13-01.h: 33: extern bit LowBatFlag;
-[; ;K13-01.h: 34: extern bit USBFlag;
-[; ;K13-01.h: 35: extern bit LEDWorkFlag;
-[; ;K13-01.h: 36: extern TYPE_UNION_LockSta LockSta;
-[; ;K13-01.h: 37: extern unsigned char BatAddTime;
-[; ;K13-01.h: 38: extern unsigned char BatDecTime;
-[; ;K13-01.h: 40: void SystemSleep();
-[; ;K13-01.h: 41: void Apply();
-[; ;K13-01.h: 42: void SystemInit();
-[; ;K13-01.h: 43: void GPIOInit();
-[; ;K13-01.h: 44: void TimerInit();
+[; ;K13-01.h: 29: extern bit LedIovFlag;
+[; ;K13-01.h: 30: extern bit SystemONFlag;
+[; ;K13-01.h: 31: extern bit OnOffFlag;
+[; ;K13-01.h: 32: extern bit WorkFlag;
+[; ;K13-01.h: 33: extern bit IovFlag;
+[; ;K13-01.h: 34: extern bit LowBatFlag;
+[; ;K13-01.h: 35: extern bit USBFlag;
+[; ;K13-01.h: 36: extern bit LEDWorkFlag;
+[; ;K13-01.h: 37: extern TYPE_UNION_LockSta LockSta;
+[; ;K13-01.h: 38: extern unsigned char BatAddTime;
+[; ;K13-01.h: 39: extern unsigned char BatDecTime;
+[; ;K13-01.h: 41: void SystemSleep();
+[; ;K13-01.h: 42: void Apply();
+[; ;K13-01.h: 43: void SystemInit();
+[; ;K13-01.h: 44: void GPIOInit();
+[; ;K13-01.h: 45: void TimerInit();
 "3 C:\Users\Administrator\Desktop\project\K13-01\code\K13-01.c
 [v _SystemONFlag `b ~T0 @X0 1 e ]
 [i _SystemONFlag
@@ -936,427 +939,436 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;K13-01.c: 16: bit IovFlag=0;
 "17
+[v _LedIovFlag `b ~T0 @X0 1 e ]
+[i _LedIovFlag
+-> 0 `i
+]
+[; ;K13-01.c: 17: bit LedIovFlag=0;
+"18
 [v _LowBatFlag `b ~T0 @X0 1 e ]
 [i _LowBatFlag
 -> 0 `i
 ]
-[; ;K13-01.c: 17: bit LowBatFlag=0;
-"18
+[; ;K13-01.c: 18: bit LowBatFlag=0;
+"19
 [v _USBFlag `b ~T0 @X0 1 e ]
 [i _USBFlag
 -> 0 `i
 ]
-[; ;K13-01.c: 18: bit USBFlag=0;
-"19
+[; ;K13-01.c: 19: bit USBFlag=0;
+"20
 [v _LEDWorkFlag `b ~T0 @X0 1 e ]
 [i _LEDWorkFlag
 -> 0 `i
 ]
-[; ;K13-01.c: 19: bit LEDWorkFlag=0;
-"21
+[; ;K13-01.c: 20: bit LEDWorkFlag=0;
+"22
 [v _Sec1sCnt `uc ~T0 @X0 1 e ]
 [i _Sec1sCnt
 -> -> 0 `i `uc
 ]
-[; ;K13-01.c: 21: unsigned char Sec1sCnt=0;
-"22
+[; ;K13-01.c: 22: unsigned char Sec1sCnt=0;
+"23
 [v _BatAddTime `uc ~T0 @X0 1 e ]
 [i _BatAddTime
 -> -> 240 `i `uc
 ]
-[; ;K13-01.c: 22: unsigned char BatAddTime=240;
-"23
+[; ;K13-01.c: 23: unsigned char BatAddTime=240;
+"24
 [v _BatDecTime `uc ~T0 @X0 1 e ]
 [i _BatDecTime
 -> -> 210 `i `uc
 ]
-[; ;K13-01.c: 23: unsigned char BatDecTime=210;
-"25
-[v _Apply `(v ~T0 @X0 1 ef ]
+[; ;K13-01.c: 24: unsigned char BatDecTime=210;
 "26
+[v _Apply `(v ~T0 @X0 1 ef ]
+"27
 {
-[; ;K13-01.c: 25: void Apply()
-[; ;K13-01.c: 26: {
+[; ;K13-01.c: 26: void Apply()
+[; ;K13-01.c: 27: {
 [e :U _Apply ]
 [f ]
-[; ;K13-01.c: 27: if(time2ms)
-"27
-[e $ ! _time2ms 3  ]
-[; ;K13-01.c: 28: {
+[; ;K13-01.c: 28: if(time2ms)
 "28
-{
-[; ;K13-01.c: 29: time2ms=0;
+[e $ ! _time2ms 3  ]
+[; ;K13-01.c: 29: {
 "29
-[e = _time2ms -> -> 0 `i `b ]
-[; ;K13-01.c: 30: if(SystemONFlag)
-"30
-[e $ ! _SystemONFlag 4  ]
-[; ;K13-01.c: 31: {
-"31
 {
-[; ;K13-01.c: 32: KeyScan();
+[; ;K13-01.c: 30: time2ms=0;
+"30
+[e = _time2ms -> -> 0 `i `b ]
+[; ;K13-01.c: 31: if(SystemONFlag)
+"31
+[e $ ! _SystemONFlag 4  ]
+[; ;K13-01.c: 32: {
 "32
-[e ( _KeyScan ..  ]
+{
+[; ;K13-01.c: 33: KeyScan();
 "33
-}
-[e :U 4 ]
+[e ( _KeyScan ..  ]
 "34
 }
-[e :U 3 ]
-[; ;K13-01.c: 33: }
-[; ;K13-01.c: 34: }
-[; ;K13-01.c: 35: if(time10ms)
+[e :U 4 ]
 "35
-[e $ ! _time10ms 5  ]
-[; ;K13-01.c: 36: {
-"36
-{
-[; ;K13-01.c: 37: time10ms=0;
-"37
-[e = _time10ms -> -> 0 `i `b ]
-[; ;K13-01.c: 38: if(SystemONFlag==0&&VarPowerUpCount<100)
-"38
-[e $ ! && == -> _SystemONFlag `i -> 0 `i < -> _VarPowerUpCount `i -> 100 `i 6  ]
-[; ;K13-01.c: 39: {
-"39
-{
-[; ;K13-01.c: 40: VarPowerUpCount++;
-"40
-[e ++ _VarPowerUpCount -> -> 1 `i `uc ]
-[; ;K13-01.c: 41: ADCPro();
-"41
-[e ( _ADCPro ..  ]
-"42
 }
-[; ;K13-01.c: 42: }
-[e $U 7  ]
-"43
-[e :U 6 ]
-[; ;K13-01.c: 43: else if(VarPowerUpCount>=100)
-[e $ ! >= -> _VarPowerUpCount `i -> 100 `i 8  ]
-[; ;K13-01.c: 44: {
-"44
+[e :U 3 ]
+[; ;K13-01.c: 34: }
+[; ;K13-01.c: 35: }
+[; ;K13-01.c: 36: if(time10ms)
+"36
+[e $ ! _time10ms 5  ]
+[; ;K13-01.c: 37: {
+"37
 {
-[; ;K13-01.c: 45: SystemONFlag=1;
+[; ;K13-01.c: 38: time10ms=0;
+"38
+[e = _time10ms -> -> 0 `i `b ]
+[; ;K13-01.c: 39: if(SystemONFlag==0&&VarPowerUpCount<100)
+"39
+[e $ ! && == -> _SystemONFlag `i -> 0 `i < -> _VarPowerUpCount `i -> 100 `i 6  ]
+[; ;K13-01.c: 40: {
+"40
+{
+[; ;K13-01.c: 41: VarPowerUpCount++;
+"41
+[e ++ _VarPowerUpCount -> -> 1 `i `uc ]
+[; ;K13-01.c: 42: ADCPro();
+"42
+[e ( _ADCPro ..  ]
+"43
+}
+[; ;K13-01.c: 43: }
+[e $U 7  ]
+"44
+[e :U 6 ]
+[; ;K13-01.c: 44: else if(VarPowerUpCount>=100)
+[e $ ! >= -> _VarPowerUpCount `i -> 100 `i 8  ]
+[; ;K13-01.c: 45: {
 "45
-[e = _SystemONFlag -> -> 1 `i `b ]
-[; ;K13-01.c: 46: VarPowerUpCount=0;
+{
+[; ;K13-01.c: 46: SystemONFlag=1;
 "46
-[e = _VarPowerUpCount -> -> 0 `i `uc ]
+[e = _SystemONFlag -> -> 1 `i `b ]
+[; ;K13-01.c: 47: VarPowerUpCount=0;
 "47
+[e = _VarPowerUpCount -> -> 0 `i `uc ]
+"48
 }
 [e :U 8 ]
-"49
-[e :U 7 ]
-[; ;K13-01.c: 47: }
-[; ;K13-01.c: 49: if(SystemONFlag)
-[e $ ! _SystemONFlag 9  ]
-[; ;K13-01.c: 50: {
 "50
-{
-[; ;K13-01.c: 51: ADCPro();
+[e :U 7 ]
+[; ;K13-01.c: 48: }
+[; ;K13-01.c: 50: if(SystemONFlag)
+[e $ ! _SystemONFlag 9  ]
+[; ;K13-01.c: 51: {
 "51
-[e ( _ADCPro ..  ]
-[; ;K13-01.c: 52: Motor();
+{
+[; ;K13-01.c: 52: ADCPro();
 "52
-[e ( _Motor ..  ]
-[; ;K13-01.c: 53: DisplayPro();
+[e ( _ADCPro ..  ]
+[; ;K13-01.c: 53: Motor();
 "53
+[e ( _Motor ..  ]
+[; ;K13-01.c: 54: DisplayPro();
+"54
 [e ( _DisplayPro ..  ]
-"57
+[; ;K13-01.c: 56: SystemSleep();
+"56
+[e ( _SystemSleep ..  ]
+"58
 }
 [e :U 9 ]
-[; ;K13-01.c: 57: }
-[; ;K13-01.c: 58: Sec1sCnt++;
-"58
-[e ++ _Sec1sCnt -> -> 1 `i `uc ]
-[; ;K13-01.c: 59: if(Sec1sCnt>=100)
+[; ;K13-01.c: 58: }
+[; ;K13-01.c: 59: Sec1sCnt++;
 "59
-[e $ ! >= -> _Sec1sCnt `i -> 100 `i 10  ]
-[; ;K13-01.c: 60: {
+[e ++ _Sec1sCnt -> -> 1 `i `uc ]
+[; ;K13-01.c: 60: if(Sec1sCnt>=100)
 "60
-{
-[; ;K13-01.c: 61: Sec1sCnt=0;
+[e $ ! >= -> _Sec1sCnt `i -> 100 `i 10  ]
+[; ;K13-01.c: 61: {
 "61
-[e = _Sec1sCnt -> -> 0 `i `uc ]
-[; ;K13-01.c: 62: Sec1sPro();
+{
+[; ;K13-01.c: 62: Sec1sCnt=0;
 "62
-[e ( _Sec1sPro ..  ]
+[e = _Sec1sCnt -> -> 0 `i `uc ]
+[; ;K13-01.c: 63: Sec1sPro();
 "63
-}
-[e :U 10 ]
+[e ( _Sec1sPro ..  ]
 "64
 }
+[e :U 10 ]
+"65
+}
 [e :U 5 ]
-[; ;K13-01.c: 63: }
 [; ;K13-01.c: 64: }
 [; ;K13-01.c: 65: }
-"65
+[; ;K13-01.c: 66: }
+"66
 [e :UE 2 ]
 }
-"67
-[v _SystemSleep `(v ~T0 @X0 1 ef ]
 "68
+[v _SystemSleep `(v ~T0 @X0 1 ef ]
+"69
 {
-[; ;K13-01.c: 67: void SystemSleep()
-[; ;K13-01.c: 68: {
+[; ;K13-01.c: 68: void SystemSleep()
+[; ;K13-01.c: 69: {
 [e :U _SystemSleep ]
 [f ]
-"69
-[v F544 `ui ~T0 @X0 1 s SleepCnt ]
-[i F544
+"70
+[v F545 `ui ~T0 @X0 1 s SleepCnt ]
+[i F545
 -> -> 0 `i `ui
 ]
-[; ;K13-01.c: 69: static unsigned int SleepCnt=0;
-[; ;K13-01.c: 70: if(WorkFlag||OnOffFlag||LowBatFlag||USBFlag||IovFlag||KeyPress||LockSta.LockStart)
-"70
-[e $ ! || || || || || || _WorkFlag _OnOffFlag _LowBatFlag _USBFlag _IovFlag _KeyPress != -> . _LockSta 0 `i -> -> -> 0 `i `uc `i 12  ]
-[; ;K13-01.c: 71: {
+[; ;K13-01.c: 70: static unsigned int SleepCnt=0;
+[; ;K13-01.c: 71: if(WorkFlag||OnOffFlag||USBFlag||KeyPress)
 "71
-{
-[; ;K13-01.c: 72: SleepCnt=0;
+[e $ ! || || || _WorkFlag _OnOffFlag _USBFlag _KeyPress 12  ]
+[; ;K13-01.c: 72: {
 "72
-[e = F544 -> -> 0 `i `ui ]
+{
+[; ;K13-01.c: 73: SleepCnt=0;
 "73
-}
-[; ;K13-01.c: 73: }
-[e $U 13  ]
+[e = F545 -> -> 0 `i `ui ]
 "74
-[e :U 12 ]
-[; ;K13-01.c: 74: else
-[; ;K13-01.c: 75: {
-"75
-{
-[; ;K13-01.c: 76: SleepCnt++;
-"76
-[e ++ F544 -> -> 1 `i `ui ]
-[; ;K13-01.c: 77: if(SleepCnt>=1000)
-"77
-[e $ ! >= F544 -> -> 1000 `i `ui 14  ]
-[; ;K13-01.c: 78: {
-"78
-{
-[; ;K13-01.c: 79: LEDWorkFlag=0;
-"79
-[e = _LEDWorkFlag -> -> 0 `i `b ]
-[; ;K13-01.c: 80: SleepCnt=0;
-"80
-[e = F544 -> -> 0 `i `ui ]
-[; ;K13-01.c: 81: asm("clrwdt");
-"81
-[; <" clrwdt ;# ">
-[; ;K13-01.c: 82: INTCON=0;
-"82
-[e = _INTCON -> -> 0 `i `uc ]
-[; ;K13-01.c: 83: PIE1 = 0;
-"83
-[e = _PIE1 -> -> 0 `i `uc ]
-[; ;K13-01.c: 84: PIE2 = 0;
-"84
-[e = _PIE2 -> -> 0 `i `uc ]
-[; ;K13-01.c: 85: PIR1 = 0;
-"85
-[e = _PIR1 -> -> 0 `i `uc ]
-[; ;K13-01.c: 86: ADCON0 = 0;
-"86
-[e = _ADCON0 -> -> 0 `i `uc ]
-[; ;K13-01.c: 88: TRISA =0X00;
-"88
-[e = _TRISA -> -> 0 `i `uc ]
-[; ;K13-01.c: 89: TRISB =0X00;
-"89
-[e = _TRISB -> -> 0 `i `uc ]
-[; ;K13-01.c: 90: TRISC =0x00;
-"90
-[e = _TRISC -> -> 0 `i `uc ]
-[; ;K13-01.c: 91: WPUA = 0xFF;
-"91
-[e = _WPUA -> -> 255 `i `uc ]
-[; ;K13-01.c: 92: WPUB = 0xFF;
-"92
-[e = _WPUB -> -> 255 `i `uc ]
-[; ;K13-01.c: 93: WPUC = 0xFF;
-"93
-[e = _WPUC -> -> 255 `i `uc ]
-[; ;K13-01.c: 94: PORTA = 0;
-"94
-[e = _PORTA -> -> 0 `i `uc ]
-[; ;K13-01.c: 95: PORTB = 0;
-"95
-[e = _PORTB -> -> 0 `i `uc ]
-[; ;K13-01.c: 96: PORTC = 0;
-"96
-[e = _PORTC -> -> 0 `i `uc ]
-[; ;K13-01.c: 97: RA1=1;
-"97
-[e = _RA1 -> -> 1 `i `b ]
-[; ;K13-01.c: 98: RA2=1;
-"98
-[e = _RA2 -> -> 1 `i `b ]
-[; ;K13-01.c: 99: RA0=1;
-"99
-[e = _RA0 -> -> 1 `i `b ]
-[; ;K13-01.c: 100: RA5 =0;
-"100
-[e = _RA5 -> -> 0 `i `b ]
-[; ;K13-01.c: 101: TRISA6=1,WPUA6=1;
-"101
-[e ; -> = _TRISA6 -> -> 1 `i `b `i -> = _WPUA6 -> -> 1 `i `b `i ]
-[; ;K13-01.c: 102: TRISA7=1,WPUA7=1;
-"102
-[e ; -> = _TRISA7 -> -> 1 `i `b `i -> = _WPUA7 -> -> 1 `i `b `i ]
-[; ;K13-01.c: 104: WDTCON=0x00;
-"104
-[e = _WDTCON -> -> 0 `i `uc ]
-[; ;K13-01.c: 105: RBIE=1;
-"105
-[e = _RBIE -> -> 1 `i `b ]
-[; ;K13-01.c: 106: IOCB=0xC0;
-"106
-[e = _IOCB -> -> 192 `i `uc ]
-[; ;K13-01.c: 107: OSCCON=0X01;
-"107
-[e = _OSCCON -> -> 1 `i `uc ]
-[; ;K13-01.c: 108: RBIF = 0;
-"108
-[e = _RBIF -> -> 0 `i `b ]
-[; ;K13-01.c: 109: PORTB;
-"109
-[e _PORTB ]
-[; ;K13-01.c: 110: asm("sleep");
-"110
-[; <" sleep ;# ">
-[; ;K13-01.c: 111: asm("nop");
-"111
-[; <" nop ;# ">
-[; ;K13-01.c: 112: SystemInit();
-"112
-[e ( _SystemInit ..  ]
-"113
 }
-[e :U 14 ]
+[; ;K13-01.c: 74: }
+[e $U 13  ]
+"75
+[e :U 12 ]
+[; ;K13-01.c: 75: else
+[; ;K13-01.c: 76: {
+"76
+{
+[; ;K13-01.c: 77: SleepCnt++;
+"77
+[e ++ F545 -> -> 1 `i `ui ]
+[; ;K13-01.c: 78: if(SleepCnt>=1000)
+"78
+[e $ ! >= F545 -> -> 1000 `i `ui 14  ]
+[; ;K13-01.c: 79: {
+"79
+{
+[; ;K13-01.c: 80: LEDWorkFlag=0;
+"80
+[e = _LEDWorkFlag -> -> 0 `i `b ]
+[; ;K13-01.c: 81: SleepCnt=0;
+"81
+[e = F545 -> -> 0 `i `ui ]
+[; ;K13-01.c: 82: asm("clrwdt");
+"82
+[; <" clrwdt ;# ">
+[; ;K13-01.c: 83: INTCON=0;
+"83
+[e = _INTCON -> -> 0 `i `uc ]
+[; ;K13-01.c: 84: PIE1 = 0;
+"84
+[e = _PIE1 -> -> 0 `i `uc ]
+[; ;K13-01.c: 85: PIE2 = 0;
+"85
+[e = _PIE2 -> -> 0 `i `uc ]
+[; ;K13-01.c: 86: PIR1 = 0;
+"86
+[e = _PIR1 -> -> 0 `i `uc ]
+[; ;K13-01.c: 87: ADCON0 = 0;
+"87
+[e = _ADCON0 -> -> 0 `i `uc ]
+[; ;K13-01.c: 89: TRISA =0X00;
+"89
+[e = _TRISA -> -> 0 `i `uc ]
+[; ;K13-01.c: 90: TRISB =0X00;
+"90
+[e = _TRISB -> -> 0 `i `uc ]
+[; ;K13-01.c: 91: TRISC =0x00;
+"91
+[e = _TRISC -> -> 0 `i `uc ]
+[; ;K13-01.c: 92: WPUA = 0xFF;
+"92
+[e = _WPUA -> -> 255 `i `uc ]
+[; ;K13-01.c: 93: WPUB = 0xFF;
+"93
+[e = _WPUB -> -> 255 `i `uc ]
+[; ;K13-01.c: 94: WPUC = 0xFF;
+"94
+[e = _WPUC -> -> 255 `i `uc ]
+[; ;K13-01.c: 95: PORTA = 0;
+"95
+[e = _PORTA -> -> 0 `i `uc ]
+[; ;K13-01.c: 96: PORTB = 0;
+"96
+[e = _PORTB -> -> 0 `i `uc ]
+[; ;K13-01.c: 97: PORTC = 0;
+"97
+[e = _PORTC -> -> 0 `i `uc ]
+[; ;K13-01.c: 98: RA1=1;
+"98
+[e = _RA1 -> -> 1 `i `b ]
+[; ;K13-01.c: 99: RA2=1;
+"99
+[e = _RA2 -> -> 1 `i `b ]
+[; ;K13-01.c: 100: RA0=1;
+"100
+[e = _RA0 -> -> 1 `i `b ]
+[; ;K13-01.c: 101: RA5 =0;
+"101
+[e = _RA5 -> -> 0 `i `b ]
+[; ;K13-01.c: 102: TRISB6=1,WPUB6=1;
+"102
+[e ; -> = _TRISB6 -> -> 1 `i `b `i -> = _WPUB6 -> -> 1 `i `b `i ]
+[; ;K13-01.c: 103: TRISB7=1,WPUB7=1;
+"103
+[e ; -> = _TRISB7 -> -> 1 `i `b `i -> = _WPUB7 -> -> 1 `i `b `i ]
+[; ;K13-01.c: 105: WDTCON=0x00;
+"105
+[e = _WDTCON -> -> 0 `i `uc ]
+[; ;K13-01.c: 106: RBIE=1;
+"106
+[e = _RBIE -> -> 1 `i `b ]
+[; ;K13-01.c: 107: IOCB=0xC0;
+"107
+[e = _IOCB -> -> 192 `i `uc ]
+[; ;K13-01.c: 108: OSCCON=0X01;
+"108
+[e = _OSCCON -> -> 1 `i `uc ]
+[; ;K13-01.c: 109: RBIF = 0;
+"109
+[e = _RBIF -> -> 0 `i `b ]
+[; ;K13-01.c: 110: PORTB;
+"110
+[e _PORTB ]
+[; ;K13-01.c: 111: asm("sleep");
+"111
+[; <" sleep ;# ">
+[; ;K13-01.c: 112: asm("nop");
+"112
+[; <" nop ;# ">
+[; ;K13-01.c: 113: SystemInit();
+"113
+[e ( _SystemInit ..  ]
 "114
 }
+[e :U 14 ]
+"115
+}
 [e :U 13 ]
-[; ;K13-01.c: 113: }
 [; ;K13-01.c: 114: }
 [; ;K13-01.c: 115: }
-"115
+[; ;K13-01.c: 116: }
+"116
 [e :UE 11 ]
 }
-"117
-[v _SystemInit `(v ~T0 @X0 1 ef ]
 "118
+[v _SystemInit `(v ~T0 @X0 1 ef ]
+"119
 {
-[; ;K13-01.c: 117: void SystemInit()
-[; ;K13-01.c: 118: {
+[; ;K13-01.c: 118: void SystemInit()
+[; ;K13-01.c: 119: {
 [e :U _SystemInit ]
 [f ]
-[; ;K13-01.c: 119: asm("nop");
-"119
-[; <" nop ;# ">
-[; ;K13-01.c: 120: asm("clrwdt");
+[; ;K13-01.c: 120: asm("nop");
 "120
-[; <" clrwdt ;# ">
-[; ;K13-01.c: 121: GPIOInit();
+[; <" nop ;# ">
+[; ;K13-01.c: 121: asm("clrwdt");
 "121
-[e ( _GPIOInit ..  ]
-[; ;K13-01.c: 122: TimerInit();
+[; <" clrwdt ;# ">
+[; ;K13-01.c: 122: GPIOInit();
 "122
-[e ( _TimerInit ..  ]
-[; ;K13-01.c: 123: WDTCON=0x01;
+[e ( _GPIOInit ..  ]
+[; ;K13-01.c: 123: TimerInit();
 "123
-[e = _WDTCON -> -> 1 `i `uc ]
-[; ;K13-01.c: 124: }
+[e ( _TimerInit ..  ]
+[; ;K13-01.c: 124: WDTCON=0x01;
 "124
+[e = _WDTCON -> -> 1 `i `uc ]
+[; ;K13-01.c: 125: }
+"125
 [e :UE 15 ]
 }
-"126
-[v _GPIOInit `(v ~T0 @X0 1 ef ]
 "127
+[v _GPIOInit `(v ~T0 @X0 1 ef ]
+"128
 {
-[; ;K13-01.c: 126: void GPIOInit()
-[; ;K13-01.c: 127: {
+[; ;K13-01.c: 127: void GPIOInit()
+[; ;K13-01.c: 128: {
 [e :U _GPIOInit ]
 [f ]
-[; ;K13-01.c: 128: RBPU=0;
-"128
+[; ;K13-01.c: 129: RBPU=0;
+"129
 [e = _RBPU -> -> 0 `i `b ]
-[; ;K13-01.c: 130: TRISA =0X00;
-"130
-[e = _TRISA -> -> 0 `i `uc ]
-[; ;K13-01.c: 131: TRISB =0X00;
+[; ;K13-01.c: 131: TRISA =0X00;
 "131
-[e = _TRISB -> -> 0 `i `uc ]
-[; ;K13-01.c: 132: TRISC =0X00;
+[e = _TRISA -> -> 0 `i `uc ]
+[; ;K13-01.c: 132: TRISB =0X00;
 "132
+[e = _TRISB -> -> 0 `i `uc ]
+[; ;K13-01.c: 133: TRISC =0X00;
+"133
 [e = _TRISC -> -> 0 `i `uc ]
-[; ;K13-01.c: 136: WPUA =0XFF;
-"136
-[e = _WPUA -> -> 255 `i `uc ]
-[; ;K13-01.c: 137: WPUB =0XFF;
+[; ;K13-01.c: 137: WPUA =0XFF;
 "137
-[e = _WPUB -> -> 255 `i `uc ]
-[; ;K13-01.c: 138: WPUC =0XFF;
+[e = _WPUA -> -> 255 `i `uc ]
+[; ;K13-01.c: 138: WPUB =0XFF;
 "138
+[e = _WPUB -> -> 255 `i `uc ]
+[; ;K13-01.c: 139: WPUC =0XFF;
+"139
 [e = _WPUC -> -> 255 `i `uc ]
-[; ;K13-01.c: 142: PORTA = 0X80;
-"142
-[e = _PORTA -> -> 128 `i `uc ]
-[; ;K13-01.c: 143: PORTB = 0X80;
+[; ;K13-01.c: 143: PORTA = 0X80;
 "143
-[e = _PORTB -> -> 128 `i `uc ]
-[; ;K13-01.c: 144: PORTC = 0;
+[e = _PORTA -> -> 128 `i `uc ]
+[; ;K13-01.c: 144: PORTB = 0X80;
 "144
+[e = _PORTB -> -> 128 `i `uc ]
+[; ;K13-01.c: 145: PORTC = 0;
+"145
 [e = _PORTC -> -> 0 `i `uc ]
-[; ;K13-01.c: 147: RA5 =1;
-"147
-[e = _RA5 -> -> 1 `i `b ]
-[; ;K13-01.c: 148: RBPU=0;
+[; ;K13-01.c: 148: RA5 =1;
 "148
-[e = _RBPU -> -> 0 `i `b ]
-[; ;K13-01.c: 149: TRISA6=1,WPUA6=1;
+[e = _RA5 -> -> 1 `i `b ]
+[; ;K13-01.c: 149: RBPU=0;
 "149
-[e ; -> = _TRISA6 -> -> 1 `i `b `i -> = _WPUA6 -> -> 1 `i `b `i ]
-[; ;K13-01.c: 150: TRISA7=1,WPUA7=1;
+[e = _RBPU -> -> 0 `i `b ]
+[; ;K13-01.c: 150: TRISB6=1,WPUB6=1;
 "150
-[e ; -> = _TRISA7 -> -> 1 `i `b `i -> = _WPUA7 -> -> 1 `i `b `i ]
-[; ;K13-01.c: 152: TRISA1=1,WPUA1=0; ANS1=1;
-"152
+[e ; -> = _TRISB6 -> -> 1 `i `b `i -> = _WPUB6 -> -> 1 `i `b `i ]
+[; ;K13-01.c: 151: TRISB7=1,WPUB7=1;
+"151
+[e ; -> = _TRISB7 -> -> 1 `i `b `i -> = _WPUB7 -> -> 1 `i `b `i ]
+[; ;K13-01.c: 153: TRISA1=1,WPUA1=0; ANS1=1;
+"153
 [e ; -> = _TRISA1 -> -> 1 `i `b `i -> = _WPUA1 -> -> 0 `i `b `i ]
 [e = _ANS1 -> -> 1 `i `b ]
-[; ;K13-01.c: 153: TRISA2=1,WPUA2=0; ANS2=1;
-"153
+[; ;K13-01.c: 154: TRISA2=1,WPUA2=0; ANS2=1;
+"154
 [e ; -> = _TRISA2 -> -> 1 `i `b `i -> = _WPUA2 -> -> 0 `i `b `i ]
 [e = _ANS2 -> -> 1 `i `b ]
-[; ;K13-01.c: 155: }
-"155
+[; ;K13-01.c: 156: }
+"156
 [e :UE 16 ]
 }
-"157
-[v _TimerInit `(v ~T0 @X0 1 ef ]
 "158
+[v _TimerInit `(v ~T0 @X0 1 ef ]
+"159
 {
-[; ;K13-01.c: 157: void TimerInit()
-[; ;K13-01.c: 158: {
+[; ;K13-01.c: 158: void TimerInit()
+[; ;K13-01.c: 159: {
 [e :U _TimerInit ]
 [f ]
-[; ;K13-01.c: 168: OSCCON=0X61;
-"168
-[e = _OSCCON -> -> 97 `i `uc ]
-[; ;K13-01.c: 169: INTCON=0B11000000;
+[; ;K13-01.c: 169: OSCCON=0X61;
 "169
-[e = _INTCON -> -> 192 `i `uc ]
-[; ;K13-01.c: 170: PIE1=0B00000010;
+[e = _OSCCON -> -> 97 `i `uc ]
+[; ;K13-01.c: 170: INTCON=0B11000000;
 "170
-[e = _PIE1 -> -> 2 `i `uc ]
-[; ;K13-01.c: 171: T2CON=0B00000100;
+[e = _INTCON -> -> 192 `i `uc ]
+[; ;K13-01.c: 171: PIE1=0B00000010;
 "171
-[e = _T2CON -> -> 4 `i `uc ]
-[; ;K13-01.c: 172: PR2 = 200;
+[e = _PIE1 -> -> 2 `i `uc ]
+[; ;K13-01.c: 172: T2CON=0B00000100;
 "172
-[e = _PR2 -> -> 200 `i `uc ]
-[; ;K13-01.c: 173: }
+[e = _T2CON -> -> 4 `i `uc ]
+[; ;K13-01.c: 173: PR2 = 200;
 "173
+[e = _PR2 -> -> 200 `i `uc ]
+[; ;K13-01.c: 174: }
+"174
 [e :UE 17 ]
 }

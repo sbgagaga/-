@@ -443,6 +443,7 @@ extern unsigned char LockNumb;
 extern unsigned char BatPercent;
 extern unsigned char WorkMin;
 
+extern bit LedIovFlag;
 extern bit SystemONFlag;
 extern bit OnOffFlag;
 extern bit WorkFlag;
@@ -471,10 +472,11 @@ void ErrPro();
 
 # 3 "C:\Users\Administrator\Desktop\project\K13-01\code\LED.c"
 unsigned char NumbArr[10]={0x77,0x24,0x5D,0X6D,0X2E,0X6B,0X7B,0X25,0X7F,0X2F};
-unsigned char HideNumbArr[11]={0,0x40,0x70,0x78,0x7E,0x7F,0x3F,0X0F,0x07,0X01,0};
+
+unsigned char HideNumbArr[7]={0,0x40,0x70,0x78,0x7E,0x7F,0x7F};
 unsigned int OffHideNumbArr[7]={0,0x12,0x5B,0X7F,0x97F,0x2DFF,0x3FFF};
 
-# 12
+# 13
 const unsigned char LEDSeg1[16]={1,2,2,3,0,3,4,0,1,1,2,0,3,4,0,1};
 unsigned char LEDSeg2[16]={0,1,0,1,1,0,0,2,3,2,3,3,2,2,4,4};
 unsigned int LedIndex=0;
@@ -629,24 +631,22 @@ if(cnt>=40)
 {
 cnt=0;
 index++;
-if(index>=11)
+if(index>=7)
 {
 index=0;
 }
 }
 if(BatPercent<99)
 {
-LedIndex=NumbArr[BatPercent/10];
-LedIndex|=((unsigned int)NumbArr[BatPercent%10]&~HideNumbArr[index])<<7;
-LedIndex&=~HideNumbArr[index];
+LedIndex|=(NumbArr[BatPercent/10]|(unsigned int)NumbArr[BatPercent%10]<<7);
+LedIndex&=(HideNumbArr[index]|(unsigned int)HideNumbArr[index]<<7);
 }
 else
 {
 index=0;
-LedIndex=NumbArr[BatPercent/10];
+LedIndex|=NumbArr[BatPercent/10];
 LedIndex|=NumbArr[BatPercent%10]<<7;
 }
-
 }
 else
 {
@@ -662,6 +662,7 @@ static bit LedSwitchFlag=0;
 static char index=0;
 static unsigned char cnt=0;
 static bit dir=0;
+static unsigned char delaycnt=0;
 if(LEDWorkFlag&&!OnOffFlag&&!LockSta.LockFlag&&!LockSta.LockStart&&(!USBFlag||WorkFlag))
 {
 if(BatPercent<=10&&WorkFlag)
@@ -680,14 +681,17 @@ LedSwitchFlag=1;
 }
 if(LedSwitchFlag)
 {
-LedIndex=NumbArr[BatPercent/10];
+LedIndex|=NumbArr[BatPercent/10];
 LedIndex|=(unsigned int)NumbArr[BatPercent%10]<<7;
 }
+cnt=0;
+index=0;
+dir=0;
 }
 else if(OnOffFlag)
 {
 cnt++;
-if(cnt>=40)
+if(cnt>=30)
 {
 cnt=0;
 index++;
@@ -695,23 +699,35 @@ if(index>=7)
 {
 if(dir)
 {
+index=6;
+delaycnt++;
+if(delaycnt>=7)
+{
+index=0;
+delaycnt=0;
 OnOffFlag=0;
 WorkMin=0;
+dir=0;
 return;
 }
+}
+else
+{
 dir=!dir;
 index=0;
+}
+
 }
 }
 if(!dir)
 {
-LedIndex=NumbArr[BatPercent/10];
+LedIndex|=NumbArr[BatPercent/10];
 LedIndex|=(unsigned int)NumbArr[BatPercent%10]<<7;
 LedIndex&=~OffHideNumbArr[index];
 }
 else
 {
-LedIndex=NumbArr[WorkMin/10];
+LedIndex|=NumbArr[WorkMin/10];
 LedIndex|=(unsigned int)NumbArr[WorkMin%10]<<7;
 LedIndex&=~OffHideNumbArr[6-index];
 }
@@ -736,7 +752,7 @@ if(LockNumb>0)
 LockNumb--;
 }
 }
-LedIndex=NumbArr[0];
+LedIndex|=NumbArr[0];
 LedIndex|=(unsigned int)NumbArr[LockNumb+1]<<7;
 }
 else
@@ -774,20 +790,29 @@ LockSwitchCnt=0;
 
 void ErrPro()
 {
+static unsigned char cnt=0;
 static unsigned char SwitchCnt=0;
 static bit LedSwitchFlag=0;
-if(IovFlag)
+if(LedIovFlag)
 {
 SwitchCnt++;
 if(SwitchCnt>=35)
 {
 SwitchCnt=0;
 LedSwitchFlag=!LedSwitchFlag;
-
+if(!IovFlag&&!LedSwitchFlag)
+{
+cnt++;
+if(cnt>=3)
+{
+cnt=0;
+LedIovFlag=0;
+}
+}
 }
 if(LedSwitchFlag)
 {
-LedIndex=0x4000;
+LedIndex|=0x4000;
 }
 }
 else

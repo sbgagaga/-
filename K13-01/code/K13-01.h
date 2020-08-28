@@ -26,6 +26,7 @@ extern uint8 LockNumb;
 extern uint8 BatPercent;
 extern uint8 WorkMin;
 
+extern bit LedIovFlag;
 extern bit SystemONFlag;
 extern bit OnOffFlag;
 extern bit WorkFlag;

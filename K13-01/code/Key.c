@@ -26,13 +26,6 @@ void KeyScan()
 			if(WorkFlag)
 			{
 				LEDWorkFlag=1;
-			}
-			if(!WorkFlag&&WorkMin!=0&&!USBFlag)
-			{
-				OnOffFlag=1;
-			}
-			else
-			{
 				OnOffFlag=0;
 				WorkMin=0;
 			}
@@ -55,7 +48,7 @@ void KeyScan()
 				LockSta.UnlockStart=1;
 				LockSta.LockEnd=0;
 			}
-			OnOffFlag=0;
+			WorkMin=0;
 		}
 	}
 	else if(KeyPress&&KeyCnt>=250&&KeyInBuf==KeyPress&&!LockSta.LockEnd&&!LockSta.UnlockEnd)
@@ -102,6 +95,11 @@ void KeyScan()
 	}
 	KeyInBuf=KeyPress;
 
+	if(!WorkFlag&&!KeyPress&&WorkMin!=0&&!USBFlag)
+	{
+		OnOffFlag=1;
+	}
+
 	if(!PIN_USB)
 	{
 		USBLink=1;
@@ -111,7 +109,7 @@ void KeyScan()
 		USBLink=0;
 	}
 	/*USBÅÐ¶Ï*/
-	if(USBLink&&!IovFlag)
+	if(USBLink)
 	{
 		USBFlag=1;
 		LockSta.LockFlag=0;

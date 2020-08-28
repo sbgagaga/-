@@ -14,8 +14,9 @@ TYPE_UNION_LockSta LockSta;
 bit OnOffFlag=0;
 bit WorkFlag=0;
 bit IovFlag=0;
+bit LedIovFlag=0;
 bit LowBatFlag=0;
-bit USBFlag=0;
+bit USBFlag=0;  
 bit LEDWorkFlag=0;
 
 uint8 Sec1sCnt=0;
@@ -67,7 +68,7 @@ void Apply()
 void SystemSleep()
 {
     static uint16 SleepCnt=0;
-    if(WorkFlag||OnOffFlag||LowBatFlag||USBFlag||IovFlag||KeyPress||LockSta.LockStart)
+    if(WorkFlag||OnOffFlag||USBFlag||KeyPress)
     {
         SleepCnt=0;
     }

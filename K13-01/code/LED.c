@@ -1,7 +1,8 @@
 #include "LED.h"
 
 uint8 NumbArr[10]={0x77,0x24,0x5D,0X6D,0X2E,0X6B,0X7B,0X25,0X7F,0X2F};//数字
-uint8 HideNumbArr[11]={0,0x40,0x70,0x78,0x7E,0x7F,0x3F,0X0F,0x07,0X01,0};//自下往上扫描
+//uint8 HideNumbArr[11]={0,0x40,0x70,0x78,0x7E,0x7F,0x3F,0X0F,0x07,0X01,0};//自下往上扫描
+uint8 HideNumbArr[7]={0,0x40,0x70,0x78,0x7E,0x7F,0x7F};//自下往上扫描
 uint16 OffHideNumbArr[7]={0,0x12,0x5B,0X7F,0x97F,0x2DFF,0x3FFF};
 // const uint8 LEDSeg1[16][2]=
 // {
@@ -163,24 +164,22 @@ void USBLedPro()
         {
             cnt=0;
             index++;
-            if(index>=11)
+            if(index>=7)
             {
                 index=0;
             }
         }
         if(BatPercent<99)
         {
-            LedIndex=NumbArr[BatPercent/10];
-            LedIndex|=((uint16)NumbArr[BatPercent%10]&~HideNumbArr[index])<<7;
-            LedIndex&=~HideNumbArr[index];
+            LedIndex|=(NumbArr[BatPercent/10]|(uint16)NumbArr[BatPercent%10]<<7);
+            LedIndex&=(HideNumbArr[index]|(uint16)HideNumbArr[index]<<7);
         }
         else
         {
             index=0;
-            LedIndex=NumbArr[BatPercent/10];
+            LedIndex|=NumbArr[BatPercent/10];
             LedIndex|=NumbArr[BatPercent%10]<<7;
         }
-        
     }
     else
     {
@@ -196,6 +195,7 @@ void WorkLedPro()
     static int8 index=0;
     static uint8 cnt=0;
     static bit dir=0;
+    static uint8 delaycnt=0;
     if(LEDWorkFlag&&!OnOffFlag&&!LockSta.LockFlag&&!LockSta.LockStart&&(!USBFlag||WorkFlag))
     {
         if(BatPercent<=10&&WorkFlag)
@@ -214,14 +214,17 @@ void WorkLedPro()
         }
         if(LedSwitchFlag)
         {
-            LedIndex=NumbArr[BatPercent/10];
+            LedIndex|=NumbArr[BatPercent/10];
             LedIndex|=(uint16)NumbArr[BatPercent%10]<<7;
         }
+        cnt=0;
+        index=0;
+        dir=0;
     }
     else if(OnOffFlag)
     {
         cnt++;
-        if(cnt>=40)
+        if(cnt>=30)
         {
             cnt=0;
             index++;
@@ -229,23 +232,35 @@ void WorkLedPro()
             {
                 if(dir)
                 {
-                    OnOffFlag=0;
-                    WorkMin=0;
-                    return;
+                    index=6;
+                    delaycnt++;
+                    if(delaycnt>=7)
+                    {
+                        index=0;
+                        delaycnt=0;
+                        OnOffFlag=0;
+                        WorkMin=0;
+                        dir=0;
+                        return;
+                    }
                 }
-                dir=!dir;
-                index=0;
+                else
+                {
+                    dir=!dir;
+                    index=0;
+                }
+                
             }
         }
         if(!dir)
         {
-            LedIndex=NumbArr[BatPercent/10];
+            LedIndex|=NumbArr[BatPercent/10];
             LedIndex|=(uint16)NumbArr[BatPercent%10]<<7;
             LedIndex&=~OffHideNumbArr[index];
         }
         else
         {
-            LedIndex=NumbArr[WorkMin/10];
+            LedIndex|=NumbArr[WorkMin/10];
             LedIndex|=(uint16)NumbArr[WorkMin%10]<<7;
             LedIndex&=~OffHideNumbArr[6-index];
         }
@@ -270,7 +285,7 @@ void LockPro()
                     LockNumb--;
                 }
             }
-            LedIndex=NumbArr[0];
+            LedIndex|=NumbArr[0];
             LedIndex|=(uint16)NumbArr[LockNumb+1]<<7;
         }
         else
@@ -308,20 +323,29 @@ void LockPro()
 
 void ErrPro()
 {
+    static uint8 cnt=0;
     static uint8 SwitchCnt=0;
     static bit LedSwitchFlag=0;
-    if(IovFlag)
+    if(LedIovFlag)
     {
         SwitchCnt++;
         if(SwitchCnt>=35)
         {
             SwitchCnt=0;
             LedSwitchFlag=!LedSwitchFlag;
-
+            if(!IovFlag&&!LedSwitchFlag)
+            {
+                cnt++;
+                if(cnt>=3)
+                {
+                    cnt=0;
+                    LedIovFlag=0;
+                }
+            }
         }
         if(LedSwitchFlag)
         {
-            LedIndex=iconErr;
+            LedIndex|=iconErr;
         }
     }
     else

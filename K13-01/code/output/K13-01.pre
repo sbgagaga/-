@@ -452,6 +452,7 @@ extern unsigned char LockNumb;
 extern unsigned char BatPercent;
 extern unsigned char WorkMin;
 
+extern bit LedIovFlag;
 extern bit SystemONFlag;
 extern bit OnOffFlag;
 extern bit WorkFlag;
@@ -484,6 +485,7 @@ TYPE_UNION_LockSta LockSta;
 bit OnOffFlag=0;
 bit WorkFlag=0;
 bit IovFlag=0;
+bit LedIovFlag=0;
 bit LowBatFlag=0;
 bit USBFlag=0;
 bit LEDWorkFlag=0;
@@ -522,7 +524,8 @@ ADCPro();
 Motor();
 DisplayPro();
 
-# 57
+SystemSleep();
+
 }
 Sec1sCnt++;
 if(Sec1sCnt>=100)
@@ -536,7 +539,7 @@ Sec1sPro();
 void SystemSleep()
 {
 static unsigned int SleepCnt=0;
-if(WorkFlag||OnOffFlag||LowBatFlag||USBFlag||IovFlag||KeyPress||LockSta.LockStart)
+if(WorkFlag||OnOffFlag||USBFlag||KeyPress)
 {
 SleepCnt=0;
 }
@@ -567,8 +570,8 @@ RA1=1;
 RA2=1;
 RA0=1;
 RA5 =0;
-TRISA6=1,WPUA6=1;
-TRISA7=1,WPUA7=1;
+TRISB6=1,WPUB6=1;
+TRISB7=1,WPUB7=1;
 
 WDTCON=0x00;
 RBIE=1;
@@ -615,8 +618,8 @@ PORTC = 0;
 
 RA5 =1;
 RBPU=0;
-TRISA6=1,WPUA6=1;
-TRISA7=1,WPUA7=1;
+TRISB6=1,WPUB6=1;
+TRISB7=1,WPUB7=1;
 
 TRISA1=1,WPUA1=0; ANS1=1;
 TRISA2=1,WPUA2=0; ANS2=1;
@@ -626,7 +629,7 @@ TRISA2=1,WPUA2=0; ANS2=1;
 void TimerInit()
 {
 
-# 168
+# 169
 OSCCON=0X61;
 INTCON=0B11000000;
 PIE1=0B00000010;

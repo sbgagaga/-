@@ -446,6 +446,7 @@ extern unsigned char LockNumb;
 extern unsigned char BatPercent;
 extern unsigned char WorkMin;
 
+extern bit LedIovFlag;
 extern bit SystemONFlag;
 extern bit OnOffFlag;
 extern bit WorkFlag;
@@ -478,7 +479,7 @@ bit USBLink=0;
 
 void KeyScan()
 {
-if(!RA6)
+if(!RB6)
 {
 KeyPress=1;
 }
@@ -496,13 +497,6 @@ WorkFlag=~WorkFlag;
 if(WorkFlag)
 {
 LEDWorkFlag=1;
-}
-if(!WorkFlag&&WorkMin!=0&&!USBFlag)
-{
-OnOffFlag=1;
-}
-else
-{
 OnOffFlag=0;
 WorkMin=0;
 }
@@ -525,7 +519,7 @@ else
 LockSta.UnlockStart=1;
 LockSta.LockEnd=0;
 }
-OnOffFlag=0;
+WorkMin=0;
 }
 }
 else if(KeyPress&&KeyCnt>=250&&KeyInBuf==KeyPress&&!LockSta.LockEnd&&!LockSta.UnlockEnd)
@@ -572,7 +566,12 @@ LockSta.LockStart=0;
 }
 KeyInBuf=KeyPress;
 
-if(!RA7)
+if(!WorkFlag&&!KeyPress&&WorkMin!=0&&!USBFlag)
+{
+OnOffFlag=1;
+}
+
+if(!RB7)
 {
 USBLink=1;
 }
@@ -581,7 +580,7 @@ else
 USBLink=0;
 }
 
-if(USBLink&&!IovFlag)
+if(USBLink)
 {
 USBFlag=1;
 LockSta.LockFlag=0;
